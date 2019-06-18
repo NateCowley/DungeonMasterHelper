@@ -249,7 +249,7 @@
             this.historyRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.historyRTB.Size = new System.Drawing.Size(276, 141);
             this.historyRTB.TabIndex = 24;
-            this.historyRTB.Text = "";
+            this.historyRTB.Text = "Put your notes here";
             // 
             // occupationLabel
             // 
@@ -285,7 +285,7 @@
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.richTextBox1.Size = new System.Drawing.Size(276, 135);
             this.richTextBox1.TabIndex = 28;
-            this.richTextBox1.Text = "";
+            this.richTextBox1.Text = "Put your notes here";
             // 
             // label12
             // 
@@ -348,6 +348,7 @@
             this.Controls.Add(this.ageTB);
             this.Controls.Add(this.nameTB);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(600, 600);
             this.Name = "NPC_Form";
             this.Text = "NPC_Form";
             this.ResumeLayout(false);
