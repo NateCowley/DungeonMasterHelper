@@ -19,6 +19,7 @@ namespace DungeonMasterHelper
         {
             return str.First().ToString().ToLower() + str.Skip(1);
         }
+
         /// <summary>
         /// Simulates a roll of the dice.
         /// For example, calling roll(3, 6) is the equivalent of rolling 3d6.
@@ -2545,6 +2546,11 @@ namespace DungeonMasterHelper
                 "Painted gold child's sarcophagus",
                 "Jade game board with solid gold playing pieces",
                 "Bejeweled ivory drinking horn with gold filigree"
+            };
+
+            public static readonly string[] individual_treasure_Challenge04 =
+            {
+                roll(1, 6) + " pp"
             };
 
             public static string getIndividualTreasure_Challenge0_4()
