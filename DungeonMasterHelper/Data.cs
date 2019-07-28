@@ -434,6 +434,56 @@ namespace DungeonMasterHelper
                 "Silver"
             };
 
+            public static readonly string[] psychic_wind_effects_location_effect =
+            {
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Diverted; add 1d6 hours to travel time",
+                "Blown off course; add 3d10 hours to travel time",
+                "Blown off course; add 3d10 hours to travel time",
+                "Blown off course; add 3d10 hours to travel time",
+                "Blown off course; add 3d10 hours to travel time",
+                "Lost; at the end of the travel time, characters arrive at " +
+                    "a location other than the intended destination",
+                "Lost; at the end of the travel time, characters arrive at " +
+                    "a location other than the intended destination",
+                "Lost; at the end of the travel time, characters arrive at " +
+                    "a location other than the intended destination",
+                "Lost; at the end of the travel time, characters arrive at " +
+                    "a location other than the intended destination",
+                "Sent through color pool to a random plane (roll on the Astral Color Pools table)",
+                "Sent through color pool to a random plane (roll on the Astral Color Pools table)",
+                "Sent through color pool to a random plane (roll on the Astral Color Pools table)",
+                "Sent through color pool to a random plane (roll on the Astral Color Pools table)",
+            };
+
+            public static readonly string[] psychic_wind_effects_mental_effect =
+            {
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself",
+                "Short-term madness (see chapter 8)",
+                "Short-term madness (see chapter 8)",
+                "11 (2d10) psychic damage",
+                "11 (2d10) psychic damage",
+                "22 (4d10) psychic damage",
+                "22 (4d10) psychic damage",
+                "Long-term madness (see chapter 8)",
+                "Long-term madness (see chapter 8)",
+                "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake",
+                "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake"
+            };
+
             public static readonly string[] ethereal_curtains_plane =
             {
                 "Material Plane",
@@ -456,6 +506,30 @@ namespace DungeonMasterHelper
                 "Orange",
                 "Green",
                 "Swirling mix of colors"
+            };
+
+            public static readonly string[] ether_cyclone =
+            {
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Extended journey",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table",
+                "Hurled into the Astral Plane"
             };
 
             public static readonly string[] feywild_time_warp =
@@ -482,7 +556,7 @@ namespace DungeonMasterHelper
                 "Days become years"
             };
 
-            public static string psychicWindEffectsLocationEffect()
+            public static string getPsychicWindEffectsLocationEffect()
             {
                 int num = Data.rand.Next() % 20 + 1;
 
@@ -513,7 +587,7 @@ namespace DungeonMasterHelper
                 }
             }
 
-            public static string psychicWindEffectsMentalEffect()
+            public static string getPsychicWindEffectsMentalEffect()
             {
                 int num = Data.rand.Next() % 20 + 1;
 
@@ -543,7 +617,7 @@ namespace DungeonMasterHelper
                 }
             }
 
-            public static string etherCyclone()
+            public static string getEtherCyclone()
             {
                 int num = Data.rand.Next() % 20 + 1;
 
@@ -561,7 +635,7 @@ namespace DungeonMasterHelper
                 }
             }
 
-            public static string shadowfellDespair()
+            public static string getShadowfellDespair()
             {
                 int num = Data.rand.Next() % 6 + 1;
 
@@ -579,7 +653,7 @@ namespace DungeonMasterHelper
                 }
             }
 
-            public static string abyssalCorruption()
+            public static string getAbyssalCorruption()
             {
                 int num = Data.rand.Next() % 10 + 1;
 
@@ -943,6 +1017,58 @@ namespace DungeonMasterHelper
                 "Concurrence of two events (roll twice, ignoring results of 99 or 100)"
             };
 
+            public static readonly string[] moral_quandaries =
+            {
+                "Ally quandary",
+                "Ally quandary",
+                "Ally quandary",
+                "Friend quandary",
+                "Friend quandary",
+                "Friend quandary",
+                "Honor quandary",
+                "Honor quandary",
+                "Honor quandary",
+                "Honor quandary",
+                "Honor quandary",
+                "Honor quandary",
+                "Rescue quandary",
+                "Rescue quandary",
+                "Rescue quandary",
+                "Rescue quandary",
+                "Respect quandary",
+                "Respect quandary",
+                "Respect quandary",
+                "Respect quandary"
+            };
+
+            public static readonly string[] moral_quandaries_descriptions =
+            {
+				"Ally Quandary. The adventurers have a better chance of achieving their goal with the help " +
+					"of two individuals whose expertise is all but essential. However, these two NPCs hate " +
+					"each other and refuse to work together even if the fate of the world hangs in the " +
+					"balance. The adventurers must choose the NPC that is most likely to help them accomplish their goal.",
+				"Friend Quandary. An NPC that one or more of the characters cares about makes an impossible " +
+					"demand on the characters. A love interest might demand that a character turn away from " +
+					"a dangerous quest. A dear friend might plead with the characters to spare the villain's " +
+					"life, to prove that they are better than the villain. A weak NPC might beg for a chance " +
+					"to win favor from the characters by undertaking a dangerous but essential mission.",
+				"Honor Quandary. A character is forced to choose between victory and a personal oath or code " +
+					"of honor. A paladin who has sworn the Oath of Virtue might realize that the clearest path " +
+					"to success lies in deceit and subterfuge. A loyal cleric might be tempted to disobey the " +
+					"orders of his or her faith. If you present this quandary, be sure to provide an opportunity " +
+					"for a character to atone for violating his or her oath.",
+				"Rescure Quandary. The adventurers must choose between catching or hurting the villain and saving " +
+					"innocent lives. For example, the adventurers might learn that the villain is camped nearby, " +
+					"but they also learn that another part of the villain's forces is about to march into a village " +
+					"and burn it to the ground. The characters must choose between taking out the villain or " +
+					"protecting innocent villagers, some of whom might be friends or family members.",
+				"Respect Quandary. Two important allies give conflicting directions or advice to the adventurers. " +
+					"Perhaps the high priest counsels the characters to negotiate peace with militaristic elves " +
+					"in the nearby forest, while a veteran warrior urges them to prove their strength with a " +
+					"decisive first strike. The adventurers can't follow both courses, and whichever ally they " +
+					"choose, the other loses respect for them and might no longer aid them."
+            };
+
             public static readonly string[] twists =
             {
                 "The adventurers are racing against other creatures with the same or opposite goal.",
@@ -969,7 +1095,7 @@ namespace DungeonMasterHelper
                 "Secure the aid of a character or creature in the area."
             };
 
-            public static string dungeonGoal()
+            public static string getDungeonGoal()
             {
                 int num = Data.rand.Next() % dungeon_goals.Length;
 
@@ -990,7 +1116,7 @@ namespace DungeonMasterHelper
 
                 if(num == 0)
                 {
-                    string dg = dungeonGoal();
+                    string dg = getDungeonGoal();
                     dg = dg.First().ToString().ToLower() + dg.Skip(1);
                     return "Locate a dungeon or other site of interest to " + dg;
                 }
@@ -1007,7 +1133,7 @@ namespace DungeonMasterHelper
 
                         if (num == 0)
                         {
-                            strs[i] = dungeonGoal();
+                            strs[i] = getDungeonGoal();
                             strs[i] = strs[i].First().ToString().ToLower() + strs[i].Skip(1);
                             strs[i] = "Locate a dungeon or other site of interest to " + strs[i];
                         }
@@ -1023,7 +1149,7 @@ namespace DungeonMasterHelper
                 return wilderness_goals[num];
             }
 
-            public static string eventBasedGoals()
+            public static string getEventBasedGoals()
             {
                 int num = Data.rand.Next() % dungeon_goals.Length;
 
@@ -1038,7 +1164,7 @@ namespace DungeonMasterHelper
                 return event_based_goals[num];
             }
 
-            public static string framingEvents()
+            public static string getFramingEvents()
             {
                 int num = Data.rand.Next() % framing_events.Length;
 
@@ -1053,7 +1179,7 @@ namespace DungeonMasterHelper
                 return framing_events[num];
             }
 
-            public static string moralQuandaries()
+            public static string getMoralQuandaries()
             {
                 int num = Data.rand.Next() % 20 + 1;
 
@@ -1369,7 +1495,7 @@ namespace DungeonMasterHelper
                 "Steal land, goods, or money"
             };
 
-            public static readonly string[][] scheme =
+            public static readonly string[][] villains_scheme =
             {
                 villains_scheme_immortality,
                 villains_scheme_influence,
@@ -1554,7 +1680,7 @@ namespace DungeonMasterHelper
                 "Terrorism"
             };
 
-            public static readonly string[][] methods =
+            public static readonly string[][] villains_methods =
             {
                 villains_methods_agricultural_devestation,
                 villains_methods_assault_or_beatings,
@@ -1590,7 +1716,7 @@ namespace DungeonMasterHelper
                 "The villain loses its power if a mystic bargain it struck long ago is completed"
             };
 
-            public static string getAbilities()
+            public static string getNPCAbilities()
             {
                 int num1 = roll(1, 6);
                 int num2 = 0;
@@ -1610,30 +1736,106 @@ namespace DungeonMasterHelper
             public static readonly string[] dungeon_location =
             {
                 "A building in a city",
-                "Catacombs or sewers beneath a city",
-                "Beneath a farmhouse",
-                "Beneath a graveyard",
-                "Beneath a ruined castle",
-                "Beneath a ruined city",
-                "Beneath a temple",
-                "In a chasm",
-                "In a cliff face",
-                "In a desert",
-                "In a forest",
-                "In a glacier",
-                "In a gorge",
-                "In a jungle",
-                "In a mountain pass",
-                "In a swamp",
-                "Beneath or on top of a mesa",
-                "In sea caves",
-                "In several connected mesas",
-                "On a mountain peak",
-                "On a promontory",
-                "On an island",
-                "Underwater",
-                "Roll on the Exotic Location table"
-            };
+				"A building in a city",
+				"A building in a city",
+				"A building in a city",
+				"Catacombs or sewers beneath a city",
+				"Catacombs or sewers beneath a city",
+				"Catacombs or sewers beneath a city",
+				"Catacombs or sewers beneath a city",
+				"Beneath a farmhouse",
+				"Beneath a farmhouse",
+				"Beneath a farmhouse",
+				"Beneath a farmhouse",
+				"Beneath a graveyard",
+				"Beneath a graveyard",
+				"Beneath a graveyard",
+				"Beneath a graveyard",
+				"Beneath a ruined castle",
+				"Beneath a ruined castle",
+				"Beneath a ruined castle",
+				"Beneath a ruined castle",
+				"Beneath a ruined castle",
+				"Beneath a ruined castle",
+				"Beneath a ruined city",
+				"Beneath a ruined city",
+				"Beneath a ruined city",
+				"Beneath a ruined city",
+				"Beneath a temple",
+				"Beneath a temple",
+				"Beneath a temple",
+				"Beneath a temple",
+				"In a chasm",
+				"In a chasm",
+				"In a chasm",
+				"In a chasm",
+				"In a cliff face",
+				"In a cliff face",
+				"In a cliff face",
+				"In a cliff face",
+				"In a desert",
+				"In a desert",
+				"In a desert",
+				"In a desert",
+				"In a forest",
+				"In a forest",
+				"In a forest",
+				"In a forest",
+				"In a glacier",
+				"In a glacier",
+				"In a glacier",
+				"In a glacier",
+				"In a gorge",
+				"In a gorge",
+				"In a gorge",
+				"In a gorge",
+				"In a jungle",
+				"In a jungle",
+				"In a jungle",
+				"In a jungle",
+				"In a mountain pass",
+				"In a mountain pass",
+				"In a mountain pass",
+				"In a mountain pass",
+				"In a swamp",
+				"In a swamp",
+				"In a swamp",
+				"In a swamp",
+				"Beneath or on top of a mesa",
+				"Beneath or on top of a mesa",
+				"Beneath or on top of a mesa",
+				"Beneath or on top of a mesa",
+				"In sea caves",
+				"In sea caves",
+				"In sea caves",
+				"In sea caves",
+				"In several connected mesas",
+				"In several connected mesas",
+				"In several connected mesas",
+				"In several connected mesas",
+				"On a mountain peak",
+				"On a mountain peak",
+				"On a mountain peak",
+				"On a mountain peak",
+				"On a promontory",
+				"On a promontory",
+				"On a promontory",
+				"On a promontory",
+				"On an island",
+				"On an island",
+				"On an island",
+				"On an island",
+				"Underwater",
+				"Underwater",
+				"Underwater",
+				"Underwater",
+				"Underwater",
+				"Roll on the Exotic Location table",
+				"Roll on the Exotic Location table",
+				"Roll on the Exotic Location table",
+				"Roll on the Exotic Location table",
+				"Roll on the Exotic Location table",
+			};
 
             public static readonly string[] dungeon_exotic_location =
             {
@@ -1710,7 +1912,7 @@ namespace DungeonMasterHelper
             public static readonly string[] npc_alignment =
             {
                 "Lawful good",
-                "Lawful good",
+				"Lawful good",
                 "Neutral good",
                 "Neutral good",
                 "Chaotic good",
@@ -1848,6 +2050,78 @@ namespace DungeonMasterHelper
                 "Floating earth mote with a tower on it"
             };
 
+			public static readonly string[] weather_temperature =
+			{
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"Normal for the season",
+				"1d4 x 10 degrees Fahrenheit colder than normal",
+				"1d4 x 10 degrees Fahrenheit colder than normal",
+				"1d4 x 10 degrees Fahrenheit colder than normal",
+				"1d4 x 10 degrees Fahrenheit hotter than normal",
+				"1d4 x 10 degrees Fahrenheit hotter than normal",
+				"1d4 x 10 degrees Fahrenheit hotter than normal"
+			};
+
+			public static readonly string[] weather_wind =
+			{
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"Light",
+				"Light",
+				"Light",
+				"Light",
+				"Light",
+				"Strong",
+				"Strong",
+				"Strong",
+			};
+
+			public static readonly string[] weather_precipitation =
+			{
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"None",
+				"Light rain or light snowfall",
+				"Light rain or light snowfall",
+				"Light rain or light snowfall",
+				"Light rain or light snowfall",
+				"Light rain or light snowfall",
+				"Heavy rain or heavy snowfall",
+				"Heavy rain or heavy snowfall",
+				"Heavy rain or heavy snowfall",
+			};
+
             public static readonly string[] race_relations =
             {
                 "Harmony",
@@ -1965,6 +2239,30 @@ namespace DungeonMasterHelper
                 "Dungeon discovered (adventurers flock to town)",
                 "Religious sects struggle for power"
             };
+
+			public static readonly string[] building_type =
+			{
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Residence (roll once on the Residence table)",
+				"Religious (roll once on the Religious table)",
+				"Religious (roll once on the Religious table)",
+				"Tavern (roll once on the Tavern table and twice on the Tavern Name Generator table",
+				"Tavern (roll once on the Tavern table and twice on the Tavern Name Generator table",
+				"Tavern (roll once on the Tavern table and twice on the Tavern Name Generator table",
+				"Warehouse (roll once on the Warehouse table)",
+				"Warehouse (roll once on the Warehouse table)",
+				"Shop (roll once on the Shop table)",
+				"Shop (roll once on the Shop table)",
+				"Shop (roll once on the Shop table)"
+			};
 
             public static readonly string[] residence =
             {
@@ -2548,10 +2846,49 @@ namespace DungeonMasterHelper
                 "Bejeweled ivory drinking horn with gold filigree"
             };
 
-            public static readonly string[] individual_treasure_Challenge04 =
+            public static readonly string[] individual_treasure_challenge0_4 =
             {
-                roll(1, 6) + " pp"
-            };
+                "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				"3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep",
+				"3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep",
+				"3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp",
+				"3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp",
+				"3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp",
+				"1d6 (3) pp", "1d6 (3) pp", "1d6 (3) pp", "1d6 (3) pp", "1d6 (3) pp"
+			};
+
+			public static readonly string[] individual_treasure_challenge5_10 =
+			{
+				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				"3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp",
+				"3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp",
+				"4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp",
+				"4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp",
+				"4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp",
+				"2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp"
+			};
 
             public static string getIndividualTreasure_Challenge0_4()
             {
