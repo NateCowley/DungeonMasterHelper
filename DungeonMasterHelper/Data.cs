@@ -2940,7 +2940,236 @@ namespace DungeonMasterHelper
 
 			public static readonly string[] treasure_hoard_challenge0_4 =
 			{
+				//01-06
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"",
+				//07-16
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems",
+				//17-26
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects",
+				//27-36
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems",
+				//37-44
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d6 times on Magic Item Table A",
+				//45-52
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d6 times on Magic Item Table A",
+				//53-60
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d6 times on Magic Item Table A",
+				//61-65
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table B",
+				//66-70
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table B",
+				//71-75
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table B",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table B",
+				//76-78
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 10 gp gems, Roll 1d4 times on Magic Item Table C",
+				//79-80
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table C",
+				//81-85
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table C",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll 1d4 times on Magic Item Table C",
+				//86-92
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 25 gp art objects, Roll 1d4 times on Magic Item Table F",
+				//93-97
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 50 gp gems, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 50 gp gems, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 50 gp gems, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 50 gp gems, Roll 1d4 times on Magic Item Table F",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d4 (5) 50 gp gems, Roll 1d4 times on Magic Item Table F",
+				//98-99
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 25 gp art objects, Roll once on Magic Item Table G",
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 25 gp art objects, Roll once on Magic Item Table G",
+				//00
+				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
+					"2d6 (7) 50 gp gems, Roll once on Magic Item Table G"
+			};
 
+			public static string[] treasure_hoard_challenge5_10 =
+			{
+				//01-04
+				"2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, " + 
+					"",
+				//05-10
+				"2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, " +
+					"2d4 (5) 25 gp art objects",
+				//11-16
+				"2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, " +
+					"3d6 (10) 50 gp gems",
 			};
 
             public static string getIndividualTreasure_Challenge0_4()
@@ -3083,6 +3312,14 @@ namespace DungeonMasterHelper
                 return (roll(8, 6) * 100) + " gp, " +
                         (roll(2, 6) * 1000) + " ep";
             }
+
+			//TODO - create GET versions of treasure hoard tables
+			public static string getTreasureHoardChallenge5_10()
+			{
+				int num = roll(1, 100);
+
+				return "";
+			}
         }
     }
 }
