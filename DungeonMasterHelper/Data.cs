@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 namespace DungeonMasterHelper
 {
     // In many of the lists located below, there are repeated elements. This was done 
-    // in order to preserve the original tables as they were found in the DMG for 
+    // in order to preserve the original tables as they were found in the source books for 
     // D&D 5e
 
     public static class Data
     {
+		#region Utilities
 
-        private static Random rand = new Random();
+		private static Random rand = new Random();
 
         private static string lowerFirstLetter(string str)
         {
@@ -70,8 +71,35 @@ namespace DungeonMasterHelper
             return arr[rand.Next() % arr.Length];
         }
 
-        // Chapter 1
-        public static class World
+		/// <summary>
+		/// Returns a duplicate free copy of the table.
+		/// Useful for displaying the raw values of a table.
+		/// </summary>
+		/// <param name="table"></param>
+		/// <returns></returns>
+		public static string getTableValues(string[] table)
+		{
+			string str = "";
+			string dup = "";
+
+			for (int i = 0; i < table.Length; i++)
+			{
+				if (table[i] != dup)
+				{
+					str += table[i] + "\n";
+					dup = table[i];
+				}
+			}
+
+			return str;
+		}
+
+		#endregion Utilities
+
+		#region DMG
+
+		// Chapter 1
+		public static class World
         {
             public static readonly string[] forms_of_government =
             {
@@ -3152,7 +3180,7 @@ namespace DungeonMasterHelper
 				"6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, " +
 					"2d6 (7) 50 gp gems, Roll once on Magic Item Table G"
 			};
-
+			//need "get" functions for the following tables
 			public static readonly string[] treasure_hoard_challenge5_10 =
 			{
 				//01-04
@@ -3963,7 +3991,754 @@ namespace DungeonMasterHelper
 			// used for creating artifacts
 			public static readonly string[] what_minor_property_does_it_have =
 			{
+				"Beacon. The bearer can use a bonus action to cause the item to shed bright light in a 10-foot radius and dim light for an additional 10 feet, or to extinguish the light.",
+				"Compass. The wielder can use an action to learn which way is north.",
+				"Conscientious. When the bearer of this item contemplates or undertakes a malevolent act, the item enhances pangs of conscience.",
+				"Delver. While underground, the bearer of this item always knows the item's depth below the surface and the direction to the nearest staircase, ramp, or other path leading upward.",
+				"Gleaming. This itme never gets dirty.",
+				"Guardian. The item whispers warnings to its bearer, granting a +2 bonus to initiative if the bearer isn't incapacitated",
+				"Harmonious. Attuning to this item takes only 1 minute.",
+				"Hidden Message. A message is hidden somewhere on the item. It might be visible only at a certain time of the year, under the light of one phase of the moon, or in a specific location.",
+				"Key. The item is used to unlock a container, chamber, vault, or other entryway.",
+				"Language. The bearer can speak and understand a language of the DM's choice while the item is on the bearer's person.",
+				"Sentinel. Choose a kind of creature that is an enemy of the item's creator. This item glows faintly when such creatures are within 120 feet of it.",
+				"Song Craft. Whenever this item is struck or is used to strike a foe, its bearer hears a fragment of an ancient song.",
+				"Strange Material. The item was created from a material that is bizarre given its purpose. Its durability is unaffected.",
+				"Temperate. The bearer suffers no harm in temperatures as cold as -20 degrees Fahrenheit or as warm as 120 degrees Fahrenheit.",
+				"Unbreakable. The item can't be broken. Special means must be used to destroy it.",
+				"War Leader. The bearer can use an action to cause his or her voice to carry clearly for up to 300 feet until the end of the bearer's next turn.",
+				"Waterborne. This item floats on water and other liquids. Its bearer has advantage on Strength (Athletics) checks to swim.",
+				"Wicked. When the bearer is presented with an opportunity to act in a selfish or malevolent way, the item heightens the bearer's urge to do so.",
+				"Illusion. The item is imbued with illusion magic, allowing its bearer to alter the item's appearance in minor ways. Such alterations don't change how the item is worn, carried, or wielded, and they have no effect on its other magical properties. For example, the weare could make a red robe appear blue, or make a gold ring look like it's made of ivory. The item reverts to its true appearance when no one is carrying or wearing it.",
+				"Roll twice, rerolling any additional 20s."
+			};
 
+			// used for creating artifacts
+			public static readonly string[] what_quirk_does_it_have =
+			{
+				"Blissful. While in possession of the item, the bearer feels fortunate and optimistic about what the future holds. Butterflies and other harmless creatures might frolic in the item's presence.",
+				"Confident. The item helps its bearer feel self-assured.",
+				"Covetous. The item's bearer becomes obsessed with material wealth.",
+				"Frail. The item crumbles, frays, chips, or cracks slightly when wielded, worn, or activated. This quirk has no effect on its properties, but if the item has seen much use, it looks decrepit.",
+				"Hungry. This item's magical properties function only if fresh blood from a humanoid has been applied to it within the past 24 hours. It needs only a drop to activate.",
+				"Loud. The item makes a loud noice -- such as a clang, a shout, or a resonating gong -- when used.",
+				"Metamorphic. The item periodically and randomly alters its appearance in slight ways. The bearer has no control over these minor alterations, which have no effect on the item's use.",
+				"Muttering. The item grumbles and mutters. A creature who listens carefully to the item might learn something useful.",
+				"Painful. The bearer experiences a harmless flash of pain when using the item.",
+				"Possessive. The item demands attunement when first wielded or worn, and it doesn't allow its bearer to attune to other items. (Other items already attuned to the bearer remain so until their attunemnt ends.)",
+				"Repulsive. The bearer feels a sens of distaste when in contact with the item, and continues to sense discomfort while bearing it.",
+				"Slothful. The bearer of this item feels slothful and lethargic. While attuned to the item, the bearer requires 10 hours to finish a long rest."
+			};
+
+			public static readonly string[] magic_item_table_a =
+			{
+				//01-50
+				"Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing",
+				"Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing",
+				"Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing",
+				"Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing",
+				"Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing", "Potion of healing",
+				//51-60
+				"Spell scroll (cantrip)", "Spell scroll (cantrip)", "Spell scroll (cantrip)", "Spell scroll (cantrip)", "Spell scroll (cantrip)",
+				"Spell scroll (cantrip)", "Spell scroll (cantrip)", "Spell scroll (cantrip)", "Spell scroll (cantrip)", "Spell scroll (cantrip)",
+				//61-70
+				"Potion of climbing", "Potion of climbing", "Potion of climbing", "Potion of climbing", "Potion of climbing",
+				"Potion of climbing", "Potion of climbing", "Potion of climbing", "Potion of climbing", "Potion of climbing",
+				//71-90
+				"Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)",
+				"Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)",
+				"Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)",
+				"Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)", "Spell scroll (1st level)",
+				//91-94
+				"Spell scroll (2nd level)", "Spell scroll (2nd level)", "Spell scroll (2nd level)", "Spell scroll (2nd level)",
+				//95-98
+				"Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing",
+				//99
+				"Bag of holding",
+				//00
+				"Driftglobe"
+			};
+
+			public static readonly string[] magic_item_table_b =
+			{
+				//01-15
+				"Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing",
+				"Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing",
+				"Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing", "Potion of greater healing",
+				//16-22
+				"Potion of fire breath", "Potion of fire breath", "Potion of fire breath", "Potion of fire breath", "Potion of fire breath", "Potion of fire breath", "Potion of fire breath",
+				//23-29
+				"Potion of resistance", "Potion of resistance", "Potion of resistance", "Potion of resistance", "Potion of resistance", "Potion of resistance", "Potion of resistance",
+				//30-34
+				"Ammunition, +1", "Ammunition, +1", "Ammunition, +1", "Ammunition, +1", "Ammunition, +1",
+				//35-39
+				"Potion of animal friendship", "Potion of animal friendship", "Potion of animal friendship", "Potion of animal friendship", "Potion of animal friendship",
+				//40-44
+				"Potion of hill giant strength", "Potion of hill giant strength", "Potion of hill giant strength", "Potion of hill giant strength", "Potion of hill giant strength",
+				//45-49
+				"Potion of growth", "Potion of growth", "Potion of growth", "Potion of growth", "Potion of growth",
+				//50-54
+				"Potion of water breathing", "Potion of water breathing", "Potion of water breathing", "Potion of water breathing", "Potion of water breathing",
+				//55-59
+				"Spell scroll (2nd level)", "Spell scroll (2nd level)", "Spell scroll (2nd level)", "Spell scroll (2nd level)", "Spell scroll (2nd level)",
+				//60-64
+				"Spell scroll (3rd level)", "Spell scroll (3rd level)", "Spell scroll (3rd level)", "Spell scroll (3rd level)", "Spell scroll (3rd level)",
+				//65-67
+				"Bag of holding", "Bag of holding", "Bag of holding",
+				//68-70
+				"Keoghtom's ointment", "Keoghtom's ointment", "Keoghtom's ointment",
+				//71-73
+				"Oil of slipperiness", "Oil of slipperiness", "Oil of slipperiness",
+				//74-75
+				"Dust of disappearance", "Dust of disappearance",
+				//76-77
+				"Dust of dryness", "Dust of dryness",
+				//78-79
+				"Dust of sneezing and choking", "Dust of sneezing and choking",
+				//80-81
+				"Elemental gem", "Elemental gem",
+				//82-83
+				"Philter of love", "Philter of love",
+				//84
+				"Alchemy jug",
+				//85
+				"Cap of water breathing",
+				//86
+				"Cloak of the manta ray",
+				//87
+				"Driftglobe",
+				//88
+				"Goggles of night",
+				//89
+				"Helm of comprehending languages",
+				//90
+				"Immovable rod",
+				//91
+				"Lantern of revealing",
+				//92
+				"Mariner's armor",
+				//93
+				"Mithral armor",
+				//94
+				"Potion of poison",
+				//95
+				"Ring of swimming",
+				//96
+				"Robe of useful items",
+				//97
+				"Rope of climbing",
+				//98
+				"Saddle of the cavalier",
+				//99
+				"Wand of magic detection",
+				//00
+				"Wand of secrets"
+			};
+
+			public static readonly string[] magic_item_table_c =
+			{
+				//01-15
+				"Potion of superior healing", "Potion of superior healing", "Potion of superior healing", "Potion of superior healing", "Potion of superior healing",
+				"Potion of superior healing", "Potion of superior healing", "Potion of superior healing", "Potion of superior healing", "Potion of superior healing",
+				"Potion of superior healing", "Potion of superior healing", "Potion of superior healing", "Potion of superior healing", "Potion of superior healing",
+				//16-22
+				"Spell scroll (4th level)", "Spell scroll (4th level)", "Spell scroll (4th level)", "Spell scroll (4th level)", "Spell scroll (4th level)", "Spell scroll (4th level)", "Spell scroll (4th level)",
+				//23-27
+				"Ammunition, +2", "Ammunition, +2", "Ammunition, +2", "Ammunition, +2", "Ammunition, +2",
+				//28-32
+				"Potion of clairvoyance", "Potion of clairvoyance", "Potion of clairvoyance", "Potion of clairvoyance", "Potion of clairvoyance",
+				//33-37
+				"Potion of diminution", "Potion of diminution", "Potion of diminution", "Potion of diminution", "Potion of diminution",
+				//38-42
+				"Potion of gaseous form", "Potion of gaseous form", "Potion of gaseous form", "Potion of gaseous form", "Potion of gaseous form",
+				//43-47
+				"Potion of frost giant strength", "Potion of frost giant strength", "Potion of frost giant strength", "Potion of frost giant strength", "Potion of frost giant strength",
+				//48-52
+				"Potion of stone giant strength", "Potion of stone giant strength", "Potion of stone giant strength", "Potion of stone giant strength", "Potion of stone giant strength",
+				//53-57
+				"Potion of heroism", "Potion of heroism", "Potion of heroism", "Potion of heroism", "Potion of heroism",
+				//58-62
+				"Potion of invulnerability", "Potion of invulnerability", "Potion of invulnerability", "Potion of invulnerability", "Potion of invulnerability",
+				//63-67
+				"Potion of mind reading", "Potion of mind reading", "Potion of mind reading", "Potion of mind reading", "Potion of mind reading",
+				//68-72
+				"Spell scroll (5th level)", "Spell scroll (5th level)", "Spell scroll (5th level)", "Spell scroll (5th level)", "Spell scroll (5th level)",
+				//73-75
+				"Elixir of health", "Elixir of health", "Elixir of health",
+				//76-78
+				"Oil of etherealness", "Oil of etherealness", "Oil of etherealness",
+				//79-81
+				"Potion of fire giant strength", "Potion of fire giant strength", "Potion of fire giant strength",
+				//82-84
+				"Quaal's feather token", "Quaal's feather token", "Quaal's feather token",
+				//85-87
+				"Scroll of protection", "Scroll of protection", "Scroll of protection",
+				//88-89
+				"Bag of beans", "Bag of beans",
+				//90-91
+				"Bead of force", "Bead of force",
+				//92
+				"Chime of opening",
+				//93
+				"Decanter of endless water",
+				//94
+				"Eyes of minute seeing",
+				//95
+				"Folding boat",
+				//96
+				"Heward's handy haversack",
+				//97
+				"Horseshoes of speed",
+				//98
+				"Necklace of fireballs",
+				//99
+				"Periapt of health",
+				//00
+				"Sending stones"
+			};
+
+			public static readonly string[] magic_item_table_d =
+			{
+				//01-20
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				//21-30
+				"Potion of invisibility", "Potion of invisibility", "Potion of invisibility", "Potion of invisibility", "Potion of invisibility",
+				"Potion of invisibility", "Potion of invisibility", "Potion of invisibility", "Potion of invisibility", "Potion of invisibility",
+				//31-40
+				"Potion of speed", "Potion of speed", "Potion of speed", "Potion of speed", "Potion of speed",
+				"Potion of speed", "Potion of speed", "Potion of speed", "Potion of speed", "Potion of speed",
+				//41-50
+				"Spell scroll (6th level)", "Spell scroll (6th level)", "Spell scroll (6th level)", "Spell scroll (6th level)", "Spell scroll (6th level)",
+				"Spell scroll (6th level)", "Spell scroll (6th level)", "Spell scroll (6th level)", "Spell scroll (6th level)", "Spell scroll (6th level)",
+				//51-57
+				"Spell scroll (7th level)", "Spell scroll (7th level)", "Spell scroll (7th level)", "Spell scroll (7th level)", "Spell scroll (7th level)", "Spell scroll (7th level)", "Spell scroll (7th level)",
+				//58-62
+				"Ammunition, +3", "Ammunition, +3", "Ammunition, +3", "Ammunition, +3", "Ammunition, +3",
+				//63-67
+				"Oil of sharpness", "Oil of sharpness", "Oil of sharpness", "Oil of sharpness", "Oil of sharpness",
+				//68-72
+				"Potion of flying", "Potion of flying", "Potion of flying", "Potion of flying", "Potion of flying",
+				//73-77
+				"Potion of cloud giant strength", "Potion of cloud giant strength", "Potion of cloud giant strength", "Potion of cloud giant strength", "Potion of cloud giant strength",
+				//78-82
+				"Potion of longevity", "Potion of longevity", "Potion of longevity", "Potion of longevity", "Potion of longevity",
+				//83-87
+				"Potion of vitality", "Potion of vitality", "Potion of vitality", "Potion of vitality", "Potion of vitality",
+				//88-92
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				//93-95
+				"Horseshoes of a zephyr", "Horseshoes of a zephyr", "Horseshoes of a zephyr",
+				//96-98
+				"Nolzur's marvelous pigments", "Nolzur's marvelous pigments",
+				//99
+				"Bag of devouring",
+				//00
+				"Portable hole"
+			};
+
+			public static readonly string[] magic_item_table_e =
+			{
+				//01-30
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				"Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)", "Spell scroll (8th level)",
+				//31-55
+				"Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength",
+				"Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength",
+				"Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength", "Potion of storm giant strength",
+				//56-70
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				"Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing", "Potion of supreme healing",
+				//71-85
+				"Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)",
+				"Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)",
+				"Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)", "Spell scroll (9th level)",
+				//86-93
+				"Universal solvent", "Universal solvent", "Universal solvent", "Universal solvent", "Universal solvent", "Universal solvent", "Universal solvent", "Universal solvent", 
+				//94-98
+				"Arrow of slaying", "Arrow of slaying", "Arrow of slaying", "Arrow of slaying", "Arrow of slaying",
+				//99-00
+				"Sovereign glue", "Sovereign glue"
+			};
+
+			public static readonly string[] magic_item_table_f =
+			{
+				//01-15
+				"Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", "Weapon, +1", 
+				//16-18
+				"Shield, +1", "Shield, +1","Shield, +1",
+				//19-21
+				"Sentinel shield", "Sentinel shield", "Sentinel shield",
+				//22-23
+				"Amulet of proof against detection and location", "Amulet of proof against detection and location",
+				//24-25
+				"Boots of elvenkind", "Boots of elvenkind",
+				//26-27
+				"Boots of striding and springing", "Boots of striding and springing",
+				//28-29
+				"Bracers of archery", "Bracers of archery",
+				//30-31
+				"Brooch of shielding", "Brooch of shielding",
+				//32-33
+				"Broom of flying", "Broom of flying",
+				//34-35
+				"Cloak of elvenkind", "Cloak of elvenkind",
+				//36-37
+				"Cloak of protection", "Cloak of protection",
+				//38-39
+				"Gauntlets of ogre power", "Gauntlets of ogre power",
+				//40-41
+				"Hat of disguise", "Hat of disguise",
+				//42-43
+				"Javelin of lightning", "Javelin of lightning",
+				//44-45
+				"Pearl of power", "Pearl of power",
+				//46-47
+				"Rod of the pact keeper, +1", "Rod of the pact keeper, +1",
+				//48-49
+				"Slippers of spider climbing", "Slippers of spider climbing",
+				//50-51
+				"Staff of the adder", "Staff of the adder",
+				//52-53
+				"Staff of the python", "Staff of the python",
+				//54-55
+				"Sword of vengeance", "Sword of vengeance",
+				//56-57
+				"Trident of fish command", "Trident of fish command",
+				//58-59
+				"Wand of magic missiles", "Wand of magic missiles",
+				//60-61
+				"Wand of the war mage, +1", "Wand of the war mage, +1",
+				//62-63
+				"Wand of web", "Wand of web",
+				//64-65
+				"Weapon of warning", "Weapon of warning",
+				//66
+				"Adamantine armor (chain mail",
+				//67
+				"Adamantine armor (chain shirt)",
+				//68
+				"Adamantine armor (scale mail)",
+				//69
+				"Bag of tricks (gray)",
+				//70
+				"Bag of tricks (rust)",
+				//71
+				"Bag of tricks (tan)",
+				//72
+				"Boots of the winterlands",
+				//73
+				"Circlet of blasting",
+				//74
+				"Deck of illusions",
+				//75
+				"Eversmoking bottle",
+				//76
+				"Eyes of charming",
+				//77
+				"Eyes of the eagle",
+				//78
+				"FIgurine of wondrous power (silver raven)",
+				//79
+				"Gem of brightness",
+				//80
+				"Gloves of missile snaring",
+				//81
+				"Gloves of swimming and climbing",
+				//82
+				"Gloves of thievery",
+				//83
+				"Headband of intellect",
+				//84
+				"Helm of telepathy",
+				//85
+				"Instrument of the bards (Doss lute)",
+				//86
+				"Instrument of the bards (Fochlucan bandore)",
+				//87
+				"Instrument of the bards (Mac-Fuimidh cittern)",
+				//88
+				"Medallion of thoughts",
+				//89
+				"Necklace of adaptation",
+				//90
+				"Periapt of wound closure",
+				//91
+				"Pipes of haunting",
+				//92
+				"Pipes of the sewers",
+				//93
+				"Ring of jumping",
+				//94
+				"Ring of mind shielding",
+				//95
+				"Ring of warmth",
+				//96
+				"Ring of water walking",
+				//97
+				"Quiver of Ehlonna",
+				//98
+				"Stone of good luck",
+				//99
+				"Wind fan",
+				//00
+				"Winged boots"
+			};
+
+			public static readonly string[] magic_item_table_g =
+			{
+				//01-11
+				"Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", "Weapon, +2", 
+				//12-14
+				"Figurine of wondrous power (roll d8), 1 - Bronze griffon, 2 - Ebony fly, 3 - Golden lions, 4 - Ivory goats, 5 - Marble elephant, 6-7 - Onyx dog, 8 - Serpentine owl",
+				"Figurine of wondrous power (roll d8), 1 - Bronze griffon, 2 - Ebony fly, 3 - Golden lions, 4 - Ivory goats, 5 - Marble elephant, 6-7 - Onyx dog, 8 - Serpentine owl",
+				// the rest of the items are individual, starting at 15
+				"Adamantine armor (breastplate)",
+				"Adamantine armor (splint)",
+				"Amulet of health",
+				"Armor of vulnerability",
+				"Arrow-catching shield",
+				"Belt of dwarvenkind",
+				"Belt of hill giant strength",
+				"Berserker axe",
+				"Boots of levitation",
+				"Boots of speed",
+				"Bowl of commanding water elementals",
+				"Bracers of defense",
+				"Brazier of commanding fire elementals",
+				"Cape of the mountebank",
+				"Censer of controlling air elementals",
+				"Armor, +1 chain mail",
+				"Armor of resistance (chain mail)",
+				"Armor, +1 chain shirt",
+				"Armor of resistance (chain shirt)",
+				"Cloak of displacement",
+				"Cloak of the bat",
+				"Cube of force",
+				"Daern's instant fortress",
+				"Dagger of venom",
+				"Dimensional shackles",
+				"Dragon slayer",
+				"Elven chain",
+				"Flame tongue",
+				"Gem of seeing",
+				"Giant slayer",
+				"Glamoured studded leather",
+				"Helm of teleportation",
+				"Horn of blasting",
+				"Horn of Valhalla (silver or brass)",
+				"Instrument of the bards (Canaith mandolin)",
+				"Instrument of the bards (Cli lyre)",
+				"Ioun stone (awareness)",
+				"Ioun stone (protection)",
+				"Ioun stone (reserve)",
+				"Ioun stone (sustenance)",
+				"Iron bands of Bilarro",
+				"Armor, +1 leather",
+				"Armor of resistance (leather)",
+				"Mace of disruption",
+				"Mace of smiting",
+				"Mace of terror",
+				"Mantle of spell resistance",
+				"Necklace of prayer beads",
+				"Periapt of proof against poison",
+				"Ring of animal influence",
+				"Ring of evasion",
+				"Ring of feather falling",
+				"Ring of free action",
+				"Ring of protection",
+				"Ring of resistance",
+				"Ring of spell storing",
+				"Ring of the ram",
+				"Ring of X-ray vision",
+				"Robe of eyes",
+				"Rod of rulership",
+				"Rod of the pact keeper, +2",
+				"Rope of entanglement",
+				"Armor, +1 scale mail",
+				"Armor of resistance (scale mail)",
+				"Shield, +2",
+				"Shield of missile attraction",
+				"Staff of charming",
+				"Staff of healing",
+				"Staff of swarming insects",
+				"Staff of the woodlands",
+				"Staff of withering",
+				"Stone of controlling earth elementals",
+				"Sun blade",
+				"Sword of life stealing",
+				"Sword of wounding",
+				"Tentacle rod",
+				"Vicious weapon",
+				"Wand of binding",
+				"Wand of enemy detection",
+				"Wand of fear",
+				"Wand of fireballs",
+				"Wand of lightning bolts",
+				"Wand of paralysis",
+				"Wand of the war mage, +2",
+				"Wand of wonder",
+				"Wings of flying"
+			};
+
+			public static readonly string[] magic_item_table_h =
+			{
+				//01-10
+				"Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", "Weapon, +3", 
+				//11-12
+				"Amulet of the planes", "Amulet of the planes",
+				//12-14
+				"Carpet of flying", "Carpet of flying", "Carpet of flying",
+				//15-16
+				"Crystal ball (very rare version)", "Crystal ball (very rare version)",
+				//17-18
+				"Ring of regeneration", "Ring of regeneration",
+				//19-20
+				"Ring of shooting stars", "Ring of shooting stars",
+				//21-22
+				"Ring of telekinesis", "Ring of telekinesis",
+				//23-24
+				"Robe of scintillating colors", "Robe of scintillating colors",
+				//25-26
+				"Robe of stars", "Robe of stars",
+				//27-28
+				"Rod of absorption", "Rod of absorption",
+				//29-30
+				"Rod of alertness", "Rod of alertness",
+				//31-32
+				"Rod of security", "Rod of security",
+				//33-34
+				"Rod of the pact keeper, +3", "Rod of the pact keeper, +3",
+				//35-36
+				"Scimitar of speed", "Scimitar of speed",
+				//37-38
+				"Shield, +3", "Shield, +3",
+				//39-40
+				"Staff of fire", "Staff of fire",
+				//41-42
+				"Staff of frost", "Staff of frost",
+				//43-44
+				"Staff of power", "Staff of power",
+				//45-46
+				"Staff of striking", "Staff of striking",
+				//47-48
+				"Staff of thunder and lightning", "Staff of thunder and lightning",
+				//49-50
+				"Sword of sharpness", "Sword of sharpness",
+				//51-52
+				"Wand of polymorph", "Wand of polymorph",
+				//53-54
+				"Wand of the war mage, +3", "Wand of the war mage, +3",
+				// the remaining items are sequential, starting at 55
+				"Adamantine armor (half plate)",
+				"Adamantine armor (plate)",
+				"Animated shield",
+				"Belt of fire giant strength",
+				"Belt of frost (or stone) giant strength",
+				"Armor, +1 breastplate",
+				"Armor of resistance (breastplate)",
+				"Candle of invocation",
+				"Armor, +2 chain mail",
+				"Armor, +2 chain shirt",
+				"Cloak of arachnida",
+				"Dancing sword",
+				"Demon armor",
+				"Dragon scale mail",
+				"Dwarven plate",
+				"Dwarven thrower",
+				"Efreeti bottle",
+				"Figurine of wondrous poer (obsidian steed)",
+				"Frost brand",
+				"Helm of briliance",
+				"Horn of Valhalla (bronze)",
+				"Instrument of the bards (Anstruth harp)",
+				"Ioun stone (absorption)",
+				"Ioun stone (agility)",
+				"Ioun stone (fortitude)",
+				"Ioun stone (insight)",
+				"Ioun stone (intellect)",
+				"Ioun stone (leadership)",
+				"Ioun stone (strength)",
+				"Armor, +2 leather",
+				"Manual of bodily health",
+				"Manual of gainful exercise",
+				"Manual of golems",
+				"Manual of quickness of action",
+				"Mirror of life trapping",
+				"Nine lives stealer",
+				"Oathbow",
+				"Armor, +2 scale mail",
+				"Spellguard shield",
+				"Armor, +1 splint",
+				"Armor of resistance (splint)",
+				"Armor, +1 studded leather",
+				"Armor of resistance (studded leather)",
+				"Tome of clear thought",
+				"Tome of leadership and influence",
+				"Tome of understanding"
+			};
+
+			public static readonly string[] magic_item_table_i =
+			{
+				//01-05
+				"Defender", "Defender", "Defender", "Defender", "Defender", 
+				//06-10
+				"Hammer of thunderbolts", "Hammer of thunderbolts", "Hammer of thunderbolts", "Hammer of thunderbolts", "Hammer of thunderbolts", 
+				//11-15
+				"Luck blade", "Luck blade", "Luck blade", "Luck blade", "Luck blade", 
+				//16-20
+				"Sword of answering", "Sword of answering", "Sword of answering", "Sword of answering", "Sword of answering", 
+				//21-23
+				"Holy avenger", "Holy avenger", "Holy avenger", 
+				//24-26
+				"Ring of djinni summoning", "Ring of djinni summoning", "Ring of djinni summoning",
+				//27-29
+				"Ring of invisibility", "Ring of invisibility", "Ring of invisibility",
+				//30-32
+				"Ring of spell turning", "Ring of spell turning", "Ring of spell turning",
+				//33-35
+				"Rod of lordly might", "Rod of lordly might", "Rod of lordly might",
+				//36-38
+				"Staff of the magi", "Staff of the magi", "Staff of the magi",
+				//39-41
+				"Vorpal sword", "Vorpal sword", "Vorpal sword",
+				//42-43
+				"Belt of cloud giant strength", "Belt of cloud giant strength",
+				//44-45
+				"Armor, +2 breastplate", "Armor, +2 breastplate",
+				//46-47
+				"Armor, +3 chain mail", "Armor, +3 chain mail",
+				//48-49
+				"Armor, +3 chain shirt", "Armor, +3 chain shirt",
+				//50-51
+				"Cloak of invisibility", "Cloak of invisibility",
+				//52-53
+				"Crystal ball (legendary version)", "Crystal ball (legendary version)",
+				//54-55
+				"Armor, +1 half plate", "Armor, +1 half plate",
+				//56-57
+				"Iron flask", "Iron flask",
+				//58-59
+				"Armor, +3 leather", "Armor, +3 leather",
+				//60-61
+				"Armor, +1 plate", "Armor, +1 plate",
+				//62-63
+				"Robe of the archmagi", "Robe of the archmagi",
+				//64-65
+				"Rod of resurrection", "Rod of resurrection",
+				//66-67
+				"Armor, +1 scale mail", "Armor, +1 scale mail",
+				//68-69
+				"Scarab of protection", "Scarab of protection",
+				//70-71
+				"Armor, +2 splint", "Armor, +2 splint",
+				//72-73
+				"Armor, +2 studded leather", "Armor, +2 studded leather",
+				//74-75
+				"Well of many worlds", "Well of many worlds",
+				// the remaining items are sequential, starting at 76
+				"Magic armor (roll d12), 1-2 - Armor, +2 half plate, 3-4 - Armor, +2 plate, 5-6 - Armor, +3 studded leather, 7-8 - Armor, +3 breastplate, 9-10 - Armor, +3 splint, 11 - Armor, +3 half plate, 12 - Armor, +3 plate",
+				"Apparatus of Kwalish",
+				"Armor of invulnerability",
+				"Belt of storm giant strength",
+				"Cubic gate",
+				"Deck of many things",
+				"Efreeti chain",
+				"Armor of resistance (half plate)",
+				"Horn of Valhalla (iron)",
+				"Instrument of the bards (Ollamh harp)",
+				"Ioun stone (greater absorption)",
+				"Ioun stone (mastery)",
+				"Ioun stone (regeneration)",
+				"Plate armor of etherealness",
+				"Plate armor of resistance",
+				"Ring of air elemental command",
+				"Ring of earth elemental command",
+				"Ring of fire elemental command",
+				"Ring of three wishes",
+				"Ring of water elemental command",
+				"Sphere of annihilation",
+				"Talisman of pure good",
+				"Talisman of the sphere",
+				"Talisman of ultimate evil",
+				"Tome of the stilled tongue"
+			};
+
+			public static readonly string[] creating_sentient_magic_items_communication =
+			{
+				//01-60
+				"The item communicates by transmitting emotion to the creature carrying or wielding it",
+				"The item communicates by transmitting emotion to the creature carrying or wielding it",
+				"The item communicates by transmitting emotion to the creature carrying or wielding it",
+				"The item communicates by transmitting emotion to the creature carrying or wielding it",
+				"The item communicates by transmitting emotion to the creature carrying or wielding it",
+				"The item communicates by transmitting emotion to the creature carrying or wielding it",
+				//61-90
+				"The item can speak, read, and understand one or more languages",
+				"The item can speak, read, and understand one or more languages",
+				"The item can speak, read, and understand one or more languages",
+				//91-00
+				"The item can speak, read, and understand one or more languages. In addition, the item can communicate telepathically with any character that carries or wields it"
+			};
+
+			public static readonly string[] creating_sentient_magic_items_senses =
+			{
+				"Hearing and normal vision out to 30 feet",
+				"Hearing and normal vision out to 60 feet",
+				"Hearing and normal vision out to 120 feet",
+				"Hearing and darkvision out to 120 feet"
+			};
+
+			public static readonly string[] creating_sentient_magic_items_alignment =
+			{
+				//01-15
+				"Lawful good", "Lawful good", "Lawful good", "Lawful good", "Lawful good",
+				"Lawful good", "Lawful good", "Lawful good", "Lawful good", "Lawful good",
+				"Lawful good", "Lawful good", "Lawful good", "Lawful good", "Lawful good",
+				//16-35
+				"Neutral good", "Neutral good", "Neutral good", "Neutral good", "Neutral good",
+				"Neutral good", "Neutral good", "Neutral good", "Neutral good", "Neutral good",
+				"Neutral good", "Neutral good", "Neutral good", "Neutral good", "Neutral good",
+				"Neutral good", "Neutral good", "Neutral good", "Neutral good", "Neutral good",
+				//36-50
+				"Chaotic good", "Chaotic good", "Chaotic good", "Chaotic good", "Chaotic good",
+				"Chaotic good", "Chaotic good", "Chaotic good", "Chaotic good", "Chaotic good",
+				"Chaotic good", "Chaotic good", "Chaotic good", "Chaotic good", "Chaotic good",
+				//51-63
+				"Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral",
+				"Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral", "Lawful neutral",
+				//64-73
+				"Neutral", "Neutral", "Neutral", "Neutral", "Neutral", "Neutral", "Neutral", "Neutral", "Neutral", "Neutral",
+				//74-85
+				"Chaotic neutral", "Chaotic neutral", "Chaotic neutral", "Chaotic neutral", "Chaotic neutral", "Chaotic neutral",
+				"Chaotic neutral", "Chaotic neutral", "Chaotic neutral", "Chaotic neutral", "Chaotic neutral", "Chaotic neutral", 
+				//86-89
+				"Lawful evil", "Lawful evil", "Lawful evil", "Lawful evil",
+				//90-96
+				"Neutral evil", "Neutral evil", "Neutral evil", "Neutral evil", "Neutral evil", "Neutral evil",
+				//97-00
+				"Chaotic evil", "Chaotic evil", "Chaotic evil", "Chaotic evil"
+			};
+
+			public static readonly string[] creating_sentient_magic_items_special_purpose =
+			{
+				"Aligned: The item seeks to defeat or destroy those of a diametrically opposed alignment. (Such an item is never neutral.)",
+				"Bane: The item seeks to defeat or destroy creatures of a particular kind, such as fiends, shapechangers, trolls, or wizards",
+				"Protector: The item seeks to defend a particular race or kind of creature, such as elves or druids",
+				"Crusader: The item seeks to defeat, weaken, or destroy the servants of a particular deity",
+				"Templar: The item seeks to defend the servants and interests of a particular deity.",
+				"Destroyer: The item craves destruction and goads its user to fight arbitrarily",
+				"Glory Seeker: The item seeks renown as the greatest magic item in the world, by establishing its user as a famous or notorious figure",
+				"Lore seeker: The item craves knowledge or is determined to solve a mystery, learn a secret, or unravel a cryptic prophecy",
+				"Destiny seeker: The item is convinced that it and its wielder have key roles to play in future events",
+				"Creator Seeker: The item seeks its creator and wants to understand why it was created"
 			};
 
             public static string getIndividualTreasure_Challenge0_4()
@@ -4106,14 +4881,1050 @@ namespace DungeonMasterHelper
                 return (roll(8, 6) * 100) + " gp, " +
                         (roll(2, 6) * 1000) + " ep";
             }
-
-			//TODO - create GET versions of treasure hoard tables
+			//TODO
 			public static string getTreasureHoardChallenge5_10()
 			{
 				int num = roll(1, 100);
 
 				return "";
 			}
-        }
-    }
+
+			//TODO - create GET versions of treasure hoard tables
+		}
+
+		#endregion DMG
+
+		#region XGE
+
+		// Chapter 1
+		public static class CharacterOptions
+		{
+			public static readonly string[] parents =
+			{
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You know who your parents are or were.",
+				"You do not know who your parents were."
+			};
+
+			public static readonly string[] half_elf_parents =
+			{
+				"One parent was an elf and the other was a human.",
+				"One parent was an elf and the other was a human.",
+				"One parent was an elf and the other was a human.",
+				"One parent was an elf and the other was a human.",
+				"One parent was an elf and the other was a human.",
+				"One parent was an elf and the other was a half-elf.",
+				"One parent was a human and the other was a half-elf.",
+				"Both parents were half-elves."
+			};
+
+			public static readonly string[] half_orc_parents =
+			{
+				"One parent was an orc and the other was a human.",
+				"One parent was an orc and the other was a human.",
+				"One parent was an orc and the other was a human.",
+				"One parent was an orc and the other was a half-orc.",
+				"One parent was an orc and the other was a half-orc.",
+				"One parent was a human and the other was a half-orc.",
+				"One parent was a human and the other was a half-orc.",
+				"Both parents were half-orcs."
+			};
+
+			public static readonly string[] tiefling_parents =
+			{
+				"Both parents were humans, their infernal heritage dormant until you came along.",
+				"Both parents were humans, their infernal heritage dormant until you came along.",
+				"Both parents were humans, their infernal heritage dormant until you came along.",
+				"Both parents were humans, their infernal heritage dormant until you came along.",
+				"One parent was a tiefling and the other was a human.",
+				"One parent was a tiefling and the other was a devil.",
+				"One parent was a human and the other was a devil."
+			};
+
+			public static readonly string[] birthplace =
+			{
+				"Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home",
+				"Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home",
+				"Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home",
+				"Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home",
+				"Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home", "Home",
+				"Home of a family friend", "Home of a family friend", "Home of a family friend", "Home of a family friend", "Home of a family friend",
+				"Home of a healer or midwife", "Home of a healer or midwife", "Home of a healer or midwife", "Home of a healer or midwife",
+				"Home of a healer or midwife", "Home of a healer or midwife", "Home of a healer or midwife", "Home of a healer or midwife",
+				"Carriage, cart, or wagon", "Carriage, cart, or wagon",
+				"Barn, shed, or other outbuilding", "Barn, shed, or other outbuilding", "Barn, shed, or other outbuilding",
+				"Cave", "Cave",
+				"Field", "Field",
+				"Forest", "Forest",
+				"Temple", "Temple", "Temple",
+				"Battlefield",
+				"Alley or street", "Alley or street",
+				"Brothel, tavern, or inn", "Brothel, tavern, or inn",
+				"Castle, keep, tower, or palace", "Castle, keep, tower, or palace",
+				"Sewer or rubbish heap",
+				"Among people of a different race", "Among people of a different race", "Among people of a different race",
+				"On board a boat or a ship", "On board a boat or a ship", "On board a boat or a ship",
+				"In a prison or in the headquarters of a secret organization",
+				"In a prison or in the headquarters of a secret organization",
+				"In a sage's laboratory", "In a sage's laboratory",
+				"In the Feywild",
+				"In the Shadowfell",
+				"On the Astral Plane or the Ethereal Plane",
+				"On an Inner Plane of your choice",
+				"On an Outer Plane of your choice"
+			};
+
+			public static readonly string[] number_of_siblings =
+			{
+				"None",
+				"None",
+				"1d3",
+				"1d3",
+				"1d4 + 1",
+				"1d4 + 1",
+				"1d6 + 2",
+				"1d6 + 2",
+				"1d8 + 3",
+				"1d8 + 3"
+			};
+
+			public static readonly string[] birth_order =
+			{
+				"Twin, triplet, or quadruplet",
+				"Older", "Older", "Older", "Older", "Older",
+				"Younger", "Younger", "Younger", "Younger", "Younger"
+			};
+
+			public static readonly string[] family =
+			{
+				"None",
+				"Institution, such as an asylum",
+				"Temple",
+				"Orphanage", "Orphanage",
+				"Guardian", "Guardian",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Paternal or maternal grandparent(s)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Adoptive family (same or different race)",
+				"Single father or stepfather", "Single father or stepfather", "Single father or stepfather", "Single father or stepfather",
+				"Single father or stepfather", "Single father or stepfather", "Single father or stepfather", "Single father or stepfather",
+				"Single father or stepfather", "Single father or stepfather", "Single father or stepfather", "Single father or stepfather",
+				"Single father or stepfather", "Single father or stepfather", "Single father or stepfather", "Single father or stepfather",
+				"Single father or stepfather", "Single father or stepfather", "Single father or stepfather", "Single father or stepfather",
+				"Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother",
+				"Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother",
+				"Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother",
+				"Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother",
+				"Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother", "Single mother or stepmother",
+				"Mother and father", "Mother and father", "Mother and father", "Mother and father", "Mother and father",
+				"Mother and father", "Mother and father", "Mother and father", "Mother and father", "Mother and father",
+				"Mother and father", "Mother and father", "Mother and father", "Mother and father", "Mother and father",
+				"Mother and father", "Mother and father", "Mother and father", "Mother and father", "Mother and father"
+			};
+
+			public static readonly string[] absent_parent =
+			{
+				"Your parent died (roll on the Cause of Death supplemental table).",
+				"Your parent was imprisone, enslaved, or otherwise taken away.",
+				"Your parent abandoned you.",
+				"Your parent disappeared to an unknown fate."
+			};
+
+			public static readonly string[] family_lifestyle =
+			{
+				"Wretched",
+				"Squalid", "Squalid",
+				"Poor", "Poor",
+				"Modest", "Modest",
+				"Modest", "Modest",
+				"Comfortable", "Comfortable", "Comfortable",
+				"Wealthy", "Wealthy",
+				"Aristocratic"
+			};
+
+			public static readonly string[] childhood_home =
+			{
+				"On the streets",
+				"Rundown shack", "Rundown shack",
+				"No permanent residence; you moved around a lot",
+				"Encampment or village in the wilderness",
+				"Apartment in a rundown neighborhood",
+				"Small house", "Small house",
+				"Large house", "Large house",
+				"Mansion", "Mansion",
+				"Palace or castle"
+			};
+
+			public static readonly string[] childhood_memories =
+			{
+				"I am still haunted by my childhood, when I was treated badly by my peers.",
+				"I spent most of my childhood alone, with no close friends.",
+				"I spent most of my childhood alone, with no close friends.",
+				"Others saw me as being different or strange, and so I had few companions.",
+				"Others saw me as being different or strange, and so I had few companions.",
+				"Others saw me as being different or strange, and so I had few companions.",
+				"I had a few close friends and lived an ordinary childhood.",
+				"I had a few close friends and lived an ordinary childhood.",
+				"I had a few close friends and lived an ordinary childhood.",
+				"I had a few close friends and lived an ordinary childhood.",
+				"I had several friends, and my childhood was generally a happy one.",
+				"I had several friends, and my childhood was generally a happy one.",
+				"I had several friends, and my childhood was generally a happy one.",
+				"I always found it easy to make friends, and I loved being around people.",
+				"I always found it easy to make friends, and I loved being around people.",
+				"Everyone knew who I was, and I had friends everywhere I went."
+			};
+
+			public static class PersonalDecisions
+			{
+				public static class Background
+				{
+					public static readonly string[] acolyte =
+					{
+						"I ran away from home at an early age and found refuge in a temple.",
+						"My family gave me to a temple, since they were unable or unwilling to care for me.",
+						"I grew up in a household with strong religious convictions. Entering the service of one or more gods seemed natural.",
+						"An impassioned sermon struck a chord deep in my soul and moved me to serve the faith.",
+						"I followed a childhood friend, a respected acquaintance, or someone I loved into religious service.",
+						"After encountering a true servant of the gods, I was so inspired that I immediately entered the service of a religious group."
+					};
+
+					public static readonly string[] charlatan =
+					{
+						"I was left to my own devices, and my knack for manipulating others helped me survive.",
+						"I learned early on that people are gullible and easy to exploit.",
+						"I often got in trouble, but I managed to talk my way out of it every time.",
+						"I took up with a confidence artist, from whom I learned my craft.",
+						"After a charlatan fleeced my family, I decided to learn the trade so I would never be fooled by such deception again.",
+						"I was poor or I feared becoming poor, so I learned the tricks I needed to keep myself out of poverty."
+					};
+
+					public static readonly string[] criminal =
+					{
+						"I resented authority in my younger days and saw a life of crime as the best way to fight against tyranny and oppression.",
+						"Necessity forced me to take up the life, since it was the only way I could survive.",
+						"I fell in with a gang of reprobates and ne'er-do-wells, and I learned my specialty from them.",
+						"A parent or relative taught me my criminal specialty to prepare me for the family business.",
+						"I left home and found a place in a thieves' guild or some other criminal organization",
+						"I was always bored, so I turned to crime to pass the time and discovered I was quite good at it."
+					};
+
+					public static readonly string[] entertainer =
+					{
+						"Members of my family made ends meet by performing, so it was fitting for me to follow their example.",
+						"I always had a keen insight into other people, enough so that I could make them laugh or cry with my stories or songs.",
+						"I ran away from home to follow a minstrel troupe.",
+						"I saw a bard perform once, and I knew from that moment on what I was born to do.",
+						"I earned coin by performing on street corners and eventually made a name for myself.",
+						"A traveling entertainer took me in and taught me the trade."
+					};
+
+					public static readonly string[] folk_hero =
+					{
+						"I learned what was right and wrong from my family.",
+						"I was always enamored by tales of heroes and wished I could be something more than ordinary.",
+						"I hated my mundane life, so when it was time for someone to step up and do the right thing, I took my chance.",
+						"A parent or one of my relatives was an adventurer, and I was inspired by that person's courage.",
+						"A mad old hermit spoke a prophecy when I was born, saying that I would accomplish great things.",
+						"I have always stood up for those who are weaker than I am."
+					};
+
+					public static readonly string[] guild_artisan =
+					{
+						"I was apprenticed to a master who taught me the guild's business",
+						"I helped a guild artisan keep a secret or complete a task, and in return I was taken on as an apprentice.",
+						"One of my family members who belonged to the guild made a place for me.",
+						"I was always good with my hands, so I took the opportunity to learn a trade.",
+						"I wnated to get away from my home situation and start a new life.",
+						"I learned the essentials of my craft from a mentor but had to join the guild to finish my training."
+					};
+
+					public static readonly string[] hermit =
+					{
+						"My enemies ruined my reputation, and I fled to the wilds to avoid furhter disparagement.",
+						"I am comfortable with being isolated, as I seek inner peace.",
+						"I never liked the people I called my friends, so it was easy for me to strike out on my own.",
+						"I felt compelled to forsake my past, but did so with great reluctance, and sometimes I regret making that decision.",
+						"I lost everything -- my home, my family, my friends. Going it alone was all I could do.",
+						"Society's decadence disgusted me, so I decided to leave it behind."
+					};
+
+					public static readonly string[] noble =
+					{
+						"I come from an old and storied family, and it fell to me to preserve the family name.",
+						"My family has been disgraced, and I intend to clear our name.",
+						"My family recently came by its title, and that elevation thrust us into a new and strange world.",
+						"My family has a title, but none of my ancestors have distinguished themselves since we gained it.",
+						"My faimly is filled with remarkable people. I hope to live up to their example.",
+						"I hope to increase my family's power and influence."
+					};
+
+					public static readonly string[] outlander =
+					{
+						"I spent a lot of time in the wilderness as a youngster, and I came to love that way of life.",
+						"From a young age, I couldn't abide the stink of the cities and preferred to spend my time in nature.",
+						"I came to understand the darkness that lurks in the wilds, and I vowed to combat it.",
+						"My people lived on the dges of civilization, and I learned the methods of survival from my family.",
+						"After a tragedy I retreated to the wilderness, leaving my old life behind.",
+						"My family moved away from civilization, and I learned to adapt to my new environment."
+					};
+
+					public static readonly string[] sage =
+					{
+						"I was naturally curious, so I packed up and wnet to a university to learn more about the world.",
+						"My mentor's teachings opened my mind to new possibilities in that field of study.",
+						"I was always an avid reader, and I learned much about my favorite topic on my own.",
+						"I discovered an old library and pored over the texts I found there. That experience awakened a hunger for more knowledge.",
+						"I impressed a wizard who told me I was squandering my talents and should seek out an education to take advantage of my gifts.",
+						"One of m parents or a relative gave me a basic education that whetted my appetite, and I left home to build on what I had learned."
+					};
+
+					public static readonly string[] sailor =
+					{
+						"I was press-ganged by pirates and forced to serve on their ship until I finally escaped.",
+						"I wanted to see the world, so I signed on as a deckhand for a merchant ship.",
+						"One of my relatives was a sailor who took me to sea.",
+						"I needed to escape my community quickly, so I stowed away on a ship. When the crew found me, I was forced to work for my passage.",
+						"Reavers attacked my community, so I found refuge on a ship until I could seek vengeance.",
+						"I had few prospects where I was living, so I left to find my fortune elsewhere."
+					};
+
+					public static readonly string[] soldier =
+					{
+						"I joined the militia to help protect my community from monsters.",
+						"A relative of mine was a soldier, and I wanted to carry on the family tradition.",
+						"The local lord forced me to enlist in the army.",
+						"War ravaged my homeland while I was growing up. Fighting was the only life I ever knew.",
+						"I wanted fame and fortune, so I joined a mercenary company, selling my sword to the highest bidder.",
+						"Invaders attacked my homeland. It was my duty to take up arms in defense of my people."
+					};
+
+					public static readonly string[] urchin =
+					{
+						"Wanderlust caused me to leave my family to see the world. I look after myself.",
+						"I ran away from a bad situation at home and made my own way in the world.",
+						"Monsters wiped out my village, and I was the sole survivor. I had to find a way to survive.",
+						"A notorious thief looked after me and other orphans, and we spied and stole to earn our keep.",
+						"One day I woke up on the streets, alone and hungry, with no memory of my early childhood.",
+						"My parents died, leaving no one to look after me. I raised myself."
+					};
+				}
+
+				public static class ClassTraining
+				{
+					public static string[] barbarian =
+					{
+						"My devotion to my people lifted me in battle, making me powerful and dangerous.",
+						"The spirits of my ancestors called on me to carry out a great task.",
+						"I lost control in battle one day, and it was as if something else was manipulating my body, forcing it to kill every foe I could reach.",
+						"I wnet on a spiritual journey to find myself and instead found a spirit animal to guide, protect, and inspire me.",
+						"I was struck by lightning and lived. Afterward, I found a new strength within me that let me push beyond my limitations.",
+						"My anger needed to be channeled into battle, or I risked becoming an indiscriminate killer."
+					};
+
+					public static string[] bard =
+					{
+						"I awakened my latent bardic abilities through trial and error.",
+						"I was a gifted performer and attracted the attention of a master bard who schooled me in the old techniques.",
+						"I joined a loose society of scholars and orators to learn new techniques of performance and magic.",
+						"I felt a calling to recount the deeds of champions and heroes, to bring them alive in song and story.",
+						"I joined one of the great colleges to learn old lore, the secrets of magic, and the art of performance.",
+						"I picked up a musical instrument one day and instantly discovered that I could play it."
+					};
+
+					public static string[] cleric =
+					{
+						"A supernatural being in service to the gods called me to become a divine agent in the world.",
+						"I saw the injustice and horror in the world and felt moved to take a stand against them.",
+						"My god gave me an unmistakable sign. I dropped everythign to serve the divine.",
+						"Although I was always devout, it wasn't until I completed a pilgrimage that I knew my true calling.",
+						"I used to serve in my religion's bureaucracy but found I needed to work in the world, to bring the message of my faith to the darkest corners of the land.",
+						"I realize that my god works through me, and I do as commanded, even though I don't know why I was chosen to serve."
+					};
+
+					public static string[] druid =
+					{
+						"I saw too much devastation in the wild places, too much of nature's splendor ruined by the despoilers. I joined a circle of druids to fight back against the enemies of nature.",
+						"I found a place among a group of druids after I fled a catastrophe.",
+						"I have always had an affinity for animals, so I explored my talent to see how I could best use it.",
+						"I befriended a druid and was moved by druidic teachings. I decided to follow my friend's guidance and give something back to the world.",
+						"While I was growing up, I saw spirits all around me -- entities no one else could perceive. I sought out the druids to help me understand the visions and communicate with these beings.",
+						"I have always felt disgust for creatures of unnatural origin. For this reason, I immersed myself in the study of the druidic mysteries and became a champion of the natural order."
+					};
+
+					public static string[] fighter =
+					{
+						"I wanted to hone my combat skills, and so I joined a war college.",
+						"I squired for a knight who taught me how to fight, care for a steed, and conduct myself with honor. I decided to take up that path for myself.",
+						"Horrible monsters descended on my community, killing someone I loved. I took up arms to destroy those creatures and others of a similar nature.",
+						"I joined the army and learned how to fight as part of a group.",
+						"I grew up fighting, and I refined my talents by defending myself against people who crossed me.",
+						"I could always pick up just about any weapon and know how to use it effectively."
+					};
+
+					public static string[] monk =
+					{
+						"I was chosen to study at a secluded monastery. THere, I was taught the fundamental techniques required to eventually master a tradition.",
+						"I sought instruction to gain a deeper understanding of existence and my place in the world.",
+						"I stumbled into a portal to the Shadowfell and took refuge in a strange monastery, where I learned how to defend myself against the forces of darkness.",
+						"I was overwhelmed with grief after losing someone close to me, and I sought the advice of philosophers to help me cope with my loss.",
+						"I could feel that a special sort of power lay within me, so I sought out those who could help me call it forth and master it.",
+						"I was wild and undisciplined as a youngster, but then I realized the error of my ways. I applied to a monastery and became a monk as a way to live a life of discipline."
+					};
+
+					public static string[] paladin =
+					{
+						"A fantastical being appeared before me and called on me to undertake a holy quest.",
+						"One of my ancestors left a holy quest unfulfilled, so I intend to finish that work.",
+						"The world is a dark and terrible place. I decided to serve as a beacon of light shining out against the gathering shadows.",
+						"I served as a paladin's squire, learning all I needed to swear my own sacred oath.",
+						"Evil must be opposed on all fronts. I feel compelled to seek out wickedness and purge it from the world.",
+						"Becoming a paladin was a natural consequence of my unwavering faith. In taking my vows, I became the holy sword of my religion."
+					};
+
+					public static string[] ranger =
+					{
+						"I found purpose while I honed my hunting skills by bringing down dangerous animals at the edge of civilization.",
+						"I always had a way with animals, able to calm them with a soothing word and a touch.",
+						"I suffer from terrible wanderlust, so being a ranger gave me a reason not to remain in one place for too long.",
+						"I have seen what happens when the monsters come out from the dark. I took it upon myself ot become the first line of defense against the evils that lie beyond civilization's borders.",
+						"I met a grizzled ranger who taught me woodcraft and the secrets of the wild lands.",
+						"I served in an army, learning the precepts of my profession while blazing trails and scouting enemy encampments."
+					};
+
+					public static string[] rogue =
+					{
+						"I've always been nimble and quick of wit, so I decided to use those talents to help me make my way in the world.",
+						"An assassin or a thief wronged me, so I focused my training on mastering the skills of my enemy to better combat foes of that sort.",
+						"An experienced rogue saw something in me and taught me several useful tricks.",
+						"I decided to turn my natural lucky streak into the basis of a career, though I still realize that improving my skills is esential.",
+						"I took up with a group of ruffians who showed me how to get what I want through sneakiness rather than direct confrontation.",
+						"I'm a sucker for a shiny bauble or a sack of coins, as long as I can get my ands on it without risking life and limb."
+					};
+
+					public static string[] sorcerer =
+					{
+						"When I was born, all the water in the house forze solid, the milk spoiled, or all the iron turned to copper. My family is convinced that this event was a harbinger of stranger things to come for me.",
+						"I suffered a terrible emotional or physical strain, which brought forth my latent magical power. I have fought to control it ever since.",
+						"My immediate family never spoke of my ancestors, and when I asked, they would change the subject. It wasn't until I started displaying strange talents that the full truth of my heritage came out.",
+						"When a monster threatened one of my friends, I became filled with anxiety. I lashed out instinctively and blasted the wretched thing with a force that came from me.",
+						"Sensing something special in me, a stranger taught me how to control my gift.",
+						"After I escaped from a magical conflagration, I realized that thought I was unharmed, I was not unchanged. I began to exhibit unusual abilities that I am just beginning to understand."
+					};
+
+					public static string[] warlock =
+					{
+						"While wandering around in a forbidden place, I encountered an otherworldly being that offered to enter into a pact with me.",
+						"I was examining a strange tome I found in an abandoned library when the entity that would become my patron suddenly appeared before me.",
+						"I stumbled into the clutches of my patron after I accidentally stepped through a magical doorway.",
+						"When I was faced with a terrible crisis, I prayed to any being who would listen, and the creature that answered became my patron.",
+						"My future patron visited me in my dreams and offered great power in exchange for my service.",
+						"One of my ancestors had a pact with my patron, so that entity was determined to bind me to the same agreement."
+					};
+
+					public static string[] wizard =
+					{
+						"An old wizard chose me from among several candidates to serve an apprenticeship.",
+						"When I became lost in a forest, a hedge wizard found me, took me in, and taught me the rudiments of magic.",
+						"I grew up listening to tales of great wizards and knew I wanted to follow their path. I strove to be accepted at an academy of magic and succeeded.",
+						"One of my relatives was an accomplished wizard who decided I was smart enough to learn the craft.",
+						"While exploring an old tomb, library, or temple, I found a spellbook. I was immediately driven to learn all I could about becoming a wizard.",
+						"I was a prodigy who demonstrated mastery of the arcane arts at an early age. When I became old enough to set out on my own, I did so to learn more magic and expand my power."
+					};
+				}
+			}
+
+			public static string[] life_events_by_age_current_age =
+			{
+				"20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger",
+				"20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger",
+				"20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger",
+				"20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger", "20 years or younger",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"21-30 years", "21-30 years", "21-30 years", "21-30 years",
+				"31-40 years", "31-40 years", "31-40 years", "31-40 years", "31-40 years",
+				"31-40 years", "31-40 years", "31-40 years", "31-40 years", "31-40 years",
+				"41-50 years", "41-50 years", "41-50 years", "41-50 years", "41-50 years",
+				"41-50 years", "41-50 years", "41-50 years", "41-50 years", "41-50 years",
+				"41-50 years", "41-50 years", "41-50 years", "41-50 years", "41-50 years",
+				"41-50 years", "41-50 years", "41-50 years", "41-50 years", "41-50 years",
+				"51-60 years", "51-60 years", "51-60 years", "51-60 years", "51-60 years",
+				"51-60 years", "51-60 years", "51-60 years", "51-60 years", "51-60 years",
+				"61 years or older"
+			};
+
+			public static string[] life_events =
+			{
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You suffered a tragedy. Roll on the Tragedies table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You gained a bit of good fortune. Roll on the Boons table.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made an enemy of an adventurer. Roll a d6. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You spent time working in a job related to your background. Start the game with an extra 2d6 gp.",
+				"You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.",
+				"You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.",
+				"You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.",
+				"You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.",
+				"You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.",
+				"You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.",
+				"You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.",
+				"You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.",
+				"You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.",
+				"You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.",
+				"You had a supernatural experience. Roll on the Supernatural Events table to find out what it was.",
+				"You had a supernatural experience. Roll on the Supernatural Events table to find out what it was.",
+				"You had a supernatural experience. Roll on the Supernatural Events table to find out what it was.",
+				"You had a supernatural experience. Roll on the Supernatural Events table to find out what it was.",
+				"You had a supernatural experience. Roll on the Supernatural Events table to find out what it was.",
+				"You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war.",
+				"You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war.",
+				"You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war.",
+				"You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war.",
+				"You fought in a battle. Roll on the War table to learn what happened to you. Work with your DM to come up with the reason for the battle and the factions involved. It might have been a small conflict between your community and a band of orcs, or it could have been a major battle in a larger war.",
+				"You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you.",
+				"You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you.",
+				"You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you.",
+				"You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you.",
+				"You committed a crime or were wrongly accused of doing so. Roll on the Crime table to determine the nature of the offense and on the Punishment table to see what became of you.",
+				"You encountered something magical. Roll on the Arcane Matters table.",
+				"You encountered something magical. Roll on the Arcane Matters table.",
+				"You encountered something magical. Roll on the Arcane Matters table.",
+				"You encountered something magical. Roll on the Arcane Matters table.",
+				"Something truly strange happened to you. Roll on the Weird Stuff table."
+			};
+
+			public static string[] adventures =
+			{
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You nearly died. You have nasty scars on your body, and you are missing an ear, 1d3 fingers, or 1d4 toes.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You suffered a grievous injury. Although the wound healed, it still pains you from time to time.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You were wounded, but in time you fully recovered.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found some treasure on your adventure. You have 2d6 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You found a considerable amount of treasure on your adventure. You have 1d20 + 50 gp left from your share of it.",
+				"You came across a common magic item (of the DM's choice)."
+			};
+
+			public static string[] arcane_matters =
+			{
+				"You were charmed or frightened by a spell.",
+				"You were injured by the effects of a spell.",
+				"You witnessed a powerful spell bing cast by a cleric, druid, sorcerer, warlock, or a wizard",
+				"You drank a potion (of the DM's choice).",
+				"You found a spell scroll (of the DM's choice) and succeeded in casting the spell it contained.",
+				"You were affected by teleportation magic.",
+				"You turned invisible for a time.",
+				"You identified an illusion for what it was.",
+				"You saw a creature being conjured by magic.",
+				"Your fortune was read by a diviner. Roll twice on the Life Events table, but don't apply the results. Instead, the DM picks one event as a portent of your future (which might or might not come true)."
+			};
+
+			public static string[] boons =
+			{
+				"A friendly wizard gave you a spell scroll containing one cantirp (of the DM's choice).",
+				"You saved the life of a commoner, who now owes you a life debt. This individual accompanies you on your travels and performs mundane tasks for you, but will leave if neglected, abused, or imperiled. Determine details about this character by using the supplemental tables and working with your DM.",
+				"You found a riding horse.",
+				"You found some money. You have 1d20 gp in addition to your regular starting funds.",
+				"A relative bequeathed you a simple weapon of your choice.",
+				"You found something interesting. You gain one additional trinket.",
+				"You once performed a service for a local temple. The next time you visit the temple, you can receive healing up to your hit point maximum.",
+				"A friendly alchemist gifted you with a potion of healing or a flask of acid, as you choose.",
+				"You found a treasure map.",
+				"A distant relative left you a stipend that enables you to live at the comfortable lifestyle for 1d20 years. If you choose to live at a higher lifesylte, you reduce the price of the lifestyle by 2 gp during that time period."
+			};
+
+			public static string[] crime =
+			{
+				"Murder",
+				"Theft",
+				"Burglary",
+				"Assault",
+				"Smuggling",
+				"Kidnapping",
+				"Extortion",
+				"Counterfeiting"
+			};
+
+			public static string[] punishment =
+			{
+				"You did not commit the crime and were exonerated after being accused.",
+				"You committed the crime or helped do so, but nonetheless the authorities found you not guilty.",
+				"You were nearly caught in the act. You had to flee and are wanted in the community where the crime occurred.",
+				"You were caught and convicted. You spent time in jail, chained to an oar, or performing hard labor. You served a sentence of 1d4 years or succeeded in escaping after that much time."
+			};
+
+			public static string[] supernatural_events =
+			{
+				"You were ensorcelled by a fey and enslaved for 1d6 years before you escaped.",
+				"You saw a demon and ran away before it could do anything to you.",
+				"A devil tempted you. Make a DC 10 Wisdom saving throw. On a failed save, your alignment shifts one step toward evil (if it's not evil already), and you start the game with an additional 1d20 + 50 gp.",
+				"You woke up one morning miles from your home, with no idea how you got there.",
+				"You visited a holy site and felt the presence of the divine there.",
+				"You visited a holy site and felt the presence of the divine there.",
+				"You witnessed a falling red star, a face appearing in the frost, or some other bizarre happening. You are certain that it was an omen of some sort.",
+				"You witnessed a falling red star, a face appearing in the frost, or some other bizarre happening. You are certain that it was an omen of some sort.",
+				"You escaped certain death and believe it was the intervention of a god that saved you.",
+				"You escaped certain death and believe it was the intervention of a god that saved you.",
+				"You witnessed a minor miracle.",
+				"You witnessed a minor miracle.",
+				"You explored an empty house and found it to be haunted.",
+				"You explored an empty house and found it to be haunted.",
+				"You were briefly possessed. Roll a d6 to determine what type of creature possessed you: 1, celestial; 2, devil; 3, demon; 4, fey; 5, elemental; 6, undead.",
+				"You saw a ghost.",
+				"You saw a ghoul feeding on a corpse.",
+				"A celestial or a fiend visited you in your dreams to give a warning of dangers to come.",
+				"You briefly visited the Feywild or the Shadowfell.",
+				"You saw a portal that you believe leads to another plane of existence."
+			};
+
+			public static string[] tragedies =
+			{
+				"A family member or a close friend died. Roll on the Cause of Death supplemental table to find out how.",
+				"A family member or a close friend died. Roll on the Cause of Death supplemental table to find out how.",
+				"A friendship ended bitterly, and the other person is now hostile to you. The cause might have been a misunderstanding or something you or the former friend did.",
+				"You lost all your possessions in a disaster, and you had to rebuild your life.",
+				"You were imprisoned for a crime you didn't commit and spent 1d6 years at hard labor, in jail, or shackled to an oar in a slave galley.",
+				"War ravaged your home community, reducing everything to rubble and ruin. In the aftermath, you either helped your town rebuild or moved somewhere else.",
+				"A lover disappeared without a trace. You have been looking for that person ever since.",
+				"A terrible blight in your home community caused crops to fail, and many starved. You lost a sibling or some other family member.",
+				"You did something that brought terrible shame to you in the eyes of your family. You might have been involved in a scandal, dabbled in dark magic, or offended someone important. The attitude of your family members toward you becomes indifferent at best, thought they might eventually forgive you.",
+				"For a reason you were never told, you were exiled from your community. You then either wandered in the wilderness for a time or promptly found a new place to live.",
+				"A romantic relationship ended. Roll a d6. An odd number means it ended with bad feelings, while an even number means it ended amicably.",
+				"A current or prospective romantic partner of yours died. Roll on the Cause of Death supplemental table to find out how. If the result is murder, roll a d12. On a 1, you were responsible, whether directly or indirectly."
+			};
+
+			public static string[] war =
+			{
+				"You were knocked out and left for dead. You woke up hours later with no recollection of the battle.",
+				"You were badly injured in the fight, and you still bear the awful scars of those wounds.",
+				"You were badly injured in the fight, and you still bear the awful scars of those wounds.",
+				"You ran away from the battle to save your life, but you still feel shame for your cowardice.",
+				"You suffered only minor injuries, and the wounds all healed without leaving scars.",
+				"You suffered only minor injuries, and the wounds all healed without leaving scars.",
+				"You survived the battle, but you suffer from terrible nightmares in which you relive the experience.",
+				"You survived the battle, but you suffer from terrible nightmares in which you relive the experience.",
+				"You escaped the battle unscathed, though many of your friends were injured or lost.",
+				"You escaped the battle unscathed, though many of your friends were injured or lost.",
+				"You acquitted yourself will in battle and are remembered as a hero. You might have received a medal for your bravery."
+			};
+
+			public static string[] weird_stuff =
+			{
+				"You were turned into a toad and remained in that form for 1d4 weeks.",
+				"You were petrified and remained a stone statue for a time until someone freed you.",
+				"You were enslaved by a hag, a satyr, or some other being and lived in that creature's thrall for 1d6 years.",
+				"A dragon held you as prisoner for 1d4 months until adventurers killed it.",
+				"You were taken captive by a race of evil humanoids such as drow, kua-toa, or quaggoths. You lived as a slave in the Underdark until you escaped.",
+				"You served a powerful adventurer as a hireling. You have only recently left that service. Use the supplemental tables and work with your DM to determine the basic details about your former employer.",
+				"You went insane for 1d6 years and recently regained your sanity. A tic or some other bit of odd behavior might linger.",
+				"A lover of yours was secretly a silver dragon.",
+				"You were captured by a cult and nearly sacrificed on an alter to the foul being the cultists served. You escaped, but you fear they will find you.",
+				"You met a demigod, an archdevil, an archfey, a demon loard, or a titan, and you lived to tell the tale.",
+				"You were swallowed by a giant fish and spent a month in its gullet before you escaped.",
+				"A powerful being granted you a wish, but you squandered it on something frivolous."
+			};
+
+			public static string[] alignment =
+			{
+				"Chaotic evil (50%) or chaotic neutral (50%)",
+				"Lawful evil", "Lawful evil",
+				"Neutral evil", "Neutral evil", "Neutral evil",
+				"Neutral", "Neutral", "Neutral", "Neutral",
+				"Neutral good", "Neutral good", "Neutral good",
+				"Lawful good (50%) or lawful neutral (50%)", "Lawful good (50%) or lawful neutral (50%)",
+				"Chaotic good (50%) or chaotic neutral (50%)"
+			};
+
+			public static string getNumberOfSiblings()
+			{
+				int num = roll(1, 10) - 1;
+
+				switch (num)
+				{
+					case 1:
+					case 2:
+						{
+							return "None";
+						}
+					case 3:
+					case 4:
+						{
+							return roll(1, 3).ToString();
+						}
+					case 5:
+					case 6:
+						{
+							return (roll(1, 4) + 1).ToString();
+						}
+					case 7:
+					case 8:
+						{
+							return (roll(1, 6) + 2).ToString();
+						}
+					case 9:
+					case 10:
+						{
+							return (roll(1, 8) + 3).ToString();
+						}
+				}
+
+				return "";
+			}
+
+			public static int getFamilyLifestyleModifier()
+			{
+				int num = roll(3, 6);
+
+				switch (num)
+				{
+					case 3:
+						return -40;
+					case 4:
+					case 5:
+						return -20;
+					case 6:
+					case 7:
+					case 8:
+						return -10;
+					case 9:
+					case 10:
+					case 11:
+					case 12:
+						return 0;
+					case 13:
+					case 14:
+					case 15:
+						return 10;
+					case 16:
+					case 17:
+						return 20;
+					case 18:
+						return 40;
+				}
+
+				return -1;
+			}
+
+			public static string getChildhoodHome()
+			{
+				int mod = getFamilyLifestyleModifier();
+
+				int num = roll(1, 100) + mod;
+
+				if (num > 110)
+				{
+					return "Palace or castle";
+				}
+				else if (num > 90)
+				{
+					return "Mansion";
+				}
+				else if (num > 70)
+				{
+					return "Large House";
+				}
+				else if (num > 50)
+				{
+					return "Small house";
+				}
+				else if (num > 40)
+				{
+					return "Apartment in a rundown neighborhood";
+				}
+				else if (num > 30)
+				{
+					return "Encampment or village in the wilderness";
+				}
+				else if (num > 20)
+				{
+					return "No permanent residence; you moved around a lot";
+				}
+				else if (num > 0)
+				{
+					return "Rundown shack";
+				}
+				else
+				{
+					return "On the streets";
+				}
+			}
+
+			public static string getChildhoodHome(int mod)
+			{
+				int num = roll(1, 100) + mod;
+
+				if (num > 110)
+				{
+					return "Palace or castle";
+				}
+				else if (num > 90)
+				{
+					return "Mansion";
+				}
+				else if (num > 70)
+				{
+					return "Large House";
+				}
+				else if (num > 50)
+				{
+					return "Small house";
+				}
+				else if (num > 40)
+				{
+					return "Apartment in a rundown neighborhood";
+				}
+				else if (num > 30)
+				{
+					return "Encampment or village in the wilderness";
+				}
+				else if (num > 20)
+				{
+					return "No permanent residence; you moved around a lot";
+				}
+				else if (num > 0)
+				{
+					return "Rundown shack";
+				}
+				else
+				{
+					return "On the streets";
+				}
+			}
+
+			public static string getChildhoodMemories(int mod)
+			{
+				int num = (roll(3, 6) + mod);
+
+				if (num > 17)
+				{
+					return "Everyone knew who I was, and I had friends everywhere I went.";
+				}
+
+				if (num < 4)
+				{
+					return "I am still haunted by my childhood, when I was treated badly by my peers.";
+				}
+
+				num -= 3;
+
+				while (num > 14)
+				{
+					num--;
+				}
+
+				if (num < 0)
+				{
+					num = 0;
+				}
+
+				return childhood_memories[num];
+			}
+		}
+
+		#endregion XGE
+	}
 }

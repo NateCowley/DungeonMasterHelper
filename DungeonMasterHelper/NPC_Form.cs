@@ -29,5 +29,17 @@ namespace DungeonMasterHelper
             flawSecretRTB.Text = Data.getRandomFrom(Data.NPC.npc_flaws_and_secrets);
 
         }
-    }
+
+		private void nameTB_TextChanged(object sender, EventArgs e)
+		{
+			if(nameTB.Text.Length > 0)
+			{
+				this.Text = "NPC Form - " + nameTB.Text;
+			}
+			else
+			{
+				this.Text = "NPC Form";
+			}
+		}
+	}
 }
