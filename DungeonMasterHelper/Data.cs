@@ -16,6 +16,8 @@ namespace DungeonMasterHelper
 
 		private static Random rand = new Random();
 
+		public static bool DEVELOPMENT = true;
+
         private static string lowerFirstLetter(string str)
         {
             return str.First().ToString().ToLower() + str.Skip(1);
@@ -4739,6 +4741,187 @@ namespace DungeonMasterHelper
 				"Lore seeker: The item craves knowledge or is determined to solve a mystery, learn a secret, or unravel a cryptic prophecy",
 				"Destiny seeker: The item is convinced that it and its wielder have key roles to play in future events",
 				"Creator Seeker: The item seeks its creator and wants to understand why it was created"
+			};
+
+			public static readonly string[] moonblade_properties =
+			{
+				//01-40
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				"Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus",
+				//41-80
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				"The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)",
+				//81-82
+				"The moonblade gains the finesse property",
+				"The moonblade gains the finesse property",
+				//83-84
+				"The moonblade gains the thrown property (range 20/60 feet)",
+				"The moonblade gains the thrown property (range 20/60 feet)",
+				//85-86
+				"The moonblade functions as a defender",
+				"The moonblade functions as a defender",
+				//87-90
+				"The moonblade scroes a critical hit on a roll of 19 or 20",
+				"The moonblade scroes a critical hit on a roll of 19 or 20",
+				"The moonblade scroes a critical hit on a roll of 19 or 20",
+				"The moonblade scroes a critical hit on a roll of 19 or 20",
+				//91-92
+				"When you hit with an attack using the moonblade, the attack deals an extra 1d6 slashing damage",
+				"When you hit with an attack using the moonblade, the attack deals an extra 1d6 slashing damage",
+				//93-94
+				"When you hit a creature of a specific type (such as dragon, fiend, or undead) with the moonblade, the target takes an extra 1d6 damage of one of these types: acid, cold, fire, lightning, or thunder",
+				"When you hit a creature of a specific type (such as dragon, fiend, or undead) with the moonblade, the target takes an extra 1d6 damage of one of these types: acid, cold, fire, lightning, or thunder",
+				//95-96
+				"You can use a bonus action to cause the moonblade to flash brightly. Each creature that can see you and is within 30 feet of you must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. This property can't be used again until you take a short rest while attuned to the weapon",
+				"You can use a bonus action to cause the moonblade to flash brightly. Each creature that can see you and is within 30 feet of you must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. This property can't be used again until you take a short rest while attuned to the weapon",
+				//97-98
+				"The moonblade functions as a ring of spell storing", "The moonblade functions as a ring of spell storing",
+				//99
+				"You can use an action to call forth an elfshadow, provided that you don't already have one serving you. The elfshadow appears in an unoccupied space within 120 feet of you. It uses the statistics for a shadow from the Monster Manual, except it is neutral, immune to effects that turn undead, and doesn't create new shadows. You control this creature, deciding how it acts and moves. It remains until it drops to 0 hit points or you dismiss it as an action",
+				//00
+				"The moonblade functions as a vorpal sword"
+			};
+
+			public static readonly string[] minor_beneficial_properties =
+			{
+				//01-20
+				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
+				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
+				//21-30
+				"While attuned to the artifact, you are immune to disease",
+				//31-40
+				"While attuned to the artifact, you can't be charmed or frightened",
+				//41-50
+				"While attuned to the artifact, you have resistance against one damage type of the DM's choice",
+				//51-60
+				"While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it",
+				//61-70
+				"While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn",
+				//71-80
+				"As 61-70 above, except the spell is 2nd level",
+				//81-90
+				"As 61-70 above, except the spell is 3rd level",
+				//91-00
+				"While attuned to the artifact, you gain a +1 bonus to Armor Class"
+			};
+
+			public static readonly string[] major_beneficial_properties =
+			{
+				//01-20
+				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
+				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
+				//21-30
+				"While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point",
+				//31-40
+				"When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type",
+				//41-50
+				"While attuned to the artifact, your walking speed increases by 10 feet",
+				//51-60
+				"While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn",
+				//61-70
+				"As 51-60 above, except the spell is 5th level",
+				//71-80
+				"As 51-60 above, except the spell is 6th level",
+				//81-90
+				"As 51-60 above, except the spell is 7th level",
+				//91-00
+				"While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned"
+			};
+
+			public static readonly string[] minor_detrimental_properties =
+			{
+				//01-05
+				"While attuned to the artifact, you have disadvantage on saving throws against spells",
+				//06-10
+				"The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half",
+				//11-15
+				"While attuned to the artifact, you are blinded when you are more than 10 feet away from it",
+				//16-20
+				"While attuned to the artifact, you have disadvantage on saving throws against poison",
+				//21-30
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				//31-35
+				"While attuned to the artifact, all holy water within 10 feet of you is destroyed",
+				//36-40
+				"While attuned to the artifact, you are physically ill and have disadvantage on any ability check or saving throw that uses Strength or Constitution",
+				//41-45
+				"While attuned to the artifact, your weight increases by 1d4 x 10 pounds",
 			};
 
             public static string getIndividualTreasure_Challenge0_4()

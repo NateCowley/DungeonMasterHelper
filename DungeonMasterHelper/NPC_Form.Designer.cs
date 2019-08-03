@@ -61,6 +61,8 @@
 			// 
 			// nameTB
 			// 
+			this.nameTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.nameTB.Location = new System.Drawing.Point(12, 13);
 			this.nameTB.Name = "nameTB";
 			this.nameTB.Size = new System.Drawing.Size(558, 22);
@@ -236,6 +238,8 @@
 			// 
 			// flawSecretRTB
 			// 
+			this.flawSecretRTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.flawSecretRTB.Location = new System.Drawing.Point(12, 426);
 			this.flawSecretRTB.Name = "flawSecretRTB";
 			this.flawSecretRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -245,6 +249,8 @@
 			// 
 			// historyRTB
 			// 
+			this.historyRTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.historyRTB.Location = new System.Drawing.Point(294, 244);
 			this.historyRTB.Name = "historyRTB";
 			this.historyRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -264,6 +270,8 @@
 			// 
 			// occupationTB
 			// 
+			this.occupationTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.occupationTB.Location = new System.Drawing.Point(294, 64);
 			this.occupationTB.Name = "occupationTB";
 			this.occupationTB.Size = new System.Drawing.Size(276, 22);
@@ -281,6 +289,9 @@
 			// 
 			// richTextBox1
 			// 
+			this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.richTextBox1.Location = new System.Drawing.Point(294, 406);
 			this.richTextBox1.Name = "richTextBox1";
 			this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -307,6 +318,8 @@
 			// 
 			// appearanceRTB
 			// 
+			this.appearanceRTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.appearanceRTB.Location = new System.Drawing.Point(294, 111);
 			this.appearanceRTB.Name = "appearanceRTB";
 			this.appearanceRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -349,9 +362,10 @@
 			this.Controls.Add(this.ageTB);
 			this.Controls.Add(this.nameTB);
 			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.MaximumSize = new System.Drawing.Size(600, 600);
+			this.MinimumSize = new System.Drawing.Size(240, 47);
 			this.Name = "NPC_Form";
 			this.Text = "NPC Form";
+			this.DoubleClick += new System.EventHandler(this.NPC_Form_DoubleClick);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
