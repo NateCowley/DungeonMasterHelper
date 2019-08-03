@@ -4908,20 +4908,240 @@ namespace DungeonMasterHelper
 			{
 				//01-05
 				"While attuned to the artifact, you have disadvantage on saving throws against spells",
+				"While attuned to the artifact, you have disadvantage on saving throws against spells",
+				"While attuned to the artifact, you have disadvantage on saving throws against spells",
+				"While attuned to the artifact, you have disadvantage on saving throws against spells",
+				"While attuned to the artifact, you have disadvantage on saving throws against spells",
 				//06-10
+				"The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half",
+				"The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half",
+				"The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half",
+				"The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half",
 				"The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half",
 				//11-15
 				"While attuned to the artifact, you are blinded when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are blinded when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are blinded when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are blinded when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are blinded when you are more than 10 feet away from it",
 				//16-20
+				"While attuned to the artifact, you have disadvantage on saving throws against poison",
+				"While attuned to the artifact, you have disadvantage on saving throws against poison",
+				"While attuned to the artifact, you have disadvantage on saving throws against poison",
+				"While attuned to the artifact, you have disadvantage on saving throws against poison",
 				"While attuned to the artifact, you have disadvantage on saving throws against poison",
 				//21-30
 				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
+				"While attuned to the artifact, you emit a sour stench noticeable from up to 10 feet away",
 				//31-35
+				"While attuned to the artifact, all holy water within 10 feet of you is destroyed",
+				"While attuned to the artifact, all holy water within 10 feet of you is destroyed",
+				"While attuned to the artifact, all holy water within 10 feet of you is destroyed",
+				"While attuned to the artifact, all holy water within 10 feet of you is destroyed",
 				"While attuned to the artifact, all holy water within 10 feet of you is destroyed",
 				//36-40
 				"While attuned to the artifact, you are physically ill and have disadvantage on any ability check or saving throw that uses Strength or Constitution",
+				"While attuned to the artifact, you are physically ill and have disadvantage on any ability check or saving throw that uses Strength or Constitution",
+				"While attuned to the artifact, you are physically ill and have disadvantage on any ability check or saving throw that uses Strength or Constitution",
+				"While attuned to the artifact, you are physically ill and have disadvantage on any ability check or saving throw that uses Strength or Constitution",
+				"While attuned to the artifact, you are physically ill and have disadvantage on any ability check or saving throw that uses Strength or Constitution",
 				//41-45
 				"While attuned to the artifact, your weight increases by 1d4 x 10 pounds",
+				"While attuned to the artifact, your weight increases by 1d4 x 10 pounds",
+				"While attuned to the artifact, your weight increases by 1d4 x 10 pounds",
+				"While attuned to the artifact, your weight increases by 1d4 x 10 pounds",
+				"While attuned to the artifact, your weight increases by 1d4 x 10 pounds",
+				//46-50
+				"While attuned to the artifact, your appearance changes as the DM decides",
+				"While attuned to the artifact, your appearance changes as the DM decides",
+				"While attuned to the artifact, your appearance changes as the DM decides",
+				"While attuned to the artifact, your appearance changes as the DM decides",
+				"While attuned to the artifact, your appearance changes as the DM decides",
+				//51-55
+				"While attuned to the artifact, you are deafened when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are deafened when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are deafened when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are deafened when you are more than 10 feet away from it",
+				"While attuned to the artifact, you are deafened when you are more than 10 feet away from it",
+				//56-60
+				"While attuned to the artifact, your weight drops by 1d4 x 5 puounds",
+				"While attuned to the artifact, your weight drops by 1d4 x 5 puounds",
+				"While attuned to the artifact, your weight drops by 1d4 x 5 puounds",
+				"While attuned to the artifact, your weight drops by 1d4 x 5 puounds",
+				"While attuned to the artifact, your weight drops by 1d4 x 5 puounds",
+				//61-65
+				"While attuned to the artifact, you can't smell",
+				"While attuned to the artifact, you can't smell",
+				"While attuned to the artifact, you can't smell",
+				"While attuned to the artifact, you can't smell",
+				"While attuned to the artifact, you can't smell",
+				//66-70
+				"While attuned to the artifact, nonmagical flames are extinguished within 30 feet of you",
+				"While attuned to the artifact, nonmagical flames are extinguished within 30 feet of you",
+				"While attuned to the artifact, nonmagical flames are extinguished within 30 feet of you",
+				"While attuned to the artifact, nonmagical flames are extinguished within 30 feet of you",
+				"While attuned to the artifact, nonmagical flames are extinguished within 30 feet of you",
+				//71-80
+				"While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you", "While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you",
+				"While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you", "While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you",
+				"While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you", "While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you",
+				"While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you", "While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you",
+				"While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you", "While attuned to the artifact, other creatures can't take short or long rests while within 300 feet of you",
+				//81-85
+				"While attuned to the artifact, you deal 1d6 necrotic damage to any plant you touch that isn't a creature",
+				"While attuned to the artifact, you deal 1d6 necrotic damage to any plant you touch that isn't a creature",
+				"While attuned to the artifact, you deal 1d6 necrotic damage to any plant you touch that isn't a creature",
+				"While attuned to the artifact, you deal 1d6 necrotic damage to any plant you touch that isn't a creature",
+				"While attuned to the artifact, you deal 1d6 necrotic damage to any plant you touch that isn't a creature",
+				//86-90
+				"While attuned to the artifact, animals within 30 feet of you are hostile toward you",
+				"While attuned to the artifact, animals within 30 feet of you are hostile toward you",
+				"While attuned to the artifact, animals within 30 feet of you are hostile toward you",
+				"While attuned to the artifact, animals within 30 feet of you are hostile toward you",
+				"While attuned to the artifact, animals within 30 feet of you are hostile toward you",
+				//91-95
+				"While attuned to the artifact, you must eat and drink sixt times the normal amount each day",
+				"While attuned to the artifact, you must eat and drink sixt times the normal amount each day",
+				"While attuned to the artifact, you must eat and drink sixt times the normal amount each day",
+				"While attuned to the artifact, you must eat and drink sixt times the normal amount each day",
+				"While attuned to the artifact, you must eat and drink sixt times the normal amount each day",
+				//96-00
+				"While attuned to the artifact, your flaw is amplified in a way determined by the DM",
+				"While attuned to the artifact, your flaw is amplified in a way determined by the DM",
+				"While attuned to the artifact, your flaw is amplified in a way determined by the DM",
+				"While attuned to the artifact, your flaw is amplified in a way determined by the DM",
+				"While attuned to the artifact, your flaw is amplified in a way determined by the DM"
+			};
+
+			public static readonly string[] major_detrimental_properties =
+			{
+				//01-05
+				"While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts",
+				"While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts",
+				"While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts",
+				"While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts",
+				"While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts",
+				//06-10
+				"While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil",
+				"While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil",
+				"While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil",
+				"While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil",
+				"While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil",
+				//11-15
+				"When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property",
+				"When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property",
+				"When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property",
+				"When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property",
+				"When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property",
+				//16-20
+				"The artifact houses a bodiless life force that is hostile toward you. Each time you use an action to use one of the artifact's properties, there is a 50 percent chance that the life force tries to leave the artifact and enter your body. If you fail a DC 20 Charisma saving throw, it succeeds, and you become an NPC under the DM's control until the intruding life force is banished using magic such as the dispel evil and good spell",
+				"The artifact houses a bodiless life force that is hostile toward you. Each time you use an action to use one of the artifact's properties, there is a 50 percent chance that the life force tries to leave the artifact and enter your body. If you fail a DC 20 Charisma saving throw, it succeeds, and you become an NPC under the DM's control until the intruding life force is banished using magic such as the dispel evil and good spell",
+				"The artifact houses a bodiless life force that is hostile toward you. Each time you use an action to use one of the artifact's properties, there is a 50 percent chance that the life force tries to leave the artifact and enter your body. If you fail a DC 20 Charisma saving throw, it succeeds, and you become an NPC under the DM's control until the intruding life force is banished using magic such as the dispel evil and good spell",
+				"The artifact houses a bodiless life force that is hostile toward you. Each time you use an action to use one of the artifact's properties, there is a 50 percent chance that the life force tries to leave the artifact and enter your body. If you fail a DC 20 Charisma saving throw, it succeeds, and you become an NPC under the DM's control until the intruding life force is banished using magic such as the dispel evil and good spell",
+				"The artifact houses a bodiless life force that is hostile toward you. Each time you use an action to use one of the artifact's properties, there is a 50 percent chance that the life force tries to leave the artifact and enter your body. If you fail a DC 20 Charisma saving throw, it succeeds, and you become an NPC under the DM's control until the intruding life force is banished using magic such as the dispel evil and good spell",
+				//21-25
+				"Creatures with a challenge rating of 0, as well as plants that aren't creatures, drop to 0 hit points when within 10 feet of the artifact",
+				"Creatures with a challenge rating of 0, as well as plants that aren't creatures, drop to 0 hit points when within 10 feet of the artifact",
+				"Creatures with a challenge rating of 0, as well as plants that aren't creatures, drop to 0 hit points when within 10 feet of the artifact",
+				"Creatures with a challenge rating of 0, as well as plants that aren't creatures, drop to 0 hit points when within 10 feet of the artifact",
+				"Creatures with a challenge rating of 0, as well as plants that aren't creatures, drop to 0 hit points when within 10 feet of the artifact",
+				//26-30
+				"The artifact imprisons a death slaad (see the Monster Manual). Each time you use one of the artifact's properties as an action, the slaad has a 10 percent chance of escaping, whereupon it appears within 15 feet of you and attacks you",
+				"The artifact imprisons a death slaad (see the Monster Manual). Each time you use one of the artifact's properties as an action, the slaad has a 10 percent chance of escaping, whereupon it appears within 15 feet of you and attacks you",
+				"The artifact imprisons a death slaad (see the Monster Manual). Each time you use one of the artifact's properties as an action, the slaad has a 10 percent chance of escaping, whereupon it appears within 15 feet of you and attacks you",
+				"The artifact imprisons a death slaad (see the Monster Manual). Each time you use one of the artifact's properties as an action, the slaad has a 10 percent chance of escaping, whereupon it appears within 15 feet of you and attacks you",
+				"The artifact imprisons a death slaad (see the Monster Manual). Each time you use one of the artifact's properties as an action, the slaad has a 10 percent chance of escaping, whereupon it appears within 15 feet of you and attacks you",
+				//31-35
+				"While you are attuned to the artifact, creatures of a particular type other than humanoid (as chosen by the DM) are always hostile toward you",
+				"While you are attuned to the artifact, creatures of a particular type other than humanoid (as chosen by the DM) are always hostile toward you",
+				"While you are attuned to the artifact, creatures of a particular type other than humanoid (as chosen by the DM) are always hostile toward you",
+				"While you are attuned to the artifact, creatures of a particular type other than humanoid (as chosen by the DM) are always hostile toward you",
+				"While you are attuned to the artifact, creatures of a particular type other than humanoid (as chosen by the DM) are always hostile toward you",
+				//36-40
+				"The artifact dilutes magic potions within 10 feet of it, rendering them nonmagical",
+				"The artifact dilutes magic potions within 10 feet of it, rendering them nonmagical",
+				"The artifact dilutes magic potions within 10 feet of it, rendering them nonmagical",
+				"The artifact dilutes magic potions within 10 feet of it, rendering them nonmagical",
+				"The artifact dilutes magic potions within 10 feet of it, rendering them nonmagical",
+				//41-45
+				"The artifact erases magic scrolls within 10 feet of it, rendering them nonmagical",
+				"The artifact erases magic scrolls within 10 feet of it, rendering them nonmagical",
+				"The artifact erases magic scrolls within 10 feet of it, rendering them nonmagical",
+				"The artifact erases magic scrolls within 10 feet of it, rendering them nonmagical",
+				"The artifact erases magic scrolls within 10 feet of it, rendering them nonmagical",
+				//46-50
+				"Before useing one of the artifact's properties as an action, you must use a bonus action to draw blood, either from yourself or from a willing or incapacitated creature within your reach, using a piercing or slashing melee weapon. THe subject takes 1d4 damage of the appropriate type.",
+				"Before useing one of the artifact's properties as an action, you must use a bonus action to draw blood, either from yourself or from a willing or incapacitated creature within your reach, using a piercing or slashing melee weapon. THe subject takes 1d4 damage of the appropriate type.",
+				"Before useing one of the artifact's properties as an action, you must use a bonus action to draw blood, either from yourself or from a willing or incapacitated creature within your reach, using a piercing or slashing melee weapon. THe subject takes 1d4 damage of the appropriate type.",
+				"Before useing one of the artifact's properties as an action, you must use a bonus action to draw blood, either from yourself or from a willing or incapacitated creature within your reach, using a piercing or slashing melee weapon. THe subject takes 1d4 damage of the appropriate type.",
+				"Before useing one of the artifact's properties as an action, you must use a bonus action to draw blood, either from yourself or from a willing or incapacitated creature within your reach, using a piercing or slashing melee weapon. THe subject takes 1d4 damage of the appropriate type.",
+				//51-60
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				"When you become attuned to the artifact, you gain a form of long-term madness (see chapter 8, \"Running the Game\")",
+				//61-65
+				"You take 4d10 psychic damage when you become attuned to the artifact",
+				"You take 4d10 psychic damage when you become attuned to the artifact",
+				"You take 4d10 psychic damage when you become attuned to the artifact",
+				"You take 4d10 psychic damage when you become attuned to the artifact",
+				"You take 4d10 psychic damage when you become attuned to the artifact",
+				//66-70
+				"You take 8d10 psychic damage when you become attuned to the artifact",
+				"You take 8d10 psychic damage when you become attuned to the artifact",
+				"You take 8d10 psychic damage when you become attuned to the artifact",
+				"You take 8d10 psychic damage when you become attuned to the artifact",
+				"You take 8d10 psychic damage when you become attuned to the artifact",
+				//71-75
+				"Before you can become attuned to the artifact, you must kill a creature of your alignment",
+				"Before you can become attuned to the artifact, you must kill a creature of your alignment",
+				"Before you can become attuned to the artifact, you must kill a creature of your alignment",
+				"Before you can become attuned to the artifact, you must kill a creature of your alignment",
+				"Before you can become attuned to the artifact, you must kill a creature of your alignment",
+				//76-80
+				"When you become attuned to the artifact, one of your ability scores is reduced by 2 at random. A greater restoration spell restores the ability to normal",
+				"When you become attuned to the artifact, one of your ability scores is reduced by 2 at random. A greater restoration spell restores the ability to normal",
+				"When you become attuned to the artifact, one of your ability scores is reduced by 2 at random. A greater restoration spell restores the ability to normal",
+				"When you become attuned to the artifact, one of your ability scores is reduced by 2 at random. A greater restoration spell restores the ability to normal",
+				"When you become attuned to the artifact, one of your ability scores is reduced by 2 at random. A greater restoration spell restores the ability to normal",
+				//81-85
+				"Each time you become attuned to the artifact, you age 3d10 years. You must succeed on a DC 10 Consitution saving throw or die from the shock. If you die, you are instantly transformed into a wight (see the Monster Manual) under the DM's control that is sworn to protect the artifact",
+				"Each time you become attuned to the artifact, you age 3d10 years. You must succeed on a DC 10 Consitution saving throw or die from the shock. If you die, you are instantly transformed into a wight (see the Monster Manual) under the DM's control that is sworn to protect the artifact",
+				"Each time you become attuned to the artifact, you age 3d10 years. You must succeed on a DC 10 Consitution saving throw or die from the shock. If you die, you are instantly transformed into a wight (see the Monster Manual) under the DM's control that is sworn to protect the artifact",
+				"Each time you become attuned to the artifact, you age 3d10 years. You must succeed on a DC 10 Consitution saving throw or die from the shock. If you die, you are instantly transformed into a wight (see the Monster Manual) under the DM's control that is sworn to protect the artifact",
+				"Each time you become attuned to the artifact, you age 3d10 years. You must succeed on a DC 10 Consitution saving throw or die from the shock. If you die, you are instantly transformed into a wight (see the Monster Manual) under the DM's control that is sworn to protect the artifact",
+				//86-90
+				"While attuned to the artifact, you lose the ability to speak.",
+				"While attuned to the artifact, you lose the ability to speak.",
+				"While attuned to the artifact, you lose the ability to speak.",
+				"While attuned to the artifact, you lose the ability to speak.",
+				"While attuned to the artifact, you lose the ability to speak.",
+				//91-95
+				"While attuned to the artifact, you have vulnerability to all damage",
+				"While attuned to the artifact, you have vulnerability to all damage",
+				"While attuned to the artifact, you have vulnerability to all damage",
+				"While attuned to the artifact, you have vulnerability to all damage",
+				"While attuned to the artifact, you have vulnerability to all damage",
+				//96-00
+				"When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes",
+				"When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes",
+				"When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes",
+				"When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes",
+				"When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes"
 			};
 
             public static string getIndividualTreasure_Challenge0_4()
@@ -5067,14 +5287,270 @@ namespace DungeonMasterHelper
 			//TODO
 			public static string getTreasureHoardChallenge5_10()
 			{
+				// every result will include at least the below amount of coins,
+				// will be combined with final result at the end
+				string coins = (roll(6, 6) * 100).ToString() + " cp, " + (roll(3, 6) * 100).ToString() + " sp, " + (roll(2, 6) * 10).ToString() + " gp";
+
 				int num = roll(1, 100);
 
-				return "";
+				string res = ", ";
+
+				switch(num)
+				{
+					//0-9
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+						break;
+					case 6:
+					case 7:
+					case 8:
+					case 9:
+
+					//0-9
+					case 10:
+					case 11:
+					case 12:
+					case 13:
+					case 14:
+					case 15:
+						res += roll(2, 6).ToString() + " 10 gp gems";
+						break;
+					case 16:
+					case 17:
+					case 18:
+					case 19:
+
+					//0-9
+					case 20:
+					case 21:
+					case 22:
+					case 23:
+					case 24:
+					case 25:
+					case 26:
+					case 27:
+					case 28:
+					case 29:
+
+					//0-9
+					case 30:
+					case 31:
+					case 32:
+					case 33:
+					case 34:
+					case 35:
+					case 36:
+					case 37:
+					case 38:
+					case 39:
+
+					//0-9
+					case 40:
+					case 41:
+					case 42:
+					case 43:
+					case 44:
+					case 45:
+					case 46:
+					case 47:
+					case 48:
+					case 49:
+
+					//0-9
+					case 50:
+					case 51:
+					case 52:
+					case 53:
+					case 54:
+					case 55:
+					case 56:
+					case 57:
+					case 58:
+					case 59:
+
+					//0-9
+					case 60:
+					case 61:
+					case 62:
+					case 63:
+					case 64:
+					case 65:
+					case 66:
+					case 67:
+					case 68:
+					case 69:
+
+					//0-9
+					case 70:
+					case 71:
+					case 72:
+					case 73:
+					case 74:
+					case 75:
+					case 76:
+					case 77:
+					case 78:
+					case 79:
+
+					//0-9
+					case 80:
+					case 81:
+					case 82:
+					case 83:
+					case 84:
+					case 85:
+					case 86:
+					case 87:
+					case 88:
+					case 89:
+
+					//0-9
+					case 90:
+					case 91:
+					case 92:
+					case 93:
+					case 94:
+					case 95:
+					case 96:
+					case 97:
+					case 98:
+					case 99:
+				}
+
+				return coins + res;
 			}
 
 			//TODO - create GET versions of treasure hoard tables
 		}
 
+		/*
+		 * switch(num)
+				{
+					//0-9
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+					case 6:
+					case 7:
+					case 8:
+					case 9:
+
+					//0-9
+					case 10:
+					case 11:
+					case 12:
+					case 13:
+					case 14:
+					case 15:
+					case 16:
+					case 17:
+					case 18:
+					case 19:
+
+					//0-9
+					case 20:
+					case 21:
+					case 22:
+					case 23:
+					case 24:
+					case 25:
+					case 26:
+					case 27:
+					case 28:
+					case 29:
+
+					//0-9
+					case 30:
+					case 31:
+					case 32:
+					case 33:
+					case 34:
+					case 35:
+					case 36:
+					case 37:
+					case 38:
+					case 39:
+
+					//0-9
+					case 40:
+					case 41:
+					case 42:
+					case 43:
+					case 44:
+					case 45:
+					case 46:
+					case 47:
+					case 48:
+					case 49:
+
+					//0-9
+					case 50:
+					case 51:
+					case 52:
+					case 53:
+					case 54:
+					case 55:
+					case 56:
+					case 57:
+					case 58:
+					case 59:
+
+					//0-9
+					case 60:
+					case 61:
+					case 62:
+					case 63:
+					case 64:
+					case 65:
+					case 66:
+					case 67:
+					case 68:
+					case 69:
+
+					//0-9
+					case 70:
+					case 71:
+					case 72:
+					case 73:
+					case 74:
+					case 75:
+					case 76:
+					case 77:
+					case 78:
+					case 79:
+
+					//0-9
+					case 80:
+					case 81:
+					case 82:
+					case 83:
+					case 84:
+					case 85:
+					case 86:
+					case 87:
+					case 88:
+					case 89:
+
+					//0-9
+					case 90:
+					case 91:
+					case 92:
+					case 93:
+					case 94:
+					case 95:
+					case 96:
+					case 97:
+					case 98:
+					case 99:
+				}
+		 */
 		#endregion DMG
 
 		#region XGE
