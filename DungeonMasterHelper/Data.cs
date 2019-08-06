@@ -5285,46 +5285,40 @@ namespace DungeonMasterHelper
                         (roll(2, 6) * 1000) + " ep";
             }
 			//TODO
-			public static string getTreasureHoardChallenge5_10()
+			public static string getTreasureHoardChallenge0_4()
 			{
 				// every result will include at least the below amount of coins,
 				// will be combined with final result at the end
 				string coins = (roll(6, 6) * 100).ToString() + " cp, " + (roll(3, 6) * 100).ToString() + " sp, " + (roll(2, 6) * 10).ToString() + " gp";
 
-				int num = roll(1, 100);
+				int num = roll(1, 100) + 1;
 
 				string res = ", ";
 
-				switch(num)
+				switch (num)
 				{
-					//0-9
-					case 0:
 					case 1:
 					case 2:
 					case 3:
 					case 4:
 					case 5:
-						break;
 					case 6:
+						break;
 					case 7:
 					case 8:
 					case 9:
-
-					//0-9
 					case 10:
 					case 11:
 					case 12:
 					case 13:
 					case 14:
 					case 15:
+					case 16:
 						res += roll(2, 6).ToString() + " 10 gp gems";
 						break;
-					case 16:
 					case 17:
 					case 18:
 					case 19:
-
-					//0-9
 					case 20:
 					case 21:
 					case 22:
@@ -5332,11 +5326,11 @@ namespace DungeonMasterHelper
 					case 24:
 					case 25:
 					case 26:
+						res += roll(2, 4).ToString() + " 25 gp art objects";
+						break;
 					case 27:
 					case 28:
 					case 29:
-
-					//0-9
 					case 30:
 					case 31:
 					case 32:
@@ -5344,26 +5338,28 @@ namespace DungeonMasterHelper
 					case 34:
 					case 35:
 					case 36:
+						res += roll(2, 6).ToString() + " 50 gp gems";
+						break;
 					case 37:
 					case 38:
 					case 39:
-
-					//0-9
 					case 40:
 					case 41:
 					case 42:
 					case 43:
 					case 44:
+						res += roll(2, 6).ToString() + " 10 gp gems";
+						break;
 					case 45:
 					case 46:
 					case 47:
 					case 48:
 					case 49:
-
-					//0-9
 					case 50:
 					case 51:
 					case 52:
+						res += roll(2, 4).ToString() + " 25 gp art objects";
+						break;
 					case 53:
 					case 54:
 					case 55:
@@ -5371,57 +5367,83 @@ namespace DungeonMasterHelper
 					case 57:
 					case 58:
 					case 59:
-
-					//0-9
 					case 60:
+						res += roll(2, 6).ToString() + " 50 gp gems";
+						break;
 					case 61:
 					case 62:
 					case 63:
 					case 64:
 					case 65:
+						res += roll(2, 6).ToString() + " 10 gp gems";
+						break;
 					case 66:
 					case 67:
 					case 68:
 					case 69:
-
-					//0-9
 					case 70:
+						res += roll(2, 4).ToString() + "25 gp art objects";
+						break;
 					case 71:
 					case 72:
 					case 73:
 					case 74:
 					case 75:
+						res += roll(2, 6).ToString() + " 50 gp gems";
+						break;
 					case 76:
 					case 77:
 					case 78:
+						res += roll(2, 6).ToString() + " 10 gp gems";
+						break;
 					case 79:
-
-					//0-9
 					case 80:
+						res += roll(2, 4).ToString() + " 25 gp art objects";
+						break;
 					case 81:
 					case 82:
 					case 83:
 					case 84:
 					case 85:
+						res += roll(2, 6).ToString() + " 50 gp gems";
+						break;
 					case 86:
 					case 87:
 					case 88:
 					case 89:
-
-					//0-9
 					case 90:
 					case 91:
 					case 92:
+						res += roll(2, 4).ToString() + " 25 gp art objects";
+						break;
 					case 93:
 					case 94:
 					case 95:
 					case 96:
 					case 97:
+						res += roll(2, 6).ToString() + "50 gp gems";
+						break;
 					case 98:
 					case 99:
+						res += roll(2, 4).ToString() + " 25 gp art objects";
+						break;
+					case 100:
+						res += roll(2, 6).ToString() + " 50 gp gems";
+						break;
+
 				}
 
 				return coins + res;
+			}
+			
+			public static string getTreasureHoardChallenge5_10()
+			{
+				return "";
+			}
+
+			public static string getTreasureHoardChallenge11_16()
+			{
+				return "";
 			}
 
 			//TODO - create GET versions of treasure hoard tables
@@ -5430,19 +5452,16 @@ namespace DungeonMasterHelper
 		/*
 		 * switch(num)
 				{
-					//0-9
-					case 0:
 					case 1:
 					case 2:
 					case 3:
 					case 4:
 					case 5:
 					case 6:
+						break;
 					case 7:
 					case 8:
 					case 9:
-
-					//0-9
 					case 10:
 					case 11:
 					case 12:
@@ -5450,11 +5469,11 @@ namespace DungeonMasterHelper
 					case 14:
 					case 15:
 					case 16:
+						res += roll(2, 6).ToString() + " 10 gp gems";
+						break;
 					case 17:
 					case 18:
 					case 19:
-
-					//0-9
 					case 20:
 					case 21:
 					case 22:
@@ -5462,11 +5481,11 @@ namespace DungeonMasterHelper
 					case 24:
 					case 25:
 					case 26:
+						res += roll(2, 4).ToString() + " 50 gp gems";
+						break;
 					case 27:
 					case 28:
 					case 29:
-
-					//0-9
 					case 30:
 					case 31:
 					case 32:
@@ -5477,8 +5496,6 @@ namespace DungeonMasterHelper
 					case 37:
 					case 38:
 					case 39:
-
-					//0-9
 					case 40:
 					case 41:
 					case 42:
@@ -5489,8 +5506,6 @@ namespace DungeonMasterHelper
 					case 47:
 					case 48:
 					case 49:
-
-					//0-9
 					case 50:
 					case 51:
 					case 52:
@@ -5501,8 +5516,6 @@ namespace DungeonMasterHelper
 					case 57:
 					case 58:
 					case 59:
-
-					//0-9
 					case 60:
 					case 61:
 					case 62:
@@ -5513,8 +5526,6 @@ namespace DungeonMasterHelper
 					case 67:
 					case 68:
 					case 69:
-
-					//0-9
 					case 70:
 					case 71:
 					case 72:
@@ -5525,8 +5536,6 @@ namespace DungeonMasterHelper
 					case 77:
 					case 78:
 					case 79:
-
-					//0-9
 					case 80:
 					case 81:
 					case 82:
@@ -5537,8 +5546,6 @@ namespace DungeonMasterHelper
 					case 87:
 					case 88:
 					case 89:
-
-					//0-9
 					case 90:
 					case 91:
 					case 92:
@@ -5549,6 +5556,7 @@ namespace DungeonMasterHelper
 					case 97:
 					case 98:
 					case 99:
+					case 100:
 				}
 		 */
 		#endregion DMG
