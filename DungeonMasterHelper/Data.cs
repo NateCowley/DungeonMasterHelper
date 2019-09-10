@@ -16,7 +16,7 @@ namespace DungeonMasterHelper
 
 		private static Random rand = new Random();
 
-		public static bool DEVELOPMENT = true;
+		public static bool INDEVELOPMENT = true;
 
         private static string lowerFirstLetter(string str)
         {
@@ -68,10 +68,27 @@ namespace DungeonMasterHelper
             return sum;
         }
 
-        public static string getRandomFrom(string[] arr)
+        public static string getSingleRandomFrom(string[] arr)
         {
             return arr[rand.Next() % arr.Length];
         }
+
+		public static string getMultipleRandomFrom(int numItems, string[] table)
+		{
+			string res = "";
+
+			for (int i = 0; i < numItems; i++)
+			{
+				res += getSingleRandomFrom(table);
+
+				if (i + 1 == numItems)
+				{
+					res += ", ";
+				}
+			}
+
+			return res;
+		}
 
 		/// <summary>
 		/// Returns a duplicate free copy of the table.
@@ -5285,17 +5302,15 @@ namespace DungeonMasterHelper
                         (roll(2, 6) * 1000) + " ep";
             }
 			//TODO
-			public static string getTreasureHoardChallenge0_4()
+			public static string getTreasureHoardChallenge0_4(bool withDetails = false)
 			{
 				// every result will include at least the below amount of coins,
 				// will be combined with final result at the end
 				string coins = (roll(6, 6) * 100).ToString() + " cp, " + (roll(3, 6) * 100).ToString() + " sp, " + (roll(2, 6) * 10).ToString() + " gp";
+				
+				string res = "";
 
-				int num = roll(1, 100) + 1;
-
-				string res = ", ";
-
-				switch (num)
+				switch (roll(1, 100))
 				{
 					case 1:
 					case 2:
@@ -5314,7 +5329,15 @@ namespace DungeonMasterHelper
 					case 14:
 					case 15:
 					case 16:
-						res += roll(2, 6).ToString() + " 10 gp gems";
+						if(withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones10gp);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 10 gp gems";
+						}
+
 						break;
 					case 17:
 					case 18:
@@ -5326,7 +5349,15 @@ namespace DungeonMasterHelper
 					case 24:
 					case 25:
 					case 26:
-						res += roll(2, 4).ToString() + " 25 gp art objects";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects";
+						}
+
 						break;
 					case 27:
 					case 28:
@@ -5338,7 +5369,15 @@ namespace DungeonMasterHelper
 					case 34:
 					case 35:
 					case 36:
-						res += roll(2, 6).ToString() + " 50 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones50gp);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 50 gp gems";
+						}
+
 						break;
 					case 37:
 					case 38:
@@ -5348,7 +5387,17 @@ namespace DungeonMasterHelper
 					case 42:
 					case 43:
 					case 44:
-						res += roll(2, 6).ToString() + " 10 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones10gp) + ", " + 
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 10 gp gems, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
 						break;
 					case 45:
 					case 46:
@@ -5358,7 +5407,17 @@ namespace DungeonMasterHelper
 					case 50:
 					case 51:
 					case 52:
-						res += roll(2, 4).ToString() + " 25 gp art objects";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
 						break;
 					case 53:
 					case 54:
@@ -5368,44 +5427,114 @@ namespace DungeonMasterHelper
 					case 58:
 					case 59:
 					case 60:
-						res += roll(2, 6).ToString() + " 50 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 50 gp gems, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
 						break;
 					case 61:
 					case 62:
 					case 63:
 					case 64:
 					case 65:
-						res += roll(2, 6).ToString() + " 10 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones10gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 10 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table B";
+						}
+
 						break;
 					case 66:
 					case 67:
 					case 68:
 					case 69:
 					case 70:
-						res += roll(2, 4).ToString() + "25 gp art objects";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table B";
+						}
+
 						break;
 					case 71:
 					case 72:
 					case 73:
 					case 74:
 					case 75:
-						res += roll(2, 6).ToString() + " 50 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 50 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table B";
+						}
+
 						break;
 					case 76:
 					case 77:
 					case 78:
-						res += roll(2, 6).ToString() + " 10 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones10gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 10 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
 						break;
 					case 79:
 					case 80:
-						res += roll(2, 4).ToString() + " 25 gp art objects";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
 						break;
 					case 81:
 					case 82:
 					case 83:
 					case 84:
 					case 85:
-						res += roll(2, 6).ToString() + " 50 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 50 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
 						break;
 					case 86:
 					case 87:
@@ -5414,34 +5543,981 @@ namespace DungeonMasterHelper
 					case 90:
 					case 91:
 					case 92:
-						res += roll(2, 4).ToString() + " 25 gp art objects";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_f);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table F";
+						}
+
 						break;
 					case 93:
 					case 94:
 					case 95:
 					case 96:
 					case 97:
-						res += roll(2, 6).ToString() + "50 gp gems";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_f);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 50 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table F";
+						}
+
 						break;
 					case 98:
 					case 99:
-						res += roll(2, 4).ToString() + " 25 gp art objects";
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getSingleRandomFrom(magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll once on Magic Item Table G";
+						}
+
 						break;
 					case 100:
-						res += roll(2, 6).ToString() + " 50 gp gems";
-						break;
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 6), gemstones50gp) + ", " +
+								getSingleRandomFrom(magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(2, 6).ToString() + " 50 gp gems, roll once on Magic Item Table G";
+						}
 
+						break;
 				}
 
 				return coins + res;
 			}
 			
-			public static string getTreasureHoardChallenge5_10()
+			public static string getTreasureHoardChallenge5_10(bool withDetails = false)
 			{
-				return "";
+				string coins = (roll(2, 6) * 100).ToString() + " cp, " + (roll(2, 6) * 1000).ToString() + " sp, " +
+					(roll(6, 6) * 100).ToString() + " gp, " + (roll(3, 6) * 10).ToString() + " pp";
+
+				string res = "";
+
+				switch (roll(1, 100))
+				{
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+						break;
+					case 5:
+					case 6:
+					case 7:
+					case 8:
+					case 9:
+					case 10:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects";
+						}
+
+						break;
+					case 11:
+					case 12:
+					case 13:
+					case 14:
+					case 15:
+					case 16:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones50gp);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 50 gp gems";
+						}
+
+						break;
+					case 17:
+					case 18:
+					case 19:
+					case 20:
+					case 21:
+					case 22:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems";
+						}
+
+						break;
+					case 23:
+					case 24:
+					case 25:
+					case 26:
+					case 27:
+					case 28:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
+						break;
+					case 29:
+					case 30:
+					case 31:
+					case 32:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
+						break;
+					case 33:
+					case 34:
+					case 35:
+					case 36:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 50 gp gem, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
+						break;
+					case 37:
+					case 38:
+					case 39:
+					case 40:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gem, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
+						break;
+					case 41:
+					case 42:
+					case 43:
+					case 44:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_a);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table A";
+						}
+
+						break;
+					case 45:
+					case 46:
+					case 47:
+					case 48:
+					case 49:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " + 
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 4).ToString() + 
+								" times on Magic Item Table B";
+						}
+
+						break;
+					case 50:
+					case 51:
+					case 52:
+					case 53:
+					case 54:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 50 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table B";
+						}
+
+						break;
+					case 55:
+					case 56:
+					case 57:
+					case 58:
+					case 59:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table B";
+						}
+
+						break;
+					case 60:
+					case 61:
+					case 62:
+					case 63:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table B";
+						}
+
+						break;
+					case 64:
+					case 65:
+					case 66:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 67:
+					case 68:
+					case 69:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 50 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 70:
+					case 71:
+					case 72:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 73:
+					case 74:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 75:
+					case 76:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " + getSingleRandomFrom(magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll once on Magic Item Table D";
+						}
+
+						break;
+					case 77:
+					case 78:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones50gp) + ", " + getSingleRandomFrom(magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 50 gp gems, roll once on Magic Item Table D";
+						}
+
+						break;
+					case 79:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " + getSingleRandomFrom(magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems, roll once on Magic Item Table D";
+						}
+
+						break;
+					case 80:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " + getSingleRandomFrom(magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll once on Magic Item Table D";
+						}
+
+						break;
+					case 81:
+					case 82:
+					case 83:
+					case 84:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects25gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_f);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 25 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table F";
+						}
+
+						break;
+					case 85:
+					case 86:
+					case 87:
+					case 88:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones50gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_f);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 50 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table F";
+						}
+
+						break;
+					case 89:
+					case 90:
+					case 91:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_f);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table F";
+						}
+
+						break;
+					case 92:
+					case 93:
+					case 94:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_f);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table F";
+						}
+
+						break;
+					case 95:
+					case 96:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table G";
+						}
+
+						break;
+					case 97:
+					case 98:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table G";
+						}
+
+						break;
+					case 99:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones100gp) + ", " + getSingleRandomFrom(magic_item_table_h);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 100 gp gems, roll once on Magic Item Table H";
+						}
+
+						break;
+					case 100:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " + getSingleRandomFrom(magic_item_table_h);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll once on Magic Item Table H";
+						}
+
+						break;
+				}
+
+				return coins + res;
 			}
 
-			public static string getTreasureHoardChallenge11_16()
+			public static string getTreasureHoardChallenge11_16(bool withDetails = false)
+			{
+				string coins = (roll(4, 6) * 1000).ToString() + " gp, " + (roll(5, 6) * 10).ToString() + " pp";
+
+				string res = "";
+
+				switch (roll(1, 100))
+				{
+					case 1:
+					case 2:
+					case 3:
+						break;
+					case 4:
+					case 5:
+					case 6:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects";
+						}
+
+						break;
+					case 7:
+					case 8:
+					case 9:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects";
+						}
+
+						break;
+					case 10: // the value for ten is actually missing from the source book, it is assumed that it goes with rolls of 11 and 12
+					case 11:
+					case 12:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems";
+						}
+
+						break;
+					case 13:
+					case 14:
+					case 15:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems";
+						}
+
+						break;
+					case 16:
+					case 17:
+					case 18:
+					case 19:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_a) + ", " + 
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table A, and " + roll(1, 6).ToString() + " times on Magic Item Table B";
+						}
+
+						break;
+					case 20:
+					case 21:
+					case 22:
+					case 23:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_a) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table A, and " + roll(1, 6).ToString() + " times on Magic Item Table B";
+						}
+
+						break;
+					case 24:
+					case 25:
+					case 26:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_a) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table A, and " + roll(1, 6).ToString() + " times on Magic Item Table B";
+						}
+
+						break;
+					case 27:
+					case 28:
+					case 29:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_a) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_b);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table A, and " + roll(1, 6).ToString() + " times on Magic Item Table B";
+						}
+
+						break;
+					case 30:
+					case 31:
+					case 32:
+					case 33:
+					case 34:
+					case 35:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 36:
+					case 37:
+					case 38:
+					case 39:
+					case 40:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 41:
+					case 42:
+					case 43:
+					case 44:
+					case 45:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 46:
+					case 47:
+					case 48:
+					case 49:
+					case 50:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " +
+								getMultipleRandomFrom(roll(1, 6), magic_item_table_c);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll " + roll(1, 6).ToString() +
+								" times on Magic Item Table C";
+						}
+
+						break;
+					case 51:
+					case 52:
+					case 53:
+					case 54:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table D";
+						}
+
+						break;
+					case 55:
+					case 56:
+					case 57:
+					case 58:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table D";
+						}
+
+						break;
+					case 59:
+					case 60:
+					case 61:
+					case 62:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table D";
+						}
+
+						break;
+					case 63:
+					case 64:
+					case 65:
+					case 66:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_d);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table D";
+						}
+
+						break;
+					case 67:
+					case 68:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " + getSingleRandomFrom(magic_item_table_e);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll once on Magic Item Table E";
+						}
+
+						break;
+					case 69:
+					case 70:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " + getSingleRandomFrom(magic_item_table_e);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll once on Magic Item Table E";
+						}
+
+						break;
+					case 71:
+					case 72:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " + getSingleRandomFrom(magic_item_table_e);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll once on Magic Item Table E";
+						}
+
+						break;
+					case 73:
+					case 74:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " + getSingleRandomFrom(magic_item_table_e);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll once on Magic Item Table E";
+						}
+
+						break;
+					case 75:
+					case 76:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getSingleRandomFrom(magic_item_table_f) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll once on Magic Item Table F, and " + 
+								roll(1, 4).ToString() + " times on Magic Item Table G";
+						}
+
+						break;
+					case 77:
+					case 78:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " +
+								getSingleRandomFrom(magic_item_table_f) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll once on Magic Item Table F, and " +
+								roll(1, 4).ToString() + " times on Magic Item Table G";
+						}
+
+						break;
+					case 79:
+					case 80:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " +
+								getSingleRandomFrom(magic_item_table_f) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll once on Magic Item Table F, and " +
+								roll(1, 4).ToString() + " times on Magic Item Table G";
+						}
+
+						break;
+					case 81:
+					case 82:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " +
+								getSingleRandomFrom(magic_item_table_f) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_g);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll once on Magic Item Table F, and " +
+								roll(1, 4).ToString() + " times on Magic Item Table G";
+						}
+
+						break;
+					case 83:
+					case 84:
+					case 85:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_h);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table H";
+						}
+
+						break;
+					case 86:
+					case 87:
+					case 88:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_h);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table H";
+						}
+
+						break;
+					case 89:
+					case 90:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_h);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table H";
+						}
+
+						break;
+					case 91:
+					case 92:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " +
+								getMultipleRandomFrom(roll(1, 4), magic_item_table_h);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll " + roll(1, 4).ToString() +
+								" times on Magic Item Table H";
+						}
+
+						break;
+					case 93:
+					case 94:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects250gp) + ", " + getSingleRandomFrom(magic_item_table_i);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 250 gp art objects, roll once on Magic Item Table I";
+						}
+
+						break;
+					case 95:
+					case 96:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(2, 4), art_objects750gp) + ", " + getSingleRandomFrom(magic_item_table_i);
+						}
+						else
+						{
+							res += ", " + roll(2, 4).ToString() + " 750 gp art objects, roll once on Magic Item Table I";
+						}
+
+						break;
+					case 97:
+					case 98:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones500gp) + ", " + getSingleRandomFrom(magic_item_table_i);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 500 gp gems, roll once on Magic Item Table I";
+						}
+
+						break;
+					case 99:
+					case 100:
+						if (withDetails)
+						{
+							res += ", " + getMultipleRandomFrom(roll(3, 6), gemstones1000gp) + ", " + getSingleRandomFrom(magic_item_table_i);
+						}
+						else
+						{
+							res += ", " + roll(3, 6).ToString() + " 1,000 gp gems, roll once on Magic Item Table I";
+						}
+
+						break;
+				}
+
+				return coins + res;
+			}
+
+			public static string getTreasureHoardChallenge17_Plus(bool withDetails = false)
 			{
 				return "";
 			}
