@@ -18,6 +18,14 @@ namespace DungeonMasterHelper
 
 		public static readonly bool INDEVELOPMENT = true;
 
+		public enum Rarity
+		{
+			COMMON,
+			UNCOMMON,
+			RARE,
+			VERYRARE
+		}
+
         private static string lowerFirstLetter(string str)
         {
             return str.First().ToString().ToLower() + str.Skip(1);
@@ -113,7 +121,109 @@ namespace DungeonMasterHelper
 			return str;
 		}
 
+		public static TableRow[] getTable(string[] table)
+		{
+			int start = 0;
+			List<TableRow> list = new List<TableRow>();
+			string entry = "";
+
+			for(int i = 0; i < table.Length; i++)
+			{
+				if(entry != table[i])
+				{
+					entry = table[i];
+					start = i + 1;
+
+					while(i < table.Length && entry == table[i])
+					{
+						i++;
+					}
+				}
+
+				if(start >= i)
+				{
+					list.Add(new TableRow(start, TableRow.EMPTY, entry));
+				}
+				else
+				{
+					list.Add(new TableRow(start, i, entry));
+				}
+
+				// look, it could be done better, i know
+				// don't even @ me right now
+				i--;
+			}
+
+			return list.ToArray();
+		}
+
+		// this version is used when getting a table that is split into
+		// multiple parts, such as the Horn of Valhalla's table
+		public static TableRow[] getTable(string[][] tables)
+		{
+			int start = 0;
+			List<TableRow> list = new List<TableRow>();
+			string entry = "";
+
+			for (int i = 0; i < tables[0].Length; i++)
+			{
+				if (entry != tables[0][i])
+				{
+					entry = tables[0][i];
+					start = i + 1;
+
+					while (i < tables[0].Length && entry == tables[0][i])
+					{
+						i++;
+					}
+				}
+
+				string otherEntries = "";
+
+				for(int j = 1; j < tables.Length; j++)
+				{
+					otherEntries += " " + tables[j][start - 1];
+				}
+
+				if (start >= i)
+				{
+					list.Add(new TableRow(start, TableRow.EMPTY, entry + otherEntries));
+				}
+				else
+				{
+					list.Add(new TableRow(start, i, entry + otherEntries));
+				}
+
+				// look, it could be done better, i know
+				// don't even @ me right now
+				i--;
+			}
+
+			return list.ToArray();
+		}
+
 		#endregion Utilities
+
+		#region Global
+
+		public static string[] damage_type =
+		{
+			"Acid",
+			"Bludgeoning",
+			"Cold",
+			"Fire",
+			"Force",
+			"Lightning",
+			"Necrotic",
+			"Piercing",
+			"Poison",
+			"Psychic",
+			"Radiant",
+			"Slashing",
+			"Thunder"
+		};
+
+		#endregion Global
 
 		#region DMG
 
@@ -1751,7 +1861,7 @@ namespace DungeonMasterHelper
                 villains_methods_warfare
             };
 
-            public static readonly string[] weakness =
+            public static readonly string[] villains_weakness =
             {
                 "A hidden object holds the villain's soul",
                 "The villain's power is broken if the death of its true love is avenged",
@@ -2272,9 +2382,11 @@ namespace DungeonMasterHelper
                 "Important figure died (murder suspected)",
                 "War between rival thieves' guilds",
                 "Plague or famine (sparks riots)",
-                "Corrupt officials",
+				"Plague or famine (sparks riots)",
+				"Corrupt officials",
                 "Marauding monsters",
-                "Powerful wizard has moved into town",
+				"Marauding monsters",
+				"Powerful wizard has moved into town",
                 "Economic depression (trade disrupted)",
                 "Flooding",
                 "Undead stirring in cemeteries",
@@ -2498,7 +2610,7 @@ namespace DungeonMasterHelper
                 "Runaway cart",
                 "Shady transaction",
                 "Spectacle",
-                "Urhin"
+                "Urchin"
             };
 
             public static string getDungeonLocation()
@@ -2603,57 +2715,216 @@ namespace DungeonMasterHelper
         // Chapter 6
         public static class BetweenAdventures
         {
+			// d100 + level
             public static readonly string[] carousing =
             {
+				// 1-10
                 "You are jailed for 1d4 days at the end of the downtime period on charges " +
                     "of disorderly conduct and disturbing the peace. You can pay a " +
                     "fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				"You are jailed for 1d4 days at the end of the downtime period on charges " +
+					"of disorderly conduct and disturbing the peace. You can pay a " +
+					"fine of 10 gp to avoid jail time, or you can try to resist arrest.",
+				// 11-20
                 "You regain consciousness in a strange place with no memory of how " +
                     "you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				"You regain consciousness in a strange place with no memory of how " +
+					"you got there, and you have been robbed of 3d6x5 gp.",
+				// 21-30
                 "You make an enemy. This person, business, or organization is now " +
                     "hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				"You make an enemy. This person, business, or organization is now " +
+					"hostile to you. The DM determines the offended party. You decide how you offended them.",
+				// 31-40
                 "You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
                     "On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
                     "You determine the identity of the love interest, subject to your DM's " +
                     "approval. If the romance ends badly, you might gain a new flaw. If it ends " +
                     "well or is ongoing, your new love interest might represent a new bond.",
-                "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
-                "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
-                "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
-                "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
-                "You earn modest winnings from gambling. You recuperate your " +
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				"You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. " +
+					"On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing."+
+					"You determine the identity of the love interest, subject to your DM's " +
+					"approval. If the romance ends badly, you might gain a new flaw. If it ends " +
+					"well or is ongoing, your new love interest might represent a new bond.",
+				// 41-80
+                "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				"You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.", "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing.",
+				// 91 or higher
+				"You earn modest winnings from gambling. You recuperate your " +
                         "lifestyle expenses for the time spent carousing and gain 1d20x4 gp.",
                 "You make a small fortune gambling. You recuperate your " +
-                        "lifestyle expenses for the time spent carousing and gain 4d6x10 gp."
-            };
+                        "lifestyle expenses for the time spent carousing and gain 4d6x10 gp.",
+				"You earn modest winnings from gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 1d20x4 gp.",
+				"You make a small fortune gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 4d6x10 gp.",
+				"You earn modest winnings from gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 1d20x4 gp.",
+				"You make a small fortune gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 4d6x10 gp.",
+				"You earn modest winnings from gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 1d20x4 gp.",
+				"You make a small fortune gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 4d6x10 gp.",
+				"You earn modest winnings from gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 1d20x4 gp.",
+				"You make a small fortune gambling. You recuperate your " +
+						"lifestyle expenses for the time spent carousing and gain 4d6x10 gp."
+			};
 
+			// d100 + days
             public static readonly string[] running_a_business =
             {
-                "You ust pay one and a half times the business's maintenance cost for each of the days.",
-                "You ust pay one and a half times the business's maintenance cost for each of the days.",
-                "You must pay the business's full maintenance cost for each of the days.",
-                "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.",
-                "The business covers its own maintenance cost for each of the days.",
-                "The business covers its own maintenance cost for each of the days.",
-                "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.",
-                "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.",
-                "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.",
-                "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp."
-            };
+				// 1-20
+                "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.",
+				"You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.",
+				"You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.",
+				"You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.", "You ust pay one and a half times the business's maintenance cost for each of the days.",
+				// 21-30
+				"You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.",
+				"You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.", "You must pay the business's full maintenance cost for each of the days.",
+				// 31-40
+				"You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.",
+				"You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.", "You must pay half the business's maintenance cost for each of the days. Profits cover the other half.",
+				// 41-60
+				"The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.","The business covers its own maintenance cost for each of the days.",
+				"The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.","The business covers its own maintenance cost for each of the days.",
+				"The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.","The business covers its own maintenance cost for each of the days.",
+				"The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.", "The business covers its own maintenance cost for each of the days.","The business covers its own maintenance cost for each of the days.",
+				// 61-80
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.",
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.",
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.",
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 1d6x5 gp.",
+				// 81-90
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.",
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 2d8x5 gp.",
+				// 91 or higher
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.",
+				"The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.", "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp.",
+			};
 
+			// d100 + mod
             public static readonly string[] selling_a_magic_item =
             {
-                "A buyer offering a tenth of the base price",
-                "A buyer offering a tenth of the base price",
-                "A buyer offering a quarter of the base price, and a shady buyer offering half the base price",
-                "A buyer offering a quarter of the base price, and a shady buyer offering half the base price",
-                "A buyer offering half the base price, and a shady buyer offering the full base price",
-                "A buyer offering half the base price, and a shady buyer offering the full base price",
-                "A buyer offering half the base price, and a shady buyer offering the full base price",
-                "A buyer offering half the base price, and a shady buyer offering the full base price",
-                "A buyer offering the full base price",
-                "A shady buyer offering one and a half times the base price, no questions asked"
-            };
+				// 20 or lower
+                "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price",
+				"A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price", "A buyer offering a tenth of the base price",
+				// 21-40
+                "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price",
+				"A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price", "A buyer offering a quarter of the base price, and a shady buyer offering half the base price",
+				// 41-80
+                "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price",
+				"A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price",
+				"A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price",
+				"A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price", "A buyer offering half the base price, and a shady buyer offering the full base price",
+				// 81-90
+                "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price", "A buyer offering the full base price",
+				// 91 or higher
+                "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked", "A shady buyer offering one and a half times the base price, no questions asked"
+			};
 
             public static string getCarousing()
             {
@@ -2895,57 +3166,70 @@ namespace DungeonMasterHelper
 
             public static readonly string[] individual_treasure_challenge0_4 =
             {
+				// 1-30
                 "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
 				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
 				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
 				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
 				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
 				"5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp", "5d6 (17) cp",
+				// 31-60
 				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
 				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
 				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
 				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
 				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
 				"4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp", "4d6 (14) sp",
+				// 61-70
 				"3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep",
 				"3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep", "3d6 (10) ep",
+				// 71-95
 				"3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp",
 				"3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp",
 				"3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp", "3d6 (10) gp",
+				// 96-00
 				"1d6 (3) pp", "1d6 (3) pp", "1d6 (3) pp", "1d6 (3) pp", "1d6 (3) pp"
 			};
 
 			public static readonly string[] individual_treasure_challenge5_10 =
 			{
+				//01-30
 				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
 				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
 				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
 				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
 				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
 				"4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep", "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep",
+				// 31-60
 				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
 				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
 				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
 				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
 				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
+				// 61-70
 				"6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp", "6d6 x 10 (210) sp, 2d6 x 10 (70) gp",
 				"3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp",
 				"3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp", "3d6 x 10 (105) ep, 2d6 x 10 (70) gp",
+				// 71-95
 				"4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp",
 				"4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp",
 				"4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp", "4d6 x 10 (140) gp",
+				// 96-00
 				"2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp", "2d6 x 10 (70) gp, 3d6 (10) pp"
 			};
 
 			public static readonly string[] individual_treasure_challenge11_16 =
 			{
+				// 1-20
 				"4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp",
 				"4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp",
 				"4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp",
 				"4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp", "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp",
+				// 21-35
 				"1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp",
 				"1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp",
 				"1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp", "1d6 x 100 (350) ep, 1d6 x 100 (350) gp",
+				// 36-75
 				"2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp",
 				"2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp",
 				"2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp",
@@ -2954,6 +3238,7 @@ namespace DungeonMasterHelper
 				"2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp",
 				"2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp",
 				"2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp", "2d6 x 100 (700) gp, 1d6 x 10 (35) pp",
+				// 76-00
 				"2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp",
 				"2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp",
 				"2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp", "2d6 x 100 (700) gp, 2d6 x 10 (70) pp",
@@ -2963,9 +3248,11 @@ namespace DungeonMasterHelper
 
 			public static readonly string[] individual_treasure_challenge17_plus =
 			{
+				// 1-15
 				"2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp",
 				"2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp",
 				"2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp", "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp",
+				// 16-55
 				"1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp",
 				"1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp",
 				"1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp",
@@ -2974,6 +3261,7 @@ namespace DungeonMasterHelper
 				"1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp",
 				"1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp",
 				"1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp", "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp",
+				// 56-00
 				"1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp",
 				"1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp",
 				"1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp", "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp",
@@ -3976,6 +4264,7 @@ namespace DungeonMasterHelper
 				"Aberration. The item was created by aberrations in ancient times, possibly for the use of favored humanoid thralls. When seen from the corner of the eye, the item seems to be moving.",
 				"Human. The item was created during the heyday of a fallen human kingdom, or it is tied to a human legend. It might hold writing in a forgotten tongue or symbols whose significance is lost to the ages.",
 				"Human. The item was created during the heyday of a fallen human kingdom, or it is tied to a human legend. It might hold writing in a forgotten tongue or symbols whose significance is lost to the ages.",
+				"Human. The item was created during the heyday of a fallen human kingdom, or it is tied to a human legend. It might hold writing in a forgotten tongue or symbols whose significance is lost to the ages.",
 				"Celestial. The weapon is half the normal weight and inscribed with feathered wings, suns, and other symbols of good. Fiends find the item's presence repulsive.",
 				"Dragon. This item is made from scales and talons shed by a dragon. Perhaps it incorporates precious metals and gems from the dragon's hoard. It grows slightly warm when within 120 feet of a dragon.",
 				"Drow. The item is half the normal weight. It is black and inscribed with spiders and webs in honor of Lolth. it might function poorly, or disintegrate, if exposed to sunlight for 1 minute or more.",
@@ -4690,6 +4979,680 @@ namespace DungeonMasterHelper
 				"Tome of the stilled tongue"
 			};
 
+			public static readonly string[] armor_of_resistance_damage_type =
+			{
+				"Acid",
+				"Cold",
+				"Fire",
+				"Force",
+				"Lightning",
+				"Necrotic",
+				"Poison",
+				"Psychic",
+				"Radiant",
+				"Thunder"
+			};
+			
+			public static readonly string[] bag_of_beans_effect =
+			{
+				// 01
+				"5d4 toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take 5d6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour.",
+				// 2-10
+				"A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.", "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds.",
+				// 11-20
+				"A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks", "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks",
+				// 21-30
+				"An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.", "An animate, immobile stone statue in your likeness rises. It makes verbal threats against you. If you leave it and others come near, it describes you as the most heinous of villains and directs the newcomers to find and attack you. If you are on the same plane of existence as the statue, it nows where you are. The statue becomes inanimate after 24 hours.",
+				// 31-40
+				"A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).", "A campfire with blue flames springs forth and burns for 24 hours (or until it is extinguished).",
+				// 41-50
+				"1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).", "1d6 + 6 shriekers sprout (see the Monster Manual for statistics).",
+				// 51-60
+				"1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.", "1d4 + 8 bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.",
+				// 61-70
+				"A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.", "A hungry bulette (see the Monster Manual for statistics) burrows up and attacks.",
+				// 71-80
+				"A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.", "A fruit tree grows. It has 1d10 + 20 fruit, 1d8 of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.",
+				// 81-90
+				"A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.", "A nest of 1d4 + 3 eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes 10d6 force damage from an internal magical explosion.",
+				// 91-99
+				"A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.", "A pyramid with a 60-foot-square base bursts upward. Inside is a sarcophagus containing a mummy lord (see the Monster Manual for statistics). The pyramid is treated as the mummy lord's lair, and its sarcophagus contains treasure of the DM's choice.",
+				// 00
+				"A giant beanstalk sprouts, growing to a height of the DM's choice. The top leads where the DM chooses, such as to a great view, a cloud giant's castle, or a different plane of existence."
+			};
+
+			public static readonly string[] gray_bag_of_tricks =
+			{
+				"Weasel",
+				"Giant rat",
+				"Badger",
+				"Boar",
+				"Panther",
+				"Giant badger",
+				"Dire wolf",
+				"Giant elk"
+			};
+
+			public static readonly string[] rust_bag_of_tricks =
+			{
+				"Rat",
+				"Owl",
+				"Mastiff",
+				"Goat",
+				"Giant goat",
+				"Giant boar",
+				"Lion",
+				"Brown bear"
+			};
+
+			public static readonly string[] tan_bag_of_tricks =
+			{
+				"Jackal",
+				"Ape",
+				"Baboon",
+				"Axe beak",
+				"Black bear",
+				"Giant weasel",
+				"Giant hyena",
+				"Tiger"
+			};
+
+			public static readonly string[] candle_of_invocation_alignment =
+			{
+				// 1-2
+				"Chaotic evil",
+				// 3-4
+				"Chaotic neutral",
+				// 5-7
+				"Chaotic good",
+				// 8-9
+				"Neutral evil",
+				// 10-11
+				"Neutral",
+				// 12-13
+				"Neutral good",
+				// 14-15
+				"Lawful evil",
+				// 16-17
+				"Lawful neutral",
+				// 18-20
+				"Lawful good"
+			};
+
+			public static readonly string[] carpet_of_flying_size =
+			{
+				// 01-20
+				"3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.",
+				"3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.", "3 ft. x 5 ft.",
+				// 21-55
+				"4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.",
+				"4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.",
+				"4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.",
+				"4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.", "4 ft. x 6 ft.",
+				// 56-80
+				"5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.",
+				"5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.",
+				"5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.", "5 ft. x 7 ft.",
+				// 81-100
+				"6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.",
+				"6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.", "6 ft. x 9 ft.",
+			};
+
+			public static readonly string[] carpet_of_flying_capacity =
+			{
+				// 01-20
+				"200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.",
+				"200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.", "200 lb.",
+				// 21-55
+				"400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.",
+				"400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.",
+				"400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.",
+				"400 lb.", "400 lb.", "400 lb.", "400 lb.", "400 lb.",
+				// 56-80
+				"600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.",
+				"600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.",
+				"600 lb.", "600 lb.", "600 lb.", "600 lb.", "600 lb.",
+				// 81-100
+				"800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.",
+				"800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb.", "800 lb."
+			};
+
+			public static readonly string[] carpet_of_flying_flying_speed =
+			{
+				// 01-20
+				"80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet",
+				"80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet", "80 feet",
+				// 21-55
+				"60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet",
+				"60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet",
+				"60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet", "60 feet",
+				"60 feet", "60 feet", "60 feet", "60 feet", "60 feet",
+				// 56-80
+				"40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet",
+				"40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet", "40 feet",
+				"40 feet", "40 feet", "40 feet", "40 feet", "40 feet",
+				// 81-100
+				"30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet",
+				"30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet", "30 feet"
+			};
+
+			public static readonly string[][] carpet_of_flying =
+			{
+				carpet_of_flying_size,
+				carpet_of_flying_capacity,
+				carpet_of_flying_flying_speed
+			};
+
+			public static readonly string[] efreeti_bottle_effect =
+			{
+				// 01-10
+				"The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.",
+				"The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.", "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic.",
+				// 11-90
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				"The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.", "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic.",
+				// 91-00
+				"The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.",
+				"The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic.", "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic."
+			};
+
+			public static readonly string[] horn_of_valhalla_horn_type =
+			{
+				// 01-40
+				"Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver",
+				"Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver",
+				"Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver",
+				"Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", "Silver", 
+				// 41-75
+				"Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass",
+				"Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass",
+				"Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass", "Brass",
+				"Brass", "Brass", "Brass", "Brass", "Brass", 
+				// 76-90
+				"Bronze", "Bronze", "Bronze", "Bronze", "Bronze", "Bronze", "Bronze", "Bronze", "Bronze", "Bronze",
+				"Bronze", "Bronze", "Bronze", "Bronze", "Bronze", 
+				// 91-00
+				"Iron", "Iron","Iron","Iron","Iron","Iron","Iron","Iron","Iron","Iron"
+			};
+			
+			public static readonly string[] horn_of_valhalla_berserkers_summoned =
+			{
+				// 01-40
+				"2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2",
+				"2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2",
+				"2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2",
+				"2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", "2d4 + 2", 
+				// 41-75
+				"3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3",
+				"3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3","3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3",
+				"3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3",
+				"3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", "3d4 + 3", 
+				// 76-90
+				"4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4",
+				"4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", "4d4 + 4", 
+				// 91-00
+				"5d4 + 5", "5d4 + 5","5d4 + 5","5d4 + 5","5d4 + 5", "5d4 + 5", "5d4 + 5","5d4 + 5","5d4 + 5","5d4 + 5"
+			};
+
+			public static readonly string[] horn_of_valhalla_requirement =
+			{
+				// 01-40
+				"None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None",
+				"None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", 
+				// 41-75
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons",
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons",
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons",
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons",
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons",
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons",
+				"Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", "Proficiency with all simple weapons", 
+				// 76-90
+				"Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor",
+				"Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor",
+				"Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", "Proficiency with  all medium armor", 
+				// 91-00
+				"Proficiency with all martial weapons", "Proficiency with all martial weapons","Proficiency with all martial weapons","Proficiency with all martial weapons","Proficiency with all martial weapons",
+				"Proficiency with all martial weapons", "Proficiency with all martial weapons","Proficiency with all martial weapons","Proficiency with all martial weapons","Proficiency with all martial weapons",
+			};
+			
+			public static readonly string[][] horn_of_valhalla =
+			{
+				horn_of_valhalla_horn_type,
+				horn_of_valhalla_berserkers_summoned,
+				horn_of_valhalla_requirement
+			};
+
+			public static readonly string[] iron_flask_contents =
+			{
+				// 01-50
+				"Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty",
+				"Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty",
+				"Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty",
+				"Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty",
+				"Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", 
+				// 51
+				"Arcanaloth",
+				// 52
+				"Cambion",
+				// 53-54
+				"Dao",
+				"Dao",
+				// 55-57
+				"Demon (type 1)",
+				"Demon (type 1)",
+				"Demon (type 1)",
+				// 58-60
+				"Demon (type 2)",
+				"Demon (type 2)",
+				"Demon (type 2)",
+				// 61-62
+				"Demon (type 3)",
+				"Demon (type 3)",
+				// 63-64
+				"Demon (type 4)",
+				"Demon (type 4)",
+				// 65
+				"Demon (type 5)",
+				// 66
+				"Demon (type 6)",
+				// 67
+				"Deva",
+				// 68-69
+				"Devil (greater)",
+				"Devil (greater)",
+				// 70-72
+				"Devil (lesser)",
+				"Devil (lesser)",
+				"Devil (lesser)",
+				// 73-74
+				"Djinni",
+				// 75-76
+				"Efreeti",
+				"Efreeti",
+				// 77-78
+				"Elemental (any)",
+				"Elemental (any)",
+				// 79
+				"Githyanki knight",
+				// 80
+				"Githzerai zerth",
+				// 81-82
+				"Invisible stalker",
+				"Invisible stalker",
+				// 83-84
+				"Marid",
+				"Marid",
+				// 85-86
+				"Mezzoloth",
+				"Mezzoloth",
+				// 87-88
+				"Night hag",
+				"Night hag",
+				// 89-90
+				"Nycaloth",
+				"Nycaloth",
+				// 91
+				"Planetar",
+				// 92-93
+				"Salamander",
+				"Salamander",
+				// 94-95
+				"Slaad (any)",
+				"Slaad (any)",
+				// 96
+				"Solar",
+				// 97-98
+				"Succubus/incubus",
+				"Succubus/incubus",
+				// 99
+				"Ultroloth",
+				// 00
+				"Xorn"
+			};
+
+			public static readonly string[] manual_of_golems_golem =
+			{
+				// 1-5
+				"Clay", "Clay", "Clay", "Clay", "Clay", 
+				// 6-17
+				"Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", "Flesh", 
+				// 18
+				"Iron", 
+				// 19-20
+				"Stone", "Stone"
+			};
+
+			public static readonly string[] manual_of_golems_time =
+			{
+				// 1-5
+				"30 days", "30 days", "30 days", "30 days", "30 days", 
+				// 6-17
+				"60 days", "60 days", "60 days", "60 days", "60 days", "60 days", "60 days", "60 days", "60 days", "60 days", "60 days", "60 days", 
+				// 18
+				"120 days", 
+				// 19-20
+				"90 days", "90 days"
+			};
+
+			public static readonly string[] manual_of_golems_cost =
+			{
+				// 1-5
+				"65,000 gp", "65,000 gp", "65,000 gp", "65,000 gp", "65,000 gp",
+				// 6-17
+				"50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", "50,000 gp", 
+				// 18
+				"100,000 gp",
+				// 19-20
+				"80,000 gp", "80,000 gp",
+			};
+
+			public static readonly string[][] manual_of_golems =
+			{
+				manual_of_golems_golem,
+				manual_of_golems_time,
+				manual_of_golems_cost
+			};
+
+			public static readonly string[] necklace_of_prayer_beads_bead_of =
+			{
+				// 1-6
+				"Blessing", "Blessing", "Blessing", "Blessing", "Blessing", "Blessing", 
+				// 7-12
+				"Curing", "Curing", "Curing", "Curing", "Curing", "Curing", 
+				// 13-16
+				"Favor", "Favor", "Favor", "Favor", 
+				// 17-18
+				"Smiting", "Smiting", 
+				// 19
+				"Summons", 
+				// 20
+				"Wind walking"
+			};
+
+			public static readonly string[] necklace_of_prayer_beads_spell =
+			{
+				// 1-6
+				"Bless", "Bless", "Bless", "Bless", "Bless", "Bless", 
+				// 7-12
+				"Cure wounds (2nd level) or lesser restoration", "Cure wounds (2nd level) or lesser restoration", "Cure wounds (2nd level) or lesser restoration", "Cure wounds (2nd level) or lesser restoration", "Cure wounds (2nd level) or lesser restoration", "Cure wounds (2nd level) or lesser restoration", 
+				// 13-16
+				"Greater restoration", "Greater restoration", "Greater restoration", "Greater restoration", 
+				// 17-18
+				"Branding smite", "Branding smite", 
+				// 19
+				"Planar ally",
+				// 20
+				"Wind walk"
+			};
+
+			public static readonly string[][] necklace_of_prayer_beads =
+			{
+				necklace_of_prayer_beads_bead_of,
+				necklace_of_prayer_beads_spell
+			};
+
+			public static readonly string[] potion_of_resistance_damage_type =
+			{
+				"Acid",
+				"Cold",
+				"Fire",
+				"Force",
+				"Lightning",
+				"Necrotic",
+				"Poison",
+				"Psychic",
+				"Radiant",
+				"Thunder"
+			};
+
+			public static readonly string[] quaals_feather_token =
+			{
+				// 01-20
+				"Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor",
+				"Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", "Anchor", 
+				// 21-35
+				"Bird", "Bird", "Bird", "Bird", "Bird", "Bird", "Bird", "Bird", "Bird", "Bird",
+				"Bird", "Bird", "Bird", "Bird", "Bird", 
+				// 36-50
+				"Fan", "Fan", "Fan", "Fan", "Fan", "Fan", "Fan", "Fan", "Fan", "Fan",
+				"Fan", "Fan", "Fan", "Fan", "Fan", 
+				// 51-65
+				"Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat",
+				"Swan boat", "Swan boat", "Swan boat", "Swan boat", "Swan boat", 
+				// 66-90
+				"Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree",
+				"Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree", "Tree",
+				"Tree", "Tree", "Tree", "Tree", "Tree", 
+				// 91-00
+				"Whip", "Whip","Whip","Whip","Whip","Whip","Whip","Whip","Whip","Whip"
+			};
+
+			public static readonly string[] ring_of_resistance =
+			{
+				"Acid - Pearl",
+				"Cold - Tourmaline",
+				"Fire - Garnet",
+				"Force - Sapphire",
+				"Lightning - Citrine",
+				"Necrotic - Jet",
+				"Poison - Amethyst",
+				"Psychic - Jade",
+				"Radiant - Topaz",
+				"Thunder - Spinel"
+			};
+
+			public static readonly string[] robe_of_useful_items =
+			{
+				// 01-08
+				"Bag of 100 gp", "Bag of 100 gp", "Bag of 100 gp", "Bag of 100 gp", "Bag of 100 gp", "Bag of 100 gp", "Bag of 100 gp", "Bag of 100 gp", 
+				// 09-15
+				"Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp", "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp", "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp", "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp",
+				"Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp", "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp", "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp", 
+				// 16-22
+				"Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself", "Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself",
+				"Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself", "Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself",
+				"Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself", "Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself",
+				"Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself", 
+				// 23-30
+				"10 gems worth 100 gp each", "10 gems worth 100 gp each", "10 gems worth 100 gp each", "10 gems worth 100 gp each", "10 gems worth 100 gp each", "10 gems worth 100 gp each", "10 gems worth 100 gp each", "10 gems worth 100 gp each",
+				// 31-44
+				"Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)",
+				"Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)", "Wooden ladder (24 feet long)",
+				// 45-51
+				"A riding horse with saddle bags (see the Monster Manual for statistics)", "A riding horse with saddle bags (see the Monster Manual for statistics)", "A riding horse with saddle bags (see the Monster Manual for statistics)", "A riding horse with saddle bags (see the Monster Manual for statistics)", "A riding horse with saddle bags (see the Monster Manual for statistics)",
+				"A riding horse with saddle bags (see the Monster Manual for statistics)", "A riding horse with saddle bags (see the Monster Manual for statistics)",
+				// 52-59
+				"Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", "Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", "Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", "Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you",
+				"Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", "Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", "Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", "Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you", 
+				// 60-68
+				"4 potions of healing", "4 potions of healing", "4 potions of healing", "4 potions of healing", "4 potions of healing", "4 potions of healing", "4 potions of healing", "4 potions of healing", "4 potions of healing", 
+				// 69-75
+				"Rowboat (12 feet long)", "Rowboat (12 feet long)", "Rowboat (12 feet long)", "Rowboat (12 feet long)", "Rowboat (12 feet long)", "Rowboat (12 feet long)", "Rowboat (12 feet long)", 
+				// 76-83
+				"Spell scroll containing one spell of 1st to 3rd level", "Spell scroll containing one spell of 1st to 3rd level", "Spell scroll containing one spell of 1st to 3rd level", "Spell scroll containing one spell of 1st to 3rd level", "Spell scroll containing one spell of 1st to 3rd level",
+				"Spell scroll containing one spell of 1st to 3rd level", "Spell scroll containing one spell of 1st to 3rd level", "Spell scroll containing one spell of 1st to 3rd level", 
+				// 84-90
+				"2 mastiffs (see the Monster Manual for statistics)", "2 mastiffs (see the Monster Manual for statistics)", "2 mastiffs (see the Monster Manual for statistics)", "2 mastiffs (see the Monster Manual for statistics)", "2 mastiffs (see the Monster Manual for statistics)",
+				"2 mastiffs (see the Monster Manual for statistics)", "2 mastiffs (see the Monster Manual for statistics)", 
+				// 91-96
+				"Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach", "Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach", "Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach", "Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach",
+				"Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach", "Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach", 
+				// 97-00
+				"Portable ram", "Portable ram","Portable ram","Portable ram"
+			};
+
+			public static readonly string[] scroll_of_protection_creature_type =
+			{
+				// 01-10
+				"Aberrations", "Aberrations", "Aberrations", "Aberrations", "Aberrations", "Aberrations", "Aberrations", "Aberrations", "Aberrations", "Aberrations", 
+				// 11-20
+				"Beasts", "Beasts", "Beasts", "Beasts", "Beasts", "Beasts", "Beasts", "Beasts", "Beasts", "Beasts", 
+				// 21-30
+				"Celestials", "Celestials", "Celestials", "Celestials", "Celestials", "Celestials", "Celestials", "Celestials", "Celestials", "Celestials", 
+				// 31-40
+				"Elementals", "Elementals", "Elementals", "Elementals", "Elementals", "Elementals", "Elementals", "Elementals", "Elementals", "Elementals", 
+				// 41-50
+				"Fey", "Fey", "Fey", "Fey", "Fey", "Fey", "Fey", "Fey", "Fey", "Fey", 
+				// 51-75
+				"Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends",
+				"Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends", "Fiends",
+				"Fiends", "Fiends", "Fiends", "Fiends", "Fiends", 
+				// 76-80
+				"Plants", "Plants", "Plants", "Plants", "Plants", 
+				// 81-00
+				"Undead", "Undead","Undead","Undead","Undead","Undead", "Undead","Undead","Undead","Undead",
+				"Undead", "Undead","Undead","Undead","Undead","Undead", "Undead","Undead","Undead","Undead"
+			};
+
+			public static readonly string[] sphere_of_annihilation_planar_portal_contact_result =
+			{
+				// 01-50
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.",
+				"The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", "The sphere is destoyed.", 
+				// 51-85
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.",
+				"The sphere moves through the portal or into the extradimensional space.", 
+				// 86-00
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence.",
+				"A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence."
+			};
+			
+			public static readonly string[] wand_of_wonder_effect =
+			{
+				// 01-05
+				"You cast slow.", "You cast slow.", "You cast slow.", "You cast slow.", "You cast slow.", 
+				// 06-10
+				"You cast faerie fire.", "You cast faerie fire.", "You cast faerie fire.", "You cast faerie fire.", "You cast faerie fire.", 
+				// 11-15
+				"You are stunned until the start of your next turn, believing something awesome just happened.", "You are stunned until the start of your next turn, believing something awesome just happened.", "You are stunned until the start of your next turn, believing something awesome just happened.",
+				"You are stunned until the start of your next turn, believing something awesome just happened.", "You are stunned until the start of your next turn, believing something awesome just happened.", 
+				// 16-20
+				"You cast gust of wind.", "You cast gust of wind.", "You cast gust of wind.", "You cast gust of wind.", "You cast gust of wind.", 
+				// 21-25
+				"You cast detect thoughts on the target you choose. If you didn't target a creature, you instead take 1d6 psychic damage.", "You cast detect thoughts on the target you choose. If you didn't target a creature, you instead take 1d6 psychic damage.", "You cast detect thoughts on the target you choose. If you didn't target a creature, you instead take 1d6 psychic damage.",
+				"You cast detect thoughts on the target you choose. If you didn't target a creature, you instead take 1d6 psychic damage.", "You cast detect thoughts on the target you choose. If you didn't target a creature, you instead take 1d6 psychic damage.", 
+				// 26-30
+				"You cast stinking cloud.", "You cast stinking cloud.", "You cast stinking cloud.", "You cast stinking cloud.", "You cast stinking cloud.", 
+				// 31-33
+				"Heavy rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn.",
+				"Heavy rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn.",
+				"Heavy rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn.", 
+				// 34-36
+				"An animal appears in the unoccupied space nearest the target. The animal isn't under your control and acts as it normally would. Roll a d100 to determine which animal appears. On a 01-25, a rhinoceros appears; on a 26-50, an elephant appears; and on a 51-100, a rat appears. See the Monster Manual for the animal's statistics.",
+				"An animal appears in the unoccupied space nearest the target. The animal isn't under your control and acts as it normally would. Roll a d100 to determine which animal appears. On a 01-25, a rhinoceros appears; on a 26-50, an elephant appears; and on a 51-100, a rat appears. See the Monster Manual for the animal's statistics.",
+				"An animal appears in the unoccupied space nearest the target. The animal isn't under your control and acts as it normally would. Roll a d100 to determine which animal appears. On a 01-25, a rhinoceros appears; on a 26-50, an elephant appears; and on a 51-100, a rat appears. See the Monster Manual for the animal's statistics.", 
+				// 37-46
+				"You cast lightning bolt.", "You cast lightning bolt.", "You cast lightning bolt.", "You cast lightning bolt.", "You cast lightning bolt.",
+				"You cast lightning bolt.", "You cast lightning bolt.", "You cast lightning bolt.", "You cast lightning bolt.", "You cast lightning bolt.", 
+				// 47-49
+				"A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. The butterfiles remain for 10 minutes.",
+				"A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. The butterfiles remain for 10 minutes.",
+				"A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. The butterfiles remain for 10 minutes.", 
+				// 50-53
+				"You enlarge the target as if you had cast enlarge/reduce. If the target can't be affected by that spell, or if you didn't target a creature, you become the target.", "You enlarge the target as if you had cast enlarge/reduce. If the target can't be affected by that spell, or if you didn't target a creature, you become the target.",
+				"You enlarge the target as if you had cast enlarge/reduce. If the target can't be affected by that spell, or if you didn't target a creature, you become the target.", "You enlarge the target as if you had cast enlarge/reduce. If the target can't be affected by that spell, or if you didn't target a creature, you become the target.", 
+				// 54-58
+				"You cast darkness", "You cast darkness", "You cast darkness", "You cast darkness", "You cast darkness", 
+				// 59-62
+				"Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgorwn for 1 minute.", "Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgorwn for 1 minute.",
+				"Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgorwn for 1 minute.", "Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size and remains overgorwn for 1 minute.", 
+				// 63-65
+				"An object of the DM's choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension.", "An object of the DM's choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension.",
+				"An object of the DM's choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension.", 
+				// 66-69
+				"You shrink yourself as if you had cast enlarge/reduce on yourself.", "You shrink yourself as if you had cast enlarge/reduce on yourself.", "You shrink yourself as if you had cast enlarge/reduce on yourself.",
+				"You shrink yourself as if you had cast enlarge/reduce on yourself.", 
+				// 70-79
+				"You cast fireball.", "You cast fireball.", "You cast fireball.", "You cast fireball.", "You cast fireball.", "You cast fireball.", "You cast fireball.",
+				"You cast fireball.", "You cast fireball.", "You cast fireball.", 
+				// 80-84
+				"You cast invisibility on yourself.", "You cast invisibility on yourself.", "You cast invisibility on yourself.", "You cast invisibility on yourself.", "You cast invisibility on yourself.", 
+				// 85-87
+				"Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point. Unless they are picked off, the leaves turn brown and fall off after 24 hours.", "Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point. Unless they are picked off, the leaves turn brown and fall off after 24 hours.",
+				"Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point. Unless they are picked off, the leaves turn brown and fall off after 24 hours.", 
+				// 88-90
+				"A stream of 1d4 x 10 gems, each worth 1 gp, shoots rom the wand's tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.", "A stream of 1d4 x 10 gems, each worth 1 gp, shoots rom the wand's tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.",
+				"A stream of 1d4 x 10 gems, each worth 1 gp, shoots rom the wand's tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.", 
+				// 91-95
+				"A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success.", "A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success.",
+				"A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success.", "A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success.",
+				"A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a DC 15 Constitution saving throw or become blinded for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success.", 
+				// 96-97
+				"The target's skin turns bright blue for 1d10 days. If you chose a point in space, the creature nearest to that point is affected.", "The target's skin turns bright blue for 1d10 days. If you chose a point in space, the creature nearest to that point is affected.", 
+				// 98-00
+				"If you targeted a creature, it must make a DC 15 Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic.", "If you targeted a creature, it must make a DC 15 Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic.",
+				"If you targeted a creature, it must make a DC 15 Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic.",
+			};
+
 			public static readonly string[] creating_sentient_magic_items_communication =
 			{
 				//01-60
@@ -4878,47 +5841,66 @@ namespace DungeonMasterHelper
 			public static readonly string[] minor_beneficial_properties =
 			{
 				//01-20
-				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
-				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
+				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
+				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
+				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice",
+				"While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", "While attuned to the artifact, you gain proficiency in one skill of the DM's choice", 
 				//21-30
-				"While attuned to the artifact, you are immune to disease",
+				"While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease",
+				"While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", "While attuned to the artifact, you are immune to disease", 
 				//31-40
-				"While attuned to the artifact, you can't be charmed or frightened",
+				"While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened",
+				"While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", "While attuned to the artifact, you can't be charmed or frightened", 
 				//41-50
-				"While attuned to the artifact, you have resistance against one damage type of the DM's choice",
+				"While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice",
+				"While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", "While attuned to the artifact, you have resistance against one damage type of the DM's choice", 
 				//51-60
-				"While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it",
+				"While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", 
+				"While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", "While attuned to the artifact, you can use an action to cast one cantrip (chosen by the DM) from it", 
 				//61-70
-				"While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn",
+				"While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn",
+				"While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 1st-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", 
 				//71-80
-				"As 61-70 above, except the spell is 2nd level",
+				"As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level",
+				"As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", "As 61-70 above, except the spell is 2nd level", 
 				//81-90
-				"As 61-70 above, except the spell is 3rd level",
+				"As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level",
+				"As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", "As 61-70 above, except the spell is 3rd level", 
 				//91-00
-				"While attuned to the artifact, you gain a +1 bonus to Armor Class"
+				"While attuned to the artifact, you gain a +1 bonus to Armor Class", "While attuned to the artifact, you gain a +1 bonus to Armor Class","While attuned to the artifact, you gain a +1 bonus to Armor Class","While attuned to the artifact, you gain a +1 bonus to Armor Class","While attuned to the artifact, you gain a +1 bonus to Armor Class",
+				"While attuned to the artifact, you gain a +1 bonus to Armor Class", "While attuned to the artifact, you gain a +1 bonus to Armor Class","While attuned to the artifact, you gain a +1 bonus to Armor Class","While attuned to the artifact, you gain a +1 bonus to Armor Class","While attuned to the artifact, you gain a +1 bonus to Armor Class"
 			};
 
 			public static readonly string[] major_beneficial_properties =
 			{
 				//01-20
-				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
-				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
+				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
+				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
+				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24",
+				"While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24", 
 				//21-30
-				"While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point",
+				"While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point",
+				"While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point", 
 				//31-40
-				"When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type",
+				"When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type",
+				"When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type", 
 				//41-50
-				"While attuned to the artifact, your walking speed increases by 10 feet",
+				"While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", "While attuned to the artifact, your walking speed increases by 10 feet", 
 				//51-60
-				"While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn",
+				"While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn",
+				"While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", "While attuned to the artifact, you can use an action to cast one 4th-level spell (chosen by the DM) from it. After you cast the spell, roll a d6. On a roll of 1-5, you can't cast it again until the next dawn", 
 				//61-70
-				"As 51-60 above, except the spell is 5th level",
+				"As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level",
+				"As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", "As 51-60 above, except the spell is 5th level", 
 				//71-80
-				"As 51-60 above, except the spell is 6th level",
+				"As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level",
+				"As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", "As 51-60 above, except the spell is 6th level", 
 				//81-90
-				"As 51-60 above, except the spell is 7th level",
+				"As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level",
+				"As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", "As 51-60 above, except the spell is 7th level", 
 				//91-00
-				"While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned"
+				"While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned", "While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned","While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned","While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned","While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned",
+				"While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned", "While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned","While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned","While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned","While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned"
 			};
 
 			public static readonly string[] minor_detrimental_properties =
@@ -6894,6 +7876,71 @@ namespace DungeonMasterHelper
 
 				return coins + res;
 			}
+
+			public static string getBagOfBeansEffect()
+			{
+				int num = roll(1, 100) - 1;
+
+				if(num == 0)
+				{
+					return roll(5, 4).ToString() + " toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take 5d6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour.";
+				}
+
+				if(num > 0 && num < 10)
+				{
+					return "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for " + roll(1,12).ToString() + " rounds.";
+				}
+				
+				if(num > 39 && num < 50)
+				{
+					return (roll(1, 6) + 6).ToString() + " shriekers sprout (see the Monster Manual for statistics).";
+				}
+
+				if(num > 49 && num < 60)
+				{
+					return (roll(1, 4) + 8).ToString() + " bright pink toads crawl forth. Whenever a toad is touched, it transforms into a large or smaller monster of the DM's choice. The monster remains for 1 minute, then disappears in a puff of smoke.";
+				}
+				
+				if(num > 69 && num < 80)
+				{
+					return "A fruit tree grows. It has " + (roll(1, 10) + 20).ToString() + " fruit, " + roll(1, 8).ToString() + " of which act as randomly determined magic potions, while one acts as an ingested poison of the DM's choice. The tree vanishes after 1 hour. Picked fruit remains, retaining any magic for 30 days.";
+				}
+
+				if(num > 79 && num < 90)
+				{
+					return "A nest of " + (roll(1, 4) + 3).ToString() + " eggs springs up. Any creature that eats an egg must make a DC 20 Constitution saving throw. On a successful save, a creature permanently increases its lowest ability score by 1, randomly choosing among equally low scores. On a failed save, the creature takes " + roll(10, 6).ToString() + " force damage from an internal magical explosion.";
+				}
+
+				return bag_of_beans_effect[num];
+			}
+
+			public static string getWandOfWonderEffect()
+			{
+				int num = roll(1, 100) - 1;
+
+				if(num > 19 && num < 23)
+				{
+					return "You cast detect thoughts on the target you choose. If you didn't target a creature, you instead take " + roll(1, 6).ToString() + " psychic damage.";
+				}
+
+				if(num > 86 && num < 90)
+				{
+					return "A stream of " + (roll(1, 4) * 10).ToString() + " gems, each worth 1 gp, shoots rom the wand's tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.";
+				}
+
+				if(num > 94 && num < 96)
+				{
+					return "The target's skin turns bright blue for " + roll(1, 10).ToString() + " days. If you chose a point in space, the creature nearest to that point is affected.";
+				}
+
+				return wand_of_wonder_effect[num];
+			}
+		}
+
+		// Chapter 8
+		public static class RunningTheGame
+		{
+
 		}
 
 		#endregion DMG
@@ -7930,5 +8977,62 @@ namespace DungeonMasterHelper
 		}
 
 		#endregion XGE
+	}
+
+	public class TableRow
+	{
+		public static readonly int EMPTY = -1;
+		public readonly int minRoll, maxRoll;
+		public readonly string entry;
+
+		public TableRow() { }
+
+		public TableRow(int min, int max, string str)
+		{
+			minRoll = min;
+			maxRoll = max;
+			entry = str;
+		}
+
+		public override string ToString()
+		{
+			string res = "";
+
+			if (minRoll < 10)
+			{
+				res += "0";
+			}
+			else if (minRoll == 100)
+			{
+				return res + "00       " + entry;
+			}
+
+			res += minRoll.ToString();
+
+			if (maxRoll != EMPTY)
+			{
+				res += "-";
+				if (maxRoll < 10)
+				{
+					res += "0" + maxRoll.ToString();
+				}
+				else if (maxRoll == 100)
+				{
+					res += "00";
+				}
+				else
+				{
+					res += maxRoll.ToString();
+				}
+			}
+			else
+			{
+				res += "     ";
+			}
+
+			res += "  " + entry;
+
+			return res;
+		}
 	}
 }
