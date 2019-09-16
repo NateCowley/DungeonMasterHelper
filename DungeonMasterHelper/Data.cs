@@ -202,6 +202,34 @@ namespace DungeonMasterHelper
 			return list.ToArray();
 		}
 
+		public static string getTableAsString(string[] table)
+		{
+			TableRow[] rows = getTable(table);
+
+			string res = "";
+
+			for (int i = 0; i < rows.Length; i++)
+			{
+				res += rows[i] + "\n";
+			}
+
+			return res;
+		}
+
+		public static string getTableAsString(string[][] table)
+		{
+			string res = "";
+
+			TableRow[] rows = getTable(table);
+
+			for (int i = 0; i < rows.Length; i++)
+			{
+				res += rows[i] + "\n";
+			}
+
+			return res;
+		}
+
 		#endregion Utilities
 
 		#region Global

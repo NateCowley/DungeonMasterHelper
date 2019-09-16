@@ -12,6 +12,8 @@ namespace DungeonMasterHelper
 {
     public partial class NPC_Form : Form
     {
+		Size minSize = new Size(185, 77);
+
         public NPC_Form()
         {
             InitializeComponent();
@@ -55,11 +57,20 @@ namespace DungeonMasterHelper
 			}
 		}
 
-		private void NPC_Form_DoubleClick(object sender, EventArgs e)
+		private void nameTB_DoubleClick(object sender, EventArgs e)
 		{
-			if(Data.INDEVELOPMENT)
+			MessageBox.Show(this.Size.ToString());
+		}
+
+		private void nameTB_KeyUp(object sender, KeyEventArgs e)
+		{
+			if(nameTB.Text.Length * 10 < minSize.Width)
 			{
-				MessageBox.Show(this.Width.ToString() + " " + this.Height.ToString());
+				this.MinimumSize = minSize;
+			}
+			else
+			{
+				this.MinimumSize = new Size(nameTB.Text.Length * 10, minSize.Height);
 			}
 		}
 	}

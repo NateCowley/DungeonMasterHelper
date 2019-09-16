@@ -20,3 +20,14 @@ C:\Users\lupus\Documents\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debu
 C:\Users\lupus\Documents\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.csproj.CoreCompileInputs.cache
 C:\Users\lupus\Documents\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.exe
 C:\Users\lupus\Documents\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.pdb
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\bin\Debug\DungeonMasterHelper.exe.config
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\bin\Debug\DungeonMasterHelper.exe
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\bin\Debug\DungeonMasterHelper.pdb
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.csprojAssemblyReference.cache
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.MainWindow.resources
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.NPC_Form.resources
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.Properties.Resources.resources
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.csproj.GenerateResource.cache
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.csproj.CoreCompileInputs.cache
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.exe
+A:\GitHub\DungeonMasterHelper\DungeonMasterHelper\obj\Debug\DungeonMasterHelper.pdb
