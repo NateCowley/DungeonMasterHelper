@@ -1,0 +1,49 @@
+new TableRow(1, -1, "Beauty Domination Community Change Balance Aspiration");
+new TableRow(2, -1, "Charity Greed Fairness Creativity Knowledge Discovery");
+new TableRow(3, -1, "Greater good Might Honor Freedom Live and let live Glory");
+new TableRow(4, -1, "Life Pain Logic Independence Moderation Nation");
+new TableRow(5, -1, "Respect Retribution Responsibility No limits Neutrality Redemption");
+new TableRow(6, -1, "Self-sacrifice Slaughter Tradition Whimsy People Self-knowledge");
+
+new TableRow(1, -1, "Acquire a legendary item to prolog life Seize a position of power or title Obtain an ancient artifact Fulfill an apocalyptic prophecy Prolong the life of a loved one Conquer a region or incite a rebellion Avenge a past humiliation or insult Control natrual resources or trade");
+new TableRow(2, -1, "Ascend to godhood Win a contest or tournament Build a construct or magical device Enact the vengeful will of a god or patron Prove worthy of another person's love Seize control of an army Avenge a past imprisonment or injury Marry into wealth");
+new TableRow(3, -1, "Become undead or obtain a younger body Win favor with a powerful individual Carry out a deity's wishes Spread a vile contagion Raise or restore a dead loved one Become the power behind the throne Avenge the death of a loved one Plunder ancient ruins");
+new TableRow(4, -1, "Steal a planar creature's essence Place a pawn in a position of power Offer sacrifices to a deity Overthrow a government Destroy rivals for another person's affection Gain the favor of a ruler Retrieve stolen property and punish the thief Steal land, goods, or money");
+
+new TableRow(1, 20, "3 ft. x 5 ft. 200 lb. 80 feet");
+new TableRow(21, 55, "4 ft. x 6 ft. 400 lb. 60 feet");
+new TableRow(56, 80, "5 ft. x 7 ft. 600 lb. 40 feet");
+new TableRow(81, 100, "6 ft. x 9 ft. 800 lb. 30 feet");
+
+new TableRow(1, 40, "Silver 2d4 + 2 None");
+new TableRow(41, 75, "Brass 3d4 + 3 Proficiency with all simple weapons");
+new TableRow(76, 90, "Bronze 4d4 + 4 Proficiency with  all medium armor");
+new TableRow(91, 100, "Iron 5d4 + 5 Proficiency with all martial weapons");
+
+new TableRow(1, 5, "Clay 30 days 65,000 gp");
+new TableRow(6, 17, "Flesh 60 days 50,000 gp");
+new TableRow(18, -1, "Iron 120 days 100,000 gp");
+new TableRow(19, 20, "Stone 90 days 80,000 gp");
+
+new TableRow(1, 6, "Blessing Bless");
+new TableRow(7, 12, "Curing Cure wounds (2nd level) or lesser restoration");
+new TableRow(13, 16, "Favor Greater restoration");
+new TableRow(17, 18, "Smiting Branding smite");
+new TableRow(19, -1, "Summons Planar ally");
+new TableRow(20, -1, "Wind walking Wind walk");
+
+new TableRow(1, -1, "Assassin's blood Ingested 150 gp");
+new TableRow(2, -1, "Burnt othur fumes Inhaled 500 gp");
+new TableRow(3, -1, "Carrion crawler mucus Contact 200 gp");
+new TableRow(4, -1, "Drow poison Injury 200 gp");
+new TableRow(5, -1, "Essence of ether Inhaled 300 gp");
+new TableRow(6, -1, "Malice Inhaled 250 gp");
+new TableRow(7, -1, "Midnight tears Ingested 1,500 gp");
+new TableRow(8, -1, "Oil of taggit Contact 400 gp");
+new TableRow(9, -1, "Pale tincture Ingested 250 gp");
+new TableRow(10, -1, "Purple worm poison Injury 2,000 gp");
+new TableRow(11, -1, "Serpent venom Injury 200 gp");
+new TableRow(12, -1, "Torpor Ingested 600 gp");
+new TableRow(13, -1, "Truth serum Ingested 150 gp");
+new TableRow(14, -1, "Wyvern poison Injury 1,200 gp");
+

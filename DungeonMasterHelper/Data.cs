@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace DungeonMasterHelper
 {
@@ -170,6 +172,7 @@ namespace DungeonMasterHelper
 					}
 				}
 
+				// get the entries in the other tables that match the row in current table
 				string otherEntries = "";
 
 				for (int j = 1; j < tables.Length; j++)
@@ -227,6 +230,7 @@ namespace DungeonMasterHelper
 
 		#region Global
 
+		
 		public static readonly string[] damage_type =
 		{
 			"Acid",
@@ -9360,6 +9364,219 @@ namespace DungeonMasterHelper
 		}
 
 		#endregion XGE
+
+		public static readonly string[][] allTables =
+		{
+			// global
+			damage_type,
+			// chapter 1
+			World.forms_of_government,
+			World.forms_of_government_explanation,
+			World.world_shaking_events,
+			World.leader_types,
+			World.cataclysmic_disasters,
+			World.invading_forces,
+			World.extinction_or_depletion,
+			World.new_organizations,
+			World.discoveries,
+			// chapter 2
+			Multiverse.astral_color_pools_plane,
+			Multiverse.astral_color_pools_pool_color,
+			Multiverse.psychic_wind_effects_location_effect,
+			Multiverse.psychic_wind_effects_mental_effect,
+			Multiverse.ethereal_curtains_plane,
+			Multiverse.ethereal_curtains_color_of_curtain,
+			Multiverse.ether_cyclone,
+			Multiverse.feywild_time_warp,
+			// chapter 3
+			Adventures.dungeon_goals,
+			Adventures.wilderness_goals,
+			Adventures.other_goals,
+			Adventures.adventure_villains,
+			Adventures.adventure_allies,
+			Adventures.adventure_patrons,
+			Adventures.adventure_introduction,
+			Adventures.adventure_climax,
+			Adventures.event_based_villain_actions,
+			Adventures.event_based_villain_actions_descriptions,
+			Adventures.event_based_goals,
+			Adventures.framing_events,
+			Adventures.moral_quandaries,
+			Adventures.moral_quandaries_descriptions,
+			Adventures.twists,
+			Adventures.side_quests,
+			// chapter 4
+			NPC.npc_appearance,
+			NPC.npc_high_abilities,
+			NPC.npc_low_abilities,
+			NPC.npc_talents,
+			NPC.npc_mannerisms,
+			NPC.npc_interaction_traits,
+			NPC.npc_ideals_good,
+			NPC.npc_ideals_evil,
+			NPC.npc_ideals_lawful,
+			NPC.npc_ideals_chaotic,
+			NPC.npc_ideals_neutral,
+			NPC.npc_ideals_other,
+			NPC.npc_bonds,
+			NPC.npc_flaws_and_secrets,
+			NPC.villains_scheme_objective,
+			NPC.villains_scheme_immortality,
+			NPC.villains_scheme_influence,
+			NPC.villains_scheme_magic,
+			NPC.villains_scheme_mayhem,
+			NPC.villains_scheme_passion,
+			NPC.villains_scheme_power,
+			NPC.villains_scheme_revenge,
+			NPC.villains_scheme_wealth,
+			NPC.villains_methods_agricultural_devestation,
+			NPC.villains_methods_assault_or_beatings,
+			NPC.villains_methods_bounty_hunting_or_assassination,
+			NPC.villains_methods_conficence_scams,
+			NPC.villains_methods_defamation,
+			NPC.villains_methods_dueling,
+			NPC.villains_methods_execution,
+			NPC.villains_methods_impersonation_or_disguise,
+			NPC.villains_methods_lying_or_perjury,
+			NPC.villains_methods_magical_mayhem,
+			NPC.villains_methods_murder,
+			NPC.villains_methods_neglect,
+			NPC.villains_methods_politics,
+			NPC.villains_methods_religion,
+			NPC.villains_methods_stalking,
+			NPC.villains_methods_theft_or_property_crime,
+			NPC.villains_methods_torture,
+			NPC.villains_methods_vice,
+			NPC.villains_methods_warfare,
+			NPC.villains_weakness,
+			// chapter 5
+			AdventureEnvironments.dungeon_location,
+			AdventureEnvironments.dungeon_exotic_location,
+			AdventureEnvironments.dungeon_creator,
+			AdventureEnvironments.cults_and_religious_groups,
+			AdventureEnvironments.npc_alignment,
+			AdventureEnvironments.npc_class,
+			AdventureEnvironments.dungeon_purpose,
+			AdventureEnvironments.dungeon_history,
+			AdventureEnvironments.monuments,
+			AdventureEnvironments.weird_locales,
+			AdventureEnvironments.weather_temperature,
+			AdventureEnvironments.weather_wind,
+			AdventureEnvironments.weather_precipitation,
+			AdventureEnvironments.race_relations,
+			AdventureEnvironments.rulers_status,
+			AdventureEnvironments.notable_traits,
+			AdventureEnvironments.known_for_its,
+			AdventureEnvironments.current_calamity,
+			AdventureEnvironments.building_type,
+			AdventureEnvironments.residence,
+			AdventureEnvironments.religious_building,
+			AdventureEnvironments.tavern,
+			AdventureEnvironments.tavern_name_first_part,
+			AdventureEnvironments.tavern_name_second_part,
+			AdventureEnvironments.warehouse,
+			AdventureEnvironments.shop,
+			AdventureEnvironments.random_urban_encounters,
+			// chapter 6
+			BetweenAdventures.carousing,
+			BetweenAdventures.running_a_business,
+			BetweenAdventures.selling_a_magic_item,
+			// chapter 7
+			Treasure.gemstones10gp,
+			Treasure.gemstones50gp,
+			Treasure.gemstones100gp,
+			Treasure.gemstones500gp,
+			Treasure.gemstones1000gp,
+			Treasure.gemstones5000gp,
+			Treasure.art_objects25gp,
+			Treasure.art_objects250gp,
+			Treasure.art_objects750gp,
+			Treasure.art_objects2500gp,
+			Treasure.art_objects7500gp,
+			Treasure.individual_treasure_challenge0_4,
+			Treasure.individual_treasure_challenge5_10,
+			Treasure.individual_treasure_challenge11_16,
+			Treasure.individual_treasure_challenge17_plus,
+			Treasure.treasure_hoard_challenge0_4,
+			Treasure.treasure_hoard_challenge5_10,
+			Treasure.treasure_hoard_challenge11_16,
+			Treasure.treasure_hoard_challenge17_plus,
+			Treasure.potion_miscibility,
+			Treasure.scroll_mishap,
+			Treasure.who_created_it_or_who_was_intended_to_use_it,
+			Treasure.what_is_a_detail_from_its_history,
+			Treasure.what_minor_property_does_it_have,
+			Treasure.what_quirk_does_it_have,
+			Treasure.magic_item_table_a,
+			Treasure.magic_item_table_b,
+			Treasure.magic_item_table_c,
+			Treasure.magic_item_table_d,
+			Treasure.magic_item_table_e,
+			Treasure.magic_item_table_f,
+			Treasure.magic_item_table_g,
+			Treasure.magic_item_table_h,
+			Treasure.magic_item_table_i,
+			Treasure.armor_of_resistance_damage_type,
+			Treasure.bag_of_beans_effect,
+			Treasure.gray_bag_of_tricks,
+			Treasure.rust_bag_of_tricks,
+			Treasure.tan_bag_of_tricks,
+			Treasure.candle_of_invocation_alignment,
+			Treasure.carpet_of_flying_size,
+			Treasure.carpet_of_flying_capacity,
+			Treasure.carpet_of_flying_flying_speed,
+			Treasure.efreeti_bottle_effect,
+			Treasure.horn_of_valhalla_horn_type,
+			Treasure.horn_of_valhalla_berserkers_summoned,
+			Treasure.horn_of_valhalla_requirement,
+			Treasure.iron_flask_contents,
+			Treasure.manual_of_golems_golem,
+			Treasure.manual_of_golems_time,
+			Treasure.manual_of_golems_cost,
+			Treasure.necklace_of_prayer_beads_bead_of,
+			Treasure.necklace_of_prayer_beads_spell,
+			Treasure.potion_of_resistance_damage_type,
+			Treasure.quaals_feather_token,
+			Treasure.ring_of_resistance,
+			Treasure.robe_of_useful_items,
+			Treasure.scroll_of_protection_creature_type,
+			Treasure.sphere_of_annihilation_planar_portal_contact_result,
+			Treasure.wand_of_wonder_effect,
+			Treasure.creating_sentient_magic_items_communication,
+			Treasure.creating_sentient_magic_items_senses,
+			Treasure.creating_sentient_magic_items_alignment,
+			Treasure.creating_sentient_magic_items_special_purpose,
+			Treasure.moonblade_properties,
+			Treasure.minor_beneficial_properties,
+			Treasure.major_beneficial_properties,
+			Treasure.minor_detrimental_properties,
+			Treasure.major_detrimental_properties,
+			// chapter 8
+			RunningTheGame.urban_chase_complications,
+			RunningTheGame.wilderness_chase_complications,
+			RunningTheGame.poisons_item,
+			RunningTheGame.poisons_type,
+			RunningTheGame.poisons_price_per_dose,
+			RunningTheGame.short_term_madness,
+			RunningTheGame.long_term_madness,
+			RunningTheGame.indefinite_madness,
+			// chapter 9
+			DungeonMastersWorkshop.lingering_injuries,
+			DungeonMastersWorkshop.system_shock
+		};
+
+		public static readonly string[][][] allDoubleTables =
+		{
+			NPC.ideals,
+			NPC.villains_scheme,
+			//NPC.villains_methods,
+			Treasure.carpet_of_flying,
+			Treasure.horn_of_valhalla,
+			Treasure.manual_of_golems,
+			Treasure.necklace_of_prayer_beads,
+			RunningTheGame.poisons
+		};
+
 	}
 
 	public class TableRow
@@ -9377,6 +9594,11 @@ namespace DungeonMasterHelper
 			entry = str;
 		}
 
+		public override string ToString()
+		{
+			return "new TableRow(" + minRoll + ", " + maxRoll + ", \"" + entry + "\");";
+		}
+		/*
 		public override string ToString()
 		{
 			string res = "";
@@ -9416,6 +9638,39 @@ namespace DungeonMasterHelper
 			res += "  " + entry;
 
 			return res;
+		}*/
+	}
+
+	public class Table
+	{
+		private string tableName;
+		private TableRow[] tableRows;
+
+		public string Name
+		{
+			get
+			{
+				return tableName;
+			}
+		}
+
+		public TableRow[] Entries
+		{
+			get
+			{
+				return tableRows;
+			}
+		}
+
+		public Table()
+		{
+
+		}
+
+		public Table(string name, TableRow[] entries)
+		{
+			tableName = name;
+			tableRows = entries;
 		}
 	}
 }
