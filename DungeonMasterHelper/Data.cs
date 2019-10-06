@@ -230,23 +230,21 @@ namespace DungeonMasterHelper
 
 		#region Global
 
-		
-		public static readonly string[] damage_type =
-		{
-			"Acid",
-			"Bludgeoning",
-			"Cold",
-			"Fire",
-			"Force",
-			"Lightning",
-			"Necrotic",
-			"Piercing",
-			"Poison",
-			"Psychic",
-			"Radiant",
-			"Slashing",
-			"Thunder"
-		};
+		public static readonly Table damage_type = new Table("Damage Type", new TableRow[]{
+			new TableRow(1, -1, "Acid"),
+			new TableRow(2, -1, "Bludgeoning"),
+			new TableRow(3, -1, "Cold"),
+			new TableRow(4, -1, "Fire"),
+			new TableRow(5, -1, "Force"),
+			new TableRow(6, -1, "Lightning"),
+			new TableRow(7, -1, "Necrotic"),
+			new TableRow(8, -1, "Piercing"),
+			new TableRow(9, -1, "Poison"),
+			new TableRow(10, -1, "Psychic"),
+			new TableRow(11, -1, "Radiant"),
+			new TableRow(12, -1, "Slashing"),
+			new TableRow(13, -1, "Thunder"),
+		});
 
 		public enum Rarity
 		{
@@ -574,6 +572,137 @@ namespace DungeonMasterHelper
 			};
 		}
 
+		public static class World2
+		{
+			public static readonly Table forms_of_government = new Table("Forms of Government", new TableRow[]{
+				new TableRow(1, 8, "Autocracy"),
+				new TableRow(9, 13, "Bureaucracy"),
+				new TableRow(14, 19, "Confederacy"),
+				new TableRow(20, 22, "Democracy"),
+				new TableRow(23, 27, "Dictatorship"),
+				new TableRow(28, 42, "Feudalism"),
+				new TableRow(43, 44, "Gerontocracy"),
+				new TableRow(45, 53, "Hierarchy"),
+				new TableRow(54, 56, "Magocracy"),
+				new TableRow(57, 58, "Matriarchy"),
+				new TableRow(59, 64, "Militocracy"),
+				new TableRow(65, 74, "Monarchy"),
+				new TableRow(75, 78, "Oligarchy"),
+				new TableRow(79, 80, "Patriarchy"),
+				new TableRow(81, 83, "Meritocracy"),
+				new TableRow(84, 85, "Plutocracy"),
+				new TableRow(86, 92, "Republic"),
+				new TableRow(93, 94, "Satrapy"),
+				new TableRow(95, -1, "Kleptocracy"),
+				new TableRow(96, 100, "Theocracy"),
+			});
+
+			public static readonly Table forms_of_government_explanation = new Table("Forms of Government Explanations", new TableRow[]{
+				new TableRow(1, -1, "One hereditary ruler wields absolute power. The autocrat either is supported by a well-developed bureaucracy or military or stands as the only authority in an otherwise anarchic society. The dynastic ruler could be immortal or undead. Aundair and Karrnath, two kingdoms in the Eberron campaign setting, have autocrats with royal blood in their veins. Whereas Queen Aurala of Aundair relies on wizards and spies to enforce her will, Kaius, the vampire king of Karrnath, has a formidable army of living and undead soldiers under his command."),
+				new TableRow(2, -1, "Various departments compsoe the government, each responsible for an aspect of rule. The department heads, ministers, or secretaries answer to a figurehead autocrat or council."),
+				new TableRow(3, -1, "Each individual city or town within the confederacy governs itself, but all contribute to a league or federation that promotes (at least in theory) the common good of all member states. Conditions and attitudes toward the central government vary from place to place within the confederacy. The Lords' Alliance in the Forgotten Realms setting is a loose confederacy of cities, while the Mror Holds in the Eberron campaign setting is a confederacy of allied dwarf clans."),
+				new TableRow(4, -1, "Citizens or their elected representatives determine the laws in a democracy. A bureaucracy or military carries out the day-to-day work of government, with positions filled through open elections."),
+				new TableRow(5, -1, "One supreme ruler holds absolute authority, but his or her rule isn't necessarily dynastic. In other respects this resembles an autocracy. In the Greyhawk campaign setting, a half-demon named Iuz is the dictator of a conquered land that bears his name."),
+				new TableRow(6, -1, "The typical government of Europe in the Middle Ages, a feudalistic society consists of layers of lords and vassals. The vassals provide soldiers or scutage (payment in lieu of military service) to the lords, who in turn promise protection to their vassals."),
+				new TableRow(7, -1, "Elders preside over this society. In some cases, long-lived races such as elves or dragons are entrusted with the leadership of the land."),
+				new TableRow(8, -1, "A feudal or bureaucratic government where every member, except one, is subordinate to another member. In the Draognlance campaign setting, the dragon armies of Krynn form a military hierarchy, with the Dragon Highlords as leaders under the dragon queen Takhisis."),
+				new TableRow(9, -1, "This governemtn is composed of groups or individuals primarily seeking wealth for themselves, often at the expense of their subjects. The grasping Bandit Kingddoms in the Greyhawk campaign setting are prime examples. A kingdom run by thieves' guilds would also fall into this category."),
+				new TableRow(10, -1, "The governing body is composed of spellcasters who rule directly as oligarchs or feudal lords, or participate in a democracy or bureaucracy. Examples include the Red Wizards of Thay in the Forgotten Realms campaign setting and the sorcerer-kings of Athas in the Dark Sun campaign setting."),
+				new TableRow(11, -1, "This society is governed by the eldest or most important members of one gender. Drow cities are examples of theocratic matriarchies, for each is ruled by a council of drow high priestesses who answer to Lolth, the Demon Queen of Spiders."),
+				new TableRow(12, -1, "The most intelligent and educated people oversee the society, often with a bureaucracy to handle the day-to-day work of government. In the Forgotten Realms, scholarly monks preside over the fortress-library of Candlekeep, overseen by a master of lore called the Keeper."),
+				new TableRow(13, -1, "Military leaders run the nation under martial law, using the army and other armed forces. A militocracy might be based on an elite group of soldiers, an order of dragon riders, or a league of sea princes. Solamnia, a nation ruled by knights in the Dragonlance campaign setting, falls into this category."),
+				new TableRow(14, -1, "A single hereditary sovereign wears the crown. Unlike the autocrat, the monarch's powers are limited by law, and the ruler serves as the head of a democracy, feudal state, or militocracy. The kingdom of Breland, in the Eberron campaign setting, has both a parliament that makes laws and a monarch who enforces them."),
+				new TableRow(15, -1, "A small number of absolute rulers share power, possibly dividing the land into districts or provinces under their control, or jointly ruling together. A group of adventurers who take control of a nation together migth form an oligarchy. The Free City of Greyhawk is an oligarchy composed of various faction leaders, wit ha Lord Mayor as its figurehead."),
+				new TableRow(16, -1, "Society is governed by the wealthy. The elite form a ruling council, purchase representation at the court of a figurehead monarch, or rule by default because money is the true power in the realm. Many cities in the Forgotten Realms campaign setting, includeing Waterdeep and Baldur's Gate, are plutocracies."),
+				new TableRow(17, -1, "Government is entrusted to representatives of an established electorate who rule on behalf of the electors. Any democracy in which only landowners or certain classes can vote could be considered a republic."),
+				new TableRow(18, -1, "Conquerors and representatives of another government wield power, ruling the settlement or region as part of a larger empire. The satraps are bureaucrats and military officers, or unusual characters or monsters. The cities of Highport and Suderham in the Greyhawk campaign setting are satrapies controlled by agents of a visious gane of marauders known as the Slave Lords."),
+				new TableRow(19, -1, "Rulership falls to a direct representative or a collection of agents of a deity. The centers of power in a theocracy are usually located on sacred sites. In the Eberron campaign setting, the nation of Thrane is a theocracy devoted to the Silver Flame, a divine spirit that resides in Thrane's capital of Flamekeep."),
+			});
+
+			public static readonly Table world_shaking_events = new Table("World Shaking Events", new TableRow[]{
+				new TableRow(1, -1, "Rise of a leader or an era"),
+				new TableRow(2, -1, "Fall of a leader or an era"),
+				new TableRow(3, -1, "Cataclysmic disaster"),
+				new TableRow(4, -1, "Assault or invasion"),
+				new TableRow(5, -1, "Rebellion, revolution, overthrow"),
+				new TableRow(6, -1, "Extinction or depletion"),
+				new TableRow(7, -1, "New organization"),
+				new TableRow(8, -1, "Discovery, expansion, invention"),
+				new TableRow(9, -1, "Prediction, omen, prophecy"),
+				new TableRow(10, -1, "Myth and legend"),
+			});
+
+			public static readonly Table leader_types = new Table("Leader Types", new TableRow[]{
+				new TableRow(1, -1, "Political"),
+				new TableRow(2, -1, "Religious"),
+				new TableRow(3, -1, "Military"),
+				new TableRow(4, -1, "Crime/underworld"),
+				new TableRow(5, -1, "Art/culture"),
+				new TableRow(6, -1, "Philosophy/learning/magic"),
+			});
+
+			public static readonly Table cataclysmic_distasters = new Table("Cataclysmic Disasters", new TableRow[]{
+				new TableRow(1, -1, "Earthquake"),
+				new TableRow(2, -1, "Famin/drought"),
+				new TableRow(3, -1, "Fire"),
+				new TableRow(4, -1, "Flood"),
+				new TableRow(5, -1, "Plauge/disease"),
+				new TableRow(6, -1, "Rain of fire (meteoric impact)"),
+				new TableRow(7, -1, "Storm (hurricane, tornado, tsunami)"),
+				new TableRow(8, -1, "Volcanic eruption"),
+				new TableRow(9, -1, "Magic gone awry or a planar warp"),
+				new TableRow(10, -1, "Divine judgment"),
+			});
+
+			public static readonly Table invading_forces = new Table("Invading Forces", new TableRow[]{
+				new TableRow(1, -1, "A criminal enterprise"),
+				new TableRow(2, -1, "Monsters or a unique monster"),
+				new TableRow(3, -1, "A planar threat"),
+				new TableRow(4, -1, "A past adversary reawakened, reborn, or resurgent"),
+				new TableRow(5, -1, "A splinter faction"),
+				new TableRow(6, -1, "A savage tribe"),
+				new TableRow(7, -1, "A secret society"),
+				new TableRow(8, -1, "A traitorous ally"),
+			});
+
+			public static readonly Table extinction_or_depletion = new Table("Extinction or Depletion", new TableRow[]{
+				new TableRow(1, -1, "A kind of animal (insect, bird, fish, livestock"),
+				new TableRow(2, -1, "Habitable land"),
+				new TableRow(3, -1, "Magic or magic-users (all magic, specific kinds, or schools of magic"),
+				new TableRow(4, -1, "A mineral resource (gems, metals, ores)"),
+				new TableRow(5, -1, "A type of monster (unicorn, manticore, dragon)"),
+				new TableRow(6, -1, "A people (family line, clan, culture, race)"),
+				new TableRow(7, -1, "A kind of plant(crop, tree, herb, forest)"),
+				new TableRow(8, -1, "A waterway (river, lake, ocean"),
+			});
+
+			public static readonly Table new_organizations = new Table("New Organizations", new TableRow[]{
+				new TableRow(1, -1, "Crime syndicate/bandit confederacy"),
+				new TableRow(2, -1, "Guild (masons, apothecaries, goldsmiths)"),
+				new TableRow(3, -1, "Magical circle/society"),
+				new TableRow(4, -1, "Military/knightly order"),
+				new TableRow(5, -1, "New family dynasty/tribe/clan"),
+				new TableRow(6, -1, "Philosophy/discipline dedicated to a principle or ideal"),
+				new TableRow(7, -1, "Realm (village, town, duchy, kingdom"),
+				new TableRow(8, -1, "Religion/sect/denomination"),
+				new TableRow(9, -1, "School/university"),
+				new TableRow(10, -1, "Secret society/cult/cabal"),
+			});
+
+			public static readonly Table discoveries = new Table("Discoveries", new TableRow[]{
+				new TableRow(1, -1, "Ancient ruin/lost city of a legendary race"),
+				new TableRow(2, -1, "Animal/monster/magical mutation"),
+				new TableRow(3, -1, "Invention/technology/magic (helpful, destructive)"),
+				new TableRow(4, -1, "New (or forgotten) god or planar entity"),
+				new TableRow(5, -1, "New (or rediscovered) artifact or religious relic"),
+				new TableRow(6, -1, "New land (island, continent, lost world, demiplane)"),
+				new TableRow(7, -1, "Otherworldly object (planar portal, alien spacecraft)"),
+				new TableRow(8, -1, "People (race, tribe, lost civilization, colony)"),
+				new TableRow(9, -1, "Plant (miracle herb, fungal parasite, sentient plant)"),
+				new TableRow(10, -1, "Resource or wealth (gold, gems, mithral)"),
+			});
+		}
+
 		// Chapter 2
 		public static class Multiverse
 		{
@@ -868,6 +997,106 @@ namespace DungeonMasterHelper
 				}
 			}
 
+		}
+
+		public static class Multiverse2
+		{
+			public static readonly Table astral_color_pools_plane = new Table("Astral Color Pools - Plane", new TableRow[]{
+				new TableRow(1, -1, "Ysgard"),
+				new TableRow(2, -1, "Limbo"),
+				new TableRow(3, -1, "Pandemonium"),
+				new TableRow(4, -1, "The Abyss"),
+				new TableRow(5, -1, "Carceri"),
+				new TableRow(6, -1, "Hades"),
+				new TableRow(7, -1, "Gehenna"),
+				new TableRow(8, -1, "The Nine Hells"),
+				new TableRow(9, -1, "Acheron"),
+				new TableRow(10, -1, "Mechanus"),
+				new TableRow(11, -1, "Arcadia"),
+				new TableRow(12, -1, "Mount Celestia"),
+				new TableRow(13, -1, "Bytopia"),
+				new TableRow(14, -1, "Elysium"),
+				new TableRow(15, -1, "The Beastlands"),
+				new TableRow(16, -1, "Arborea"),
+				new TableRow(17, -1, "The Outlands"),
+				new TableRow(18, -1, "Ethereal Plane"),
+				new TableRow(19, 20, "Material Plane"),
+			});
+
+			public static readonly Table astral_color_pools_pool_color = new Table("Astral Color Pools - Pool Color", new TableRow[]{
+				new TableRow(1, -1, "Indigo"),
+				new TableRow(2, -1, "Jet black"),
+				new TableRow(3, -1, "Magenta"),
+				new TableRow(4, -1, "Amethyst"),
+				new TableRow(5, -1, "Olive"),
+				new TableRow(6, -1, "Rust"),
+				new TableRow(7, -1, "Russet"),
+				new TableRow(8, -1, "Ruby"),
+				new TableRow(9, -1, "Flame red"),
+				new TableRow(10, -1, "Diamond blue"),
+				new TableRow(11, -1, "Saffron"),
+				new TableRow(12, -1, "Gold"),
+				new TableRow(13, -1, "Amber"),
+				new TableRow(14, -1, "Orange"),
+				new TableRow(15, -1, "Emerald green"),
+				new TableRow(16, -1, "Sapphire blue"),
+				new TableRow(17, -1, "Leather brown"),
+				new TableRow(18, -1, "Spiraling white"),
+				new TableRow(19, 20, "Silver"),
+			});
+
+			public static readonly Table psychic_wind_effects_location_effect = new Table("Psychic Wind Effects - Location", new TableRow[]{
+				new TableRow(1, 8, "Diverted; add 1d6 hours to travel time"),
+				new TableRow(9, 12, "Blown off course; add 3d10 hours to travel time"),
+				new TableRow(13, 16, "Lost; at the end of the travel time, characters arrive at a location other than the intended destination"),
+				new TableRow(17, 20, "Sent through color pool to a random plane (roll on the Astral Color Pools table)"),
+			});
+
+			public static readonly Table psychic_wind_effects_mental_effects = new Table("Psychic Wind Effects - Mental Effects", new TableRow[]{
+				new TableRow(1, 8, "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself"),
+				new TableRow(9, 10, "Short-term madness (see chapter 8)"),
+				new TableRow(11, 12, "11 (2d10) psychic damage"),
+				new TableRow(13, 14, "22 (4d10) psychic damage"),
+				new TableRow(15, 16, "Long-term madness (see chapter 8)"),
+				new TableRow(17, 18, "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake"),
+			});
+
+			public static readonly Table ethereal_curtains_plane = new Table("Ethereal Curtains - Plane", new TableRow[]{
+				new TableRow(1, -1, "Material Plane"),
+				new TableRow(2, -1, "Shadowfell"),
+				new TableRow(3, -1, "Feywild"),
+				new TableRow(4, -1, "Plane of Air"),
+				new TableRow(5, -1, "Plane of Earth"),
+				new TableRow(6, -1, "Plane of Fire"),
+				new TableRow(7, -1, "Plane of Water"),
+				new TableRow(8, -1, "Elemental Chaos"),
+			});
+
+			public static readonly Table ethereal_curtains_color_of_curtain = new Table("Ethereal Curtains - Color of Curtain", new TableRow[]{
+				new TableRow(1, -1, "Bright turquoise"),
+				new TableRow(2, -1, "Dusky gray"),
+				new TableRow(3, -1, "Opulescent white"),
+				new TableRow(4, -1, "Pale blue"),
+				new TableRow(5, -1, "Reddish-brown"),
+				new TableRow(6, -1, "Orange"),
+				new TableRow(7, -1, "Green"),
+				new TableRow(8, -1, "Swirling mix of colors"),
+			});
+
+			public static readonly Table ether_cyclone = new Table("Ether Cyclone", new TableRow[]{
+				new TableRow(1, 12, "Extended journey"),
+				new TableRow(13, 19, "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table"),
+				new TableRow(20, -1, "Hurled into the Astral Plane"),
+			});
+
+			public static readonly Table feywild_time_warp = new Table("Feywild Time Warp", new TableRow[]{
+				new TableRow(1, 2, "Days become minutes"),
+				new TableRow(3, 6, "Days become hours"),
+				new TableRow(7, 13, "No change"),
+				new TableRow(14, 17, "Days become weeks"),
+				new TableRow(18, 19, "Days become months"),
+				new TableRow(20, -1, "Days become years"),
+			});
 		}
 
 		// Chapter 3
@@ -1397,6 +1626,282 @@ namespace DungeonMasterHelper
 			}
 		}
 
+		public static class Adventures2
+		{
+
+			public static readonly Table dungeon_goals = new Table("Dungeon Goals", new TableRow[]{
+				new TableRow(1, -1, "Stop the dungeon's monstrous inhabitatns from raiding the surface world."),
+				new TableRow(2, -1, "Foil a villain's evil scheme."),
+				new TableRow(3, -1, "Destroy a magical threat inside the dungeon."),
+				new TableRow(4, -1, "Acquire treasure."),
+				new TableRow(5, -1, "Find a particular item for a specific purpose."),
+				new TableRow(6, -1, "Retrieve a stolen item hidden in the dungeon."),
+				new TableRow(7, -1, "Find information needed for a special purpose."),
+				new TableRow(8, -1, "Rescue a captive."),
+				new TableRow(9, -1, "Discover the fate of a previous adventuring party."),
+				new TableRow(10, -1, "Find an NPC who disappeared in the area."),
+				new TableRow(11, -1, "Slay a dragon or some other challenging monster."),
+				new TableRow(12, -1, "Discover the nature and origin of a strange location or phenomenon."),
+				new TableRow(13, -1, "Pursue fleeing foes taking refuge in the dungeon."),
+				new TableRow(14, -1, "Escape from captivity in the dungeon."),
+				new TableRow(15, -1, "Clear a ruin so it can be rebuilt and reoccupied."),
+				new TableRow(16, -1, "Discover why a villain is interested in the dungeon."),
+				new TableRow(17, -1, "Win a bet or complete a rite of passage by surviving in the dungeon for a certain amount of time."),
+				new TableRow(18, -1, "Parley with a villain in the dungeon."),
+				new TableRow(19, -1, "Hide from a threat outside the dungeon."),
+				new TableRow(20, -1, "Roll twice, ignoring results of 20."),
+			});
+
+			public static readonly Table wilderness_goals = new Table("Wilderness Goals", new TableRow[]{
+				new TableRow(1, -1, "Locate a dungeon or other site of interest (roll on the Dungeon Goals table to find out why)."),
+				new TableRow(2, -1, "Assess the scope of a natural or unnatural disaster."),
+				new TableRow(3, -1, "Escort an NPC to a destination."),
+				new TableRow(4, -1, "Arrive at a destination without being seen by the villain's forces."),
+				new TableRow(5, -1, "Stop monsters from raiding caravans and farms."),
+				new TableRow(6, -1, "Establish trade with a distant town."),
+				new TableRow(7, -1, "Map a new land."),
+				new TableRow(8, -1, "Find a place to establish a colony"),
+				new TableRow(9, -1, "Find a natural resource"),
+				new TableRow(10, -1, "Hunt a specific monster."),
+				new TableRow(11, -1, "Return home from a distant place."),
+				new TableRow(12, -1, "Obtain information from a reclusive hermit."),
+				new TableRow(13, -1, "Find an object that was lost in the wilds."),
+				new TableRow(14, -1, "Discover the fate of a missing group of explorers."),
+				new TableRow(15, -1, "Pursue fleeing foes."),
+				new TableRow(16, -1, "Assess the size of an approaching army."),
+				new TableRow(17, -1, "Escape the reign of a tyrant."),
+				new TableRow(18, -1, "Protect a wilderness site from attackers."),
+				new TableRow(19, -1, "Roll twice, ignoring results of 20."),
+			});
+
+			public static readonly Table other_goals = new Table("Other Goals", new TableRow[]{
+				new TableRow(1, -1, "Seize control of a fortified location such as a fortress, town, or ship."),
+				new TableRow(2, -1, "Defend a location from attackers."),
+				new TableRow(3, -1, "Retrieve an object from inside a secure location in a settlement."),
+				new TableRow(4, -1, "Retrieve an object from a caravan."),
+				new TableRow(5, -1, "Salvage an object or goods from a lost vessel or caravan."),
+				new TableRow(6, -1, "Break a prisoner out of a jail or prison camp."),
+				new TableRow(7, -1, "Escape from a jail or prison camp."),
+				new TableRow(8, -1, "Successfully travel through an obstacle course to gain recognition or reward."),
+				new TableRow(9, -1, "Infiltrate a fortified location."),
+				new TableRow(10, -1, "Find the source of strange occurrences in a haunted house or other location."),
+				new TableRow(11, -1, "Interfere wit hthe operation of a business."),
+				new TableRow(12, -1, "Rescue a character, monster, or object from a natural or unnatural disaster."),
+			});
+
+			public static readonly Table adventure_villains = new Table("Adventure Villains", new TableRow[]{
+				new TableRow(1, -1, "Beast or monstrosity with no particular agenda"),
+				new TableRow(2, -1, "Aberration bent on corruption or domination"),
+				new TableRow(3, -1, "Fiend bent on corruption or destruction"),
+				new TableRow(4, -1, "Dragon bent on domination and plunder"),
+				new TableRow(5, -1, "Giant bend on plunder"),
+				new TableRow(6, 7, "Undead with any agenda"),
+				new TableRow(8, -1, "Fey with a mysterious goal"),
+				new TableRow(9, 10, "Humanoid cultist"),
+				new TableRow(11, 12, "Humanoid conqueror"),
+				new TableRow(13, -1, "Humanoid seeking revenge"),
+				new TableRow(14, 15, "Humanoid schemer seeking to rule"),
+				new TableRow(16, -1, "Humanoid criminal mastermind"),
+				new TableRow(17, 18, "Humanoid raider or ravager"),
+				new TableRow(19, -1, "Humanoid under a curse"),
+				new TableRow(20, -1, "Misguided humanoid zealot"),
+			});
+
+			public static readonly Table adventure_allies = new Table("Adventure Allies", new TableRow[]{
+				new TableRow(1, -1, "Skilled adventurer"),
+				new TableRow(2, -1, "Inexperienced adventurer"),
+				new TableRow(3, -1, "Enthusiastic commoner"),
+				new TableRow(4, -1, "Soldier"),
+				new TableRow(5, -1, "Priest"),
+				new TableRow(6, -1, "Sage"),
+				new TableRow(7, -1, "Revenge seeker"),
+				new TableRow(8, -1, "Raving lunatic"),
+				new TableRow(9, -1, "Celestial ally"),
+				new TableRow(10, -1, "Fey ally"),
+				new TableRow(11, -1, "Disguised monster"),
+				new TableRow(12, -1, "Villain posing as an ally"),
+			});
+
+			public static readonly Table adventure_patrons = new Table("Adventure Patrons", new TableRow[]{
+				new TableRow(1, 2, "Retired adventurer"),
+				new TableRow(3, 4, "Local ruler"),
+				new TableRow(5, 6, "Military officer"),
+				new TableRow(7, 8, "Temple official"),
+				new TableRow(9, 10, "Sage"),
+				new TableRow(11, 12, "Respected elder"),
+				new TableRow(13, -1, "Deity or celestial"),
+				new TableRow(14, -1, "Mysterious fey"),
+				new TableRow(15, -1, "Old friend"),
+				new TableRow(16, -1, "Former teacher"),
+				new TableRow(17, -1, "Parent or other family member"),
+				new TableRow(18, -1, "Desperate commoner"),
+				new TableRow(19, -1, "Embattled merchant"),
+				new TableRow(20, -1, "Villain posing as a patron"),
+			});
+
+			public static readonly Table adventure_introduction = new Table("Adventure Introduction", new TableRow[]{
+				new TableRow(1, -1, "While traveling in the wilderness, the characters fall into a sinkhole that opens beneath their feet, dropping them into the adventure location."),
+				new TableRow(2, -1, "While traveling in the wilderness, the characters notice the entrance to the adventure location."),
+				new TableRow(3, -1, "While traveling on a road, the characters are attacked by monsters that flee into the nearby adventure location."),
+				new TableRow(4, -1, "The adventurers find a map on a dead body. In addition to the map setting up the adventure, the adventure's villain wants the map."),
+				new TableRow(5, -1, "A mysterious magic item or a cruel villain teleports the characters to the adventure location"),
+				new TableRow(6, -1, "A stranger approaches the characters in a tavern and urges them toward the adventure location."),
+				new TableRow(7, -1, "A town or village needs volunteers to go to the adventure location."),
+				new TableRow(8, -1, "An NPC the characters care about needs them to go to the adventure location."),
+				new TableRow(9, -1, "An NPC the characters must obey orders them to go to the adventure location."),
+				new TableRow(10, -1, "An NPC the characters respect asks them to go to the adventure location."),
+				new TableRow(11, -1, "One night, the characters all dream about entering the adventure location."),
+				new TableRow(12, -1, "A ghost appears and terrorizes a village. Research reveals that it can be put to rest only by entering the adventure location."),
+			});
+
+			public static readonly Table adventure_climax = new Table("Adventure Climax", new TableRow[]{
+				new TableRow(1, -1, "The adventurers confront the main villain and a group of minions in a bloody battle to the finish."),
+				new TableRow(2, -1, "The adventurers chase the villain while dodgin obstacles designed to thwart them, leading to a final confrontation in or outside the villain's refuge."),
+				new TableRow(3, -1, "The actions of the adventurers or the villain result in a cataclysmic event that the adventurers must escape."),
+				new TableRow(4, -1, "The adventurers race to the site where the villain is bringing a master plan to its conclusion, arriving just as that plan is about to be completed."),
+				new TableRow(5, -1, "The villain and two or three lieutenants perform separate rites in a large room. The adventurers must disrupt all the rites at the same time."),
+				new TableRow(6, -1, "An ally betrays the adventurers as they're about to achieve their goal (Use this climax carefully, and don't overuse it)."),
+				new TableRow(7, -1, "A portal opens to another plane of existence. Creatures on the other side spill out, forcing the adventurers to close the portal and deal with the villain at the same time."),
+				new TableRow(8, -1, "Traps, hazards, or animated objects turn against the adventurers while the main villain attacks."),
+				new TableRow(9, -1, "The dungeon begins to collapse while the adventurers face the main villain, who attempts to escape in the chaos."),
+				new TableRow(10, -1, "A threat more powerful than the adventurers appears, destroys the main villain, and then turns its attention on the characters."),
+				new TableRow(11, -1, "The adventurers must choose whether to pursue the fleeing main villain or save an NPC they care about or a group of innocents."),
+				new TableRow(12, -1, "The adventurers must discover the main villain's secret weakness before they can hope to defeat that villain."),
+			});
+
+			public static readonly Table event_based_villain_actions = new Table("Event Based Villain Actions", new TableRow[]{
+				new TableRow(1, -1, "Big event"),
+				new TableRow(2, -1, "Crime spree"),
+				new TableRow(3, -1, "Growing corruption"),
+				new TableRow(4, -1, "One and done"),
+				new TableRow(5, -1, "Serial crimes"),
+				new TableRow(6, -1, "Step by step"),
+			});
+
+			public static readonly Table event_based_villain_actions_descriptions = new Table("Event Based Villain Actions - Descriptions", new TableRow[]{
+				new TableRow(1, -1, "Big Event. The villain's plans come to fruition during a festival, an astrological event, a holy (or unholy) rite, a royal wedding, the birth of a child, or some similar fixed time. The villain's activities up to that point are geared toward preparation for this event."),
+				new TableRow(2, -1, "Crime Spree. The villain commits acts taht become bolder and more heinous over time. A killer might start out by targeting the destitute in the city slums before moving up to a massacre in the marketplace, increasing the horror and the body count each time."),
+				new TableRow(3, -1, "Growing Corruption. As time passes, the villain's power and influence grow, affecting more victims across a larger area. This might take the form of armies conquering new territory, an evil cult recruiting new members, or a spreading plague. A pretender to the throne might attempt to secure the support of the kingdom's nobility in the days or weeks leading up to a coup, or a guild leader could corrupt the members of a town council or bribe officers of the watch."),
+				new TableRow(4, -1, "One and Done. The villain commits a single crime and then tries to avoid the consequences. Instead of an ongoing plan to commit more crimes, the villain's goal is to lie low or flee the scene."),
+				new TableRow(5, -1, "Serial Crimes. The villain commits crimes one after the other, but these acts are repetitive in nature, rather than escalating to greater heights of depravity. The trick to catching such a villain lies in determining the pattern underlying the crimes. Though serial killers are a common example of this type of villain, your villain could be a serial arsonist favoring a certain type of building, a magical sickness that affects spellcasters who cast a specific spell, a thief that targets a certain kind of merchant, or a doppelganger kidnapping and impersonating one noble after another."),
+				new TableRow(6, -1, "Step by Step. In pursuit of its goal, the villain carries out a specific set of actions in a particular sequence. A wizard might steal the items needed to create a phylactery and become a lich, or a cultist might kidnap the priests of seven good-aligned gods as a sacrifice. Alternativly, the villain could be following a trail to find the object of its revenge, killing one victim after another while moving ever closer to the real target."),
+			});
+
+			public static readonly Table event_based_goals = new Table("Event Based Goals", new TableRow[]{
+				new TableRow(1, -1, "Bring the villain to justice."),
+				new TableRow(2, -1, "Clear the name of an innocent NPC."),
+				new TableRow(3, -1, "Protect or hide an NPC."),
+				new TableRow(4, -1, "Protect an object."),
+				new TableRow(5, -1, "Discover the nature and origin of a strange phenomenon that might be the villain's doing."),
+				new TableRow(6, -1, "Find a wanted fugitive."),
+				new TableRow(7, -1, "Overthrow a tyrant"),
+				new TableRow(8, -1, "Uncover a conspiracy to overthrow a ruler."),
+				new TableRow(9, -1, "Negotiate peace between enemy nations or feuding families."),
+				new TableRow(10, -1, "Secure aid from a ruler or council."),
+				new TableRow(11, -1, "Help a villain find redemption"),
+				new TableRow(12, -1, "Parley with a villain."),
+				new TableRow(13, -1, "Smuggle weapons to rebel forces."),
+				new TableRow(14, -1, "Stop a band of smugglers."),
+				new TableRow(15, -1, "Gather intelligence on an enemy force."),
+				new TableRow(16, -1, "Win a tournament"),
+				new TableRow(17, -1, "Determine the villain's identity."),
+				new TableRow(18, -1, "Locate a stolen item."),
+				new TableRow(19, -1, "Make sure a wedding goes off without a hitch."),
+				new TableRow(20, -1, "Roll twice, ignoring results of 20."),
+			});
+
+			public static readonly Table framing_events = new Table("Framing Events", new TableRow[]{
+				new TableRow(1, 2, "Anniversary of a monarch's reign"),
+				new TableRow(3, 4, "Anniversary of an important event"),
+				new TableRow(5, 6, "Arena event"),
+				new TableRow(7, 8, "Arrival of a caravan or ship"),
+				new TableRow(9, 10, "Arrival of a circus"),
+				new TableRow(11, 12, "Arrival of an important NPC"),
+				new TableRow(13, 14, "Arrival of marching modrons"),
+				new TableRow(15, 16, "Artistic performance"),
+				new TableRow(17, 18, "Athletic event"),
+				new TableRow(19, 20, "Birth of a child"),
+				new TableRow(21, 22, "Birthday of an important NPC"),
+				new TableRow(23, 24, "Civic festival"),
+				new TableRow(25, 26, "Comet appearance"),
+				new TableRow(27, 28, "Commemoration of a past tragedy"),
+				new TableRow(29, 30, "Consecration of a new temple"),
+				new TableRow(31, 32, "Coronation"),
+				new TableRow(33, 34, "Council meeting"),
+				new TableRow(35, 36, "Equinox or solstice"),
+				new TableRow(37, 38, "Execution"),
+				new TableRow(39, 40, "Fertility festival"),
+				new TableRow(41, 42, "Full moon"),
+				new TableRow(43, 44, "Funeral"),
+				new TableRow(45, 46, "Graduation of cadets or wizards"),
+				new TableRow(47, 48, "Harvest festival"),
+				new TableRow(49, 50, "Holy day"),
+				new TableRow(51, 52, "Investiture of a knight or other noble"),
+				new TableRow(53, 54, "Lunar eclipse"),
+				new TableRow(55, 58, "Midsummer festival"),
+				new TableRow(59, 60, "Midwinter festival"),
+				new TableRow(61, 62, "Migration of monsters"),
+				new TableRow(63, 64, "Monarch's ball"),
+				new TableRow(65, 66, "New moon"),
+				new TableRow(67, 68, "New year"),
+				new TableRow(69, 70, "Pardoning of a prisoner"),
+				new TableRow(71, 72, "Planar conjunction"),
+				new TableRow(73, 74, "Planetary alignment"),
+				new TableRow(75, 76, "Priestly investiture"),
+				new TableRow(77, 78, "Procession of ghosts"),
+				new TableRow(79, 80, "Remembrance for soldiers lost in war"),
+				new TableRow(81, 82, "Royal address or proclamation"),
+				new TableRow(83, 84, "Royal audience day"),
+				new TableRow(85, 86, "Signing a treaty"),
+				new TableRow(87, 88, "Solar eclipse"),
+				new TableRow(89, 91, "Tournament"),
+				new TableRow(92, 94, "Trial"),
+				new TableRow(95, 96, "Violent uprising"),
+				new TableRow(97, 98, "Wedding or wedding anniversary"),
+				new TableRow(99, 100, "Concurrence of two events (roll twice, ignoring results of 99 or 100)"),
+			});
+
+			public static readonly Table moral_quandaries = new Table("Moral Quandaries", new TableRow[]{
+				new TableRow(1, 3, "Ally quandary"),
+				new TableRow(4, 6, "Friend quandary"),
+				new TableRow(7, 12, "Honor quandary"),
+				new TableRow(13, 16, "Rescue quandary"),
+				new TableRow(17, 20, "Respect quandary"),
+			});
+
+			public static readonly Table moral_quandaries_descriptions = new Table("Moral Quandaries - Descriptions", new TableRow[]{
+				new TableRow(1, -1, "Ally Quandary. The adventurers have a better chance of achieving their goal with the help of two individuals whose expertise is all but essential. However, these two NPCs hate each other and refuse to work together even if the fate of the world hangs in the balance. The adventurers must choose the NPC that is most likely to help them accomplish their goal."),
+				new TableRow(2, -1, "Friend Quandary. An NPC that one or more of the characters cares about makes an impossible demand on the characters. A love interest might demand that a character turn away from a dangerous quest. A dear friend might plead with the characters to spare the villain's life, to prove that they are better than the villain. A weak NPC might beg for a chance to win favor from the characters by undertaking a dangerous but essential mission."),
+				new TableRow(3, -1, "Honor Quandary. A character is forced to choose between victory and a personal oath or code of honor. A paladin who has sworn the Oath of Virtue might realize that the clearest path to success lies in deceit and subterfuge. A loyal cleric might be tempted to disobey the orders of his or her faith. If you present this quandary, be sure to provide an opportunity for a character to atone for violating his or her oath."),
+				new TableRow(4, -1, "Rescure Quandary. The adventurers must choose between catching or hurting the villain and saving innocent lives. For example, the adventurers might learn that the villain is camped nearby, but they also learn that another part of the villain's forces is about to march into a village and burn it to the ground. The characters must choose between taking out the villain or protecting innocent villagers, some of whom might be friends or family members."),
+				new TableRow(5, -1, "Respect Quandary. Two important allies give conflicting directions or advice to the adventurers. Perhaps the high priest counsels the characters to negotiate peace with militaristic elves in the nearby forest, while a veteran warrior urges them to prove their strength with a decisive first strike. The adventurers can't follow both courses, and whichever ally they choose, the other loses respect for them and might no longer aid them."),
+			});
+
+			public static readonly Table twist = new Table("Twist", new TableRow[]{
+				new TableRow(1, -1, "The adventurers are racing against other creatures with the same or opposite goal."),
+				new TableRow(2, -1, "The adventurers become responsible for the safety of a noncombatant NPC."),
+				new TableRow(3, -1, "The adventurers are prohibited from killing the villain, but the villain has no compunctions about killing them."),
+				new TableRow(4, -1, "The adventurers have a time limit."),
+				new TableRow(5, -1, "The adventurers have received false or extraneous information."),
+				new TableRow(6, -1, "Completing an adventure goal fulfills a prophecy or prevents the fulfillment of a prophecy."),
+				new TableRow(7, -1, "The adventurers have two different goals, but they can complete only one."),
+				new TableRow(8, -1, "Completing the goal secretly helps the villain."),
+				new TableRow(9, -1, "The adventurers must cooperate with a known enemy to achieve the goal."),
+				new TableRow(10, -1, "The adventurers are under magical compulsion (such as a geas spell) to complete their goal."),
+			});
+
+			public static readonly Table side_quests = new Table("Side Quests", new TableRow[]{
+				new TableRow(1, -1, "Find a specific item rumored to be in the area."),
+				new TableRow(2, -1, "Retrieve a stolen item in the villain's possession"),
+				new TableRow(3, -1, "Receive information from an NPC in the area."),
+				new TableRow(4, -1, "Rescue a captive."),
+				new TableRow(5, -1, "Discover the fate of a missing NPC."),
+				new TableRow(6, -1, "Slay a specific monster."),
+				new TableRow(7, -1, "Discover the nature and origin of a strange phenomenon in the area."),
+				new TableRow(8, -1, "Secure the aid of a character or creature in the area."),
+			});
+		}
+
 		// Chapter 4
 		public static class NPC
 		{
@@ -1730,7 +2235,7 @@ namespace DungeonMasterHelper
 				"Threats or harassment"
 			};
 
-			public static readonly string[] villains_methods_conficence_scams =
+			public static readonly string[] villains_methods_confidence_scams =
 			{
 				"Breach of contract",
 				"Cheating",
@@ -1877,7 +2382,7 @@ namespace DungeonMasterHelper
 				villains_methods_assault_or_beatings,
 				villains_methods_bounty_hunting_or_assassination,
 				villains_methods_captivity_or_coercion,
-				villains_methods_conficence_scams,
+				villains_methods_confidence_scams,
 				villains_methods_defamation,
 				villains_methods_dueling,
 				villains_methods_execution,
@@ -1921,8 +2426,430 @@ namespace DungeonMasterHelper
 			}
 		}
 
-		// Chapter 5
-		public static class AdventureEnvironments
+		public static class NPC2
+		{
+
+			public static readonly Table npc_appearance = new Table("NPC Appearance", new TableRow[]{
+				new TableRow(1, -1, "Distinctive jewelry: earrings, necklace, circlet, bracelets"),
+				new TableRow(2, -1, "Piercings"),
+				new TableRow(3, -1, "Flamboyant or outlandish clothes"),
+				new TableRow(4, -1, "Formal, clean clothes"),
+				new TableRow(5, -1, "Ragged, dirty clothes"),
+				new TableRow(6, -1, "Pronounced scar"),
+				new TableRow(7, -1, "Missing teeth"),
+				new TableRow(8, -1, "Missing fingers"),
+				new TableRow(9, -1, "Unusual eye color (or two different colors)"),
+				new TableRow(10, -1, "Tattoos"),
+				new TableRow(11, -1, "Birthmark"),
+				new TableRow(12, -1, "Unusual skin color"),
+				new TableRow(13, -1, "Bald"),
+				new TableRow(14, -1, "Braided beard or hair"),
+				new TableRow(15, -1, "Unusual hair color"),
+				new TableRow(16, -1, "Nervous eye twitch"),
+				new TableRow(17, -1, "Distinctive nose"),
+				new TableRow(18, -1, "Distinctive posture (crooked or rigid)"),
+				new TableRow(19, -1, "Exceptionally beautiful"),
+				new TableRow(20, -1, "Exceptionally ugly"),
+			});
+
+			public static readonly Table npc_high_abilities = new Table("NPC High Abilities", new TableRow[]{
+				new TableRow(1, -1, "Strength - powerful, brawny, strong as an ox"),
+				new TableRow(2, -1, "Dexterity - lithe, agile, graceful"),
+				new TableRow(3, -1, "Constitution - hardy, hale, healthy"),
+				new TableRow(4, -1, "Intelligence - studious, learned, inquisitive"),
+				new TableRow(5, -1, "Wisdom - perceptive, spiritual, insightful"),
+				new TableRow(6, -1, "Charisma - persuasive, forceful, born leader"),
+			});
+
+			public static readonly Table npc_low_abilities = new Table("NPC Low Abilities", new TableRow[]{
+				new TableRow(1, -1, "Strength - feeble, scrawny"),
+				new TableRow(2, -1, "Dexterity - clumsy, fumbling"),
+				new TableRow(3, -1, "Constitution - sickly, pale"),
+				new TableRow(4, -1, "Intelligence - dim-witted, slow"),
+				new TableRow(5, -1, "Wisdom - oblivious, absentminded"),
+				new TableRow(6, -1, "Charisma - dull, boring"),
+			});
+
+			public static readonly Table npc_talents = new Table("NPC Talents", new TableRow[]{
+				new TableRow(1, -1, "Plays a musical instrument"),
+				new TableRow(2, -1, "Speaks several languages fluently"),
+				new TableRow(3, -1, "Unbelievably lucky"),
+				new TableRow(4, -1, "Perfect memory"),
+				new TableRow(5, -1, "Great with animals"),
+				new TableRow(6, -1, "Great with children"),
+				new TableRow(7, -1, "Great at solving puzzles"),
+				new TableRow(8, -1, "Great at one game"),
+				new TableRow(9, -1, "Great at impersonations"),
+				new TableRow(10, -1, "Draws beautifully"),
+				new TableRow(11, -1, "Sings beautifully"),
+				new TableRow(12, -1, "Drinks everyone under the table"),
+				new TableRow(13, -1, "Expert carpenter"),
+				new TableRow(14, -1, "Expert cook"),
+				new TableRow(15, -1, "Expert dart thrower and rock skipper"),
+				new TableRow(16, -1, "Expert juggler"),
+				new TableRow(17, -1, "Skilled acto and master of disguise"),
+				new TableRow(18, -1, "Skilled dancer"),
+				new TableRow(19, -1, "Knows thieves' cant"),
+			});
+
+			public static readonly Table npc_mannerisms = new Table("NPC Mannerisms", new TableRow[]{
+				new TableRow(1, -1, "Prone to singing, whistling, or humming quietly"),
+				new TableRow(2, -1, "Speaks in rhyme or some other peculiar way"),
+				new TableRow(3, -1, "Particularly low or high voice"),
+				new TableRow(4, -1, "Slurs words, lisps, or stutters"),
+				new TableRow(5, -1, "Enunciates overly clearly"),
+				new TableRow(6, -1, "Speaks loudly"),
+				new TableRow(7, -1, "Whispers"),
+				new TableRow(8, -1, "Uses flowery speech or long words"),
+				new TableRow(9, -1, "Frequently uses the wrong word"),
+				new TableRow(10, -1, "Uses colorful oaths and exclamations"),
+				new TableRow(11, -1, "Makes constant jokes or puns"),
+				new TableRow(12, -1, "Prone to predictions of doom"),
+				new TableRow(13, -1, "Fidgets"),
+				new TableRow(14, -1, "Squints"),
+				new TableRow(15, -1, "Stares into the distance"),
+				new TableRow(16, -1, "Chews something"),
+				new TableRow(17, -1, "Paces"),
+				new TableRow(18, -1, "Taps fingers"),
+				new TableRow(19, -1, "Bites fingernails"),
+				new TableRow(20, -1, "Twirls hair or tugs beard"),
+			});
+
+			public static readonly Table npc_interaction_traits = new Table("NPC Interactions Traits", new TableRow[]{
+				new TableRow(1, -1, "Argumentative"),
+				new TableRow(2, -1, "Arrogant"),
+				new TableRow(3, -1, "Blustering"),
+				new TableRow(4, -1, "Rude"),
+				new TableRow(5, -1, "Curious"),
+				new TableRow(6, -1, "Friendly"),
+				new TableRow(7, -1, "Honest"),
+				new TableRow(8, -1, "Hot tempered"),
+				new TableRow(9, -1, "Irritable"),
+				new TableRow(10, -1, "Ponderous"),
+				new TableRow(11, -1, "Quiet"),
+				new TableRow(12, -1, "Suspicious"),
+			});
+
+			public static readonly Table npc_ideals_good = new Table("NPC Ideals Good", new TableRow[]{
+				new TableRow(1, -1, "Beauty"),
+				new TableRow(2, -1, "Charity"),
+				new TableRow(3, -1, "Greater good"),
+				new TableRow(4, -1, "Life"),
+				new TableRow(5, -1, "Respect"),
+				new TableRow(6, -1, "Self-sacrifice"),
+			});
+
+			public static readonly Table npc_ideals_evil = new Table("NPC Ideals Evil", new TableRow[]{
+				new TableRow(1, -1, "Domination"),
+				new TableRow(2, -1, "Greed"),
+				new TableRow(3, -1, "Might"),
+				new TableRow(4, -1, "Pain"),
+				new TableRow(5, -1, "Retribution"),
+				new TableRow(6, -1, "Slaughter"),
+			});
+
+			public static readonly Table npc_ideals_lawful = new Table("NPC Ideals Lawful", new TableRow[]{
+				new TableRow(1, -1, "Community"),
+				new TableRow(2, -1, "Fairness"),
+				new TableRow(3, -1, "Honor"),
+				new TableRow(4, -1, "Logic"),
+				new TableRow(5, -1, "Responsibility"),
+				new TableRow(6, -1, "Tradition"),
+			});
+
+			public static readonly Table npc_ideals_chaotic = new Table("NPC Ideals Chaotic", new TableRow[]{
+				new TableRow(1, -1, "Change"),
+				new TableRow(2, -1, "Creativity"),
+				new TableRow(3, -1, "Freedom"),
+				new TableRow(4, -1, "Independence"),
+				new TableRow(5, -1, "No limits"),
+				new TableRow(6, -1, "Whimsy"),
+			});
+
+			public static readonly Table npc_ideals_neutral = new Table("NPC Ideals Neutral", new TableRow[]{
+				new TableRow(1, -1, "Balance"),
+				new TableRow(2, -1, "Knowledge"),
+				new TableRow(3, -1, "Live and let live"),
+				new TableRow(4, -1, "Moderation"),
+				new TableRow(5, -1, "Neutrality"),
+				new TableRow(6, -1, "People"),
+			});
+
+			public static readonly Table npc_ideals_other = new Table("NPC Ideals Other", new TableRow[]{
+				new TableRow(1, -1, "Aspiration"),
+				new TableRow(2, -1, "Discovery"),
+				new TableRow(3, -1, "Glory"),
+				new TableRow(4, -1, "Nation"),
+				new TableRow(5, -1, "Redemption"),
+				new TableRow(6, -1, "Self-knowledge"),
+			});
+
+			public static readonly Table npc_bonds = new Table("NPC Bonds", new TableRow[]{
+new TableRow(1, -1, "Dedicated to fulfilling a personal life goal"),
+new TableRow(2, -1, "Protective of close family members"),
+new TableRow(3, -1, "Protective of colleagues or compatriots"),
+new TableRow(4, -1, "Loyal ot a benefactor, patron, or employer"),
+new TableRow(5, -1, "Captivated by a romantic interest"),
+new TableRow(6, -1, "Drawn to a special place"),
+new TableRow(7, -1, "Protective of a sentimental keepsake"),
+new TableRow(8, -1, "Protective of a valuable possession"),
+new TableRow(9, -1, "Out for revenge"),
+});
+
+			public static readonly Table npc_flaws_and_secrets = new Table("NPC Flaws and Secrets", new TableRow[]{
+new TableRow(1, -1, "Forbidden love or susceptibility to romance"),
+new TableRow(2, -1, "Enjoys decadent pleasures"),
+new TableRow(3, -1, "Arrogance"),
+new TableRow(4, -1, "Envies another creature's possessions or station"),
+new TableRow(5, -1, "Overpowering greed"),
+new TableRow(6, -1, "Prone to rage"),
+new TableRow(7, -1, "Has a powerful enemy"),
+new TableRow(8, -1, "Specific phobia"),
+new TableRow(9, -1, "Shameful or scandalous history"),
+new TableRow(10, -1, "Secret crime or misdeed"),
+new TableRow(11, -1, "Possession of forbidden lore"),
+new TableRow(12, -1, "Foolhardy bravery"),
+});
+
+			public static readonly Table villains_scheme_objective = new Table("Villains Scheme - Objective", new TableRow[]{
+new TableRow(1, -1, "Immortality"),
+new TableRow(2, -1, "Influence"),
+new TableRow(3, -1, "Magic"),
+new TableRow(4, -1, "Mayhem"),
+new TableRow(5, -1, "Passion"),
+new TableRow(6, -1, "Power"),
+new TableRow(7, -1, "Revenge"),
+new TableRow(8, -1, "Wealth"),
+});
+
+			public static readonly Table villains_scheme_immortality = new Table("Villains Scheme - Immortality", new TableRow[]{
+new TableRow(1, -1, "Acquire a legendary item to prolog life"),
+new TableRow(2, -1, "Ascend to godhood"),
+new TableRow(3, -1, "Become undead or obtain a younger body"),
+new TableRow(4, -1, "Steal a planar creature's essence"),
+});
+
+			public static readonly Table villains_scheme_influence = new Table("Villains Scheme - Influence", new TableRow[]{
+new TableRow(1, -1, "Seize a position of power or title"),
+new TableRow(2, -1, "Win a contest or tournament"),
+new TableRow(3, -1, "Win favor with a powerful individual"),
+new TableRow(4, -1, "Place a pawn in a position of power"),
+});
+
+			public static readonly Table villains_scheme_magic = new Table("Villains Scheme - Magic", new TableRow[]{
+new TableRow(1, -1, "Obtain an ancient artifact"),
+new TableRow(2, -1, "Build a construct or magical device"),
+new TableRow(3, -1, "Carry out a deity's wishes"),
+new TableRow(4, -1, "Offer sacrifices to a deity"),
+new TableRow(5, -1, "Contact a lost deity or power"),
+new TableRow(6, -1, "Open a gate to another world"),
+});
+
+			public static readonly Table villains_scheme_mayhem = new Table("Villains Scheme - Mayhem", new TableRow[]{
+new TableRow(1, -1, "Fulfill an apocalyptic prophecy"),
+new TableRow(2, -1, "Enact the vengeful will of a god or patron"),
+new TableRow(3, -1, "Spread a vile contagion"),
+new TableRow(4, -1, "Overthrow a government"),
+new TableRow(5, -1, "Trigger a natrual disaster"),
+new TableRow(6, -1, "Utterly destroy a bloodline or clan"),
+});
+
+			public static readonly Table villains_scheme_passion = new Table("Villains Scheme - Passion, new TableRow[]{
+			new TableRow(1, -1, "Prolong the life of a loved one"),
+			new TableRow(2, -1, "Prove worthy of another person's love"),
+			new TableRow(3, -1, "Raise or restore a dead loved one"),
+			new TableRow(4, -1, "Destroy rivals for another person's affection"),
+});
+
+public static readonly Table villains_scheme_power = new Table("Villains Scheme - Power", new TableRow[]{
+new TableRow(1, -1, "Conquer a region or incite a rebellion"),
+new TableRow(2, -1, "Seize control of an army"),
+new TableRow(3, -1, "Become the power behind the throne"),
+new TableRow(4, -1, "Gain the favor of a ruler"),
+});
+
+		public static readonly Table villains_scheme_revenge = new Table("Villains Scheme - Revenge", new TableRow[]{
+new TableRow(1, -1, "Avenge a past humiliation or insult"),
+new TableRow(2, -1, "Avenge a past imprisonment or injury"),
+new TableRow(3, -1, "Avenge the death of a loved one"),
+new TableRow(4, -1, "Retrieve stolen property and punish the thief"),
+});
+
+		public static readonly Table villains_scheme_wealth = new Table("Villains Scheme - Wealth", new TableRow[]{
+new TableRow(1, -1, "Control natural resources or trade"),
+new TableRow(2, -1, "Marry into wealth"),
+new TableRow(3, -1, "Plunder ancient ruins"),
+new TableRow(4, -1, "Steal land, goods, or money"),
+});
+
+		public static readonly Table villains_methods_agricultural_devastation = new Table("Villains Methods - Agricultural Devastation", new TableRow[]{
+new TableRow(1, -1, "Blight"),
+new TableRow(2, -1, "Crop failure"),
+new TableRow(3, -1, "Drought"),
+new TableRow(4, -1, "Famine"),
+});
+
+		public static readonly Table villains_methods_assault_or_beatings = new Table("Villains Methods - Assault or Beatings", new TableRow[]{
+new TableRow(1, -1, "Assault or beatings"),
+});
+
+		public static readonly Table villains_methods_bounty_hunting_or_assassination = new Table("Villains Methods - Bounty Hunting or Assassination", new TableRow[]{
+new TableRow(1, -1, "Bounty hunting or assassination"),
+});
+
+		public static readonly Table villains_methods_captivity_or_coercion = new Table("Villains Methods - Captivity or Coercion", new TableRow[]{
+new TableRow(1, -1, "Bribery"),
+new TableRow(2, -1, "Enticement"),
+new TableRow(3, -1, "Eviction"),
+new TableRow(4, -1, "Imprisonment"),
+new TableRow(5, -1, "Kidnapping"),
+new TableRow(6, -1, "Legal intimidation"),
+new TableRow(7, -1, "Press gangs"),
+new TableRow(8, -1, "Shackling"),
+new TableRow(9, -1, "Slavery"),
+new TableRow(10, -1, "Threats or harassment"),
+});
+
+		public static readonly Table villains_methods_confidence_scams = new Table("Villains Methods - Confidence Scams", new TableRow[]{
+new TableRow(1, -1, "Breach of contract"),
+new TableRow(2, -1, "Cheating"),
+new TableRow(3, -1, "Fast talking"),
+new TableRow(4, -1, "Fine print"),
+new TableRow(5, -1, "Fraud or swindling"),
+new TableRow(6, -1, "Quackery or tricks"),
+});
+
+		public static readonly Table villains_methods_defamation = new Table("Villains Methods - Defamation", new TableRow[]{
+new TableRow(1, -1, "Framing"),
+new TableRow(2, -1, "Gossipping or slander"),
+new TableRow(3, -1, "Humiliation"),
+new TableRow(4, -1, "Libel or insults"),
+});
+
+		public static readonly Table villains_methods_dueling = new Table("Villains Methods - Dueling", new TableRow[]{
+new TableRow(1, -1, "Dueling"),
+});
+
+		public static readonly Table villains_methods_execution = new Table("Villains Methods - Execution", new TableRow[]{
+new TableRow(1, -1, "Beheading"),
+new TableRow(2, -1, "Burning at the stake"),
+new TableRow(3, -1, "Burying alive"),
+new TableRow(4, -1, "Crucifixion"),
+new TableRow(5, -1, "Drawing and quartering"),
+new TableRow(6, -1, "Hanging"),
+new TableRow(7, -1, "Impalement"),
+new TableRow(8, -1, "Sacrifice (living)"),
+});
+
+		public static readonly Table villains_methods_impersonation_or_disguise = new Table("Villains Methods - Impersonation or Disguise", new TableRow[]{
+new TableRow(1, -1, "Impersonation or disguise"),
+});
+
+		public static readonly Table villains_methods_lying_or_perjury = new Table("Villains Methods - Lying or Perjury", new TableRow[]{
+new TableRow(1, -1, "Lying or perjury"),
+});
+
+		public static readonly Table villains_methods_magical_mayhem = new Table("Villains Methods - Magical Mayhem", new TableRow[]{
+new TableRow(1, -1, "Hauntings"),
+new TableRow(2, -1, "Illusions"),
+new TableRow(3, -1, "Infernal bargains"),
+new TableRow(4, -1, "Mind control"),
+new TableRow(5, -1, "Petrification"),
+new TableRow(6, -1, "Raising or animating the dead"),
+new TableRow(7, -1, "Summoning monsters"),
+new TableRow(8, -1, "Weather control"),
+});
+
+		public static readonly Table villains_methods_murder = new Table("Villains Methods - Murder", new TableRow[]{
+new TableRow(1, -1, "Assassination"),
+new TableRow(2, -1, "Cannibalism"),
+new TableRow(3, -1, "Dismemberment"),
+new TableRow(4, -1, "Drowning"),
+new TableRow(5, -1, "Electrocution"),
+new TableRow(6, -1, "Euthanasia (involuntary)"),
+new TableRow(7, -1, "Disease"),
+new TableRow(8, -1, "Poisoning"),
+new TableRow(9, -1, "Stabbing"),
+new TableRow(10, -1, "Strangulation or suffocation"),
+});
+
+		public static readonly Table villains_methods_neglect = new Table("Villains Methods - Neglect", new TableRow[]{
+new TableRow(1, -1, "Neglect"),
+});
+
+		public static readonly Table villains_methods_politics = new Table("Villains Methods - Politics", new TableRow[]{
+new TableRow(1, -1, "Betrayal or treason"),
+new TableRow(2, -1, "Conspiracy"),
+new TableRow(3, -1, "Espionage or spying"),
+new TableRow(4, -1, "Genocide"),
+new TableRow(5, -1, "Oppression"),
+new TableRow(6, -1, "Raising taxes"),
+});
+
+		public static readonly Table villains_methods_religion = new Table("Villains Methods - Religion", new TableRow[]{
+new TableRow(1, -1, "Curses"),
+new TableRow(2, -1, "Desecration"),
+new TableRow(3, -1, "False gods"),
+new TableRow(4, -1, "Heresy or cults"),
+});
+
+		public static readonly Table villains_methods_stalking = new Table("Villains Methods - Stalking", new TableRow[]{
+new TableRow(1, -1, "Stalking"),
+});
+
+		public static readonly Table villains_methods_theft_or_property_crime = new Table("Villains Methods - Theft or Property Crime", new TableRow[]{
+new TableRow(1, -1, "Arson"),
+new TableRow(2, -1, "Blackmail or extortion"),
+new TableRow(3, -1, "Burglary"),
+new TableRow(4, -1, "Counterfeiting"),
+new TableRow(5, -1, "Highway robbery"),
+new TableRow(6, -1, "Looting"),
+new TableRow(7, -1, "Mugging"),
+new TableRow(8, -1, "Poaching"),
+new TableRow(9, -1, "Seizing property"),
+new TableRow(10, -1, "Smuggling"),
+});
+
+		public static readonly Table villains_methods_torture = new Table("Villains Methods - Torture", new TableRow[]{
+new TableRow(1, -1, "Acid"),
+new TableRow(2, -1, "Blinding"),
+new TableRow(3, -1, "Branding"),
+new TableRow(4, -1, "Racking"),
+new TableRow(5, -1, "Thumbscrews"),
+new TableRow(6, -1, "Whipping"),
+});
+
+		public static readonly Table villains_methods_vice = new Table("Villains Methods - Vice", new TableRow[]{
+new TableRow(1, -1, "Adultery"),
+new TableRow(2, -1, "Drugs or alcohol"),
+new TableRow(3, -1, "Gambling"),
+new TableRow(4, -1, "Seduction"),
+});
+
+		public static readonly Table villains_methods_warfare = new Table("Villains Methods - Warfare", new TableRow[]{
+new TableRow(1, -1, "Ambush"),
+new TableRow(2, -1, "Invasion"),
+new TableRow(3, -1, "Massacre"),
+new TableRow(4, -1, "Mercenaries"),
+new TableRow(5, -1, "Rebellion"),
+new TableRow(6, -1, "Terrorism"),
+});
+
+		public static readonly Table villains_weakness = new Table("Villain's Weakness", new TableRow[]{
+new TableRow(1, -1, "A hidden object holds the villain's soul"),
+new TableRow(2, -1, "The villain's power is broken if the death of its true love is avenged"),
+new TableRow(3, -1, "The villain is weakened in the presence of a particular artifact"),
+new TableRow(4, -1, "A special weapon deals extra damage when used against the villain"),
+new TableRow(5, -1, "The villain is destroyed if it speaks its true name"),
+new TableRow(6, -1, "An ancient prophecy or riddle reveals how the villain can be overthrown"),
+new TableRow(7, -1, "The villain falls when an ancient enemy forgives its past actions"),
+new TableRow(8, -1, "The villain loses its power if a mystic bargain it struck long ago is completed"),
+});
+
+	}
+
+	// Chapter 5
+	public static class AdventureEnvironments
 		{
 			public static readonly string[] dungeon_location =
 			{
@@ -9365,6 +10292,8 @@ namespace DungeonMasterHelper
 
 		#endregion XGE
 
+		public static readonly Table t = new Table("table", new TableRow[] { });
+
 		public static readonly string[][] allTables =
 		{
 			// global
@@ -9432,7 +10361,7 @@ namespace DungeonMasterHelper
 			NPC.villains_methods_agricultural_devestation,
 			NPC.villains_methods_assault_or_beatings,
 			NPC.villains_methods_bounty_hunting_or_assassination,
-			NPC.villains_methods_conficence_scams,
+			NPC.villains_methods_confidence_scams,
 			NPC.villains_methods_defamation,
 			NPC.villains_methods_dueling,
 			NPC.villains_methods_execution,
@@ -9596,7 +10525,7 @@ namespace DungeonMasterHelper
 
 		public override string ToString()
 		{
-			return "new TableRow(" + minRoll + ", " + maxRoll + ", \"" + entry + "\");";
+			return "new TableRow(" + minRoll + ", " + maxRoll + ", \"" + entry + "\"),";
 		}
 		/*
 		public override string ToString()
