@@ -39,7 +39,7 @@ namespace DungeonMasterHelper
 			}
 
             talentTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_talents);
-            idealTB.Text = Data.getSingleRandomFrom(Data.NPC.ideals[Data.roll(1, Data.NPC.ideals.Length) - 1]);
+            //idealTB.Text = Data.getSingleRandomFrom(Data.NPC.ideals[Data.roll(1, Data.NPC.ideals.Length) - 1]);
             bondTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_bonds);
             flawSecretRTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_flaws_and_secrets);
 

@@ -24,11 +24,12 @@ namespace DungeonMasterHelper
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(Data.getTableAsString(Data.Treasure.carpet_of_flying));
+			Data.showTable(Data.World.cataclysmic_distasters);
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
+			/*
 			// *****
 			// MISSING VILLAIN SCHEMES TABLE
 			// *****
@@ -48,10 +49,14 @@ namespace DungeonMasterHelper
 
 			System.IO.File.WriteAllLines(@"C:\Users\lupus\Downloads\tables.txt", valuesOfTables);
 			System.IO.File.WriteAllLines(@"C:\Users\lupus\Downloads\doubletables.txt", valuesOfDoubleTables);
+			*/
 		}
 
 		private void button4_Click(object sender, EventArgs e)
 		{
+
+			MessageBox.Show(Data.Multiverse.getEtherCyclone());
+			/*
 			string[] valuesOfTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\tables.txt");
 			string[] valuesOfDoubleTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\doubletables.txt");
 
@@ -102,6 +107,7 @@ namespace DungeonMasterHelper
 
 			System.IO.File.WriteAllLines(@"C:\Users\lupus\Downloads\tables2.txt", tab.ToArray());
 			System.IO.File.WriteAllLines(@"C:\Users\lupus\Downloads\doubletables2.txt", tab2.ToArray());
+			*/
 		}
 	}
 }
