@@ -24,7 +24,8 @@ namespace DungeonMasterHelper
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			Data.showTable(Data.World.cataclysmic_distasters);
+			//Data.showTable(Data.World.cataclysmic_distasters);
+			MessageBox.Show(Data.Adventures.getWildernessGoal());
 		}
 
 		private void button3_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace DungeonMasterHelper
 	// in order to preserve the original tables as they were found in the source books for 
 	// D&D 5e
 
-	// TODO: create complete tables
+	// TODO: create complete tables/gets, get results by rolling on tables, check tables for spelling errors
 
 	public static class Data
 	{
@@ -24,7 +24,7 @@ namespace DungeonMasterHelper
 
 		private static string lowerFirstLetter(string str)
 		{
-			return str.First().ToString().ToLower() + str.Skip(1);
+			return str.First().ToString().ToLower() + (str.Skip(1)).ToString();
 		}
 
 		/// <summary>
@@ -267,6 +267,16 @@ namespace DungeonMasterHelper
 			LEGENDARY
 		}
 
+		public enum Ideal
+		{
+			GOOD,
+			EVIL,
+			LAWFUL,
+			CHAOTIC,
+			NEUTRAL,
+			OTHER
+		}
+
 		#endregion Global
 
 		#region DMG
@@ -503,6 +513,13 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Days become years"),
 			});
 
+			public static readonly Table shadowfell_despair = new Table("Shadowfell Despair", new TableRow[]
+			{
+				new TableRow(1, 3, "Apathy. The character has disadvantage on death saving throws and on Dexterity checks for initiative, and gains the following flaw: \"I don't believe I can make a difference to anyone or anything.\""),
+				new TableRow(4, 5, "Dread. The character has disadvantage on all saving throws and gains the following flaw: \"I am convinced that this place is going to kill me.\""),
+				new TableRow(6, -1, "Madness. The character has disadvantage on ability checks and saving throws that use Intelligence, Wisdom, or Charisma, and gains the following flaw: \"I can't tell what's real anymore\"")
+			});
+
 			public static string getPsychicWindEffectsLocationEffect()
 			{
 				int num = Data.rand.Next() % 20 + 1;
@@ -582,24 +599,6 @@ namespace DungeonMasterHelper
 				}
 			}
 
-			public static string getShadowfellDespair()
-			{
-				int num = Data.rand.Next() % 6 + 1;
-
-				if (num < 4)
-				{
-					return "Apathy. The character has disadvantage on death saving throws and on Dexterity checks for initiative, and gains the following flaw: \"I don't believe I can make a difference to anyone or anything.\"";
-				}
-				else if (num < 6)
-				{
-					return "Dread. The character has disadvantage on all saving throws and gains the following flaw: \"I am convinced that this place is going to kill me.\"";
-				}
-				else
-				{
-					return "Madness. The character has disadvantage on ability checks and saving throws that use Intelligence, Wisdom, or Charisma, and gains the following flaw: \"I can't tell what's real anymore\"";
-				}
-			}
-
 			public static string getAbyssalCorruption()
 			{
 				int num = Data.rand.Next() % 10 + 1;
@@ -630,7 +629,7 @@ namespace DungeonMasterHelper
 		{
 
 			public static readonly Table dungeon_goals = new Table("Dungeon Goals", new TableRow[]{
-				new TableRow(1, -1, "Stop the dungeon's monstrous inhabitatns from raiding the surface world."),
+				new TableRow(1, -1, "Stop the dungeon's monstrous inhabitants from raiding the surface world."),
 				new TableRow(2, -1, "Foil a villain's evil scheme."),
 				new TableRow(3, -1, "Destroy a magical threat inside the dungeon."),
 				new TableRow(4, -1, "Acquire treasure."),
@@ -900,12 +899,96 @@ namespace DungeonMasterHelper
 				new TableRow(7, -1, "Discover the nature and origin of a strange phenomenon in the area."),
 				new TableRow(8, -1, "Secure the aid of a character or creature in the area."),
 			});
+
+			public static string getDungeonGoal()
+			{
+				int num = Data.rand.Next() % dungeon_goals.Length;
+
+				if (num == 19)
+				{
+					num = Data.rand.Next() % (dungeon_goals.Length - 1);
+
+					return dungeon_goals[Data.rand.Next() % (dungeon_goals.Length - 1)] + " and " +
+						dungeon_goals[num].Entry.ToLower();
+				}
+
+				return dungeon_goals[num];
+			}
+
+			public static string getWildernessGoal()
+			{
+				int num = Data.rand.Next() % wilderness_goals.Length;
+
+				num = 0;
+
+				if (num == 0)
+				{
+					string dg = getDungeonGoal().ToLower();
+
+					return "Locate a dungeon or other site of interest to " + dg;
+				}
+
+				if (num == 19)
+				{
+					num = Data.rand.Next() % (wilderness_goals.Length - 1);
+
+					string[] strs = { "", "" };
+
+					for (int i = 0; i < 2; i++)
+					{
+						num = Data.rand.Next() % (wilderness_goals.Length - 1);
+
+						if (num == 0)
+						{
+							strs[i] = getDungeonGoal().ToLower();
+							strs[i] = "Locate a dungeon or other site of interest to " + strs[i];
+						}
+						else
+						{
+							strs[i] = wilderness_goals[num];
+						}
+					}
+
+					return strs[0] + " " + strs[1];
+				}
+
+				return wilderness_goals[num];
+			}
+
+			public static string getEventBasedGoals()
+			{
+				int num = Data.rand.Next() % dungeon_goals.Length;
+
+				if (num == 19)
+				{
+					num = Data.rand.Next() % (dungeon_goals.Length - 1);
+
+					return event_based_goals[Data.rand.Next() % (event_based_goals.Length - 1)] + " and " +
+						event_based_goals[num].Entry.ToLower();
+				}
+
+				return event_based_goals[num];
+			}
+
+			public static string getFramingEvents()
+			{
+				int num = Data.rand.Next() % framing_events.Length;
+
+				if (num > framing_events.Length - 3)
+				{
+					num = Data.rand.Next() % (framing_events.Length - 2);
+					
+					return framing_events[Data.rand.Next() % (framing_events.Length - 2)] + " and " +
+						framing_events[num].Entry.ToLower();
+				}
+
+				return framing_events[num];
+			}
 		}
 
 		// Chapter 4
 		public static class NPC
 		{
-
 			public static readonly Table npc_appearance = new Table("NPC Appearance", new TableRow[]{
 				new TableRow(1, -1, "Distinctive jewelry: earrings, necklace, circlet, bracelets"),
 				new TableRow(2, -1, "Piercings"),
@@ -1322,6 +1405,89 @@ namespace DungeonMasterHelper
 				new TableRow(7, -1, "The villain falls when an ancient enemy forgives its past actions"),
 				new TableRow(8, -1, "The villain loses its power if a mystic bargain it struck long ago is completed"),
 			});
+
+			public static string getNPCIdeals(int ideal = -1)
+			{
+				Table[] ideals =
+				{
+					npc_ideals_good,
+					npc_ideals_evil,
+					npc_ideals_lawful,
+					npc_ideals_chaotic,
+					npc_ideals_neutral,
+					npc_ideals_other
+				};
+
+				if(ideal == -1)
+				{
+					return ideals[roll(1, 6) - 1].rollOnTable();
+				}
+
+				return ideals[ideal].rollOnTable();
+			}
+
+			public static string getNPCAbilities(bool getDifferentAbilities = true)
+			{
+				int num1 = roll(1, 6);
+				int num2 = 0;
+
+				do
+				{
+					num2 = roll(1, 6);
+				} while (num2 == num1 && getDifferentAbilities == true);
+
+				return npc_high_abilities[num1 - 1] + ", " + npc_low_abilities[num2 - 1];
+			}
+
+			public static string getVillainsScheme()
+			{
+				Table[] schemes = 
+				{
+					villains_scheme_immortality,
+					villains_scheme_influence,
+					villains_scheme_magic,
+					villains_scheme_mayhem,
+					villains_scheme_passion,
+					villains_scheme_power,
+					villains_scheme_revenge,
+					villains_scheme_wealth
+				};
+
+				int index = roll(1, 8) - 1;
+
+				return schemes[index].Name + " - " + schemes[index].rollOnTable();
+			}
+
+			public static string getVillainsMethods()
+			{
+				Table[] methods =
+				{
+					villains_methods_agricultural_devastation,
+					villains_methods_assault_or_beatings,
+					villains_methods_bounty_hunting_or_assassination,
+					villains_methods_captivity_or_coercion,
+					villains_methods_confidence_scams,
+					villains_methods_defamation,
+					villains_methods_dueling,
+					villains_methods_execution,
+					villains_methods_impersonation_or_disguise,
+					villains_methods_lying_or_perjury,
+					villains_methods_magical_mayhem,
+					villains_methods_murder,
+					villains_methods_neglect,
+					villains_methods_politics,
+					villains_methods_religion,
+					villains_methods_stalking,
+					villains_methods_theft_or_property_crime,
+					villains_methods_torture,
+					villains_methods_vice,
+					villains_methods_warfare
+				};
+
+				int index = roll(1, 20) - 1;
+
+				return methods[index].Name + " - " + methods[index].rollOnTable();
+			}
 		}
 
 		// Chapter 5
@@ -1753,20 +1919,13 @@ namespace DungeonMasterHelper
 		{
 			public static readonly Table carousing = new Table("Carousing", new TableRow[]{
 				new TableRow(1, 10, "You are jailed for 1d4 days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."),
+				new TableRow(1, 10, "You are jailed for 1d4 days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."),
 				new TableRow(11, 20, "You regain consciousness in a strange place with no memory of how you got there, and you have been robbed of 3d6x5 gp."),
 				new TableRow(21, 30, "You make an enemy. This person, business, or organization is now hostile to you. The DM determines the offended party. You decide how you offended them."),
 				new TableRow(31, 40, "You are caught up in a whirlwind romance. Roll a d20. On a 1-5, the romance ends badly. On a 6-10, the romance ends amicably. On an 11-20, the romance is ongoing.You determine the identity of the love interest, subject to your DM's approval. If the romance ends badly, you might gain a new flaw. If it ends well or is ongoing, your new love interest might represent a new bond."),
 				new TableRow(41, 80, "You earn modest winnings from gambling and recuperate your lifestlye expenses for the time spent carousing."),
-				new TableRow(81, -1, "You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 1d20x4 gp."),
-				new TableRow(82, -1, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
-				new TableRow(83, -1, "You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 1d20x4 gp."),
-				new TableRow(84, -1, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
-				new TableRow(85, -1, "You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 1d20x4 gp."),
-				new TableRow(86, -1, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
-				new TableRow(87, -1, "You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 1d20x4 gp."),
-				new TableRow(88, -1, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
-				new TableRow(89, -1, "You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 1d20x4 gp."),
-				new TableRow(90, -1, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
+				new TableRow(81, 90, "You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 1d20x4 gp."),
+				new TableRow(90, 100, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
 			});
 
 			public static readonly Table running_a_business = new Table("Running a Business", new TableRow[]{
@@ -1786,6 +1945,11 @@ namespace DungeonMasterHelper
 				new TableRow(81, 90, "A buyer offering the full base price"),
 				new TableRow(91, 100, "A shady buyer offering one and a half times the base price, no questions asked"),
 			});
+
+			public static string getCarousing(int playerLevel = 0)
+			{
+				return carousing.rollOnTable(playerLevel);
+			}
 		}
 
 		// Chapter 7
@@ -2954,6 +3118,61 @@ namespace DungeonMasterHelper
 				new TableRow(91, 95, "While attuned to the artifact, you have vulnerability to all damage"),
 				new TableRow(96, 100, "When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes"),
 			});
+
+			public static string getCarpetOfFlying()
+			{
+				Table[] cof =
+				{
+					carpet_of_flying_size,
+					carpet_of_flying_capacity,
+					carpet_of_flying_flying_speed
+				};
+
+				int num = roll(1, 100);
+
+				return cof[0].rollOnTable(num) + ", " + cof[1].rollOnTable(num) + ", " + cof[2].rollOnTable(num);
+			}
+			
+			public static string getHornOfValhalla()
+			{
+				Table[] hov =
+				{
+					horn_of_valhalla_horn_type,
+					horn_of_valhalla_berserkers_summoned,
+					horn_of_valhalla_requirement
+				};
+
+				int num = roll(1, 100);
+
+				return hov[0].rollOnTable(num) + ", " + hov[1].rollOnTable(num) + ", " + hov[2].rollOnTable(num);
+			}
+
+			public static string getManualOfGolems()
+			{
+				Table[] mog =
+				{
+					manual_of_golems_golem,
+					manual_of_golems_time,
+					manual_of_golems_cost
+				};
+
+				int num = roll(1, 20);
+
+				return mog[0].rollOnTable(num) + ", " + mog[1].rollOnTable(num) + ", " + mog[2].rollOnTable(num);
+			}
+
+			public static string getNecklaceOfPrayerBeads()
+			{
+				Table[] nopb =
+				{
+					necklace_of_prayer_beads_bead_of,
+					necklace_of_prayer_beads_spell
+				};
+
+				int num = roll(1, 20);
+
+				return nopb[0].rollOnTable(num) + ", " + nopb[1].rollOnTable(num);
+			}
 		}
 
 		// Chapter 8
@@ -3076,6 +3295,33 @@ namespace DungeonMasterHelper
 				new TableRow(86, 95, "I can't take anything seriously. The more serious the situation, the funnier I find it."),
 				new TableRow(96, 100, "I've discovered that I really like killing people."),
 			});
+
+			public static string getPoison(int num = -1)
+			{
+				if(num == -1 || num > 14)
+				{
+					num = roll(1, 14);
+				}
+
+				Table[] cof =
+				{
+					poisons_item,
+					poisons_type,
+					poisons_price_per_dose
+				};
+
+				return cof[0].rollOnTable(num) + ", " + cof[1].rollOnTable(num) + ", " + cof[2].rollOnTable(num);
+			}
+
+			public static string getShortTermMadnessDuration()
+			{
+				return roll(1, 10).ToString() + " minutes";
+			}
+			
+			public static string getLongTermMadnessDuration()
+			{
+				return (roll(1, 10) * 10).ToString() + " hours";
+			}
 
 		}
 
@@ -4173,6 +4419,16 @@ namespace DungeonMasterHelper
 			get { return entry; }
 		}
 
+		public int Min
+		{
+			get { return minRoll; }
+		}
+
+		public int Max
+		{
+			get { return maxRoll; }
+		}
+
 		public TableRow() { }
 
 		public TableRow(int min, int max, string str)
@@ -4186,12 +4442,6 @@ namespace DungeonMasterHelper
 		{
 			return tr.Entry;
 		}
-		/*
-		public override string ToString()
-		{
-			return "new TableRow(" + minRoll + ", " + maxRoll + ", \"" + entry + "\"),";
-		}
-		*/
 
 		public override string ToString()
 		{
@@ -4233,6 +4483,11 @@ namespace DungeonMasterHelper
 
 			return res;
 		}
+
+		public bool numInRange(int num)
+		{
+			return num >= minRoll && num <= maxRoll;
+		}
 	}
 
 	public class Table
@@ -4240,6 +4495,7 @@ namespace DungeonMasterHelper
 		private string tableName;
 		private TableRow[] tableRows;
 		private int length = 0;
+		private int maxRoll = 0;
 
 		public string Name
 		{
@@ -4265,6 +4521,14 @@ namespace DungeonMasterHelper
 			}
 		}
 
+		public int MaxRoll
+		{
+			get
+			{
+				return maxRoll;
+			}
+		}
+
 		public TableRow this[int i]
 		{
 			get { return tableRows[i]; }
@@ -4275,6 +4539,23 @@ namespace DungeonMasterHelper
 			tableName = name;
 			tableRows = entries;
 			length = entries.Length;
+			maxRoll = entries[length - 1].Max;
 		}
+
+		public string rollOnTable(int modifier = 0)
+		{
+			modifier += Data.roll(1, maxRoll);
+
+			for (int i = 0; i < length; i++)
+			{
+				if(Entries[i].numInRange(modifier))
+				{
+					return Entries[i];
+				}
+			}
+
+			return "Error in Table.rollOnTable";
+		}
+		
 	}
 }
