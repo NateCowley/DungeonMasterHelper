@@ -24,7 +24,7 @@ namespace DungeonMasterHelper
 
 		private static string lowerFirstLetter(string str)
 		{
-			return str.First().ToString().ToLower() + (str.Skip(1)).ToString();
+			return str.Substring(0, 1).ToLower() + str.Substring(1);
 		}
 
 		/// <summary>
@@ -242,7 +242,7 @@ namespace DungeonMasterHelper
 
 		#region Global
 
-		public static readonly Table damage_type = new Table("Damage Type", new TableRow[]{
+		public static readonly Table damage_type = new Table("Damage Types", "Damage Type", new TableRow[]{
 			new TableRow(1, -1, "Acid"),
 			new TableRow(2, -1, "Bludgeoning"),
 			new TableRow(3, -1, "Cold"),
@@ -267,6 +267,15 @@ namespace DungeonMasterHelper
 			LEGENDARY
 		}
 
+		public enum RarityModifier
+		{
+			COMMON = 10,
+			UNCOMMON = 0,
+			RARE = -10,
+			VERYRARE = -20,
+			LEGENDARY = -40
+		}
+
 		public enum Ideal
 		{
 			GOOD,
@@ -284,7 +293,7 @@ namespace DungeonMasterHelper
 		// Chapter 1
 		public static class World
 		{
-			public static readonly Table forms_of_government = new Table("Forms of Government", new TableRow[]{
+			public static readonly Table forms_of_government = new Table("Forms of Government", "Government", new TableRow[]{
 				new TableRow(1, 8, "Autocracy"),
 				new TableRow(9, 13, "Bureaucracy"),
 				new TableRow(14, 19, "Confederacy"),
@@ -307,7 +316,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "Theocracy"),
 			});
 
-			public static readonly Table forms_of_government_explanation = new Table("Forms of Government Explanations", new TableRow[]{
+			public static readonly Table forms_of_government_explanation = new Table("Forms of Government Explanations", "Government", new TableRow[]{
 				new TableRow(1, -1, "One hereditary ruler wields absolute power. The autocrat either is supported by a well-developed bureaucracy or military or stands as the only authority in an otherwise anarchic society. The dynastic ruler could be immortal or undead. Aundair and Karrnath, two kingdoms in the Eberron campaign setting, have autocrats with royal blood in their veins. Whereas Queen Aurala of Aundair relies on wizards and spies to enforce her will, Kaius, the vampire king of Karrnath, has a formidable army of living and undead soldiers under his command."),
 				new TableRow(2, -1, "Various departments compsoe the government, each responsible for an aspect of rule. The department heads, ministers, or secretaries answer to a figurehead autocrat or council."),
 				new TableRow(3, -1, "Each individual city or town within the confederacy governs itself, but all contribute to a league or federation that promotes (at least in theory) the common good of all member states. Conditions and attitudes toward the central government vary from place to place within the confederacy. The Lords' Alliance in the Forgotten Realms setting is a loose confederacy of cities, while the Mror Holds in the Eberron campaign setting is a confederacy of allied dwarf clans."),
@@ -329,7 +338,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, -1, "Rulership falls to a direct representative or a collection of agents of a deity. The centers of power in a theocracy are usually located on sacred sites. In the Eberron campaign setting, the nation of Thrane is a theocracy devoted to the Silver Flame, a divine spirit that resides in Thrane's capital of Flamekeep."),
 			});
 
-			public static readonly Table world_shaking_events = new Table("World Shaking Events", new TableRow[]{
+			public static readonly Table world_shaking_events = new Table("World Shaking Events", "Event", new TableRow[]{
 				new TableRow(1, -1, "Rise of a leader or an era"),
 				new TableRow(2, -1, "Fall of a leader or an era"),
 				new TableRow(3, -1, "Cataclysmic disaster"),
@@ -342,7 +351,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Myth and legend"),
 			});
 
-			public static readonly Table leader_types = new Table("Leader Types", new TableRow[]{
+			public static readonly Table leader_types = new Table("Leader Types", "Leader Type", new TableRow[]{
 				new TableRow(1, -1, "Political"),
 				new TableRow(2, -1, "Religious"),
 				new TableRow(3, -1, "Military"),
@@ -351,7 +360,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Philosophy/learning/magic"),
 			});
 
-			public static readonly Table cataclysmic_distasters = new Table("Cataclysmic Disasters", new TableRow[]{
+			public static readonly Table cataclysmic_distasters = new Table("Cataclysmic Disasters", "Cataclysmic Distaster", new TableRow[]{
 				new TableRow(1, -1, "Earthquake"),
 				new TableRow(2, -1, "Famin/drought"),
 				new TableRow(3, -1, "Fire"),
@@ -364,7 +373,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Divine judgment"),
 			});
 
-			public static readonly Table invading_forces = new Table("Invading Forces", new TableRow[]{
+			public static readonly Table invading_forces = new Table("Invading Forces", "Invading Force", new TableRow[]{
 				new TableRow(1, -1, "A criminal enterprise"),
 				new TableRow(2, -1, "Monsters or a unique monster"),
 				new TableRow(3, -1, "A planar threat"),
@@ -375,7 +384,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "A traitorous ally"),
 			});
 
-			public static readonly Table extinction_or_depletion = new Table("Extinction or Depletion", new TableRow[]{
+			public static readonly Table extinction_or_depletion = new Table("Extinction or Depletion", "Lost Resource", new TableRow[]{
 				new TableRow(1, -1, "A kind of animal (insect, bird, fish, livestock"),
 				new TableRow(2, -1, "Habitable land"),
 				new TableRow(3, -1, "Magic or magic-users (all magic, specific kinds, or schools of magic"),
@@ -386,7 +395,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "A waterway (river, lake, ocean"),
 			});
 
-			public static readonly Table new_organizations = new Table("New Organizations", new TableRow[]{
+			public static readonly Table new_organizations = new Table("New Organizations", "New Organization", new TableRow[]{
 				new TableRow(1, -1, "Crime syndicate/bandit confederacy"),
 				new TableRow(2, -1, "Guild (masons, apothecaries, goldsmiths)"),
 				new TableRow(3, -1, "Magical circle/society"),
@@ -399,7 +408,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Secret society/cult/cabal"),
 			});
 
-			public static readonly Table discoveries = new Table("Discoveries", new TableRow[]{
+			public static readonly Table discoveries = new Table("Discoveries", "Discovery", new TableRow[]{
 				new TableRow(1, -1, "Ancient ruin/lost city of a legendary race"),
 				new TableRow(2, -1, "Animal/monster/magical mutation"),
 				new TableRow(3, -1, "Invention/technology/magic (helpful, destructive)"),
@@ -416,58 +425,36 @@ namespace DungeonMasterHelper
 		// Chapter 2
 		public static class Multiverse
 		{
-			public static readonly Table astral_color_pools_plane = new Table("Astral Color Pools - Plane", new TableRow[]{
-				new TableRow(1, -1, "Ysgard"),
-				new TableRow(2, -1, "Limbo"),
-				new TableRow(3, -1, "Pandemonium"),
-				new TableRow(4, -1, "The Abyss"),
-				new TableRow(5, -1, "Carceri"),
-				new TableRow(6, -1, "Hades"),
-				new TableRow(7, -1, "Gehenna"),
-				new TableRow(8, -1, "The Nine Hells"),
-				new TableRow(9, -1, "Acheron"),
-				new TableRow(10, -1, "Mechanus"),
-				new TableRow(11, -1, "Arcadia"),
-				new TableRow(12, -1, "Mount Celestia"),
-				new TableRow(13, -1, "Bytopia"),
-				new TableRow(14, -1, "Elysium"),
-				new TableRow(15, -1, "The Beastlands"),
-				new TableRow(16, -1, "Arborea"),
-				new TableRow(17, -1, "The Outlands"),
-				new TableRow(18, -1, "Ethereal Plane"),
-				new TableRow(19, 20, "Material Plane"),
+			public static readonly Table astral_color_pools = new Table("Astral Color Pools", "Plane, Color", new TableRow[]{
+				new TableRow(1, -1, "Ysgard, Indigo"),
+				new TableRow(2, -1, "Limbo, Jet black"),
+				new TableRow(3, -1, "Pandemonium, Magenta"),
+				new TableRow(4, -1, "The Abyss, Amethyst"),
+				new TableRow(5, -1, "Carceri, Olive"),
+				new TableRow(6, -1, "Hades, Rust"),
+				new TableRow(7, -1, "Gehenna, Russet"),
+				new TableRow(8, -1, "The Nine Hells, Ruby"),
+				new TableRow(9, -1, "Acheron, Flame red"),
+				new TableRow(10, -1, "Mechanus, Diamond blue"),
+				new TableRow(11, -1, "Arcadia, Saffron"),
+				new TableRow(12, -1, "Mount Celestia, Gold"),
+				new TableRow(13, -1, "Bytopia, Amber"),
+				new TableRow(14, -1, "Elysium, Orange"),
+				new TableRow(15, -1, "The Beastlands, Emerald green"),
+				new TableRow(16, -1, "Arborea, Saphire blue"),
+				new TableRow(17, -1, "The Outlands, Leather brown"),
+				new TableRow(18, -1, "Ethereal Plane, Spiraling white"),
+				new TableRow(19, 20, "Material Plane, Silver"),
 			});
 
-			public static readonly Table astral_color_pools_pool_color = new Table("Astral Color Pools - Pool Color", new TableRow[]{
-				new TableRow(1, -1, "Indigo"),
-				new TableRow(2, -1, "Jet black"),
-				new TableRow(3, -1, "Magenta"),
-				new TableRow(4, -1, "Amethyst"),
-				new TableRow(5, -1, "Olive"),
-				new TableRow(6, -1, "Rust"),
-				new TableRow(7, -1, "Russet"),
-				new TableRow(8, -1, "Ruby"),
-				new TableRow(9, -1, "Flame red"),
-				new TableRow(10, -1, "Diamond blue"),
-				new TableRow(11, -1, "Saffron"),
-				new TableRow(12, -1, "Gold"),
-				new TableRow(13, -1, "Amber"),
-				new TableRow(14, -1, "Orange"),
-				new TableRow(15, -1, "Emerald green"),
-				new TableRow(16, -1, "Sapphire blue"),
-				new TableRow(17, -1, "Leather brown"),
-				new TableRow(18, -1, "Spiraling white"),
-				new TableRow(19, 20, "Silver"),
-			});
-
-			public static readonly Table psychic_wind_effects_location_effect = new Table("Psychic Wind Effects - Location", new TableRow[]{
+			public static readonly Table psychic_wind_effects_location_effect = new Table("Psychic Wind Effects - Location", "Location Effect", new TableRow[]{
 				new TableRow(1, 8, "Diverted; add 1d6 hours to travel time"),
 				new TableRow(9, 12, "Blown off course; add 3d10 hours to travel time"),
 				new TableRow(13, 16, "Lost; at the end of the travel time, characters arrive at a location other than the intended destination"),
 				new TableRow(17, 20, "Sent through color pool to a random plane (roll on the Astral Color Pools table)"),
 			});
 
-			public static readonly Table psychic_wind_effects_mental_effects = new Table("Psychic Wind Effects - Mental Effects", new TableRow[]{
+			public static readonly Table psychic_wind_effects_mental_effects = new Table("Psychic Wind Effects - Mental Effects", "Mental Effect", new TableRow[]{
 				new TableRow(1, 8, "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself"),
 				new TableRow(9, 10, "Short-term madness (see chapter 8)"),
 				new TableRow(11, 12, "11 (2d10) psychic damage"),
@@ -476,35 +463,24 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake"),
 			});
 
-			public static readonly Table ethereal_curtains_plane = new Table("Ethereal Curtains - Plane", new TableRow[]{
-				new TableRow(1, -1, "Material Plane"),
-				new TableRow(2, -1, "Shadowfell"),
-				new TableRow(3, -1, "Feywild"),
-				new TableRow(4, -1, "Plane of Air"),
-				new TableRow(5, -1, "Plane of Earth"),
-				new TableRow(6, -1, "Plane of Fire"),
-				new TableRow(7, -1, "Plane of Water"),
-				new TableRow(8, -1, "Elemental Chaos"),
+			public static readonly Table ethereal_curtains = new Table("Ethereal Curtains - Plane", "Plane, Color of Curtain", new TableRow[]{
+				new TableRow(1, -1, "Material Plane, Bright turquoise"),
+				new TableRow(2, -1, "Shadowfell, Dusky gray"),
+				new TableRow(3, -1, "Feywild, Opulescent white"),
+				new TableRow(4, -1, "Plane of Air, Pale blue"),
+				new TableRow(5, -1, "Plane of Earth, Reddish-brown"),
+				new TableRow(6, -1, "Plane of Fire, Orange"),
+				new TableRow(7, -1, "Plane of Water, Green"),
+				new TableRow(8, -1, "Elemental Chaos, Swirling mix of colors"),
 			});
 
-			public static readonly Table ethereal_curtains_color_of_curtain = new Table("Ethereal Curtains - Color of Curtain", new TableRow[]{
-				new TableRow(1, -1, "Bright turquoise"),
-				new TableRow(2, -1, "Dusky gray"),
-				new TableRow(3, -1, "Opulescent white"),
-				new TableRow(4, -1, "Pale blue"),
-				new TableRow(5, -1, "Reddish-brown"),
-				new TableRow(6, -1, "Orange"),
-				new TableRow(7, -1, "Green"),
-				new TableRow(8, -1, "Swirling mix of colors"),
-			});
-
-			public static readonly Table ether_cyclone = new Table("Ether Cyclone", new TableRow[]{
+			public static readonly Table ether_cyclone = new Table("Ether Cyclone", "Effect", new TableRow[]{
 				new TableRow(1, 12, "Extended journey"),
 				new TableRow(13, 19, "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table"),
 				new TableRow(20, -1, "Hurled into the Astral Plane"),
 			});
 
-			public static readonly Table feywild_time_warp = new Table("Feywild Time Warp", new TableRow[]{
+			public static readonly Table feywild_time_warp = new Table("Feywild Time Warp", "Result", new TableRow[]{
 				new TableRow(1, 2, "Days become minutes"),
 				new TableRow(3, 6, "Days become hours"),
 				new TableRow(7, 13, "No change"),
@@ -513,24 +489,32 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Days become years"),
 			});
 
-			public static readonly Table shadowfell_despair = new Table("Shadowfell Despair", new TableRow[]
+			public static readonly Table shadowfell_despair = new Table("Shadowfell Despair", "Effect", new TableRow[]
 			{
 				new TableRow(1, 3, "Apathy. The character has disadvantage on death saving throws and on Dexterity checks for initiative, and gains the following flaw: \"I don't believe I can make a difference to anyone or anything.\""),
 				new TableRow(4, 5, "Dread. The character has disadvantage on all saving throws and gains the following flaw: \"I am convinced that this place is going to kill me.\""),
 				new TableRow(6, -1, "Madness. The character has disadvantage on ability checks and saving throws that use Intelligence, Wisdom, or Charisma, and gains the following flaw: \"I can't tell what's real anymore\"")
 			});
 
+			public static readonly Table abyssal_corruption = new Table("Abyssal Corruption", "Result", new TableRow[]
+			{
+				new TableRow(1, 4, "Treachery. The character gains the following flaw: \"I can only achieve my goals by making sure that my companions don't achieve theirs.\""),
+				new TableRow(5, 7, "Bloodlust. The character gains the following flaw: \"I enjoy killing for its own sake, and once I start, it's hard to stop\""),
+				new TableRow(8, 9, "Mad Ambition. The character gains the following flaw: \"I am destined to rule the Abyss, and my companions are tools to that end.\""),
+				new TableRow(10, -1, "Demonic Possession. The character is possessed by a demonic entity until freed by Dispel Evil and Good or similar magic. Whenever the possessed character rolls a 1 on an attack roll, ability check, or saving throw, the demon takes control of the character and determines the character's behavior. At the end of each of the possessed character's turns, he or she can make a DC 15 Charisma saving throw. On a success, the character regains control until he or she rolls another 1.")
+			});
+
 			public static string getPsychicWindEffectsLocationEffect()
 			{
-				int num = Data.rand.Next() % 20 + 1;
+				int num = roll(1, 20);
 
 				if (num < 9)
 				{
-					return "Diverted; add " + ((rand.Next() % 6) + 1) + " hours to travel time";
+					return "Diverted; add " + roll(1, 6) + " hours to travel time";
 				}
 				else if (num < 13)
 				{
-					return "Blown off course; add " + (((rand.Next() % 10) + 1) * 3) + " hours to travel time";
+					return "Blown off course; add " + (roll(1, 10) * 3) + " hours to travel time";
 				}
 				else if (num < 17)
 				{
@@ -538,16 +522,18 @@ namespace DungeonMasterHelper
 				}
 				else
 				{
-					num = rand.Next() % astral_color_pools_plane.Length;
+					num = roll(1, astral_color_pools.MaxRoll);
 
 					string str = "";
 
-					if (num > 16)
+					if (num > 17)
 					{
-						str = "the ";
+						str = "The ";
 					}
 
-					return "Sent through color pool to " + str + astral_color_pools_plane[rand.Next() % astral_color_pools_plane.Length];
+					string s = astral_color_pools[num];
+
+					return "Sent through color pool to " + str + s.Substring(0, s.IndexOf(','));
 				}
 			}
 
@@ -583,7 +569,7 @@ namespace DungeonMasterHelper
 
 			public static string getEtherCyclone()
 			{
-				int num = Data.rand.Next() % 20 + 1;
+				int num = roll(1, 20);
 
 				if (num < 13)
 				{
@@ -591,35 +577,12 @@ namespace DungeonMasterHelper
 				}
 				else if (num < 20)
 				{
-					return "Blown to the Border Ethereal of the " + ethereal_curtains_plane[rand.Next() % ethereal_curtains_plane.Length].Entry;
+					string s = ethereal_curtains[roll(1, ethereal_curtains.MaxRoll)];
+					return "Blown to the Border Ethereal of the " + s.Substring(0, s.IndexOf(','));
 				}
 				else
 				{
 					return "Hurled into the Astral Plane";
-				}
-			}
-
-			public static string getAbyssalCorruption()
-			{
-				int num = Data.rand.Next() % 10 + 1;
-
-				if (num < 5)
-				{
-					return "Treachery. The character gains the following flaw: \"I can only achieve my goals by making sure that my companions don't achieve theirs.\"";
-				}
-				else if (num < 8)
-				{
-					return "Bloodlust. The character gains the following flaw: \"I enjoy killing for its own sake, and once I start, it's hard to stop\"";
-				}
-				else if (num < 10)
-				{
-					return "Mad Ambition. The character gains the following flaw: \"I am destined to rule the Abyss, and my companions are tools to that end\"";
-				}
-				else
-				{
-					return "Demonic Possession. The character is possessed by a demonic entity until freed by dispel evil and good or similar magic. Whenever the possessed " +
-						"character rolls a 1 on an attack roll, ability check, or saving throw, the demon takes control of the character and determines the character's behavior. " +
-						"At the end of each of the possessed character's turns, he or she can make a DC 15 Charisma saving throw. On a success, the character regains control until he or she rolls another 1.";
 				}
 			}
 		}
@@ -628,7 +591,7 @@ namespace DungeonMasterHelper
 		public static class Adventures
 		{
 
-			public static readonly Table dungeon_goals = new Table("Dungeon Goals", new TableRow[]{
+			public static readonly Table dungeon_goals = new Table("Dungeon Goals", "Goal", new TableRow[]{
 				new TableRow(1, -1, "Stop the dungeon's monstrous inhabitants from raiding the surface world."),
 				new TableRow(2, -1, "Foil a villain's evil scheme."),
 				new TableRow(3, -1, "Destroy a magical threat inside the dungeon."),
@@ -651,29 +614,30 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Roll twice, ignoring results of 20."),
 			});
 
-			public static readonly Table wilderness_goals = new Table("Wilderness Goals", new TableRow[]{
+			public static readonly Table wilderness_goals = new Table("Wilderness Goals", "Goal", new TableRow[]{
 				new TableRow(1, -1, "Locate a dungeon or other site of interest (roll on the Dungeon Goals table to find out why)."),
 				new TableRow(2, -1, "Assess the scope of a natural or unnatural disaster."),
 				new TableRow(3, -1, "Escort an NPC to a destination."),
 				new TableRow(4, -1, "Arrive at a destination without being seen by the villain's forces."),
 				new TableRow(5, -1, "Stop monsters from raiding caravans and farms."),
 				new TableRow(6, -1, "Establish trade with a distant town."),
-				new TableRow(7, -1, "Map a new land."),
-				new TableRow(8, -1, "Find a place to establish a colony"),
-				new TableRow(9, -1, "Find a natural resource"),
-				new TableRow(10, -1, "Hunt a specific monster."),
-				new TableRow(11, -1, "Return home from a distant place."),
-				new TableRow(12, -1, "Obtain information from a reclusive hermit."),
-				new TableRow(13, -1, "Find an object that was lost in the wilds."),
-				new TableRow(14, -1, "Discover the fate of a missing group of explorers."),
-				new TableRow(15, -1, "Pursue fleeing foes."),
-				new TableRow(16, -1, "Assess the size of an approaching army."),
-				new TableRow(17, -1, "Escape the reign of a tyrant."),
-				new TableRow(18, -1, "Protect a wilderness site from attackers."),
-				new TableRow(19, -1, "Roll twice, ignoring results of 20."),
+				new TableRow(7, -1, "Protect a caravan traveling to a distant town."),
+				new TableRow(8, -1, "Map a new land."),
+				new TableRow(9, -1, "Find a place to establish a colony"),
+				new TableRow(10, -1, "Find a natural resource"),
+				new TableRow(11, -1, "Hunt a specific monster."),
+				new TableRow(12, -1, "Return home from a distant place."),
+				new TableRow(13, -1, "Obtain information from a reclusive hermit."),
+				new TableRow(14, -1, "Find an object that was lost in the wilds."),
+				new TableRow(15, -1, "Discover the fate of a missing group of explorers."),
+				new TableRow(16, -1, "Pursue fleeing foes."),
+				new TableRow(17, -1, "Assess the size of an approaching army."),
+				new TableRow(18, -1, "Escape the reign of a tyrant."),
+				new TableRow(19, -1, "Protect a wilderness site from attackers."),
+				new TableRow(20, -1, "Roll twice, ignoring results of 20."),
 			});
 
-			public static readonly Table other_goals = new Table("Other Goals", new TableRow[]{
+			public static readonly Table other_goals = new Table("Other Goals", "Goal", new TableRow[]{
 				new TableRow(1, -1, "Seize control of a fortified location such as a fortress, town, or ship."),
 				new TableRow(2, -1, "Defend a location from attackers."),
 				new TableRow(3, -1, "Retrieve an object from inside a secure location in a settlement."),
@@ -688,7 +652,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Rescue a character, monster, or object from a natural or unnatural disaster."),
 			});
 
-			public static readonly Table adventure_villains = new Table("Adventure Villains", new TableRow[]{
+			public static readonly Table adventure_villains = new Table("Adventure Villains", "Villain", new TableRow[]{
 				new TableRow(1, -1, "Beast or monstrosity with no particular agenda"),
 				new TableRow(2, -1, "Aberration bent on corruption or domination"),
 				new TableRow(3, -1, "Fiend bent on corruption or destruction"),
@@ -706,7 +670,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Misguided humanoid zealot"),
 			});
 
-			public static readonly Table adventure_allies = new Table("Adventure Allies", new TableRow[]{
+			public static readonly Table adventure_allies = new Table("Adventure Allies", "Ally", new TableRow[]{
 				new TableRow(1, -1, "Skilled adventurer"),
 				new TableRow(2, -1, "Inexperienced adventurer"),
 				new TableRow(3, -1, "Enthusiastic commoner"),
@@ -721,7 +685,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Villain posing as an ally"),
 			});
 
-			public static readonly Table adventure_patrons = new Table("Adventure Patrons", new TableRow[]{
+			public static readonly Table adventure_patrons = new Table("Adventure Patrons", "Patron", new TableRow[]{
 				new TableRow(1, 2, "Retired adventurer"),
 				new TableRow(3, 4, "Local ruler"),
 				new TableRow(5, 6, "Military officer"),
@@ -738,7 +702,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Villain posing as a patron"),
 			});
 
-			public static readonly Table adventure_introduction = new Table("Adventure Introduction", new TableRow[]{
+			public static readonly Table adventure_introduction = new Table("Adventure Introduction", "Introduction", new TableRow[]{
 				new TableRow(1, -1, "While traveling in the wilderness, the characters fall into a sinkhole that opens beneath their feet, dropping them into the adventure location."),
 				new TableRow(2, -1, "While traveling in the wilderness, the characters notice the entrance to the adventure location."),
 				new TableRow(3, -1, "While traveling on a road, the characters are attacked by monsters that flee into the nearby adventure location."),
@@ -753,7 +717,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "A ghost appears and terrorizes a village. Research reveals that it can be put to rest only by entering the adventure location."),
 			});
 
-			public static readonly Table adventure_climax = new Table("Adventure Climax", new TableRow[]{
+			public static readonly Table adventure_climax = new Table("Adventure Climax", "Climax", new TableRow[]{
 				new TableRow(1, -1, "The adventurers confront the main villain and a group of minions in a bloody battle to the finish."),
 				new TableRow(2, -1, "The adventurers chase the villain while dodgin obstacles designed to thwart them, leading to a final confrontation in or outside the villain's refuge."),
 				new TableRow(3, -1, "The actions of the adventurers or the villain result in a cataclysmic event that the adventurers must escape."),
@@ -768,7 +732,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "The adventurers must discover the main villain's secret weakness before they can hope to defeat that villain."),
 			});
 
-			public static readonly Table event_based_villain_actions = new Table("Event Based Villain Actions", new TableRow[]{
+			public static readonly Table event_based_villain_actions = new Table("Event Based Villain Actions", "Type of Actions", new TableRow[]{
 				new TableRow(1, -1, "Big event"),
 				new TableRow(2, -1, "Crime spree"),
 				new TableRow(3, -1, "Growing corruption"),
@@ -777,7 +741,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Step by step"),
 			});
 
-			public static readonly Table event_based_villain_actions_descriptions = new Table("Event Based Villain Actions - Descriptions", new TableRow[]{
+			public static readonly Table event_based_villain_actions_descriptions = new Table("Event Based Villain Actions - Descriptions", "Type of Actions", new TableRow[]{
 				new TableRow(1, -1, "Big Event. The villain's plans come to fruition during a festival, an astrological event, a holy (or unholy) rite, a royal wedding, the birth of a child, or some similar fixed time. The villain's activities up to that point are geared toward preparation for this event."),
 				new TableRow(2, -1, "Crime Spree. The villain commits acts taht become bolder and more heinous over time. A killer might start out by targeting the destitute in the city slums before moving up to a massacre in the marketplace, increasing the horror and the body count each time."),
 				new TableRow(3, -1, "Growing Corruption. As time passes, the villain's power and influence grow, affecting more victims across a larger area. This might take the form of armies conquering new territory, an evil cult recruiting new members, or a spreading plague. A pretender to the throne might attempt to secure the support of the kingdom's nobility in the days or weeks leading up to a coup, or a guild leader could corrupt the members of a town council or bribe officers of the watch."),
@@ -786,7 +750,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Step by Step. In pursuit of its goal, the villain carries out a specific set of actions in a particular sequence. A wizard might steal the items needed to create a phylactery and become a lich, or a cultist might kidnap the priests of seven good-aligned gods as a sacrifice. Alternativly, the villain could be following a trail to find the object of its revenge, killing one victim after another while moving ever closer to the real target."),
 			});
 
-			public static readonly Table event_based_goals = new Table("Event Based Goals", new TableRow[]{
+			public static readonly Table event_based_goals = new Table("Event Based Goals", "Goal", new TableRow[]{
 				new TableRow(1, -1, "Bring the villain to justice."),
 				new TableRow(2, -1, "Clear the name of an innocent NPC."),
 				new TableRow(3, -1, "Protect or hide an NPC."),
@@ -809,7 +773,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Roll twice, ignoring results of 20."),
 			});
 
-			public static readonly Table framing_events = new Table("Framing Events", new TableRow[]{
+			public static readonly Table framing_events = new Table("Framing Events", "Event", new TableRow[]{
 				new TableRow(1, 2, "Anniversary of a monarch's reign"),
 				new TableRow(3, 4, "Anniversary of an important event"),
 				new TableRow(5, 6, "Arena event"),
@@ -860,7 +824,7 @@ namespace DungeonMasterHelper
 				new TableRow(99, 100, "Concurrence of two events (roll twice, ignoring results of 99 or 100)"),
 			});
 
-			public static readonly Table moral_quandaries = new Table("Moral Quandaries", new TableRow[]{
+			public static readonly Table moral_quandaries = new Table("Moral Quandaries", "Quandary", new TableRow[]{
 				new TableRow(1, 3, "Ally quandary"),
 				new TableRow(4, 6, "Friend quandary"),
 				new TableRow(7, 12, "Honor quandary"),
@@ -868,7 +832,7 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Respect quandary"),
 			});
 
-			public static readonly Table moral_quandaries_descriptions = new Table("Moral Quandaries - Descriptions", new TableRow[]{
+			public static readonly Table moral_quandaries_descriptions = new Table("Moral Quandaries - Descriptions", " Quandary", new TableRow[]{
 				new TableRow(1, -1, "Ally Quandary. The adventurers have a better chance of achieving their goal with the help of two individuals whose expertise is all but essential. However, these two NPCs hate each other and refuse to work together even if the fate of the world hangs in the balance. The adventurers must choose the NPC that is most likely to help them accomplish their goal."),
 				new TableRow(2, -1, "Friend Quandary. An NPC that one or more of the characters cares about makes an impossible demand on the characters. A love interest might demand that a character turn away from a dangerous quest. A dear friend might plead with the characters to spare the villain's life, to prove that they are better than the villain. A weak NPC might beg for a chance to win favor from the characters by undertaking a dangerous but essential mission."),
 				new TableRow(3, -1, "Honor Quandary. A character is forced to choose between victory and a personal oath or code of honor. A paladin who has sworn the Oath of Virtue might realize that the clearest path to success lies in deceit and subterfuge. A loyal cleric might be tempted to disobey the orders of his or her faith. If you present this quandary, be sure to provide an opportunity for a character to atone for violating his or her oath."),
@@ -876,7 +840,7 @@ namespace DungeonMasterHelper
 				new TableRow(5, -1, "Respect Quandary. Two important allies give conflicting directions or advice to the adventurers. Perhaps the high priest counsels the characters to negotiate peace with militaristic elves in the nearby forest, while a veteran warrior urges them to prove their strength with a decisive first strike. The adventurers can't follow both courses, and whichever ally they choose, the other loses respect for them and might no longer aid them."),
 			});
 
-			public static readonly Table twist = new Table("Twist", new TableRow[]{
+			public static readonly Table twists = new Table("Twists", "Twist", new TableRow[]{
 				new TableRow(1, -1, "The adventurers are racing against other creatures with the same or opposite goal."),
 				new TableRow(2, -1, "The adventurers become responsible for the safety of a noncombatant NPC."),
 				new TableRow(3, -1, "The adventurers are prohibited from killing the villain, but the villain has no compunctions about killing them."),
@@ -889,7 +853,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "The adventurers are under magical compulsion (such as a geas spell) to complete their goal."),
 			});
 
-			public static readonly Table side_quests = new Table("Side Quests", new TableRow[]{
+			public static readonly Table side_quests = new Table("Side Quests", "Side Quest", new TableRow[]{
 				new TableRow(1, -1, "Find a specific item rumored to be in the area."),
 				new TableRow(2, -1, "Retrieve a stolen item in the villain's possession"),
 				new TableRow(3, -1, "Receive information from an NPC in the area."),
@@ -902,14 +866,22 @@ namespace DungeonMasterHelper
 
 			public static string getDungeonGoal()
 			{
-				int num = Data.rand.Next() % dungeon_goals.Length;
-
-				if (num == 19)
+				int num = roll(1, dungeon_goals.MaxRoll);
+				
+				if (num == 20)
 				{
-					num = Data.rand.Next() % (dungeon_goals.Length - 1);
+					num = roll(1, dungeon_goals.MaxRoll - 1);
+					int num2 = roll(1, dungeon_goals.MaxRoll - 1);
 
-					return dungeon_goals[Data.rand.Next() % (dungeon_goals.Length - 1)] + " and " +
-						dungeon_goals[num].Entry.ToLower();
+					while(num2 == num)
+					{
+						num2 = roll(1, dungeon_goals.MaxRoll - 1);
+					}
+
+					// need to chop off the "." at the end of the first part
+					string fp = dungeon_goals[num];
+
+					return fp.Substring(0, fp.Length - 1) + " and " + lowerFirstLetter(dungeon_goals[num2]);
 				}
 
 				return dungeon_goals[num];
@@ -917,35 +889,38 @@ namespace DungeonMasterHelper
 
 			public static string getWildernessGoal()
 			{
-				int num = Data.rand.Next() % wilderness_goals.Length;
+				int num = roll(1, wilderness_goals.MaxRoll);
 
-				num = 0;
+				num = 20;
 
-				if (num == 0)
+				if (num == 1)
 				{
-					string dg = getDungeonGoal().ToLower();
+					string dg = lowerFirstLetter(getDungeonGoal());
 
 					return "Locate a dungeon or other site of interest to " + dg;
 				}
 
-				if (num == 19)
+				if (num == 20)
 				{
-					num = Data.rand.Next() % (wilderness_goals.Length - 1);
+					num = roll(1, wilderness_goals.MaxRoll - 1);
 
 					string[] strs = { "", "" };
-
-					for (int i = 0; i < 2; i++)
+					
+					while(strs[0] == strs[1])
 					{
-						num = Data.rand.Next() % (wilderness_goals.Length - 1);
+						for (int i = 0; i < 2; i++)
+						{
+							num = roll(1, wilderness_goals.MaxRoll - 1);
 
-						if (num == 0)
-						{
-							strs[i] = getDungeonGoal().ToLower();
-							strs[i] = "Locate a dungeon or other site of interest to " + strs[i];
-						}
-						else
-						{
-							strs[i] = wilderness_goals[num];
+							if (num == 1)
+							{
+								strs[i] = lowerFirstLetter(getDungeonGoal());
+								strs[i] = "Locate a dungeon or other site of interest to " + strs[i];
+							}
+							else
+							{
+								strs[i] = wilderness_goals[num];
+							}
 						}
 					}
 
@@ -957,14 +932,21 @@ namespace DungeonMasterHelper
 
 			public static string getEventBasedGoals()
 			{
-				int num = Data.rand.Next() % dungeon_goals.Length;
+				int num = roll(1, dungeon_goals.MaxRoll);
 
-				if (num == 19)
+				if (num == 20)
 				{
-					num = Data.rand.Next() % (dungeon_goals.Length - 1);
+					num = roll(1, dungeon_goals.MaxRoll - 1);
+					int num2 = roll(1, dungeon_goals.MaxRoll - 1);
 
-					return event_based_goals[Data.rand.Next() % (event_based_goals.Length - 1)] + " and " +
-						event_based_goals[num].Entry.ToLower();
+					while(num2 == num)
+					{
+						num2 = roll(1, dungeon_goals.MaxRoll - 1);
+					}
+
+					string fp = event_based_goals[num];
+
+					return fp.Substring(0, fp.Length - 1) + " and " + lowerFirstLetter(event_based_goals[num2]);
 				}
 
 				return event_based_goals[num];
@@ -989,7 +971,7 @@ namespace DungeonMasterHelper
 		// Chapter 4
 		public static class NPC
 		{
-			public static readonly Table npc_appearance = new Table("NPC Appearance", new TableRow[]{
+			public static readonly Table npc_appearance = new Table("NPC Appearance", "Feature", new TableRow[]{
 				new TableRow(1, -1, "Distinctive jewelry: earrings, necklace, circlet, bracelets"),
 				new TableRow(2, -1, "Piercings"),
 				new TableRow(3, -1, "Flamboyant or outlandish clothes"),
@@ -1012,7 +994,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Exceptionally ugly"),
 			});
 
-			public static readonly Table npc_high_abilities = new Table("NPC High Abilities", new TableRow[]{
+			public static readonly Table npc_high_abilities = new Table("NPC High Abilities", "High Ability", new TableRow[]{
 				new TableRow(1, -1, "Strength - powerful, brawny, strong as an ox"),
 				new TableRow(2, -1, "Dexterity - lithe, agile, graceful"),
 				new TableRow(3, -1, "Constitution - hardy, hale, healthy"),
@@ -1021,7 +1003,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Charisma - persuasive, forceful, born leader"),
 			});
 
-			public static readonly Table npc_low_abilities = new Table("NPC Low Abilities", new TableRow[]{
+			public static readonly Table npc_low_abilities = new Table("NPC Low Abilities", "Low Ability", new TableRow[]{
 				new TableRow(1, -1, "Strength - feeble, scrawny"),
 				new TableRow(2, -1, "Dexterity - clumsy, fumbling"),
 				new TableRow(3, -1, "Constitution - sickly, pale"),
@@ -1030,7 +1012,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Charisma - dull, boring"),
 			});
 
-			public static readonly Table npc_talents = new Table("NPC Talents", new TableRow[]{
+			public static readonly Table npc_talents = new Table("NPC Talents", "Talent", new TableRow[]{
 				new TableRow(1, -1, "Plays a musical instrument"),
 				new TableRow(2, -1, "Speaks several languages fluently"),
 				new TableRow(3, -1, "Unbelievably lucky"),
@@ -1052,7 +1034,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, -1, "Knows thieves' cant"),
 			});
 
-			public static readonly Table npc_mannerisms = new Table("NPC Mannerisms", new TableRow[]{
+			public static readonly Table npc_mannerisms = new Table("NPC Mannerisms", "Mannerism", new TableRow[]{
 				new TableRow(1, -1, "Prone to singing, whistling, or humming quietly"),
 				new TableRow(2, -1, "Speaks in rhyme or some other peculiar way"),
 				new TableRow(3, -1, "Particularly low or high voice"),
@@ -1075,7 +1057,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Twirls hair or tugs beard"),
 			});
 
-			public static readonly Table npc_interaction_traits = new Table("NPC Interactions Traits", new TableRow[]{
+			public static readonly Table npc_interaction_traits = new Table("NPC Interactions Traits", "Trait", new TableRow[]{
 				new TableRow(1, -1, "Argumentative"),
 				new TableRow(2, -1, "Arrogant"),
 				new TableRow(3, -1, "Blustering"),
@@ -1090,7 +1072,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Suspicious"),
 			});
 
-			public static readonly Table npc_ideals_good = new Table("NPC Ideals Good", new TableRow[]{
+			public static readonly Table npc_ideals_good = new Table("NPC Ideals Good", "Good Ideal", new TableRow[]{
 				new TableRow(1, -1, "Beauty"),
 				new TableRow(2, -1, "Charity"),
 				new TableRow(3, -1, "Greater good"),
@@ -1099,7 +1081,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Self-sacrifice"),
 			});
 
-			public static readonly Table npc_ideals_evil = new Table("NPC Ideals Evil", new TableRow[]{
+			public static readonly Table npc_ideals_evil = new Table("NPC Ideals Evil", "Evil Ideal", new TableRow[]{
 				new TableRow(1, -1, "Domination"),
 				new TableRow(2, -1, "Greed"),
 				new TableRow(3, -1, "Might"),
@@ -1108,7 +1090,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Slaughter"),
 			});
 
-			public static readonly Table npc_ideals_lawful = new Table("NPC Ideals Lawful", new TableRow[]{
+			public static readonly Table npc_ideals_lawful = new Table("NPC Ideals Lawful", "Lawful Ideal", new TableRow[]{
 				new TableRow(1, -1, "Community"),
 				new TableRow(2, -1, "Fairness"),
 				new TableRow(3, -1, "Honor"),
@@ -1117,7 +1099,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Tradition"),
 			});
 
-			public static readonly Table npc_ideals_chaotic = new Table("NPC Ideals Chaotic", new TableRow[]{
+			public static readonly Table npc_ideals_chaotic = new Table("NPC Ideals Chaotic", "Chaotic Ideal", new TableRow[]{
 				new TableRow(1, -1, "Change"),
 				new TableRow(2, -1, "Creativity"),
 				new TableRow(3, -1, "Freedom"),
@@ -1126,7 +1108,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Whimsy"),
 			});
 
-			public static readonly Table npc_ideals_neutral = new Table("NPC Ideals Neutral", new TableRow[]{
+			public static readonly Table npc_ideals_neutral = new Table("NPC Ideals Neutral", "Neutral Ideal", new TableRow[]{
 				new TableRow(1, -1, "Balance"),
 				new TableRow(2, -1, "Knowledge"),
 				new TableRow(3, -1, "Live and let live"),
@@ -1135,7 +1117,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "People"),
 			});
 
-			public static readonly Table npc_ideals_other = new Table("NPC Ideals Other", new TableRow[]{
+			public static readonly Table npc_ideals_other = new Table("NPC Ideals Other", "Other Ideal", new TableRow[]{
 				new TableRow(1, -1, "Aspiration"),
 				new TableRow(2, -1, "Discovery"),
 				new TableRow(3, -1, "Glory"),
@@ -1144,7 +1126,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Self-knowledge"),
 			});
 
-			public static readonly Table npc_bonds = new Table("NPC Bonds", new TableRow[]{
+			public static readonly Table npc_bonds = new Table("NPC Bonds", "Bond", new TableRow[]{
 				new TableRow(1, -1, "Dedicated to fulfilling a personal life goal"),
 				new TableRow(2, -1, "Protective of close family members"),
 				new TableRow(3, -1, "Protective of colleagues or compatriots"),
@@ -1156,7 +1138,7 @@ namespace DungeonMasterHelper
 				new TableRow(9, -1, "Out for revenge"),
 			});
 
-			public static readonly Table npc_flaws_and_secrets = new Table("NPC Flaws and Secrets", new TableRow[]{
+			public static readonly Table npc_flaws_and_secrets = new Table("NPC Flaws and Secrets", "Flaw or Secret", new TableRow[]{
 				new TableRow(1, -1, "Forbidden love or susceptibility to romance"),
 				new TableRow(2, -1, "Enjoys decadent pleasures"),
 				new TableRow(3, -1, "Arrogance"),
@@ -1171,7 +1153,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Foolhardy bravery"),
 			});
 
-			public static readonly Table villains_scheme_objective = new Table("Villains Scheme - Objective", new TableRow[]{
+			public static readonly Table villains_scheme_objective = new Table("Villains Scheme - Objective", "Objective", new TableRow[]{
 				new TableRow(1, -1, "Immortality"),
 				new TableRow(2, -1, "Influence"),
 				new TableRow(3, -1, "Magic"),
@@ -1182,21 +1164,21 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Wealth"),
 			});
 
-			public static readonly Table villains_scheme_immortality = new Table("Villains Scheme - Immortality", new TableRow[]{
+			public static readonly Table villains_scheme_immortality = new Table("Villains Scheme - Immortality", "Immortality", new TableRow[]{
 				new TableRow(1, -1, "Acquire a legendary item to prolog life"),
 				new TableRow(2, -1, "Ascend to godhood"),
 				new TableRow(3, -1, "Become undead or obtain a younger body"),
 				new TableRow(4, -1, "Steal a planar creature's essence"),
 			});
 
-			public static readonly Table villains_scheme_influence = new Table("Villains Scheme - Influence", new TableRow[]{
+			public static readonly Table villains_scheme_influence = new Table("Villains Scheme - Influence", "Influence", new TableRow[]{
 				new TableRow(1, -1, "Seize a position of power or title"),
 				new TableRow(2, -1, "Win a contest or tournament"),
 				new TableRow(3, -1, "Win favor with a powerful individual"),
 				new TableRow(4, -1, "Place a pawn in a position of power"),
 			});
 
-			public static readonly Table villains_scheme_magic = new Table("Villains Scheme - Magic", new TableRow[]{
+			public static readonly Table villains_scheme_magic = new Table("Villains Scheme - Magic", "Magic", new TableRow[]{
 				new TableRow(1, -1, "Obtain an ancient artifact"),
 				new TableRow(2, -1, "Build a construct or magical device"),
 				new TableRow(3, -1, "Carry out a deity's wishes"),
@@ -1205,7 +1187,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Open a gate to another world"),
 			});
 
-			public static readonly Table villains_scheme_mayhem = new Table("Villains Scheme - Mayhem", new TableRow[]{
+			public static readonly Table villains_scheme_mayhem = new Table("Villains Scheme - Mayhem", "Mayhem", new TableRow[]{
 				new TableRow(1, -1, "Fulfill an apocalyptic prophecy"),
 				new TableRow(2, -1, "Enact the vengeful will of a god or patron"),
 				new TableRow(3, -1, "Spread a vile contagion"),
@@ -1214,50 +1196,50 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Utterly destroy a bloodline or clan"),
 			});
 
-			public static readonly Table villains_scheme_passion = new Table("Villains Scheme - Passion", new TableRow[]{
+			public static readonly Table villains_scheme_passion = new Table("Villains Scheme - Passion", "Passion", new TableRow[]{
 				new TableRow(1, -1, "Prolong the life of a loved one"),
 				new TableRow(2, -1, "Prove worthy of another person's love"),
 				new TableRow(3, -1, "Raise or restore a dead loved one"),
 				new TableRow(4, -1, "Destroy rivals for another person's affection"),
 			});
 
-			public static readonly Table villains_scheme_power = new Table("Villains Scheme - Power", new TableRow[]{
+			public static readonly Table villains_scheme_power = new Table("Villains Scheme - Power", "Power", new TableRow[]{
 				new TableRow(1, -1, "Conquer a region or incite a rebellion"),
 				new TableRow(2, -1, "Seize control of an army"),
 				new TableRow(3, -1, "Become the power behind the throne"),
 				new TableRow(4, -1, "Gain the favor of a ruler"),
 			});
 
-			public static readonly Table villains_scheme_revenge = new Table("Villains Scheme - Revenge", new TableRow[]{
+			public static readonly Table villains_scheme_revenge = new Table("Villains Scheme - Revenge", "Revenge", new TableRow[]{
 				new TableRow(1, -1, "Avenge a past humiliation or insult"),
 				new TableRow(2, -1, "Avenge a past imprisonment or injury"),
 				new TableRow(3, -1, "Avenge the death of a loved one"),
 				new TableRow(4, -1, "Retrieve stolen property and punish the thief"),
 			});
 
-			public static readonly Table villains_scheme_wealth = new Table("Villains Scheme - Wealth", new TableRow[]{
+			public static readonly Table villains_scheme_wealth = new Table("Villains Scheme - Wealth", "Wealth", new TableRow[]{
 				new TableRow(1, -1, "Control natural resources or trade"),
 				new TableRow(2, -1, "Marry into wealth"),
 				new TableRow(3, -1, "Plunder ancient ruins"),
 				new TableRow(4, -1, "Steal land, goods, or money"),
 			});
 
-			public static readonly Table villains_methods_agricultural_devastation = new Table("Villains Methods - Agricultural Devastation", new TableRow[]{
+			public static readonly Table villains_methods_agricultural_devastation = new Table("Villains Methods - Agricultural Devastation", "Agricultural Devastation", new TableRow[]{
 				new TableRow(1, -1, "Blight"),
 				new TableRow(2, -1, "Crop failure"),
 				new TableRow(3, -1, "Drought"),
 				new TableRow(4, -1, "Famine"),
 			});
 
-			public static readonly Table villains_methods_assault_or_beatings = new Table("Villains Methods - Assault or Beatings", new TableRow[]{
+			public static readonly Table villains_methods_assault_or_beatings = new Table("Villains Methods - Assault or Beatings", "Assault or Beatings", new TableRow[]{
 				new TableRow(1, -1, "Assault or beatings"),
 			});
 
-			public static readonly Table villains_methods_bounty_hunting_or_assassination = new Table("Villains Methods - Bounty Hunting or Assassination", new TableRow[]{
+			public static readonly Table villains_methods_bounty_hunting_or_assassination = new Table("Villains Methods - Bounty Hunting or Assassination", "Bounty Hunting or Assassination", new TableRow[]{
 				new TableRow(1, -1, "Bounty hunting or assassination"),
 			});
 
-			public static readonly Table villains_methods_captivity_or_coercion = new Table("Villains Methods - Captivity or Coercion", new TableRow[]{
+			public static readonly Table villains_methods_captivity_or_coercion = new Table("Villains Methods - Captivity or Coercion", "Captivity or Coercion", new TableRow[]{
 				new TableRow(1, -1, "Bribery"),
 				new TableRow(2, -1, "Enticement"),
 				new TableRow(3, -1, "Eviction"),
@@ -1270,7 +1252,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Threats or harassment"),
 			});
 
-			public static readonly Table villains_methods_confidence_scams = new Table("Villains Methods - Confidence Scams", new TableRow[]{
+			public static readonly Table villains_methods_confidence_scams = new Table("Villains Methods - Confidence Scams", "Confidence Scams", new TableRow[]{
 				new TableRow(1, -1, "Breach of contract"),
 				new TableRow(2, -1, "Cheating"),
 				new TableRow(3, -1, "Fast talking"),
@@ -1279,18 +1261,18 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Quackery or tricks"),
 			});
 
-			public static readonly Table villains_methods_defamation = new Table("Villains Methods - Defamation", new TableRow[]{
+			public static readonly Table villains_methods_defamation = new Table("Villains Methods - Defamation", "Defamation", new TableRow[]{
 				new TableRow(1, -1, "Framing"),
 				new TableRow(2, -1, "Gossipping or slander"),
 				new TableRow(3, -1, "Humiliation"),
 				new TableRow(4, -1, "Libel or insults"),
 			});
 
-			public static readonly Table villains_methods_dueling = new Table("Villains Methods - Dueling", new TableRow[]{
+			public static readonly Table villains_methods_dueling = new Table("Villains Methods - Dueling", "Dueling", new TableRow[]{
 				new TableRow(1, -1, "Dueling"),
 			});
 
-			public static readonly Table villains_methods_execution = new Table("Villains Methods - Execution", new TableRow[]{
+			public static readonly Table villains_methods_execution = new Table("Villains Methods - Execution", "Execution", new TableRow[]{
 				new TableRow(1, -1, "Beheading"),
 				new TableRow(2, -1, "Burning at the stake"),
 				new TableRow(3, -1, "Burying alive"),
@@ -1301,15 +1283,15 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Sacrifice (living)"),
 			});
 
-			public static readonly Table villains_methods_impersonation_or_disguise = new Table("Villains Methods - Impersonation or Disguise", new TableRow[]{
+			public static readonly Table villains_methods_impersonation_or_disguise = new Table("Villains Methods - Impersonation or Disguise", "Impersonation or Disguise", new TableRow[]{
 				new TableRow(1, -1, "Impersonation or disguise"),
 			});
 
-			public static readonly Table villains_methods_lying_or_perjury = new Table("Villains Methods - Lying or Perjury", new TableRow[]{
+			public static readonly Table villains_methods_lying_or_perjury = new Table("Villains Methods - Lying or Perjury", "Lying or Perjury", new TableRow[]{
 				new TableRow(1, -1, "Lying or perjury"),
 			});
 
-			public static readonly Table villains_methods_magical_mayhem = new Table("Villains Methods - Magical Mayhem", new TableRow[]{
+			public static readonly Table villains_methods_magical_mayhem = new Table("Villains Methods - Magical Mayhem", "Magical Mayhem", new TableRow[]{
 				new TableRow(1, -1, "Hauntings"),
 				new TableRow(2, -1, "Illusions"),
 				new TableRow(3, -1, "Infernal bargains"),
@@ -1320,7 +1302,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Weather control"),
 			});
 
-			public static readonly Table villains_methods_murder = new Table("Villains Methods - Murder", new TableRow[]{
+			public static readonly Table villains_methods_murder = new Table("Villains Methods - Murder", "Murder", new TableRow[]{
 				new TableRow(1, -1, "Assassination"),
 				new TableRow(2, -1, "Cannibalism"),
 				new TableRow(3, -1, "Dismemberment"),
@@ -1333,11 +1315,11 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Strangulation or suffocation"),
 			});
 
-			public static readonly Table villains_methods_neglect = new Table("Villains Methods - Neglect", new TableRow[]{
+			public static readonly Table villains_methods_neglect = new Table("Villains Methods - Neglect", "Neglet", new TableRow[]{
 				new TableRow(1, -1, "Neglect"),
 			});
 
-			public static readonly Table villains_methods_politics = new Table("Villains Methods - Politics", new TableRow[]{
+			public static readonly Table villains_methods_politics = new Table("Villains Methods - Politics", "Politics", new TableRow[]{
 				new TableRow(1, -1, "Betrayal or treason"),
 				new TableRow(2, -1, "Conspiracy"),
 				new TableRow(3, -1, "Espionage or spying"),
@@ -1346,18 +1328,18 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Raising taxes"),
 			});
 
-			public static readonly Table villains_methods_religion = new Table("Villains Methods - Religion", new TableRow[]{
+			public static readonly Table villains_methods_religion = new Table("Villains Methods - Religion", "Religion", new TableRow[]{
 				new TableRow(1, -1, "Curses"),
 				new TableRow(2, -1, "Desecration"),
 				new TableRow(3, -1, "False gods"),
 				new TableRow(4, -1, "Heresy or cults"),
 			});
 
-			public static readonly Table villains_methods_stalking = new Table("Villains Methods - Stalking", new TableRow[]{
+			public static readonly Table villains_methods_stalking = new Table("Villains Methods - Stalking", "Stalking", new TableRow[]{
 				new TableRow(1, -1, "Stalking"),
 			});
 
-			public static readonly Table villains_methods_theft_or_property_crime = new Table("Villains Methods - Theft or Property Crime", new TableRow[]{
+			public static readonly Table villains_methods_theft_or_property_crime = new Table("Villains Methods - Theft or Property Crime", "Theft or Property Crime", new TableRow[]{
 				new TableRow(1, -1, "Arson"),
 				new TableRow(2, -1, "Blackmail or extortion"),
 				new TableRow(3, -1, "Burglary"),
@@ -1370,7 +1352,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Smuggling"),
 			});
 
-			public static readonly Table villains_methods_torture = new Table("Villains Methods - Torture", new TableRow[]{
+			public static readonly Table villains_methods_torture = new Table("Villains Methods - Torture", "Torture", new TableRow[]{
 				new TableRow(1, -1, "Acid"),
 				new TableRow(2, -1, "Blinding"),
 				new TableRow(3, -1, "Branding"),
@@ -1379,14 +1361,14 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Whipping"),
 			});
 
-			public static readonly Table villains_methods_vice = new Table("Villains Methods - Vice", new TableRow[]{
+			public static readonly Table villains_methods_vice = new Table("Villains Methods - Vice", "Vice", new TableRow[]{
 				new TableRow(1, -1, "Adultery"),
 				new TableRow(2, -1, "Drugs or alcohol"),
 				new TableRow(3, -1, "Gambling"),
 				new TableRow(4, -1, "Seduction"),
 			});
 
-			public static readonly Table villains_methods_warfare = new Table("Villains Methods - Warfare", new TableRow[]{
+			public static readonly Table villains_methods_warfare = new Table("Villains Methods - Warfare", "Warfare", new TableRow[]{
 				new TableRow(1, -1, "Ambush"),
 				new TableRow(2, -1, "Invasion"),
 				new TableRow(3, -1, "Massacre"),
@@ -1395,7 +1377,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Terrorism"),
 			});
 
-			public static readonly Table villains_weakness = new Table("Villain's Weakness", new TableRow[]{
+			public static readonly Table villains_weakness = new Table("Villain's Weakness", "Weakness", new TableRow[]{
 				new TableRow(1, -1, "A hidden object holds the villain's soul"),
 				new TableRow(2, -1, "The villain's power is broken if the death of its true love is avenged"),
 				new TableRow(3, -1, "The villain is weakened in the presence of a particular artifact"),
@@ -1493,7 +1475,7 @@ namespace DungeonMasterHelper
 		// Chapter 5
 		public static class AdventureEnvironments
 		{
-			public static readonly Table dungeon_location = new Table("Dungeon Location", new TableRow[]{
+			public static readonly Table dungeon_location = new Table("Dungeon Location", "Location", new TableRow[]{
 				new TableRow(1, 4, "A building in a city"),
 				new TableRow(5, 8, "Catacombs or sewers beneath a city"),
 				new TableRow(9, 12, "Beneath a farmhouse"),
@@ -1520,7 +1502,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "Roll on the Exotic Location table"),
 			});
 
-			public static readonly Table dungeon_exotic_location = new Table("Dungeon Exotic Location", new TableRow[]{
+			public static readonly Table dungeon_exotic_location = new Table("Dungeon Exotic Location", "Location", new TableRow[]{
 				new TableRow(1, -1, "Among the branches of a tree"),
 				new TableRow(2, -1, "Around a geyser"),
 				new TableRow(3, -1, "Behind a waterfall"),
@@ -1543,7 +1525,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Inside a Mordenkainen's magnificent mansion"),
 			});
 
-			public static readonly Table dungeon_creator = new Table("Dungeon Creator", new TableRow[]{
+			public static readonly Table dungeon_creator = new Table("Dungeon Creator", "Creator", new TableRow[]{
 				new TableRow(1, -1, "Beholder"),
 				new TableRow(2, 4, "Cult or religious group"),
 				new TableRow(5, 8, "Dwarves"),
@@ -1558,7 +1540,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "No creator (natural caverns"),
 			});
 
-			public static readonly Table cults_and_religious_groups = new Table("Cults and Religious Groups", new TableRow[]{
+			public static readonly Table cults_and_religious_groups = new Table("Cults and Religious Groups", "Cult or Religious Group", new TableRow[]{
 				new TableRow(1, -1, "Demon-worshiping cult"),
 				new TableRow(2, -1, "Devil-worshiping cult"),
 				new TableRow(3, 4, "Elemental Air cult"),
@@ -1570,7 +1552,7 @@ namespace DungeonMasterHelper
 				new TableRow(18, 20, "Worshipers of a neutral deity"),
 			});
 
-			public static readonly Table npc_alignment = new Table("NPC Alignment", new TableRow[]{
+			public static readonly Table npc_alignment = new Table("NPC Alignment", "Alignment", new TableRow[]{
 				new TableRow(1, 2, "Lawful good"),
 				new TableRow(3, 4, "Neutral good"),
 				new TableRow(5, 6, "Chaotic good"),
@@ -1582,7 +1564,7 @@ namespace DungeonMasterHelper
 				new TableRow(16, 17, "Chaotic evil"),
 			});
 
-			public static readonly Table npc_class = new Table("NPC Class", new TableRow[]{
+			public static readonly Table npc_class = new Table("NPC Class", "Class", new TableRow[]{
 				new TableRow(1, -1, "Barbarian"),
 				new TableRow(2, -1, "Bard"),
 				new TableRow(3, 4, "Cleric"),
@@ -1597,7 +1579,7 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Wizard"),
 			});
 
-			public static readonly Table dungeon_purpose = new Table("Dungeon Purpose", new TableRow[]{
+			public static readonly Table dungeon_purpose = new Table("Dungeon Purpose", "Purpose", new TableRow[]{
 				new TableRow(1, -1, "Death trap"),
 				new TableRow(2, 5, "Lair"),
 				new TableRow(6, -1, "Maze"),
@@ -1609,7 +1591,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Treasure vault"),
 			});
 
-			public static readonly Table dungeon_history = new Table("Dungeon History", new TableRow[]{
+			public static readonly Table dungeon_history = new Table("Dungeon History", "Key Event", new TableRow[]{
 				new TableRow(1, 3, "Abandoned by creators"),
 				new TableRow(4, -1, "Abandoned due to plague"),
 				new TableRow(5, 8, "Conquered by invaders"),
@@ -1624,7 +1606,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Site of a great miracle"),
 			});
 
-			public static readonly Table monuments = new Table("Monuments", new TableRow[]{
+			public static readonly Table monuments = new Table("Monuments", "Monument", new TableRow[]{
 				new TableRow(1, -1, "Sealed burial mound or pyramid"),
 				new TableRow(2, -1, "Plundered burial mound or pyramid"),
 				new TableRow(3, -1, "Faces carved into a mountainside or cliff"),
@@ -1642,7 +1624,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Totem pole"),
 			});
 
-			public static readonly Table weird_locales = new Table("Weird Locales", new TableRow[]{
+			public static readonly Table weird_locales = new Table("Weird Locales", "Locale", new TableRow[]{
 				new TableRow(1, 2, "Dead magic zone (similar to an antimagic field)"),
 				new TableRow(3, -1, "Wild magic zone (roll on the Wild Magic Surge table in the Player's Handbook whenever a spell is cast within the zone)"),
 				new TableRow(4, -1, "Boulder carved with talking faces"),
@@ -1661,25 +1643,25 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Floating earth mote with a tower on it"),
 			});
 
-			public static readonly Table weather_temperature = new Table("Weather Temperature", new TableRow[]{
+			public static readonly Table weather_temperature = new Table("Weather Temperature", "Temperature", new TableRow[]{
 				new TableRow(1, 14, "Normal for the season"),
 				new TableRow(15, 17, "1d4 x 10 degrees Fahrenheit colder than normal"),
 				new TableRow(18, 20, "1d4 x 10 degrees Fahrenheit hotter than normal"),
 			});
 
-			public static readonly Table weather_wind = new Table("Weather - Wind", new TableRow[]{
+			public static readonly Table weather_wind = new Table("Weather - Wind", "Wind", new TableRow[]{
 				new TableRow(1, 12, "None"),
 				new TableRow(13, 17, "Light"),
 				new TableRow(18, 20, "Strong"),
 			});
 
-			public static readonly Table weather_precipitation = new Table("Weather - Precipitation", new TableRow[]{
+			public static readonly Table weather_precipitation = new Table("Weather - Precipitation", "Precipitation", new TableRow[]{
 				new TableRow(1, 12, "None"),
 				new TableRow(13, 17, "Light rain or light snowfall"),
 				new TableRow(18, 20, "Heavy rain or heavy snowfall"),
 			});
 
-			public static readonly Table race_relations = new Table("Race Relations", new TableRow[]{
+			public static readonly Table race_relations = new Table("Race Relations", "Result", new TableRow[]{
 				new TableRow(1, 10, "Harmony"),
 				new TableRow(11, 14, "Tension or rivalry"),
 				new TableRow(15, 16, "Racial majority are conquerers"),
@@ -1689,7 +1671,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Racial minority oppresses majority"),
 			});
 
-			public static readonly Table rulers_status = new Table("Rulers Status", new TableRow[]{
+			public static readonly Table rulers_status = new Table("Rulers Status", "Ruler", new TableRow[]{
 				new TableRow(1, 5, "Respected, fair, and just"),
 				new TableRow(6, 8, "Feared tyrant"),
 				new TableRow(9, -1, "Weakling manipulated by others"),
@@ -1704,7 +1686,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Religious leader"),
 			});
 
-			public static readonly Table notable_traits = new Table("Notable Traits", new TableRow[]{
+			public static readonly Table notable_traits = new Table("Notable Traits", "Trait", new TableRow[]{
 				new TableRow(1, -1, "Canals in place of streets"),
 				new TableRow(2, -1, "Massive statue or monument"),
 				new TableRow(3, -1, "Grand temple"),
@@ -1727,7 +1709,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Built atop ancient ruins"),
 			});
 
-			public static readonly Table known_for_its = new Table("Known for its", new TableRow[]{
+			public static readonly Table known_for_its = new Table("Known for its", "Feature", new TableRow[]{
 				new TableRow(1, -1, "Delicious cuisine"),
 				new TableRow(2, -1, "Rude people"),
 				new TableRow(3, -1, "Greedy merchants"),
@@ -1750,7 +1732,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Patriotism"),
 			});
 
-			public static readonly Table current_calamity = new Table("Current Calamity", new TableRow[]{
+			public static readonly Table current_calamity = new Table("Current Calamity", "Calamity", new TableRow[]{
 				new TableRow(1, -1, "Suspected vampire infestation"),
 				new TableRow(2, -1, "New cult seeks converts"),
 				new TableRow(3, -1, "Important figure died (murder suspected)"),
@@ -1771,7 +1753,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Religious sects struggle for power"),
 			});
 
-			public static readonly Table building_type = new Table("Building Type", new TableRow[]{
+			public static readonly Table building_type = new Table("Building Type", "Type", new TableRow[]{
 				new TableRow(1, 10, "Residence (roll once on the Residence table)"),
 				new TableRow(11, 12, "Religious (roll once on the Religious table)"),
 				new TableRow(13, 15, "Tavern (roll once on the Tavern table and twice on the Tavern Name Generator table"),
@@ -1779,7 +1761,7 @@ namespace DungeonMasterHelper
 				new TableRow(18, 20, "Shop (roll once on the Shop table)"),
 				});
 
-			public static readonly Table residence = new Table("Residence", new TableRow[]{
+			public static readonly Table residence = new Table("Residence", "Type", new TableRow[]{
 				new TableRow(1, 2, "Abandoned squat"),
 				new TableRow(3, 8, "Middle-class home"),
 				new TableRow(9, 10, "Upper-class home"),
@@ -1790,7 +1772,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Lavish, guarded mansion"),
 			});
 
-			public static readonly Table religious_building = new Table("Religious Building", new TableRow[]{
+			public static readonly Table religious_building = new Table("Religious Building", "Type", new TableRow[]{
 				new TableRow(1, 10, "Temple to a good or neutral deity"),
 				new TableRow(11, 12, "Temple to a false deity (run by charlatan priests)"),
 				new TableRow(13, -1, "Home of ascetics"),
@@ -1799,7 +1781,7 @@ namespace DungeonMasterHelper
 				new TableRow(18, 19, "Hidden shrine to a fiend or an evil deity"),
 			});
 
-			public static readonly Table tavern = new Table("Tavern", new TableRow[]{
+			public static readonly Table tavern = new Table("Tavern", "Type", new TableRow[]{
 				new TableRow(1, 5, "Quiet, low-key bar"),
 				new TableRow(6, 9, "Raucous dive"),
 				new TableRow(10, -1, "Thieves' guild hangout"),
@@ -1811,7 +1793,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Brothel"),
 			});
 
-			public static readonly Table tavern_name_first_part = new Table("Tavern Name - First Part", new TableRow[]{
+			public static readonly Table tavern_name_first_part = new Table("Tavern Name - First Part", "First Part", new TableRow[]{
 				new TableRow(1, -1, "The Silver"),
 				new TableRow(2, -1, "The Golden"),
 				new TableRow(3, -1, "The Staggering"),
@@ -1834,7 +1816,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "The Gleaming"),
 			});
 
-			public static readonly Table tavern_name_second_part = new Table("Tavern Name - Second Part", new TableRow[]{
+			public static readonly Table tavern_name_second_part = new Table("Tavern Name - Second Part", "Second Part", new TableRow[]{
 				new TableRow(1, -1, "Eel"),
 				new TableRow(2, -1, "Dolphin"),
 				new TableRow(3, -1, "Dwarf"),
@@ -1857,7 +1839,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Star"),
 			});
 
-			public static readonly Table warehouse = new Table("Warehouse", new TableRow[]{
+			public static readonly Table warehouse = new Table("Warehouse", "Type", new TableRow[]{
 				new TableRow(1, 4, "Empty or abandoned"),
 				new TableRow(5, 6, "Heavily guarded, expensive goods"),
 				new TableRow(7, 10, "Cheap goods"),
@@ -1868,7 +1850,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Secret smuggler's den"),
 			});
 
-			public static readonly Table shop = new Table("Shop", new TableRow[]{
+			public static readonly Table shop = new Table("Shop", "Type", new TableRow[]{
 				new TableRow(1, -1, "Pawnshop"),
 				new TableRow(2, -1, "Herbs/incense"),
 				new TableRow(3, -1, "Fruits/vegetables"),
@@ -1891,7 +1873,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Scribe"),
 			});
 
-			public static readonly Table random_urban_encounters = new Table("Random Urban Encounters", new TableRow[]{
+			public static readonly Table random_urban_encounters = new Table("Random Urban Encounters", "Encounter", new TableRow[]{
 				new TableRow(1, -1, "Animals on the loose"),
 				new TableRow(2, -1, "Announcement"),
 				new TableRow(3, -1, "Brawl"),
@@ -1917,7 +1899,7 @@ namespace DungeonMasterHelper
 		// Chapter 6
 		public static class BetweenAdventures
 		{
-			public static readonly Table carousing = new Table("Carousing", new TableRow[]{
+			public static readonly Table carousing = new Table("Carousing", "Result", new TableRow[]{
 				new TableRow(1, 10, "You are jailed for 1d4 days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."),
 				new TableRow(1, 10, "You are jailed for 1d4 days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."),
 				new TableRow(11, 20, "You regain consciousness in a strange place with no memory of how you got there, and you have been robbed of 3d6x5 gp."),
@@ -1928,7 +1910,7 @@ namespace DungeonMasterHelper
 				new TableRow(90, 100, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
 			});
 
-			public static readonly Table running_a_business = new Table("Running a Business", new TableRow[]{
+			public static readonly Table running_a_business = new Table("Running a Business", "Result", new TableRow[]{
 				new TableRow(1, 20, "You ust pay one and a half times the business's maintenance cost for each of the days."),
 				new TableRow(21, 30, "You must pay the business's full maintenance cost for each of the days."),
 				new TableRow(31, 40, "You must pay half the business's maintenance cost for each of the days. Profits cover the other half."),
@@ -1938,7 +1920,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp."),
 			});
 
-			public static readonly Table selling_a_magic_item = new Table("Selling a Magic Item", new TableRow[]{
+			public static readonly Table selling_a_magic_item = new Table("Selling a Magic Item", "You Find...", new TableRow[]{
 				new TableRow(1, 20, "A buyer offering a tenth of the base price"),
 				new TableRow(21, 40, "A buyer offering a quarter of the base price, and a shady buyer offering half the base price"),
 				new TableRow(41, 80, "A buyer offering half the base price, and a shady buyer offering the full base price"),
@@ -1955,7 +1937,7 @@ namespace DungeonMasterHelper
 		// Chapter 7
 		public static class Treasure
 		{
-			public static readonly Table gemstones10gp = new Table("10 GP Gemstones", new TableRow[]{
+			public static readonly Table gemstones10gp = new Table("10 GP Gemstones", "Stone Description", new TableRow[]{
 				new TableRow(1, -1, "Azurite (opaque mottled deep blue)"),
 				new TableRow(2, -1, "Banded agate (translucent striped brown, blue, white, or red)"),
 				new TableRow(3, -1, "Blue quartz (transparent pale blue)"),
@@ -1970,7 +1952,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Turquoise (opaque light blue-green)"),
 			});
 
-			public static readonly Table gemstones50gp = new Table("50 GP Gemstones", new TableRow[]{
+			public static readonly Table gemstones50gp = new Table("50 GP Gemstones", "Stone Description", new TableRow[]{
 				new TableRow(1, -1, "Bloodstone (opaque dark gray with red flecks)"),
 				new TableRow(2, -1, "Carnelian (opaque orange to red-brown)"),
 				new TableRow(3, -1, "Chalcedony (opaque white)"),
@@ -1985,7 +1967,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Zircon (transparent pale blue-green"),
 			});
 
-			public static readonly Table gemstones100gp = new Table("100 GP Gemstones", new TableRow[]{
+			public static readonly Table gemstones100gp = new Table("100 GP Gemstones", "Stone Description", new TableRow[]{
 				new TableRow(1, -1, "Amber (transparent watery gold to rich gold)"),
 				new TableRow(2, -1, "Amethyst (transparent deep purple)"),
 				new TableRow(3, -1, "Chrysoberyl (transparent yellow-green to pale green)"),
@@ -1998,7 +1980,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Tourmaline (trasnparent pale green, blue, brown, or red)"),
 			});
 
-			public static readonly Table gemstones500gp = new Table("500 GP Gemstones", new TableRow[]{
+			public static readonly Table gemstones500gp = new Table("500 GP Gemstones", "Stone Description", new TableRow[]{
 				new TableRow(1, -1, "Alexandrite (transparent dark green)"),
 				new TableRow(2, -1, "Aquamarine (transparent pale blue-green)"),
 				new TableRow(3, -1, "Black pearl (opaque pure black)"),
@@ -2007,7 +1989,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "Topaz (transparent golden yellow)"),
 			});
 
-			public static readonly Table gemstones1000gp = new Table("1,000 GP Gemstones", new TableRow[]{
+			public static readonly Table gemstones1000gp = new Table("1,000 GP Gemstones", "Stone Description", new TableRow[]{
 				new TableRow(1, -1, "Black opal (translucent dark green with black mottling and golden flecks)"),
 				new TableRow(2, -1, "Blue sapphire (transparent blue-white to medium blue)"),
 				new TableRow(3, -1, "Emerald (transparent deep bright green)"),
@@ -2018,14 +2000,14 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Yellow sapphire (transparent fiery yellow or yellow-green)"),
 			});
 
-			public static readonly Table gemstones5000gp = new Table("5,000 GP Gemstones", new TableRow[]{
+			public static readonly Table gemstones5000gp = new Table("5,000 GP Gemstones", "Stone Description", new TableRow[]{
 				new TableRow(1, -1, "Black sapphire (translucent lustrous black with glowing highlights)"),
 				new TableRow(2, -1, "Diamond (transparent blue-white canary, pink, brown, or blue)"),
 				new TableRow(3, -1, "Jacinth (transparent fiery orange)"),
 				new TableRow(4, -1, "Ruby (transparent clear red to deep crimson)"),
 			});
 
-			public static readonly Table art_objects25gp = new Table("25 GP Art Objects", new TableRow[]{
+			public static readonly Table art_objects25gp = new Table("25 GP Art Objects", "Object", new TableRow[]{
 				new TableRow(1, -1, "Silver ewer"),
 				new TableRow(2, -1, "Carved bone statuette"),
 				new TableRow(3, -1, "Small gold bracelet"),
@@ -2038,7 +2020,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Gold locket with a apainted portrait inside"),
 			});
 
-			public static readonly Table art_objects250gp = new Table("250 GP Art Objects", new TableRow[]{
+			public static readonly Table art_objects250gp = new Table("250 GP Art Objects", "Object", new TableRow[]{
 				new TableRow(1, -1, "Gold ring set with bloodstones"),
 				new TableRow(2, -1, "Carved ivory statuette"),
 				new TableRow(3, -1, "Large gold bracelet"),
@@ -2051,7 +2033,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Gold bird cage with electrum filigree"),
 			});
 
-			public static readonly Table art_objects750gp = new Table("750 GP Art Objects", new TableRow[]{
+			public static readonly Table art_objects750gp = new Table("750 GP Art Objects", "Object", new TableRow[]{
 				new TableRow(1, -1, "Silver chalice set with moonstones"),
 				new TableRow(2, -1, "Silver-plated steel longsword with jet set in hilt"),
 				new TableRow(3, -1, "Carved harp of exotic wood with ivory inlay and zircon gems"),
@@ -2064,7 +2046,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Painted gold war mask"),
 			});
 
-			public static readonly Table art_objects2500gp = new Table("2,500 GP Art Objects", new TableRow[]{
+			public static readonly Table art_objects2500gp = new Table("2,500 GP Art Objects", "Object", new TableRow[]{
 				new TableRow(1, -1, "Fine gold chain set with a fire opal"),
 				new TableRow(2, -1, "Old masterpiece painting"),
 				new TableRow(3, -1, "Embroidered silk and velvet mantle set with numerous moonstones"),
@@ -2077,7 +2059,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "A necklace string of small pink pearls"),
 			});
 
-			public static readonly Table art_objects7500gp = new Table("7,500 GP Art Objects", new TableRow[]{
+			public static readonly Table art_objects7500gp = new Table("7,500 GP Art Objects", "Object", new TableRow[]{
 				new TableRow(1, -1, "Jeweled gold crown"),
 				new TableRow(2, -1, "Jeweled platinum ring"),
 				new TableRow(3, -1, "Small gold statuette set with rubies"),
@@ -2088,7 +2070,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Bejeweled ivory drinking horn with gold filigree"),
 			});
 
-			public static readonly Table individual_treasure_challenge0_4 = new Table("Individual Treasure: Challenge 0-4", new TableRow[]{
+			public static readonly Table individual_treasure_challenge0_4 = new Table("Individual Treasure: Challenge 0-4", "Coins", new TableRow[]{
 				new TableRow(1, 30, "5d6 (17) cp"),
 				new TableRow(31, 60, "4d6 (14) sp"),
 				new TableRow(61, 70, "3d6 (10) ep"),
@@ -2096,7 +2078,7 @@ namespace DungeonMasterHelper
 				new TableRow(86, 90, "1d6 (3) pp"),
 			});
 
-			public static readonly Table individual_treasure_challenge5_10 = new Table("Individual Treasure: Challenge 5-10", new TableRow[]{
+			public static readonly Table individual_treasure_challenge5_10 = new Table("Individual Treasure: Challenge 5-10", "Coins", new TableRow[]{
 				new TableRow(1, 30, "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep"),
 				new TableRow(31, 60, "6d6 x 10 (210) sp, 2d6 x 10 (70) gp"),
 				new TableRow(61, 70, "3d6 x 10 (105) ep, 2d6 x 10 (70) gp"),
@@ -2104,20 +2086,20 @@ namespace DungeonMasterHelper
 				new TableRow(86, 90, "2d6 x 10 (70) gp, 3d6 (10) pp"),
 			});
 
-			public static readonly Table individual_treasure_challenge11_16 = new Table("Individual Treasure: Challenge 11-16", new TableRow[]{
+			public static readonly Table individual_treasure_challenge11_16 = new Table("Individual Treasure: Challenge 11-16", "Coins", new TableRow[]{
 				new TableRow(1, 20, "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp"),
 				new TableRow(21, 35, "1d6 x 100 (350) ep, 1d6 x 100 (350) gp"),
 				new TableRow(36, 75, "2d6 x 100 (700) gp, 1d6 x 10 (35) pp"),
 				new TableRow(76, 100, "2d6 x 100 (700) gp, 2d6 x 10 (70) pp"),
 			});
 
-			public static readonly Table individual_treasure_challenge17_plus = new Table("Individual Treasure: Challenge 17+", new TableRow[]{
+			public static readonly Table individual_treasure_challenge17_plus = new Table("Individual Treasure: Challenge 17+", "Coins", new TableRow[]{
 				new TableRow(1, 15, "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp"),
 				new TableRow(16, 55, "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp"),
 				new TableRow(56, 100, "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp"),
 			});
 
-			public static readonly Table treasure_hoard_challenge0_4 = new Table("Treasure Hoard: Challenge 0-4", new TableRow[]{
+			public static readonly Table treasure_hoard_challenge0_4 = new Table("Treasure Hoard: Challenge 0-4", "Coins, Gems or Art Objects, Magic Items", new TableRow[]{
 				new TableRow(1, 6, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp"),
 				new TableRow(7, 16, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, 2d6 (7) 10 gp gems"),
 				new TableRow(17, 26, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, 2d4 (5) 25 gp art objects"),
@@ -2138,7 +2120,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, 2d6 (7) 50 gp gems, Roll once on Magic Item Table G"),
 			});
 
-			public static readonly Table treasure_hoard_challenge5_10 = new Table("Treasure Hoard: Challenge 5-10", new TableRow[]{
+			public static readonly Table treasure_hoard_challenge5_10 = new Table("Treasure Hoard: Challenge 5-10", "Coins, Gems or Art Objects, Magic Items", new TableRow[]{
 				new TableRow(1, 4, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp"),
 				new TableRow(5, 10, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, 2d4 (5) 25 gp art objects"),
 				new TableRow(11, 16, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, 3d6 (10) 50 gp gems"),
@@ -2170,7 +2152,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, 2d4 (5) 250 gp art objects, Roll 1d4 times on Magic Item Table H"),
 			});
 
-			public static readonly Table treasure_hoard_challenge11_16 = new Table("Treasure Hoard: Challenge 11-16", new TableRow[]{
+			public static readonly Table treasure_hoard_challenge11_16 = new Table("Treasure Hoard: Challenge 11-16", "Coins, Gems or Art Objects, Magic Items", new TableRow[]{
 				new TableRow(1, 3, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp"),
 				new TableRow(4, 6, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp2d4 (5) 250 gp art objects"),
 				new TableRow(7, 9, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp2d4 (5) 750 gp art objects"),
@@ -2206,7 +2188,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, 101, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp, 3d6 (10) 1,000 gp gems, Roll once on Magic Item Table I"),
 			});
 
-			public static readonly Table treasure_hoard_challenge17_plus = new Table("Treasure Hoard: Challenge 17+", new TableRow[]{
+			public static readonly Table treasure_hoard_challenge17_plus = new Table("Treasure Hoard: Challenge 17+", "Coins, Gems or Art Objects, Magic Items", new TableRow[]{
 				new TableRow(1, 2, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp"),
 				new TableRow(3, 5, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp, 3d6 (10) 1,000 gp gems, Roll 1d8 times on Magic Item Table C"),
 				new TableRow(6, 8, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp, 1d10 (5) 2,500 gp art objects, Roll 1d8 times on Magic Item Table C"),
@@ -2234,7 +2216,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp, 1d8 (4) 5,000 gp gems, Roll 1d4 times on Magic Item Table I"),
 			});
 
-			public static readonly Table potion_miscibility = new Table("Potion Miscibility", new TableRow[]{
+			public static readonly Table potion_miscibility = new Table("Potion Miscibility", "Result", new TableRow[]{
 				new TableRow(1, -1, "The mixture creates a magical explosion, dealing 6d10 force damage to the mixer and 1d10 force damage to each creature within 5 feet of the mixer."),
 				new TableRow(2, 8, "The mixture becomes an ingested poison of the DM's choice."),
 				new TableRow(9, 15, "Both potions lose their effects."),
@@ -2245,7 +2227,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "Only one potion works, but its effect is permanent. Choose the simplest effect to make permanent, or the one that seems the most fun. For example, a potion of healing might increase the drinker's hit point maximum by 4, or oil of etherealness migth permanently trap the user in the Ethereal Plane. At your discretion, an appropriate spell, such as dispel magic or remove curse, might end this lasting effect."),
 			});
 
-			public static readonly Table scroll_mishap = new Table("Scroll Mishap", new TableRow[]{
+			public static readonly Table scroll_mishap = new Table("Scroll Mishap", "Result", new TableRow[]{
 				new TableRow(1, -1, "A surge of magical energy deals the caster 1d6 force damage per level of the spell"),
 				new TableRow(2, -1, "The spell affects the caster or an ally (determined randomly) instead of the intended target, or it affects a random target nearby if the caster was the intended target."),
 				new TableRow(3, -1, "The spell affects a random location within the spell's range."),
@@ -2254,7 +2236,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, -1, "The spell activates after 1d12 hours. If the caster was the intended target, the spell takes effect normally. If the caster was not the intended target, the spell goes off in the general direction of the intended target, up to the spell's maximum range, if the target has moved away."),
 			});
 
-			public static readonly Table who_created_it_or_who_was_intended_to_use_it = new Table("Who Created It or Who Was Intended to Use It?", new TableRow[]{
+			public static readonly Table who_created_it_or_who_was_intended_to_use_it = new Table("Who Created It or Who Was Intended to Use It?", "Creator or Intended User", new TableRow[]{
 				new TableRow(1, -1, "Aberration. The item was created by aberrations in ancient times, possibly for the use of favored humanoid thralls. When seen from the corner of the eye, the item seems to be moving."),
 				new TableRow(2, 4, "Human. The item was created during the heyday of a fallen human kingdom, or it is tied to a human legend. It might hold writing in a forgotten tongue or symbols whose significance is lost to the ages."),
 				new TableRow(5, -1, "Celestial. The weapon is half the normal weight and inscribed with feathered wings, suns, and other symbols of good. Fiends find the item's presence repulsive."),
@@ -2273,7 +2255,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Undead. The item incorporates imagery of death, such as bones and skulls, and it might be crafted from parts of corpses. It feels cold to the touch."),
 			});
 
-			public static readonly Table what_is_a_detail_from_its_history = new Table("What Is a Detail from Its History?", new TableRow[]{
+			public static readonly Table what_is_a_detail_from_its_history = new Table("What Is a Detail from Its History?", "History", new TableRow[]{
 				new TableRow(1, -1, "Arcane. This item was created for an ancient order of spellcasters and bears the order's symbol."),
 				new TableRow(2, -1, "Bane. This item was created by the foes of a particular culture of kind of creature. If the culture or creatures are still around, they might recognize the item and single out the bearer as an enemy."),
 				new TableRow(3, -1, "Heroic. A great hero once wielded this item. Anyone who's familiar with the item's history expects great deeds from the new owner."),
@@ -2284,7 +2266,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Symbol of Power. This item was once used as part of royal regalia or as a badge of high office. Its former owner or that person's descendants might desire it, or someone might mistakenly assume its new owner is the item's legitimate inheritor."),
 			});
 
-			public static readonly Table what_minor_property_does_it_have = new Table("What Minor Property does It Have?", new TableRow[]{
+			public static readonly Table what_minor_property_does_it_have = new Table("What Minor Property does It Have?", "Minor Property", new TableRow[]{
 				new TableRow(1, -1, "Beacon. The bearer can use a bonus action to cause the item to shed bright light in a 10-foot radius and dim light for an additional 10 feet, or to extinguish the light."),
 				new TableRow(2, -1, "Compass. The wielder can use an action to learn which way is north."),
 				new TableRow(3, -1, "Conscientious. When the bearer of this item contemplates or undertakes a malevolent act, the item enhances pangs of conscience."),
@@ -2307,7 +2289,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, -1, "Roll twice, rerolling any additional 20s."),
 			});
 
-			public static readonly Table what_quirk_does_it_have = new Table("What Quirk does It Have?", new TableRow[]{
+			public static readonly Table what_quirk_does_it_have = new Table("What Quirk does It Have?", "Quirk", new TableRow[]{
 				new TableRow(1, -1, "Blissful. While in possession of the item, the bearer feels fortunate and optimistic about what the future holds. Butterflies and other harmless creatures might frolic in the item's presence."),
 				new TableRow(2, -1, "Confident. The item helps its bearer feel self-assured."),
 				new TableRow(3, -1, "Covetous. The item's bearer becomes obsessed with material wealth."),
@@ -2322,7 +2304,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, -1, "Slothful. The bearer of this item feels slothful and lethargic. While attuned to the item, the bearer requires 10 hours to finish a long rest."),
 			});
 
-			public static readonly Table magic_item_table_a = new Table("Magic Item Table A", new TableRow[]{
+			public static readonly Table magic_item_table_a = new Table("Magic Item Table A", "Magic Item", new TableRow[]{
 				new TableRow(1, 50, "Potion of healing"),
 				new TableRow(51, 60, "Spell scroll (cantrip)"),
 				new TableRow(61, 70, "Potion of climbing"),
@@ -2333,7 +2315,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "Driftglobe"),
 			});
 
-			public static readonly Table magic_item_table_b = new Table("Magic Item Table B", new TableRow[]{
+			public static readonly Table magic_item_table_b = new Table("Magic Item Table B", "Magic Item", new TableRow[]{
 				new TableRow(1, 15, "Potion of greater healing"),
 				new TableRow(16, 22, "Potion of fire breath"),
 				new TableRow(23, 29, "Potion of resistance"),
@@ -2371,7 +2353,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "Wand of secrets"),
 			});
 
-			public static readonly Table magic_item_table_c = new Table("Magic Item Table C", new TableRow[]{
+			public static readonly Table magic_item_table_c = new Table("Magic Item Table C", "Magic Item", new TableRow[]{
 				new TableRow(1, 15, "Potion of superior healing"),
 				new TableRow(16, 22, "Spell scroll (4th level)"),
 				new TableRow(23, 27, "Ammunition, +2"),
@@ -2402,7 +2384,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "Sending stones"),
 			});
 
-			public static readonly Table magic_item_table_d = new Table("Magic Item Table D", new TableRow[]{
+			public static readonly Table magic_item_table_d = new Table("Magic Item Table D", "Magic Item", new TableRow[]{
 				new TableRow(1, 20, "Potion of supreme healing"),
 				new TableRow(21, 30, "Potion of invisibility"),
 				new TableRow(31, 40, "Potion of speed"),
@@ -2421,7 +2403,7 @@ namespace DungeonMasterHelper
 				new TableRow(99, -1, "Portable hole"),
 			});
 
-			public static readonly Table magic_item_table_e = new Table("Magic Item Table E", new TableRow[]{
+			public static readonly Table magic_item_table_e = new Table("Magic Item Table E", "Magic Item", new TableRow[]{
 				new TableRow(1, 30, "Spell scroll (8th level)"),
 				new TableRow(31, 45, "Potion of storm giant strength"),
 				new TableRow(46, 60, "Potion of supreme healing"),
@@ -2431,7 +2413,7 @@ namespace DungeonMasterHelper
 				new TableRow(89, 90, "Sovereign glue"),
 			});
 
-			public static readonly Table magic_item_table_f = new Table("Magic Item Table F", new TableRow[]{
+			public static readonly Table magic_item_table_f = new Table("Magic Item Table F", "Magic Item", new TableRow[]{
 				new TableRow(1, 15, "Weapon, +1"),
 				new TableRow(16, 18, "Shield, +1"),
 				new TableRow(19, 21, "Sentinel shield"),
@@ -2494,7 +2476,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "Winged boots"),
 			});
 
-			public static readonly Table magic_item_table_g = new Table("Magic Item Table G", new TableRow[]{
+			public static readonly Table magic_item_table_g = new Table("Magic Item Table G", "Magic Item", new TableRow[]{
 				new TableRow(1, 11, "Weapon, +2"),
 				new TableRow(12, 13, "Figurine of wondrous power (roll d8), 1 - Bronze griffon, 2 - Ebony fly, 3 - Golden lions, 4 - Ivory goats, 5 - Marble elephant, 6-7 - Onyx dog, 8 - Serpentine owl"),
 				new TableRow(14, -1, "Adamantine armor (breastplate)"),
@@ -2585,7 +2567,7 @@ namespace DungeonMasterHelper
 				new TableRow(99, -1, "Wings of flying"),
 			});
 
-			public static readonly Table magic_item_table_h = new Table("Magic Item Table H", new TableRow[]{
+			public static readonly Table magic_item_table_h = new Table("Magic Item Table H", "Magic Item", new TableRow[]{
 				new TableRow(1, 10, "Weapon, +3"),
 				new TableRow(11, 12, "Amulet of the planes"),
 				new TableRow(13, 15, "Carpet of flying"),
@@ -2657,7 +2639,7 @@ namespace DungeonMasterHelper
 				new TableRow(101, -1, "Tome of understanding"),
 			});
 
-			public static readonly Table magic_item_table_i = new Table("Magic Item Table I", new TableRow[]{
+			public static readonly Table magic_item_table_i = new Table("Magic Item Table I", "Magic Item", new TableRow[]{
 				new TableRow(1, 5, "Defender"),
 				new TableRow(6, 10, "Hammer of thunderbolts"),
 				new TableRow(11, 15, "Luck blade"),
@@ -2713,7 +2695,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "Tome of the stilled tongue"),
 			});
 
-			public static readonly Table armor_of_resistance_damage_type = new Table("Armor of Resistance Damage Type", new TableRow[]{
+			public static readonly Table armor_of_resistance_damage_type = new Table("Armor of Resistance", "Damage Type", new TableRow[]{
 				new TableRow(1, -1, "Acid"),
 				new TableRow(2, -1, "Cold"),
 				new TableRow(3, -1, "Fire"),
@@ -2726,7 +2708,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Thunder"),
 			});
 
-			public static readonly Table bag_of_beans_effect = new Table("Bag of Beans Effect", new TableRow[]{
+			public static readonly Table bag_of_beans_effect = new Table("Bag of Beans Effect", "Effect", new TableRow[]{
 				new TableRow(1, -1, "5d4 toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take 5d6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour."),
 				new TableRow(2, 10, "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds."),
 				new TableRow(11, 20, "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks"),
@@ -2741,7 +2723,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "A giant beanstalk sprouts, growing to a height of the DM's choice. The top leads where the DM chooses, such as to a great view, a cloud giant's castle, or a different plane of existence."),
 			});
 
-			public static readonly Table gray_bag_of_tricks = new Table("Gray Bag of Tricks", new TableRow[]{
+			public static readonly Table gray_bag_of_tricks = new Table("Gray Bag of Tricks", "Creature", new TableRow[]{
 				new TableRow(1, -1, "Weasel"),
 				new TableRow(2, -1, "Giant rat"),
 				new TableRow(3, -1, "Badger"),
@@ -2752,7 +2734,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Giant elk"),
 			});
 
-			public static readonly Table rust_bag_of_tricks = new Table("Rust Bag of Tricks", new TableRow[]{
+			public static readonly Table rust_bag_of_tricks = new Table("Rust Bag of Tricks", "Creature", new TableRow[]{
 				new TableRow(1, -1, "Rat"),
 				new TableRow(2, -1, "Owl"),
 				new TableRow(3, -1, "Mastiff"),
@@ -2763,7 +2745,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Brown bear"),
 			});
 
-			public static readonly Table tan_bag_of_tricks = new Table("Tan Bag of Tricks", new TableRow[]{
+			public static readonly Table tan_bag_of_tricks = new Table("Tan Bag of Tricks", "Creature", new TableRow[]{
 				new TableRow(1, -1, "Jackal"),
 				new TableRow(2, -1, "Ape"),
 				new TableRow(3, -1, "Baboon"),
@@ -2774,7 +2756,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, -1, "Tiger"),
 			});
 
-			public static readonly Table candle_of_invocation_alignment = new Table("Candle of Invocation Alignment", new TableRow[]{
+			public static readonly Table candle_of_invocation_alignment = new Table("Candle of Invocation", "Alignment", new TableRow[]{
 				new TableRow(1, -1, "Chaotic evil"),
 				new TableRow(2, -1, "Chaotic neutral"),
 				new TableRow(3, -1, "Chaotic good"),
@@ -2786,55 +2768,27 @@ namespace DungeonMasterHelper
 				new TableRow(9, -1, "Lawful good"),
 			});
 
-			public static readonly Table carpet_of_flying_size = new Table("Carpet of Flying - Size", new TableRow[]{
-				new TableRow(1, 20, "3 ft. x 5 ft."),
-				new TableRow(21, 55, "4 ft. x 6 ft."),
-				new TableRow(56, 80, "5 ft. x 7 ft."),
-				new TableRow(81, 100, "6 ft. x 9 ft."),
+			public static readonly Table carpet_of_flying = new Table("Carpet of Flying", "Size, Capacity, Flying Speed",  new TableRow[]{
+				new TableRow(1, 20, "3 ft. x 5 ft., 200 lb., 80 feet"),
+				new TableRow(21, 55, "4 ft. x 6 ft., 400 lb., 60 feet"),
+				new TableRow(56, 80, "5 ft. x 7 ft., 600 lb., 40 feet"),
+				new TableRow(81, 100, "6 ft. x 9 ft., 800 lb., 30 feet"),
 			});
 
-			public static readonly Table carpet_of_flying_capacity = new Table("Carpet of Flying - Capacity", new TableRow[]{
-				new TableRow(1, 20, "200 lb."),
-				new TableRow(21, 55, "400 lb."),
-				new TableRow(56, 80, "600 lb."),
-				new TableRow(81, 100, "800 lb."),
-			});
-
-			public static readonly Table carpet_of_flying_flying_speed = new Table("Carpet of Flying - Speed", new TableRow[]{
-				new TableRow(1, 20, "80 feet"),
-				new TableRow(21, 55, "60 feet"),
-				new TableRow(56, 80, "40 feet"),
-				new TableRow(81, 100, "30 feet"),
-			});
-
-			public static readonly Table efreeti_bottle_effect = new Table("Efreeti Bottle Effect", new TableRow[]{
+			public static readonly Table efreeti_bottle_effect = new Table("Efreeti Bottle Effect", "Effect", new TableRow[]{
 				new TableRow(1, 10, "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic."),
 				new TableRow(11, 90, "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic."),
 				new TableRow(91, 100, "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic."),
 			});
 
-			public static readonly Table horn_of_valhalla_horn_type = new Table("Horn of Valhalla - Horn Type", new TableRow[]{
-				new TableRow(1, 40, "Silver"),
-				new TableRow(41, 75, "Brass"),
-				new TableRow(76, 90, "Bronze"),
-				new TableRow(91, 100, "Iron"),
+			public static readonly Table horn_of_valhalla_horn = new Table("Horn of Valhalla", "Horn Type, Berserkers Summoned, Requirement", new TableRow[]{
+				new TableRow(1, 40, "Silver, 2d4 + 2, None"),
+				new TableRow(41, 75, "Brass, 3d4 + 3, Proficiency with all simple weapons"),
+				new TableRow(76, 90, "Bronze, 4d4 + 4, Proficiency with all medium armor"),
+				new TableRow(91, 100, "Iron, 5d4 + 5, Proficiency with all martial weapons"),
 			});
 
-			public static readonly Table horn_of_valhalla_berserkers_summoned = new Table("Horn of Valhalla - Berserkers Summoned", new TableRow[]{
-				new TableRow(1, 40, "2d4 + 2"),
-				new TableRow(41, 75, "3d4 + 3"),
-				new TableRow(76, 90, "4d4 + 4"),
-				new TableRow(91, 100, "5d4 + 5"),
-			});
-
-			public static readonly Table horn_of_valhalla_requirement = new Table("Horn of Valhalla - Requirements", new TableRow[]{
-				new TableRow(1, 40, "None"),
-				new TableRow(41, 75, "Proficiency with all simple weapons"),
-				new TableRow(76, 90, "Proficiency with  all medium armor"),
-				new TableRow(91, 100, "Proficiency with all martial weapons"),
-			});
-
-			public static readonly Table iron_flask_contents = new Table("Iron Flask Contents", new TableRow[]{
+			public static readonly Table iron_flask_contents = new Table("Iron Flask Contents", "Contents", new TableRow[]{
 				new TableRow(1, 50, "Empty"),
 				new TableRow(51, -1, "Arcanaloth"),
 				new TableRow(52, -1, "Cambion"),
@@ -4426,7 +4380,7 @@ namespace DungeonMasterHelper
 
 		public int Max
 		{
-			get { return maxRoll; }
+			get { return maxRoll < 0 ? minRoll : maxRoll; }
 		}
 
 		public TableRow() { }
@@ -4486,7 +4440,7 @@ namespace DungeonMasterHelper
 
 		public bool numInRange(int num)
 		{
-			return num >= minRoll && num <= maxRoll;
+			return (num > minRoll && num < maxRoll || num == minRoll || num == maxRoll);
 		}
 	}
 
@@ -4496,45 +4450,46 @@ namespace DungeonMasterHelper
 		private TableRow[] tableRows;
 		private int length = 0;
 		private int maxRoll = 0;
+		private string tableEntryDesc;
 
-		public string Name
+		public string Name { get { return tableName; } }
+
+		public TableRow[] Entries { get{ return tableRows; } }
+
+		public int Length { get { return length; } }
+
+		/// <summary>
+		/// MaxRoll is the highest you can roll on the table.
+		/// </summary>
+		public int MaxRoll { get { return maxRoll; } }
+
+		/// <summary>
+		/// Desc is the description at the top of the table detailing what the entries are.
+		/// </summary>
+		public string Desc { get { return tableEntryDesc; } }
+
+		/// <summary>
+		/// The [] operators have been redefined for this class. Instead of 
+		/// returning an item at an index, it gets the table entry based on roll.
+		/// <para>To get the TableRow at a specific index, use getRowAtIndex().</para>
+		/// </summary>
+		public TableRow this[int x]
 		{
 			get
 			{
-				return tableName;
+				for (int i = 0; i < length; i++)
+				{
+					if (tableRows[i].numInRange(x))
+					{
+						return tableRows[i];
+					}
+				}
+
+				return tableRows[0];
 			}
 		}
 
-		public TableRow[] Entries
-		{
-			get
-			{
-				return tableRows;
-			}
-		}
-
-		public int Length
-		{
-			get
-			{
-				return length;
-			}
-		}
-
-		public int MaxRoll
-		{
-			get
-			{
-				return maxRoll;
-			}
-		}
-
-		public TableRow this[int i]
-		{
-			get { return tableRows[i]; }
-		}
-
-		public Table(string name, TableRow[] entries)
+		public Table(string name, string desc, TableRow[] entries)
 		{
 			tableName = name;
 			tableRows = entries;
@@ -4546,16 +4501,17 @@ namespace DungeonMasterHelper
 		{
 			modifier += Data.roll(1, maxRoll);
 
-			for (int i = 0; i < length; i++)
+			return this[modifier];
+		}
+
+		public TableRow getRowAtIndex(int index)
+		{
+			if(index > tableRows.Length || index < 0)
 			{
-				if(Entries[i].numInRange(modifier))
-				{
-					return Entries[i];
-				}
+				return tableRows[0];
 			}
 
-			return "Error in Table.rollOnTable";
+			return tableRows[index];
 		}
-		
 	}
 }

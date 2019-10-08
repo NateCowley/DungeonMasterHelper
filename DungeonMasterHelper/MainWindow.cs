@@ -26,6 +26,7 @@ namespace DungeonMasterHelper
 		{
 			//Data.showTable(Data.World.cataclysmic_distasters);
 			MessageBox.Show(Data.Adventures.getWildernessGoal());
+			MessageBox.Show(Data.Multiverse.getPsychicWindEffectsLocationEffect());
 		}
 
 		private void button3_Click(object sender, EventArgs e)
