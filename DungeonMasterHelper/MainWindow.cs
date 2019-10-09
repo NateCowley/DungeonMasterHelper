@@ -25,8 +25,8 @@ namespace DungeonMasterHelper
 		private void button2_Click(object sender, EventArgs e)
 		{
 			//Data.showTable(Data.World.cataclysmic_distasters);
-			MessageBox.Show(Data.Adventures.getWildernessGoal());
-			MessageBox.Show(Data.Multiverse.getPsychicWindEffectsLocationEffect());
+			//MessageBox.Show(Data.getMultipleRandomFrom(4, Data.Treasure.magic_item_table_a));
+			Data.Treasure.magic_item_table_d.ShowTable();
 		}
 
 		private void button3_Click(object sender, EventArgs e)

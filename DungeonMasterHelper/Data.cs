@@ -12,7 +12,8 @@ namespace DungeonMasterHelper
 	// in order to preserve the original tables as they were found in the source books for 
 	// D&D 5e
 
-	// TODO: create complete tables/gets, get results by rolling on tables, check tables for spelling errors
+	// TODO: check values for tables, I apparently didn't create the simple types well enough,
+	// numbers are off for the current tables
 
 	public static class Data
 	{
@@ -72,25 +73,25 @@ namespace DungeonMasterHelper
 			return sum;
 		}
 
-		public static string getSingleRandomFrom(string[] arr)
-		{
-			return arr[rand.Next() % arr.Length];
-		}
-
 		public static string getSingleRandomFrom(Table t)
 		{
-			return t[rand.Next() % t.Length];
+			return t[roll(1, t.MaxRoll)];
 		}
 
-		public static string getMultipleRandomFrom(int numItems, string[] table)
+		public static string getMultipleRandomFrom(int numItems, Table table)
 		{
+			if(numItems < 1)
+			{
+				return "";
+			}
+
 			string res = "";
 
 			for (int i = 0; i < numItems; i++)
 			{
 				res += getSingleRandomFrom(table);
 
-				if (i + 1 == numItems)
+				if (i + 1 != numItems)
 				{
 					res += ", ";
 				}
@@ -242,7 +243,7 @@ namespace DungeonMasterHelper
 
 		#region Global
 
-		public static readonly Table damage_type = new Table("Damage Types", "Damage Type", new TableRow[]{
+		public static readonly Table damage_types = new Table("Damage Types", "Damage Type", new TableRow[]{
 			new TableRow(1, -1, "Acid"),
 			new TableRow(2, -1, "Bludgeoning"),
 			new TableRow(3, -1, "Cold"),
@@ -256,6 +257,52 @@ namespace DungeonMasterHelper
 			new TableRow(11, -1, "Radiant"),
 			new TableRow(12, -1, "Slashing"),
 			new TableRow(13, -1, "Thunder"),
+		});
+
+		public static readonly Table races = new Table("Races", "Race", new TableRow[]
+		{
+			// PHB races
+			new TableRow(1, -1, "Black Dragonborn"),
+			new TableRow(2, -1, "Blue Dragonborn"),
+			new TableRow(3, -1, "Brass Dragonborn"),
+			new TableRow(4, -1, "Bronze Dragonborn"),
+			new TableRow(5, -1, "Copper Dragonborn"),
+			new TableRow(6, -1, "Gold Dragonborn"),
+			new TableRow(7, -1, "Green Dragonborn"),
+			new TableRow(8, -1, "Red Dragonborn"),
+			new TableRow(9, -1, "Silver Dragonborn"),
+			new TableRow(10, -1, "White Dragonborn"),
+			new TableRow(1, -1, "Hill Dwarf"),
+			new TableRow(1, -1, "Mountain Dwarf"),
+			new TableRow(1, -1, "Duergar"),
+			new TableRow(1, -1, "High Elf"),
+			new TableRow(1, -1, "Wood Elf"),
+			new TableRow(1, -1, "Dark Elf (Drow)"),
+			new TableRow(1, -1, "Forest Gnome"),
+			new TableRow(1, -1, "Rock Gnome"),
+			new TableRow(1, -1, "Svirfneblin (Deep Gnome)"),
+			new TableRow(1, -1, "Lightfoot Halfling"),
+			new TableRow(1, -1, "Stout Halfling"),
+			new TableRow(1, -1, "Half-Elf"),
+			new TableRow(1, -1, "Half-Orc"),
+			new TableRow(1, -1, "Human"),
+			new TableRow(1, -1, "Tiefling"),
+			// VGM races
+			new TableRow(1, -1, "Aasimar"),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
+			new TableRow(1, -1, ""),
 		});
 
 		public enum Rarity
@@ -590,7 +637,6 @@ namespace DungeonMasterHelper
 		// Chapter 3
 		public static class Adventures
 		{
-
 			public static readonly Table dungeon_goals = new Table("Dungeon Goals", "Goal", new TableRow[]{
 				new TableRow(1, -1, "Stop the dungeon's monstrous inhabitants from raiding the surface world."),
 				new TableRow(2, -1, "Foil a villain's evil scheme."),
@@ -891,8 +937,6 @@ namespace DungeonMasterHelper
 			{
 				int num = roll(1, wilderness_goals.MaxRoll);
 
-				num = 20;
-
 				if (num == 1)
 				{
 					string dg = lowerFirstLetter(getDungeonGoal());
@@ -924,7 +968,7 @@ namespace DungeonMasterHelper
 						}
 					}
 
-					return strs[0] + " " + strs[1];
+					return strs[0].Substring(0, strs[0].Length - 1) + ", and " + lowerFirstLetter(strs[1]);
 				}
 
 				return wilderness_goals[num];
@@ -954,14 +998,23 @@ namespace DungeonMasterHelper
 
 			public static string getFramingEvents()
 			{
-				int num = Data.rand.Next() % framing_events.Length;
+				int num = roll(1, framing_events.MaxRoll);
 
-				if (num > framing_events.Length - 3)
+				// if num == 99 or 100
+				if (num > framing_events.MaxRoll - 2)
 				{
-					num = Data.rand.Next() % (framing_events.Length - 2);
-					
-					return framing_events[Data.rand.Next() % (framing_events.Length - 2)] + " and " +
-						framing_events[num].Entry.ToLower();
+					num = roll(1, framing_events.MaxRoll - 2);
+
+					int num2 = roll(1, framing_events.MaxRoll - 2);
+
+					while(num2 == num)
+					{
+						num2 = roll(1, framing_events.MaxRoll - 2);
+					}
+
+					string fp = framing_events[num];
+
+					return fp.Substring(0, fp.Length - 1) + ", and " + lowerFirstLetter(framing_events[num2]);
 				}
 
 				return framing_events[num];
@@ -2398,19 +2451,19 @@ namespace DungeonMasterHelper
 				new TableRow(83, 87, "Potion of vitality"),
 				new TableRow(88, 92, "Spell scroll (8th level)"),
 				new TableRow(93, 95, "Horseshoes of a zephyr"),
-				new TableRow(96, 97, "Nolzur's marvelous pigments"),
-				new TableRow(98, -1, "Bag of devouring"),
-				new TableRow(99, -1, "Portable hole"),
+				new TableRow(96, 98, "Nolzur's marvelous pigments"),
+				new TableRow(99, -1, "Bag of devouring"),
+				new TableRow(100, -1, "Portable hole"),
 			});
 
 			public static readonly Table magic_item_table_e = new Table("Magic Item Table E", "Magic Item", new TableRow[]{
 				new TableRow(1, 30, "Spell scroll (8th level)"),
-				new TableRow(31, 45, "Potion of storm giant strength"),
-				new TableRow(46, 60, "Potion of supreme healing"),
-				new TableRow(61, 75, "Spell scroll (9th level)"),
-				new TableRow(76, 83, "Universal solvent"),
-				new TableRow(84, 88, "Arrow of slaying"),
-				new TableRow(89, 90, "Sovereign glue"),
+				new TableRow(31, 55, "Potion of storm giant strength"),
+				new TableRow(56, 70, "Potion of supreme healing"),
+				new TableRow(71, 85, "Spell scroll (9th level)"),
+				new TableRow(86, 93, "Universal solvent"),
+				new TableRow(94, 98, "Arrow of slaying"),
+				new TableRow(99, 100, "Sovereign glue"),
 			});
 
 			public static readonly Table magic_item_table_f = new Table("Magic Item Table F", "Magic Item", new TableRow[]{
@@ -2781,7 +2834,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic."),
 			});
 
-			public static readonly Table horn_of_valhalla_horn = new Table("Horn of Valhalla", "Horn Type, Berserkers Summoned, Requirement", new TableRow[]{
+			public static readonly Table horn_of_valhalla = new Table("Horn of Valhalla", "Horn Type, Berserkers Summoned, Requirement", new TableRow[]{
 				new TableRow(1, 40, "Silver, 2d4 + 2, None"),
 				new TableRow(41, 75, "Brass, 3d4 + 3, Proficiency with all simple weapons"),
 				new TableRow(76, 90, "Bronze, 4d4 + 4, Proficiency with all medium armor"),
@@ -2821,46 +2874,23 @@ namespace DungeonMasterHelper
 				new TableRow(99, -1, "Xorn"),
 			});
 
-			public static readonly Table manual_of_golems_golem = new Table("Manual of Golems - Golem", new TableRow[]{
-				new TableRow(1, 5, "Clay"),
-				new TableRow(6, 17, "Flesh"),
-				new TableRow(18, -1, "Iron"),
-				new TableRow(19, 20, "Stone"),
+			public static readonly Table manual_of_golems = new Table("Manual of Golems", "Golem, Time, Cost", new TableRow[]{
+				new TableRow(1, 5, "Clay, 30 days, 65,000 gp"),
+				new TableRow(6, 17, "Flesh, 60 days, 50,000 gp"),
+				new TableRow(18, -1, "Iron, 120 days, 100,000 gp"),
+				new TableRow(19, 20, "Stone, 90 days, 80,000 gp"),
 			});
 
-			public static readonly Table manual_of_golems_time = new Table("Manual of Golems - Time", new TableRow[]{
-				new TableRow(1, 5, "30 days"),
-				new TableRow(6, 17, "60 days"),
-				new TableRow(18, -1, "120 days"),
-				new TableRow(19, 20, "90 days"),
+			public static readonly Table necklace_of_prayer_beads = new Table("Necklace of Prayer Beads", "Bead of..., Spell", new TableRow[]{
+				new TableRow(1, 6, "Blessing, Bless"),
+				new TableRow(7, 12, "Curing, Curing"),
+				new TableRow(13, 16, "Favor, Greater restoration"),
+				new TableRow(17, 18, "Smiting, Branding smite"),
+				new TableRow(19, -1, "Summons, Planar ally"),
+				new TableRow(20, -1, "Wind walking, Wind walk"),
 			});
-
-			public static readonly Table manual_of_golems_cost = new Table("Manual of Golems - Cost", new TableRow[]{
-				new TableRow(1, 5, "65,000 gp"),
-				new TableRow(6, 17, "50,000 gp"),
-				new TableRow(18, -1, "100,000 gp"),
-				new TableRow(19, 20, "80,000 gp"),
-			});
-
-			public static readonly Table necklace_of_prayer_beads_bead_of = new Table("Necklace of Prayer Beads - Bead of", new TableRow[]{
-				new TableRow(1, 6, "Blessing"),
-				new TableRow(7, 12, "Curing"),
-				new TableRow(13, 16, "Favor"),
-				new TableRow(17, 18, "Smiting"),
-				new TableRow(19, -1, "Summons"),
-				new TableRow(20, -1, "Wind walking"),
-			});
-
-			public static readonly Table necklace_of_prayer_beads_spell = new Table("Necklace of Prayer Beads - Spell", new TableRow[]{
-				new TableRow(1, 6, "Bless"),
-				new TableRow(7, 12, "Cure wounds (2nd level) or lesser restoration"),
-				new TableRow(13, 16, "Greater restoration"),
-				new TableRow(17, 18, "Branding smite"),
-				new TableRow(19, -1, "Planar ally"),
-				new TableRow(20, -1, "Wind walk"),
-			});
-
-			public static readonly Table potion_of_resistance_damage_type = new Table("Potion of Resistance Damage Type", new TableRow[]{
+			
+			public static readonly Table potion_of_resistance_damage_type = new Table("Potion of Resistance", "Damage Type", new TableRow[]{
 				new TableRow(1, -1, "Acid"),
 				new TableRow(2, -1, "Cold"),
 				new TableRow(3, -1, "Fire"),
@@ -2873,7 +2903,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Thunder"),
 			});
 
-			public static readonly Table quaals_feather_token = new Table("Quaals Feather Token", new TableRow[]{
+			public static readonly Table quaals_feather_token = new Table("Quaals Feather Token", "Feather Token", new TableRow[]{
 				new TableRow(1, 20, "Anchor"),
 				new TableRow(21, 35, "Bird"),
 				new TableRow(36, 50, "Fan"),
@@ -2882,7 +2912,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "Whip"),
 			});
 
-			public static readonly Table ring_of_resistance = new Table("Ring of Resistance", new TableRow[]{
+			public static readonly Table ring_of_resistance = new Table("Ring of Resistance", "Damage Type", new TableRow[]{
 				new TableRow(1, -1, "Acid - Pearl"),
 				new TableRow(2, -1, "Cold - Tourmaline"),
 				new TableRow(3, -1, "Fire - Garnet"),
@@ -2895,7 +2925,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Thunder - Spinel"),
 			});
 
-			public static readonly Table robe_of_useful_items = new Table("Robe of Useful Items", new TableRow[]{
+			public static readonly Table robe_of_useful_items = new Table("Robe of Useful Items", "Patch", new TableRow[]{
 				new TableRow(1, 8, "Bag of 100 gp"),
 				new TableRow(9, 15, "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp"),
 				new TableRow(16, 22, "Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself"),
@@ -2911,7 +2941,7 @@ namespace DungeonMasterHelper
 				new TableRow(97, 100, "Portable ram"),
 			});
 
-			public static readonly Table scroll_of_protection_creature_type = new Table("Scroll of Protection Creature Type", new TableRow[]{
+			public static readonly Table scroll_of_protection_creature_type = new Table("Scroll of Protection", "Creature Type", new TableRow[]{
 				new TableRow(1, 10, "Aberrations"),
 				new TableRow(11, 20, "Beasts"),
 				new TableRow(21, 30, "Celestials"),
@@ -2922,13 +2952,13 @@ namespace DungeonMasterHelper
 				new TableRow(81, 100, "Undead"),
 			});
 
-			public static readonly Table sphere_of_annihilation_planar_portal_contact_result = new Table("Sphere of Annihilation Planar Portal Contact Result", new TableRow[]{
+			public static readonly Table sphere_of_annihilation_planar_portal_contact_result = new Table("Sphere of Annihilation Planar Portal Contact", "Result", new TableRow[]{
 				new TableRow(1, 50, "The sphere is destoyed."),
 				new TableRow(51, 85, "The sphere moves through the portal or into the extradimensional space."),
 				new TableRow(86, 100, "A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence."),
 			});
 
-			public static readonly Table wand_of_wonder_effect = new Table("Wand of Wonder Effect", new TableRow[]{
+			public static readonly Table wand_of_wonder_effect = new Table("Wand of Wonder", "Effect", new TableRow[]{
 				new TableRow(1, 5, "You cast slow."),
 				new TableRow(6, 10, "You cast faerie fire."),
 				new TableRow(11, 15, "You are stunned until the start of your next turn, believing something awesome just happened."),
@@ -2953,20 +2983,20 @@ namespace DungeonMasterHelper
 				new TableRow(98, 100, "If you targeted a creature, it must make a DC 15 Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic."),
 			});
 
-			public static readonly Table creating_sentient_magic_items_communication = new Table("Creating Sentient Magic Items - Communication", new TableRow[]{
+			public static readonly Table creating_sentient_magic_items_communication = new Table("Creating Sentient Magic Items - Communication", "Communication", new TableRow[]{
 				new TableRow(1, 6, "The item communicates by transmitting emotion to the creature carrying or wielding it"),
 				new TableRow(7, 9, "The item can speak, read, and understand one or more languages"),
 				new TableRow(10, -1, "The item can speak, read, and understand one or more languages. In addition, the item can communicate telepathically with any character that carries or wields it"),
 			});
 
-			public static readonly Table creating_sentient_magic_items_senses = new Table("Creating Sentient Magic Items - Senses", new TableRow[]{
+			public static readonly Table creating_sentient_magic_items_senses = new Table("Creating Sentient Magic Items - Senses", "Senses", new TableRow[]{
 				new TableRow(1, -1, "Hearing and normal vision out to 30 feet"),
 				new TableRow(2, -1, "Hearing and normal vision out to 60 feet"),
 				new TableRow(3, -1, "Hearing and normal vision out to 120 feet"),
 				new TableRow(4, -1, "Hearing and darkvision out to 120 feet"),
 			});
 
-			public static readonly Table creating_sentient_magic_items_alignment = new Table("Creating Sentient Magic Items - Alignment", new TableRow[]{
+			public static readonly Table creating_sentient_magic_items_alignment = new Table("Creating Sentient Magic Items - Alignment", "Alignment", new TableRow[]{
 				new TableRow(1, 15, "Lawful good"),
 				new TableRow(16, 35, "Neutral good"),
 				new TableRow(36, 50, "Chaotic good"),
@@ -2978,7 +3008,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 99, "Chaotic evil"),
 			});
 
-			public static readonly Table creating_sentient_magic_items_special_purpose = new Table("Creating Sentient Magic Items - Special Purpose", new TableRow[]{
+			public static readonly Table creating_sentient_magic_items_special_purpose = new Table("Creating Sentient Magic Items - Special Purpose", "Purpose", new TableRow[]{
 				new TableRow(1, -1, "Aligned: The item seeks to defeat or destroy those of a diametrically opposed alignment. (Such an item is never neutral.)"),
 				new TableRow(2, -1, "Bane: The item seeks to defeat or destroy creatures of a particular kind, such as fiends, shapechangers, trolls, or wizards"),
 				new TableRow(3, -1, "Protector: The item seeks to defend a particular race or kind of creature, such as elves or druids"),
@@ -2991,7 +3021,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, -1, "Creator Seeker: The item seeks its creator and wants to understand why it was created"),
 			});
 
-			public static readonly Table moonblade_properties = new Table("Moonblade Properties", new TableRow[]{
+			public static readonly Table moonblade_properties = new Table("Moonblade Properties", "Property", new TableRow[]{
 				new TableRow(1, 40, "Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus"),
 				new TableRow(41, 80, "The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)"),
 				new TableRow(81, 82, "The moonblade gains the finesse property"),
@@ -3006,7 +3036,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, -1, "The moonblade functions as a vorpal sword"),
 			});
 
-			public static readonly Table minor_beneficial_properties = new Table("Minor Beneficial Properties", new TableRow[]{
+			public static readonly Table minor_beneficial_properties = new Table("Minor Beneficial Properties", "Property", new TableRow[]{
 				new TableRow(1, 20, "While attuned to the artifact, you gain proficiency in one skill of the DM's choice"),
 				new TableRow(21, 30, "While attuned to the artifact, you are immune to disease"),
 				new TableRow(31, 40, "While attuned to the artifact, you can't be charmed or frightened"),
@@ -3018,7 +3048,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "While attuned to the artifact, you gain a +1 bonus to Armor Class"),
 			});
 
-			public static readonly Table major_beneficial_properties = new Table("Major Beneficial Properties", new TableRow[]{
+			public static readonly Table major_beneficial_properties = new Table("Major Beneficial Properties", "Property", new TableRow[]{
 				new TableRow(1, 20, "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24"),
 				new TableRow(21, 30, "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point"),
 				new TableRow(31, 40, "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type"),
@@ -3030,7 +3060,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned"),
 			});
 
-			public static readonly Table minor_detrimental_properties = new Table("Minor Detrimental Properties", new TableRow[]{
+			public static readonly Table minor_detrimental_properties = new Table("Minor Detrimental Properties", "Property", new TableRow[]{
 				new TableRow(1, 5, "While attuned to the artifact, you have disadvantage on saving throws against spells"),
 				new TableRow(6, 10, "The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half"),
 				new TableRow(11, 15, "While attuned to the artifact, you are blinded when you are more than 10 feet away from it"),
@@ -3051,7 +3081,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "While attuned to the artifact, your flaw is amplified in a way determined by the DM"),
 			});
 
-			public static readonly Table major_detrimental_properties = new Table("Major Detrimental Properties", new TableRow[]{
+			public static readonly Table major_detrimental_properties = new Table("Major Detrimental Properties", "Property", new TableRow[]{
 				new TableRow(1, 5, "While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts"),
 				new TableRow(6, 10, "While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil"),
 				new TableRow(11, 15, "When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property"),
@@ -3072,67 +3102,12 @@ namespace DungeonMasterHelper
 				new TableRow(91, 95, "While attuned to the artifact, you have vulnerability to all damage"),
 				new TableRow(96, 100, "When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes"),
 			});
-
-			public static string getCarpetOfFlying()
-			{
-				Table[] cof =
-				{
-					carpet_of_flying_size,
-					carpet_of_flying_capacity,
-					carpet_of_flying_flying_speed
-				};
-
-				int num = roll(1, 100);
-
-				return cof[0].rollOnTable(num) + ", " + cof[1].rollOnTable(num) + ", " + cof[2].rollOnTable(num);
-			}
-			
-			public static string getHornOfValhalla()
-			{
-				Table[] hov =
-				{
-					horn_of_valhalla_horn_type,
-					horn_of_valhalla_berserkers_summoned,
-					horn_of_valhalla_requirement
-				};
-
-				int num = roll(1, 100);
-
-				return hov[0].rollOnTable(num) + ", " + hov[1].rollOnTable(num) + ", " + hov[2].rollOnTable(num);
-			}
-
-			public static string getManualOfGolems()
-			{
-				Table[] mog =
-				{
-					manual_of_golems_golem,
-					manual_of_golems_time,
-					manual_of_golems_cost
-				};
-
-				int num = roll(1, 20);
-
-				return mog[0].rollOnTable(num) + ", " + mog[1].rollOnTable(num) + ", " + mog[2].rollOnTable(num);
-			}
-
-			public static string getNecklaceOfPrayerBeads()
-			{
-				Table[] nopb =
-				{
-					necklace_of_prayer_beads_bead_of,
-					necklace_of_prayer_beads_spell
-				};
-
-				int num = roll(1, 20);
-
-				return nopb[0].rollOnTable(num) + ", " + nopb[1].rollOnTable(num);
-			}
 		}
 
 		// Chapter 8
 		public static class RunningTheGame
 		{
-			public static readonly Table urban_chase_complications = new Table("Urban Chase Complications", new TableRow[]{
+			public static readonly Table urban_chase_complications = new Table("Urban Chase Complications", "Complication", new TableRow[]{
 				new TableRow(1, -1, "A large obstacle such as a horse or car blocks your way. Make a DC 15 Dexterity (Acorbatics) check to get past the obstacle. On a failed check, the obstacle counts as 10 fet of difficult terrain."),
 				new TableRow(2, -1, "A crowd blocks yoru way. Make a DC 10 Strength (Athletics) or Dexterity (Acrobatics) check (your choice) to make your way through the crowd unimpeded. On a failed check, the crowd counts as 10 feet of difficult terrain."),
 				new TableRow(3, -1, "A larget stained-glass window or similar barrier blocks your path. Make a DC 10 Strength saving throw to smash through the barrier and keep going. On a failed save, you bounce off the barrier and fall prone."),
@@ -3146,7 +3121,7 @@ namespace DungeonMasterHelper
 				new TableRow(11, 20, "No complication."),
 			});
 
-			public static readonly Table wilderness_chase_complications = new Table("Wilderness Chase Complications", new TableRow[]{
+			public static readonly Table wilderness_chase_complications = new Table("Wilderness Chase Complications", "Complication", new TableRow[]{
 				new TableRow(1, -1, "Your path takes you through a rough patch of brush. Make a DC 10 Strength (Athletics) or Dexterity (Acrobatics) check (your choice) to get past the brush. On a failed check, the brush counts as 5 feet of difficult terrain."),
 				new TableRow(2, -1, "Uneven ground threatens to slow your progress. Make a DC 10 Dexterity (Acrobatics) check to navigate the area. On a failed check, the ground coutns as 10 feet of difficult terrain."),
 				new TableRow(3, -1, "You run through a swarm of insects (see the Monster Manual for game statistics, with the DM choosing whiever kind of insects makes the most sens). The swarm makes an opportunity attack against you (+3 to hit; 4d4 piercing damage on a hit)."),
@@ -3160,54 +3135,42 @@ namespace DungeonMasterHelper
 				new TableRow(11, 20, "No complication."),
 			});
 
-			public static readonly Table poisons_item = new Table("Poisons - Item", new TableRow[]{
-				new TableRow(1, -1, "Assassin's blood"),
-				new TableRow(2, -1, "Burnt othur fumes"),
-				new TableRow(3, -1, "Carrion crawler mucus"),
-				new TableRow(4, -1, "Drow poison"),
-				new TableRow(5, -1, "Essence of ether"),
-				new TableRow(6, -1, "Malice"),
-				new TableRow(7, -1, "Midnight tears"),
-				new TableRow(8, -1, "Oil of taggit"),
-				new TableRow(9, -1, "Pale tincture"),
-				new TableRow(10, -1, "Purple worm poison"),
-				new TableRow(11, -1, "Serpent venom"),
-				new TableRow(12, -1, "Torpor"),
-				new TableRow(13, -1, "Truth serum"),
-				new TableRow(14, -1, "Wyvern poison"),
+			public static readonly Table poisons = new Table("Poisons", "Item, Type, Price per Dose", new TableRow[]{
+				new TableRow(1, -1, "Assassin's blood, Ingested, 150 gp"),
+				new TableRow(2, -1, "Burnt othur fumes, Inhaled, 500 gp"),
+				new TableRow(3, -1, "Carrion crawler mucus, Contact, 200 gp"),
+				new TableRow(4, -1, "Drow poison, Injury, 200 gp"),
+				new TableRow(5, -1, "Essence of ether, Inhaled, 300 gp"),
+				new TableRow(6, -1, "Malice, Inhaled, 250 gp"),
+				new TableRow(7, -1, "Midnight tears, Ingested, 1,500 gp"),
+				new TableRow(8, -1, "Oil of taggit, Contact, 400 gp"),
+				new TableRow(9, -1, "Pale tincture, Ingested, 250 gp"),
+				new TableRow(10, -1, "Purple worm poison, Injury, 2,000 gp"),
+				new TableRow(11, -1, "Serpent venom, Injury, 200 gp"),
+				new TableRow(12, -1, "Torpor, Ingested, 600 gp"),
+				new TableRow(13, -1, "Truth serum, Ingested, 150 gp"),
+				new TableRow(14, -1, "Wyvern poison, Injury, 1,200 gp"),
 			});
 
-			public static readonly Table poisons_type = new Table("Poisons - Type", new TableRow[]{
-				new TableRow(1, -1, "Ingested"),
-				new TableRow(2, -1, "Inhaled"),
-				new TableRow(3, -1, "Contact"),
-				new TableRow(4, -1, "Injury"),
-				new TableRow(5, 6, "Inhaled"),
-				new TableRow(7, -1, "Ingested"),
-				new TableRow(8, -1, "Contact"),
-				new TableRow(9, -1, "Ingested"),
-				new TableRow(10, 11, "Injury"),
-				new TableRow(12, 13, "Ingested"),
-				new TableRow(14, -1, "Injury"),
+			public static readonly Table poisons_descriptions = new Table("Poison Descriptions", "Item, Tye", new TableRow[]
+			{
+				new TableRow(1, -1, "Assassin's Blood (Ingested). A creature subjected to this poison must make a DC 10 Constitution saving throw. On a failed save, it takes 6 (1d12) poison damage and is poisoned for 24 hours. On a successful save, the creature takes half damage and isn't poisoned."),
+				new TableRow(2, -1, "Burnt Othur Fumes (Inhaled). A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or take 10 (3d6) poison damage, and must repeat the saving throw at the start of each of its turns. On each successive failed save, the character takes 3 (1d6) poison damage. After three successful saves, the poison ends."),
+				new TableRow(3, -1, "Carrion Crawler Mucus (Contact). This poison must be harvested from a dead or incapacitated carrion crawler. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be poisoned for 1 minute. The poisoned creature is paralyzed. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."),
+				new TableRow(4, -1, "Drow Poison (Injury). This poison is typically made only be the drow, and only in a place far removed from sunlight. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be poisoned for 1 hour. If the saving throw fails by 5 or more, the creature is also unconscious while poisoned in this way. The creature wakes up if it takes damage or if another creature takes an action to shake it awake."),
+				new TableRow(5, -1, "Essence of Ether (Inhaled). A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 8 hours. The poisoned creature is unconscious. The creature wakes up if it takes damage or if another creature takes an action to shake it awake."),
+				new TableRow(6, -1, "Malice (Inhaled). A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 1 hour. The poisoned creature is blinded."),
+				new TableRow(7, -1, "Midnight Tears (Ingested). A creature that ingests this poison suffers no effect until the stroke of mignight. If the poison has not been neutralized before then, the creature must succeed on a DC 17 Constitution saving throw, taking 31 (9d6) poison damage on a failed save, or half as much damage on a successful one."),
+				new TableRow(8, -1, "Oil of Taggit (Contact). A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or become poisoned for 24 hours. The poisoned creature is unconscious. The creature wakes up if it takes damage."),
+				new TableRow(9, -1, "Pale Tincture (Ingested). A creature subjected to this poison must succeed on a DC 16 Constitution saving throw or take 3 (1d6) poison damage and become poisoned. The poisoned creature must repeat the saving throw every 24 hours, taking 3 (1d6) poison damage on a failed save. Until this poison ends, the damage the poison deals can't be healed by any means. After seven successful saving throws, the effect ends and the creature can heal normally."),
+				new TableRow(10, -1, "Purple Worm Poison (Injury). This poison must be harvested from a dead or incapacitated purple worm. A creature subjected to this poison must make a DC 19 Constitution saving throw, taking 42 (12d6) poison damage on a failed save, or half as much damage on a successful one."),
+				new TableRow(11, -1, "Serpent Venom (Injury). This poison must be harvested from a dead or incapacitated giant poisonous snake. A creature subjected to this poison must succeed on a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one."),
+				new TableRow(12, -1, "Torpor (Ingested). A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 4d6 hours. The poisoned creature is incapacitated."),
+				new TableRow(13, -1, "Truth Serum (Ingested). A creature subjected to this poison must succeed on a DC 11 Constitution saving throw or become poisoned for 1 hour. The poisoned creature can't knowingly speak a lie, as if under the effect of a zone of truth spell."),
+				new TableRow(14, -1, "Wyvern Poison (Injury). This poison must be harvested form a dead or incapacitated wyvern. A creature subjected to this poison must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."),
 			});
-
-			public static readonly Table poisons_price_per_dose = new Table("Poisons Price Per Dose", new TableRow[]{
-				new TableRow(1, -1, "150 gp"),
-				new TableRow(2, -1, "500 gp"),
-				new TableRow(3, 4, "200 gp"),
-				new TableRow(5, -1, "300 gp"),
-				new TableRow(6, -1, "250 gp"),
-				new TableRow(7, -1, "1,500 gp"),
-				new TableRow(8, -1, "400 gp"),
-				new TableRow(9, -1, "250 gp"),
-				new TableRow(10, -1, "2,000 gp"),
-				new TableRow(11, -1, "200 gp"),
-				new TableRow(12, -1, "600 gp"),
-				new TableRow(13, -1, "150 gp"),
-				new TableRow(14, -1, "1,200 gp"),
-			});
-
-			public static readonly Table short_term_madness = new Table("Short-Term Madness", new TableRow[]{
+			
+			public static readonly Table short_term_madness = new Table("Short-Term Madness", "Effect (lasts 1d10 mnutes)", new TableRow[]{
 				new TableRow(1, 20, "The character retreats into his or her mind and becomes paralyzed. The effect ends if the character takes any damage."),
 				new TableRow(21, 30, "The character becomes incapacitated and spends the duration screaming, laughing or weeping."),
 				new TableRow(31, 40, "The character becomes frightened and must use his or her action and movement each round to flee from the source of hte fear."),
@@ -3220,7 +3183,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "The character falls unconscious."),
 			});
 
-			public static readonly Table long_term_madness = new Table("Long-Term Madness", new TableRow[]{
+			public static readonly Table long_term_madness = new Table("Long-Term Madness", "Effect (lasts 1d10 x 10 hours)", new TableRow[]{
 				new TableRow(1, 10, "The character feels compelled to repeat a specific activity over and over, such as washing hands, touching things, praying, or counting coins."),
 				new TableRow(11, 20, "The character experiences vivid hallucinations and has disadvantage on ability checks."),
 				new TableRow(21, 30, "The character suffers extreme paranoia. The character has disadvantage on Wisdom and Charisma checks."),
@@ -3235,7 +3198,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "The character falls unconscious. No amount of jostling or damage can wake the character."),
 			});
 
-			public static readonly Table indefinite_madness = new Table("Indefinite Madness", new TableRow[]{
+			public static readonly Table indefinite_madness = new Table("Indefinite Madness", "Flaw (lasts until cured)", new TableRow[]{
 				new TableRow(1, 15, "Beng drunk keeps me sane."),
 				new TableRow(16, 25, "I keep whatever I find."),
 				new TableRow(26, 30, "I try to become more like someone else I know -- adopting his or her style of dress, mannerisms, and name."),
@@ -3249,24 +3212,7 @@ namespace DungeonMasterHelper
 				new TableRow(86, 95, "I can't take anything seriously. The more serious the situation, the funnier I find it."),
 				new TableRow(96, 100, "I've discovered that I really like killing people."),
 			});
-
-			public static string getPoison(int num = -1)
-			{
-				if(num == -1 || num > 14)
-				{
-					num = roll(1, 14);
-				}
-
-				Table[] cof =
-				{
-					poisons_item,
-					poisons_type,
-					poisons_price_per_dose
-				};
-
-				return cof[0].rollOnTable(num) + ", " + cof[1].rollOnTable(num) + ", " + cof[2].rollOnTable(num);
-			}
-
+			
 			public static string getShortTermMadnessDuration()
 			{
 				return roll(1, 10).ToString() + " minutes";
@@ -3282,7 +3228,7 @@ namespace DungeonMasterHelper
 		// Chapter 9
 		public static class DungeonMastersWorkshop
 		{
-			public static readonly Table lingering_injuries = new Table("Lingering Injuries", new TableRow[]{
+			public static readonly Table lingering_injuries = new Table("Lingering Injuries", "Injury", new TableRow[]{
 				new TableRow(1, -1, "Lose an Eye. You have disadvantage on Wisdom (Perception) checks that rely on sight and on ranged attack rolls. Magic such as the regenerate spell can restore the lost eye. If you have no eyes left after sustaining this injury, you're blinded."),
 				new TableRow(2, -1, "Lose an Arm or a Hand. You can no longer hold anything with two hands, and you can hold only a single object at a time. Magic such as the regenerate spell can restore the lost appendage."),
 				new TableRow(3, -1, "Lose a Foot or Leg. Your speed on foot is halved, and you must use a cane or crutch to move unless you have a peg leg or other prosthesis. You fall prone after using the Dash action. You have disadvantage on Dexterity checks made to balance. Magic such as the regenerate spell can restore the lost appendage."),
@@ -3294,36 +3240,13 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Minor Scar. The scar doesn't have any adverse effect. Magical healing of 6th level or higher, such as heal and regenerate, removes the scar."),
 			});
 
-			public static readonly Table system_shock = new Table("System Shock", new TableRow[]{
+			public static readonly Table system_shock = new Table("System Shock", "Effect", new TableRow[]{
 				new TableRow(1, -1, "The creature drops to 0 hit points."),
 				new TableRow(2, 3, "The creature drops to 0 hit points but is stable."),
 				new TableRow(4, 5, "The creature is stunned until the end of its next turn."),
 				new TableRow(6, 7, "The creature can't take reactions and has disadvantage on attack rolls and ability checks until the end of its next turn."),
 				new TableRow(8, 10, "The creature can't take reactions until the end of its next turn."),
 			});
-		}
-
-		// Appendix A
-		public static class RandomDungeons
-		{
-			public static readonly string[] starting_area =
-			{
-				"Square, 20 x 20 ft.; passage on each wall",
-				"Square, 20 x 20 ft.; door on two walls, passage in third wall",
-				"Square, 40 x 40 ft.: doors on three walls",
-				"Rectangle, 80 x 20 ft., with row of pillars down the middle; two passages leading from each long wall, doors on each short wall",
-				"Rectangle, 20 x 40 ft.; passage on each wall",
-				"Circle, 40 ft. diameter; one passage at each cardinal direction",
-				"Circle, 40 ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)",
-				"Square, 20 x 20 ft.; door on two walls, passage on third wall, secret door on fourth wall",
-				"Passage, 10 ft. wide; T intersection",
-				"Passage, 10 ft. wide; four-way intersection"
-			};
-
-			public static readonly string[] passage =
-			{
-
-			};
 		}
 
 		#endregion DMG
@@ -4477,6 +4400,19 @@ namespace DungeonMasterHelper
 		{
 			get
 			{
+				// if the number is less than 0, return the first entry
+				if (x < 0)
+				{
+					return tableRows[0];
+				}
+
+				// if the number is greater than the maximum roll, return the last entry
+				if (x > MaxRoll)
+				{
+					return tableRows[length - 1];
+				}
+
+				// try to return the value that matches the number
 				for (int i = 0; i < length; i++)
 				{
 					if (tableRows[i].numInRange(x))
@@ -4485,13 +4421,32 @@ namespace DungeonMasterHelper
 					}
 				}
 
+				// default case, return the lowest entry
 				return tableRows[0];
 			}
+		}
+
+		public static implicit operator String(Table t)
+		{
+			if(t == null)
+			{
+				return "";
+			}
+
+			string res = "           " + t.Desc + "\n";
+
+			for(int i = 0; i < t.Length; i++)
+			{
+				res += t.getRowAtIndex(i).ToString() + "\n";
+			}
+
+			return res;
 		}
 
 		public Table(string name, string desc, TableRow[] entries)
 		{
 			tableName = name;
+			tableEntryDesc = desc;
 			tableRows = entries;
 			length = entries.Length;
 			maxRoll = entries[length - 1].Max;
@@ -4506,12 +4461,17 @@ namespace DungeonMasterHelper
 
 		public TableRow getRowAtIndex(int index)
 		{
-			if(index > tableRows.Length || index < 0)
+			if(index > tableRows.Length - 1 || index < 0)
 			{
 				return tableRows[0];
 			}
 
 			return tableRows[index];
+		}
+
+		public void ShowTable()
+		{
+			MessageBox.Show(this, Name);
 		}
 	}
 }
