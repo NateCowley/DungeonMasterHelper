@@ -80,7 +80,7 @@ namespace DungeonMasterHelper
 
 		public static string getMultipleRandomFrom(int numItems, Table table)
 		{
-			if(numItems < 1)
+			if (numItems < 1)
 			{
 				return "";
 			}
@@ -243,6 +243,8 @@ namespace DungeonMasterHelper
 
 		#region Global
 
+		#region Races
+
 		public static readonly Table damage_types = new Table("Damage Types", "Damage Type", new TableRow[]{
 			new TableRow(1, -1, "Acid"),
 			new TableRow(2, -1, "Bludgeoning"),
@@ -259,7 +261,69 @@ namespace DungeonMasterHelper
 			new TableRow(13, -1, "Thunder"),
 		});
 
-		public static readonly Table races = new Table("Races", "Race", new TableRow[]
+		public static readonly Table races_generic = new Table("Races", "Race", new TableRow[]
+		{
+			new TableRow(1, -1, "Dwarf"),
+			new TableRow(1, -1, "Elf"),
+			new TableRow(1, -1, "Halfling"),
+			new TableRow(1, -1, "Human"),
+			new TableRow(1, -1, "Dragonborn"),
+			new TableRow(1, -1, "Gnome"),
+			new TableRow(1, -1, "Half-Elf"),
+			new TableRow(1, -1, "Half-Orc"),
+			new TableRow(1, -1, "Tiefling"),
+			new TableRow(1, -1, "Aasimar"),
+			new TableRow(1, -1, "Firbolg"),
+			new TableRow(1, -1, "Goliath"),
+			new TableRow(1, -1, "Kenku"),
+			new TableRow(1, -1, "Lizardfolk"),
+			new TableRow(1, -1, "Tabaxi"),
+			new TableRow(1, -1, "Triton"),
+			new TableRow(1, -1, "Bugbear"),
+			new TableRow(1, -1, "Goblin"),
+			new TableRow(1, -1, "Hobgoblin"),
+			new TableRow(1, -1, "Kobold"),
+			new TableRow(1, -1, "Orc"),
+			new TableRow(1, -1, "Yuan-Ti Pureblood"),
+			new TableRow(1, -1, "Gith"),
+		});
+
+		public static readonly Table races_generic_phb = new Table("Races", "Race", new TableRow[]
+		{
+			new TableRow(1, -1, "Dwarf"),
+			new TableRow(1, -1, "Elf"),
+			new TableRow(1, -1, "Halfling"),
+			new TableRow(1, -1, "Human"),
+			new TableRow(1, -1, "Dragonborn"),
+			new TableRow(1, -1, "Gnome"),
+			new TableRow(1, -1, "Half-Elf"),
+			new TableRow(1, -1, "Half-Orc"),
+			new TableRow(1, -1, "Tiefling"),
+		});
+
+		public static readonly Table races_generic_vgm = new Table("Races", "Race", new TableRow[]
+		{
+			new TableRow(1, -1, "Aasimar"),
+			new TableRow(1, -1, "Firbolg"),
+			new TableRow(1, -1, "Goliath"),
+			new TableRow(1, -1, "Kenku"),
+			new TableRow(1, -1, "Lizardfolk"),
+			new TableRow(1, -1, "Tabaxi"),
+			new TableRow(1, -1, "Triton"),
+			new TableRow(1, -1, "Bugbear"),
+			new TableRow(1, -1, "Goblin"),
+			new TableRow(1, -1, "Hobgoblin"),
+			new TableRow(1, -1, "Kobold"),
+			new TableRow(1, -1, "Orc"),
+			new TableRow(1, -1, "Yuan-Ti Pureblood"),
+		});
+
+		public static readonly Table races_generic_mtf = new Table("Races", "Race", new TableRow[]
+		{
+			new TableRow(1, -1, "Gith"),
+		});
+
+		public static readonly Table races_indepth = new Table("Races", "Race", new TableRow[]
 		{
 			// PHB races
 			new TableRow(1, -1, "Hill Dwarf"),
@@ -314,7 +378,7 @@ namespace DungeonMasterHelper
 			new TableRow(1, -1, "Deep Gnome (Svirfneblin)"),
 		});
 
-		public static readonly Table races_phb = new Table("PHB Races", "Race", new TableRow[]
+		public static readonly Table races_indepth_phb = new Table("PHB Races", "Race", new TableRow[]
 		{
 			new TableRow(1, -1, "Hill Dwarf"),
 			new TableRow(1, -1, "Mountain Dwarf"),
@@ -341,7 +405,7 @@ namespace DungeonMasterHelper
 			new TableRow(1, -1, "Tiefling"),
 		});
 
-		public static readonly Table races_vgm = new Table("VGM Races", "Race", new TableRow[]
+		public static readonly Table races_indepth_vgm = new Table("VGM Races", "Race", new TableRow[]
 		{
 			new TableRow(1, -1, "Protector Aasimar"),
 			new TableRow(1, -1, "Scourge Aasimar"),
@@ -360,7 +424,7 @@ namespace DungeonMasterHelper
 			new TableRow(1, -1, "Yuan-Ti Pureblood"),
 		});
 
-		public static readonly Table races_mtf = new Table("MTF Races", "Race", new TableRow[]
+		public static readonly Table races_indepth_mtf = new Table("MTF Races", "Race", new TableRow[]
 		{
 			new TableRow(1, -1, "Autumn Eladrin Elf"),
 			new TableRow(1, -1, "Winter Eladrin Elf"),
@@ -373,6 +437,8 @@ namespace DungeonMasterHelper
 			new TableRow(1, -1, "Githzerai Gith"),
 			new TableRow(1, -1, "Deep Gnome (Svirfneblin)"),
 		});
+
+		#endregion Races
 
 		public enum Rarity
 		{
@@ -402,11 +468,34 @@ namespace DungeonMasterHelper
 			OTHER
 		}
 
-		public static string getRaceVanillaOnly()
+		public enum AgeRange
 		{
-			int num = roll(1, 9);
+			YOUNG,
+			ADULT,
+			ELDER
+		}
 
-			switch(num)
+		public enum Race_VanillaOnly
+		{
+			DWARF = 1,
+			ELF,
+			HALFLING,
+			HUMAN,
+			DRAGONBORN,
+			GNOME,
+			HALFELF,
+			HALFORC,
+			TIEFLING
+		}
+
+		public static string getRaceVanillaOnly(int race = -1)
+		{
+			if(race == -1 || race > 9)
+			{
+				race = roll(1, 9);
+			}
+
+			switch(race)
 			{
 				case 1:
 					if(roll(1, 2) == 2)
@@ -417,34 +506,130 @@ namespace DungeonMasterHelper
 					{
 						return "Hill Dwarf";
 					}
-					break;
 				case 2:
-
-					break;
+					race = roll(1, 3);
+					if(race == 1)
+					{
+						return "High Elf";
+					}
+					else if(race == 2)
+					{
+						return "Wood Elf";
+					}
+					else
+					{
+						return "Dark Elf (Drow)";
+					}
 				case 3:
-
-					break;
+					if(roll(1, 2) == 1)
+					{
+						return "Lightfoot Halfling";
+					}
+					else
+					{
+						return "Stout Halfling";
+					}
 				case 4:
-
-					break;
+					return "Human";
 				case 5:
-
-					break;
+					switch(roll(1, 10))
+					{
+						case 1:
+							return "Black Dragonborn";
+						case 2:
+							return "Blue Dragonborn";
+						case 3:
+							return "Brass Dragonborn";
+						case 4:
+							return "Bronze Dragonborn";
+						case 5:
+							return "Copper Dragonborn";
+						case 6:
+							return "Gold Dragonborn";
+						case 7:
+							return "Green Dragonborn";
+						case 8:
+							return "Red Dragonborn";
+						case 9:
+							return "Silver Dragonborn";
+						default:
+							return "White Dragonborn";
+					}
 				case 6:
-
-					break;
+					if(roll(1, 2) == 1)
+					{
+						return "Forest Gnome";
+					}
+					else
+					{
+						return "Rock Gnome";
+					}
 				case 7:
-
-					break;
+					return "Half-Elf";
 				case 8:
+					return "Half-Orc";
+				default:
+					return "Tiefling";
+			}
+		}
 
-					break;
-				case 9:
-
-					break;
+		public static string getAgeByRaceVanillaOnly(int ageRange = -1, int race = -1)
+		{
+			if(ageRange < 0 || ageRange > 2)
+			{
+				ageRange = roll(1, 3);
 			}
 
-			return "";
+			if(race == -1 || race > 9)
+			{
+				race = roll(1, 9);
+			}
+			/*
+			switch(ageRange)
+			{
+				case AgeRange.YOUNG:
+					switch (race)
+					{
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+						default:
+							break;
+					}
+				case AgeRange.ADULT:
+					switch (race)
+					{
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+						default:
+					}
+				case AgeRange.ELDER:
+					switch (race)
+					{
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+						default:
+					}
+			}
+			*/
+			return "twelfity-tooth years old";
 		}
 
 		#endregion Global

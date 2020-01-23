@@ -111,5 +111,15 @@ namespace DungeonMasterHelper
 			System.IO.File.WriteAllLines(@"C:\Users\lupus\Downloads\doubletables2.txt", tab2.ToArray());
 			*/
 		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+			Data.Treasure.magic_item_table_b.ShowTable();
+		}
+
+		private void button6_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show(Data.Treasure.magic_item_table_b.rollOnTable());
+		}
 	}
 }

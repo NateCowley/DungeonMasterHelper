@@ -43,6 +43,8 @@ namespace DungeonMasterHelper
 
 			bondTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_bonds);
             flawSecretRTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_flaws_and_secrets);
+
+			raceTB.Text = Data.getRaceVanillaOnly();
         }
 
 		private void nameTB_TextChanged(object sender, EventArgs e)
