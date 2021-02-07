@@ -392,7 +392,7 @@
 			this.Controls.Add(this.ageTB);
 			this.Controls.Add(this.nameTB);
 			this.Margin = new System.Windows.Forms.Padding(2);
-			this.MinimumSize = new System.Drawing.Size(184, 77);
+			this.MinimumSize = new System.Drawing.Size(452, 488);
 			this.Name = "NPC_Form";
 			this.Text = "NPC Form";
 			this.ResumeLayout(false);

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Table.cs" />
+    <Compile Include="TableRow.cs" />
+    <Compile Include="Data_Utilities.cs" />
+    <Compile Include="Data_XGE.cs" />
+    <Compile Include="Data_PHB.cs" />
+    <Compile Include="Data_DMG.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
