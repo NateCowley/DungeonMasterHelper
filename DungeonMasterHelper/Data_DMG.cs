@@ -17,12 +17,12 @@ namespace DungeonMasterHelper
 
 	public static partial class Data
 	{
-		#region DMG
-
-		// Chapter 1
-		public static class World
+		public static class DMG
 		{
-			public static readonly Table forms_of_government = new Table("Forms of Government", "Government", Data.Rolls_String.d100, "", Data.Titles.DMG, 18, new TableRow[]{
+			// Chapter 1
+			public static class World
+			{
+				public static readonly Table forms_of_government = new Table("Forms of Government", "Government", Data.Rolls_String.d100, "", Data.Titles.DMG, 18, new TableRow[]{
 				new TableRow(1, 8, "Autocracy"),
 				new TableRow(9, 13, "Bureaucracy"),
 				new TableRow(14, 19, "Confederacy"),
@@ -45,7 +45,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "Theocracy"),
 			});
 
-			public static readonly Table forms_of_government_explanation = new Table("Forms of Government Explanations", "Government", Data.Rolls_String.d20, "", Data.Titles.DMG, 18, new TableRow[]{
+				public static readonly Table forms_of_government_explanation = new Table("Forms of Government Explanations", "Government", Data.Rolls_String.d20, "", Data.Titles.DMG, 18, new TableRow[]{
 				new TableRow(1, 8, "One hereditary ruler wields absolute power. The autocrat either is supported by a well-developed bureaucracy or military or stands as the only authority in an otherwise anarchic society. The dynastic ruler could be immortal or undead. Aundair and Karrnath, two kingdoms in the Eberron campaign setting, have autocrats with royal blood in their veins. Whereas Queen Aurala of Aundair relies on wizards and spies to enforce her will, Kaius, the vampire king of Karrnath, has a formidable army of living and undead soldiers under his command."),
 				new TableRow(9, 13, "Various departments compsoe the government, each responsible for an aspect of rule. The department heads, ministers, or secretaries answer to a figurehead autocrat or council."),
 				new TableRow(14, 19, "Each individual city or town within the confederacy governs itself, but all contribute to a league or federation that promotes (at least in theory) the common good of all member states. Conditions and attitudes toward the central government vary from place to place within the confederacy. The Lords' Alliance in the Forgotten Realms setting is a loose confederacy of cities, while the Mror Holds in the Eberron campaign setting is a confederacy of allied dwarf clans."),
@@ -68,7 +68,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "Rulership falls to a direct representative or a collection of agents of a deity. The centers of power in a theocracy are usually located on sacred sites. In the Eberron campaign setting, the nation of Thrane is a theocracy devoted to the Silver Flame, a divine spirit that resides in Thrane's capital of Flamekeep."),
 			});
 
-			public static readonly Table world_shaking_events = new Table("World Shaking Events", "Event", Data.Rolls_String.d10, "", Data.Titles.DMG, 27, new TableRow[]{
+				public static readonly Table world_shaking_events = new Table("World Shaking Events", "Event", Data.Rolls_String.d10, "", Data.Titles.DMG, 27, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Rise of a leader or an era"),
 				new TableRow(2, TableRow.NOVALUE, "Fall of a leader or an era"),
 				new TableRow(3, TableRow.NOVALUE, "Cataclysmic disaster"),
@@ -81,7 +81,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Myth and legend"),
 			});
 
-			public static readonly Table leader_types = new Table("Leader Types", "Leader Type", Data.Rolls_String.d6, "", Data.Titles.DMG, 27, new TableRow[]{
+				public static readonly Table leader_types = new Table("Leader Types", "Leader Type", Data.Rolls_String.d6, "", Data.Titles.DMG, 27, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Political"),
 				new TableRow(2, TableRow.NOVALUE, "Religious"),
 				new TableRow(3, TableRow.NOVALUE, "Military"),
@@ -90,7 +90,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Philosophy/learning/magic"),
 			});
 
-			public static readonly Table cataclysmic_distasters = new Table("Cataclysmic Disasters", "Cataclysmic Distaster", Data.Rolls_String.d10, "", Data.Titles.DMG, 28, new TableRow[]{
+				public static readonly Table cataclysmic_distasters = new Table("Cataclysmic Disasters", "Cataclysmic Distaster", Data.Rolls_String.d10, "", Data.Titles.DMG, 28, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Earthquake"),
 				new TableRow(2, TableRow.NOVALUE, "Famin/drought"),
 				new TableRow(3, TableRow.NOVALUE, "Fire"),
@@ -103,7 +103,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Divine judgment"),
 			});
 
-			public static readonly Table invading_forces = new Table("Invading Forces", "Invading Force", Data.Rolls_String.d8, "", Data.Titles.DMG, 29, new TableRow[]{
+				public static readonly Table invading_forces = new Table("Invading Forces", "Invading Force", Data.Rolls_String.d8, "", Data.Titles.DMG, 29, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "A criminal enterprise"),
 				new TableRow(2, TableRow.NOVALUE, "Monsters or a unique monster"),
 				new TableRow(3, TableRow.NOVALUE, "A planar threat"),
@@ -114,7 +114,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "A traitorous ally"),
 			});
 
-			public static readonly Table extinction_or_depletion = new Table("Extinction or Depletion", "Lost Resource", Data.Rolls_String.d8, "", Data.Titles.DMG, 30, new TableRow[]{
+				public static readonly Table extinction_or_depletion = new Table("Extinction or Depletion", "Lost Resource", Data.Rolls_String.d8, "", Data.Titles.DMG, 30, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "A kind of animal (insect, bird, fish, livestock"),
 				new TableRow(2, TableRow.NOVALUE, "Habitable land"),
 				new TableRow(3, TableRow.NOVALUE, "Magic or magic-users (all magic, specific kinds, or schools of magic"),
@@ -125,7 +125,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "A waterway (river, lake, ocean"),
 			});
 
-			public static readonly Table new_organizations = new Table("New Organizations", "New Organization", Data.Rolls_String.d10, "", Data.Titles.DMG, 31, new TableRow[]{
+				public static readonly Table new_organizations = new Table("New Organizations", "New Organization", Data.Rolls_String.d10, "", Data.Titles.DMG, 31, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Crime syndicate/bandit confederacy"),
 				new TableRow(2, TableRow.NOVALUE, "Guild (masons, apothecaries, goldsmiths)"),
 				new TableRow(3, TableRow.NOVALUE, "Magical circle/society"),
@@ -138,7 +138,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Secret society/cult/cabal"),
 			});
 
-			public static readonly Table discoveries = new Table("Discoveries", "Discovery", Data.Rolls_String.d10, "", Data.Titles.DMG, 31, new TableRow[]{
+				public static readonly Table discoveries = new Table("Discoveries", "Discovery", Data.Rolls_String.d10, "", Data.Titles.DMG, 31, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Ancient ruin/lost city of a legendary race"),
 				new TableRow(2, TableRow.NOVALUE, "Animal/monster/magical mutation"),
 				new TableRow(3, TableRow.NOVALUE, "Invention/technology/magic (helpful, destructive)"),
@@ -150,12 +150,12 @@ namespace DungeonMasterHelper
 				new TableRow(9, TableRow.NOVALUE, "Plant (miracle herb, fungal parasite, sentient plant)"),
 				new TableRow(10, TableRow.NOVALUE, "Resource or wealth (gold, gems, mithral)"),
 			});
-		}
+			}
 
-		// Chapter 2
-		public static class Multiverse
-		{
-			public static readonly Table astral_color_pools = new Table("Astral Color Pools", "Plane, Color", Data.Rolls_String.d20, "", Data.Titles.DMG, 47, new TableRow[]{
+			// Chapter 2
+			public static class Multiverse
+			{
+				public static readonly Table astral_color_pools = new Table("Astral Color Pools", "Plane, Color", Data.Rolls_String.d20, "", Data.Titles.DMG, 47, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Ysgard, Indigo"),
 				new TableRow(2, TableRow.NOVALUE, "Limbo, Jet black"),
 				new TableRow(3, TableRow.NOVALUE, "Pandemonium, Magenta"),
@@ -177,14 +177,14 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Material Plane, Silver"),
 			});
 
-			public static readonly Table psychic_wind_effects_location_effect = new Table("Psychic Wind Effects - Location", "Location Effect", Data.Rolls_String.d20, "", Data.Titles.DMG, 48, new TableRow[]{
+				public static readonly Table psychic_wind_effects_location_effect = new Table("Psychic Wind Effects - Location", "Location Effect", Data.Rolls_String.d20, "", Data.Titles.DMG, 48, new TableRow[]{
 				new TableRow(1, 8, "Diverted; add 1d6 hours to travel time"),
 				new TableRow(9, 12, "Blown off course; add 3d10 hours to travel time"),
 				new TableRow(13, 16, "Lost; at the end of the travel time, characters arrive at a location other than the intended destination"),
 				new TableRow(17, 20, "Sent through color pool to a random plane (roll on the Astral Color Pools table)"),
 			});
 
-			public static readonly Table psychic_wind_effects_mental_effects = new Table("Psychic Wind Effects - Mental Effects", "Mental Effect", Data.Rolls_String.d20, "", Data.Titles.DMG, 48, new TableRow[]{
+				public static readonly Table psychic_wind_effects_mental_effects = new Table("Psychic Wind Effects - Mental Effects", "Mental Effect", Data.Rolls_String.d20, "", Data.Titles.DMG, 48, new TableRow[]{
 				new TableRow(1, 8, "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself"),
 				new TableRow(9, 10, "Short-term madness (see chapter 8)"),
 				new TableRow(11, 12, "11 (2d10) psychic damage"),
@@ -193,7 +193,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake"),
 			});
 
-			public static readonly Table ethereal_curtains = new Table("Ethereal Curtains - Plane", "Plane, Color of Curtain", Data.Rolls_String.d8, "", Data.Titles.DMG, 49, new TableRow[]{
+				public static readonly Table ethereal_curtains = new Table("Ethereal Curtains - Plane", "Plane, Color of Curtain", Data.Rolls_String.d8, "", Data.Titles.DMG, 49, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Material Plane, Bright turquoise"),
 				new TableRow(2, TableRow.NOVALUE, "Shadowfell, Dusky gray"),
 				new TableRow(3, TableRow.NOVALUE, "Feywild, Opulescent white"),
@@ -204,13 +204,13 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Elemental Chaos, Swirling mix of colors"),
 			});
 
-			public static readonly Table ether_cyclone = new Table("Ether Cyclone", "Effect", Data.Rolls_String.d20, "", Data.Titles.DMG, 49, new TableRow[]{
+				public static readonly Table ether_cyclone = new Table("Ether Cyclone", "Effect", Data.Rolls_String.d20, "", Data.Titles.DMG, 49, new TableRow[]{
 				new TableRow(1, 12, "Extended journey"),
 				new TableRow(13, 19, "Blown to the Border Ethereal of a random plane (roll on the Ethereal Curtains table"),
 				new TableRow(20, TableRow.NOVALUE, "Hurled into the Astral Plane"),
 			});
 
-			public static readonly Table feywild_time_warp = new Table("Feywild Time Warp", "Result", Data.Rolls_String.d20, "", Data.Titles.DMG, 50, new TableRow[]{
+				public static readonly Table feywild_time_warp = new Table("Feywild Time Warp", "Result", Data.Rolls_String.d20, "", Data.Titles.DMG, 50, new TableRow[]{
 				new TableRow(1, 2, "Days become minutes"),
 				new TableRow(3, 6, "Days become hours"),
 				new TableRow(7, 13, "No change"),
@@ -219,108 +219,108 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Days become years"),
 			});
 
-			public static readonly Table shadowfell_despair = new Table("Shadowfell Despair", "Effect", Data.Rolls_String.d6, "", Data.Titles.DMG, 52, new TableRow[]
-			{
+				public static readonly Table shadowfell_despair = new Table("Shadowfell Despair", "Effect", Data.Rolls_String.d6, "", Data.Titles.DMG, 52, new TableRow[]
+				{
 				new TableRow(1, 3, "Apathy. The character has disadvantage on death saving throws and on Dexterity checks for initiative, and gains the following flaw: \"I don't believe I can make a difference to anyone or anything.\""),
 				new TableRow(4, 5, "Dread. The character has disadvantage on all saving throws and gains the following flaw: \"I am convinced that this place is going to kill me.\""),
 				new TableRow(6, TableRow.NOVALUE, "Madness. The character has disadvantage on ability checks and saving throws that use Intelligence, Wisdom, or Charisma, and gains the following flaw: \"I can't tell what's real anymore\"")
-			});
+				});
 
-			public static readonly Table abyssal_corruption = new Table("Abyssal Corruption", "Result", Data.Rolls_String.d10, "", Data.Titles.DMG, 62, new TableRow[]
-			{
+				public static readonly Table abyssal_corruption = new Table("Abyssal Corruption", "Result", Data.Rolls_String.d10, "", Data.Titles.DMG, 62, new TableRow[]
+				{
 				new TableRow(1, 4, "Treachery. The character gains the following flaw: \"I can only achieve my goals by making sure that my companions don't achieve theirs.\""),
 				new TableRow(5, 7, "Bloodlust. The character gains the following flaw: \"I enjoy killing for its own sake, and once I start, it's hard to stop\""),
 				new TableRow(8, 9, "Mad Ambition. The character gains the following flaw: \"I am destined to rule the Abyss, and my companions are tools to that end.\""),
 				new TableRow(10, TableRow.NOVALUE, "Demonic Possession. The character is possessed by a demonic entity until freed by Dispel Evil and Good or similar magic. Whenever the possessed character rolls a 1 on an attack roll, ability check, or saving throw, the demon takes control of the character and determines the character's behavior. At the end of each of the possessed character's turns, he or she can make a DC 15 Charisma saving throw. On a success, the character regains control until he or she rolls another 1.")
-			});
+				});
 
-			public static string getPsychicWindEffectsLocationEffect()
-			{
-				int num = roll(1, 20);
+				public static string getPsychicWindEffectsLocationEffect()
+				{
+					int num = roll(1, 20);
 
-				if (num < 9)
-				{
-					return "Diverted; add " + roll(1, 6) + " hours to travel time";
-				}
-				else if (num < 13)
-				{
-					return "Blown off course; add " + (roll(1, 10) * 3) + " hours to travel time";
-				}
-				else if (num < 17)
-				{
-					return "Lost; at the end of the travel time, characters arrive at a location other than the intended destination";
-				}
-				else
-				{
-					num = roll(1, astral_color_pools.MaxRoll);
-
-					string str = "";
-
-					if (num > 17)
+					if (num < 9)
 					{
-						str = "The ";
+						return "Diverted; add " + roll(1, 6) + " hours to travel time";
 					}
+					else if (num < 13)
+					{
+						return "Blown off course; add " + (roll(1, 10) * 3) + " hours to travel time";
+					}
+					else if (num < 17)
+					{
+						return "Lost; at the end of the travel time, characters arrive at a location other than the intended destination";
+					}
+					else
+					{
+						num = roll(1, astral_color_pools.MaxRoll);
 
-					string s = astral_color_pools[num];
+						string str = "";
 
-					return "Sent through color pool to " + str + s.Substring(0, s.IndexOf(','));
+						if (num > 17)
+						{
+							str = "The ";
+						}
+
+						string s = astral_color_pools[num];
+
+						return "Sent through color pool to " + str + s.Substring(0, s.IndexOf(','));
+					}
+				}
+
+				public static string getPsychicWindEffectsMentalEffect()
+				{
+					int num = Data.rand.Next() % 20 + 1;
+
+					if (num < 9)
+					{
+						return "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself";
+					}
+					else if (num < 11)
+					{
+						return "Short-term madness";
+					}
+					else if (num < 13)
+					{
+						return "11 (2d10) psychic damage";
+					}
+					else if (num < 17)
+					{
+						return "22 (4d10) psychic damage";
+					}
+					else if (num < 19)
+					{
+						return "Long-term madness";
+					}
+					else
+					{
+						return "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake";
+					}
+				}
+
+				public static string getEtherCyclone()
+				{
+					int num = roll(1, 20);
+
+					if (num < 13)
+					{
+						return "Extended journey";
+					}
+					else if (num < 20)
+					{
+						string s = ethereal_curtains[roll(1, ethereal_curtains.MaxRoll)];
+						return "Blown to the Border Ethereal of the " + s.Substring(0, s.IndexOf(','));
+					}
+					else
+					{
+						return "Hurled into the Astral Plane";
+					}
 				}
 			}
 
-			public static string getPsychicWindEffectsMentalEffect()
+			// Chapter 3
+			public static class Adventures
 			{
-				int num = Data.rand.Next() % 20 + 1;
-
-				if (num < 9)
-				{
-					return "Stunned for 1 minute; you can repeat the saving throw at the end of each of your turns to end the effect on yourself";
-				}
-				else if (num < 11)
-				{
-					return "Short-term madness";
-				}
-				else if (num < 13)
-				{
-					return "11 (2d10) psychic damage";
-				}
-				else if (num < 17)
-				{
-					return "22 (4d10) psychic damage";
-				}
-				else if (num < 19)
-				{
-					return "Long-term madness";
-				}
-				else
-				{
-					return "Unconscious for 5 (1d10) minutes; the effect on you ends if you take damage or if another creature uses an action to shake you awake";
-				}
-			}
-
-			public static string getEtherCyclone()
-			{
-				int num = roll(1, 20);
-
-				if (num < 13)
-				{
-					return "Extended journey";
-				}
-				else if (num < 20)
-				{
-					string s = ethereal_curtains[roll(1, ethereal_curtains.MaxRoll)];
-					return "Blown to the Border Ethereal of the " + s.Substring(0, s.IndexOf(','));
-				}
-				else
-				{
-					return "Hurled into the Astral Plane";
-				}
-			}
-		}
-
-		// Chapter 3
-		public static class Adventures
-		{
-			public static readonly Table dungeon_goals = new Table("Dungeon Goals", "Goal", Data.Rolls_String.d20, "", Data.Titles.DMG, 73, new TableRow[]{
+				public static readonly Table dungeon_goals = new Table("Dungeon Goals", "Goal", Data.Rolls_String.d20, "", Data.Titles.DMG, 73, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Stop the dungeon's monstrous inhabitants from raiding the surface world."),
 				new TableRow(2, TableRow.NOVALUE, "Foil a villain's evil scheme."),
 				new TableRow(3, TableRow.NOVALUE, "Destroy a magical threat inside the dungeon."),
@@ -343,7 +343,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Roll twice, ignoring results of 20."),
 			});
 
-			public static readonly Table wilderness_goals = new Table("Wilderness Goals", "Goal", Data.Rolls_String.d20, "", Data.Titles.DMG, 73, new TableRow[]{
+				public static readonly Table wilderness_goals = new Table("Wilderness Goals", "Goal", Data.Rolls_String.d20, "", Data.Titles.DMG, 73, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Locate a dungeon or other site of interest (roll on the Dungeon Goals table to find out why)."),
 				new TableRow(2, TableRow.NOVALUE, "Assess the scope of a natural or unnatural disaster."),
 				new TableRow(3, TableRow.NOVALUE, "Escort an NPC to a destination."),
@@ -366,7 +366,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Roll twice, ignoring results of 20."),
 			});
 
-			public static readonly Table other_goals = new Table("Other Goals", "Goal", Data.Rolls_String.d12, "", Data.Titles.DMG, 74, new TableRow[]{
+				public static readonly Table other_goals = new Table("Other Goals", "Goal", Data.Rolls_String.d12, "", Data.Titles.DMG, 74, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Seize control of a fortified location such as a fortress, town, or ship."),
 				new TableRow(2, TableRow.NOVALUE, "Defend a location from attackers."),
 				new TableRow(3, TableRow.NOVALUE, "Retrieve an object from inside a secure location in a settlement."),
@@ -381,7 +381,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Rescue a character, monster, or object from a natural or unnatural disaster."),
 			});
 
-			public static readonly Table adventure_villains = new Table("Adventure Villains", "Villain", Data.Rolls_String.d20, "", Data.Titles.DMG, 74, new TableRow[]{
+				public static readonly Table adventure_villains = new Table("Adventure Villains", "Villain", Data.Rolls_String.d20, "", Data.Titles.DMG, 74, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Beast or monstrosity with no particular agenda"),
 				new TableRow(2, TableRow.NOVALUE, "Aberration bent on corruption or domination"),
 				new TableRow(3, TableRow.NOVALUE, "Fiend bent on corruption or destruction"),
@@ -399,7 +399,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Misguided humanoid zealot"),
 			});
 
-			public static readonly Table adventure_allies = new Table("Adventure Allies", "Ally", Data.Rolls_String.d12, "", Data.Titles.DMG, 74, new TableRow[]{
+				public static readonly Table adventure_allies = new Table("Adventure Allies", "Ally", Data.Rolls_String.d12, "", Data.Titles.DMG, 74, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Skilled adventurer"),
 				new TableRow(2, TableRow.NOVALUE, "Inexperienced adventurer"),
 				new TableRow(3, TableRow.NOVALUE, "Enthusiastic commoner"),
@@ -414,7 +414,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Villain posing as an ally"),
 			});
 
-			public static readonly Table adventure_patrons = new Table("Adventure Patrons", "Patron", Data.Rolls_String.d20, "", Data.Titles.DMG, 74, new TableRow[]{
+				public static readonly Table adventure_patrons = new Table("Adventure Patrons", "Patron", Data.Rolls_String.d20, "", Data.Titles.DMG, 74, new TableRow[]{
 				new TableRow(1, 2, "Retired adventurer"),
 				new TableRow(3, 4, "Local ruler"),
 				new TableRow(5, 6, "Military officer"),
@@ -431,7 +431,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Villain posing as a patron"),
 			});
 
-			public static readonly Table adventure_introduction = new Table("Adventure Introduction", "Introduction", Data.Rolls_String.d12, "", Data.Titles.DMG, 74, new TableRow[]{
+				public static readonly Table adventure_introduction = new Table("Adventure Introduction", "Introduction", Data.Rolls_String.d12, "", Data.Titles.DMG, 74, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "While traveling in the wilderness, the characters fall into a sinkhole that opens beneath their feet, dropping them into the adventure location."),
 				new TableRow(2, TableRow.NOVALUE, "While traveling in the wilderness, the characters notice the entrance to the adventure location."),
 				new TableRow(3, TableRow.NOVALUE, "While traveling on a road, the characters are attacked by monsters that flee into the nearby adventure location."),
@@ -446,7 +446,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "A ghost appears and terrorizes a village. Research reveals that it can be put to rest only by entering the adventure location."),
 			});
 
-			public static readonly Table adventure_climax = new Table("Adventure Climax", "Climax", Data.Rolls_String.d12, "", Data.Titles.DMG, 75, new TableRow[]{
+				public static readonly Table adventure_climax = new Table("Adventure Climax", "Climax", Data.Rolls_String.d12, "", Data.Titles.DMG, 75, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "The adventurers confront the main villain and a group of minions in a bloody battle to the finish."),
 				new TableRow(2, TableRow.NOVALUE, "The adventurers chase the villain while dodgin obstacles designed to thwart them, leading to a final confrontation in or outside the villain's refuge."),
 				new TableRow(3, TableRow.NOVALUE, "The actions of the adventurers or the villain result in a cataclysmic event that the adventurers must escape."),
@@ -461,7 +461,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "The adventurers must discover the main villain's secret weakness before they can hope to defeat that villain."),
 			});
 
-			public static readonly Table event_based_villain_actions = new Table("Event Based Villain Actions", "Type of Actions", Data.Rolls_String.d6, "", Data.Titles.DMG, 75, new TableRow[]{
+				public static readonly Table event_based_villain_actions = new Table("Event Based Villain Actions", "Type of Actions", Data.Rolls_String.d6, "", Data.Titles.DMG, 75, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Big event"),
 				new TableRow(2, TableRow.NOVALUE, "Crime spree"),
 				new TableRow(3, TableRow.NOVALUE, "Growing corruption"),
@@ -470,7 +470,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Step by step"),
 			});
 
-			public static readonly Table event_based_villain_actions_descriptions = new Table("Event Based Villain Actions - Descriptions", "Type of Actions", Data.Rolls_String.d6, "", Data.Titles.DMG, 75, new TableRow[]{
+				public static readonly Table event_based_villain_actions_descriptions = new Table("Event Based Villain Actions - Descriptions", "Type of Actions", Data.Rolls_String.d6, "", Data.Titles.DMG, 75, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Big Event. The villain's plans come to fruition during a festival, an astrological event, a holy (or unholy) rite, a royal wedding, the birth of a child, or some similar fixed time. The villain's activities up to that point are geared toward preparation for this event."),
 				new TableRow(2, TableRow.NOVALUE, "Crime Spree. The villain commits acts taht become bolder and more heinous over time. A killer might start out by targeting the destitute in the city slums before moving up to a massacre in the marketplace, increasing the horror and the body count each time."),
 				new TableRow(3, TableRow.NOVALUE, "Growing Corruption. As time passes, the villain's power and influence grow, affecting more victims across a larger area. This might take the form of armies conquering new territory, an evil cult recruiting new members, or a spreading plague. A pretender to the throne might attempt to secure the support of the kingdom's nobility in the days or weeks leading up to a coup, or a guild leader could corrupt the members of a town council or bribe officers of the watch."),
@@ -479,7 +479,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Step by Step. In pursuit of its goal, the villain carries out a specific set of actions in a particular sequence. A wizard might steal the items needed to create a phylactery and become a lich, or a cultist might kidnap the priests of seven good-aligned gods as a sacrifice. Alternativly, the villain could be following a trail to find the object of its revenge, killing one victim after another while moving ever closer to the real target."),
 			});
 
-			public static readonly Table event_based_goals = new Table("Event Based Goals", "Goal", Data.Rolls_String.d20, "", Data.Titles.DMG, 76, new TableRow[]{
+				public static readonly Table event_based_goals = new Table("Event Based Goals", "Goal", Data.Rolls_String.d20, "", Data.Titles.DMG, 76, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Bring the villain to justice."),
 				new TableRow(2, TableRow.NOVALUE, "Clear the name of an innocent NPC."),
 				new TableRow(3, TableRow.NOVALUE, "Protect or hide an NPC."),
@@ -502,7 +502,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Roll twice, ignoring results of 20."),
 			});
 
-			public static readonly Table framing_events = new Table("Framing Events", "Event", Data.Rolls_String.d100, "", Data.Titles.DMG, 79, new TableRow[]{
+				public static readonly Table framing_events = new Table("Framing Events", "Event", Data.Rolls_String.d100, "", Data.Titles.DMG, 79, new TableRow[]{
 				new TableRow(1, 2, "Anniversary of a monarch's reign"),
 				new TableRow(3, 4, "Anniversary of an important event"),
 				new TableRow(5, 6, "Arena event"),
@@ -553,7 +553,7 @@ namespace DungeonMasterHelper
 				new TableRow(99, 100, "Concurrence of two events (roll twice, ignoring results of 99 or 100)"),
 			});
 
-			public static readonly Table moral_quandaries = new Table("Moral Quandaries", "Quandary", Data.Rolls_String.d20, "", Data.Titles.DMG, 79, new TableRow[]{
+				public static readonly Table moral_quandaries = new Table("Moral Quandaries", "Quandary", Data.Rolls_String.d20, "", Data.Titles.DMG, 79, new TableRow[]{
 				new TableRow(1, 3, "Ally quandary"),
 				new TableRow(4, 6, "Friend quandary"),
 				new TableRow(7, 12, "Honor quandary"),
@@ -561,7 +561,7 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Respect quandary"),
 			});
 
-			public static readonly Table moral_quandaries_descriptions = new Table("Moral Quandaries - Descriptions", " Quandary", Data.Rolls_String.d20, "", Data.Titles.DMG, 80, new TableRow[]{
+				public static readonly Table moral_quandaries_descriptions = new Table("Moral Quandaries - Descriptions", " Quandary", Data.Rolls_String.d20, "", Data.Titles.DMG, 80, new TableRow[]{
 				new TableRow(1, 3, "Ally Quandary. The adventurers have a better chance of achieving their goal with the help of two individuals whose expertise is all but essential. However, these two NPCs hate each other and refuse to work together even if the fate of the world hangs in the balance. The adventurers must choose the NPC that is most likely to help them accomplish their goal."),
 				new TableRow(4, 6, "Friend Quandary. An NPC that one or more of the characters cares about makes an impossible demand on the characters. A love interest might demand that a character turn away from a dangerous quest. A dear friend might plead with the characters to spare the villain's life, to prove that they are better than the villain. A weak NPC might beg for a chance to win favor from the characters by undertaking a dangerous but essential mission."),
 				new TableRow(7, 12, "Honor Quandary. A character is forced to choose between victory and a personal oath or code of honor. A paladin who has sworn the Oath of Virtue might realize that the clearest path to success lies in deceit and subterfuge. A loyal cleric might be tempted to disobey the orders of his or her faith. If you present this quandary, be sure to provide an opportunity for a character to atone for violating his or her oath."),
@@ -569,7 +569,7 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Respect Quandary. Two important allies give conflicting directions or advice to the adventurers. Perhaps the high priest counsels the characters to negotiate peace with militaristic elves in the nearby forest, while a veteran warrior urges them to prove their strength with a decisive first strike. The adventurers can't follow both courses, and whichever ally they choose, the other loses respect for them and might no longer aid them."),
 			});
 
-			public static readonly Table twists = new Table("Twists", "Twist", Data.Rolls_String.d10, "", Data.Titles.DMG, 80, new TableRow[]{
+				public static readonly Table twists = new Table("Twists", "Twist", Data.Rolls_String.d10, "", Data.Titles.DMG, 80, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "The adventurers are racing against other creatures with the same or opposite goal."),
 				new TableRow(2, TableRow.NOVALUE, "The adventurers become responsible for the safety of a noncombatant NPC."),
 				new TableRow(3, TableRow.NOVALUE, "The adventurers are prohibited from killing the villain, but the villain has no compunctions about killing them."),
@@ -582,7 +582,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "The adventurers are under magical compulsion (such as a geas spell) to complete their goal."),
 			});
 
-			public static readonly Table side_quests = new Table("Side Quests", "Side Quest", Data.Rolls_String.d8, "", Data.Titles.DMG, 81, new TableRow[]{
+				public static readonly Table side_quests = new Table("Side Quests", "Side Quest", Data.Rolls_String.d8, "", Data.Titles.DMG, 81, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Find a specific item rumored to be in the area."),
 				new TableRow(2, TableRow.NOVALUE, "Retrieve a stolen item in the villain's possession"),
 				new TableRow(3, TableRow.NOVALUE, "Receive information from an NPC in the area."),
@@ -593,121 +593,121 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Secure the aid of a character or creature in the area."),
 			});
 
-			public static string getDungeonGoal()
-			{
-				int num = roll(1, dungeon_goals.MaxRoll);
-
-				if (num == 20)
+				public static string getDungeonGoal()
 				{
-					num = roll(1, dungeon_goals.MaxRoll - 1);
-					int num2 = roll(1, dungeon_goals.MaxRoll - 1);
+					int num = roll(1, dungeon_goals.MaxRoll);
 
-					while (num2 == num)
+					if (num == 20)
 					{
-						num2 = roll(1, dungeon_goals.MaxRoll - 1);
+						num = roll(1, dungeon_goals.MaxRoll - 1);
+						int num2 = roll(1, dungeon_goals.MaxRoll - 1);
+
+						while (num2 == num)
+						{
+							num2 = roll(1, dungeon_goals.MaxRoll - 1);
+						}
+
+						// need to chop off the "." at the end of the first part
+						string fp = dungeon_goals[num];
+
+						return fp.Substring(0, fp.Length - 1) + " and " + lowerFirstLetter(dungeon_goals[num2]);
 					}
 
-					// need to chop off the "." at the end of the first part
-					string fp = dungeon_goals[num];
-
-					return fp.Substring(0, fp.Length - 1) + " and " + lowerFirstLetter(dungeon_goals[num2]);
+					return dungeon_goals[num];
 				}
 
-				return dungeon_goals[num];
-			}
-
-			public static string getWildernessGoal()
-			{
-				int num = roll(1, wilderness_goals.MaxRoll);
-
-				if (num == 1)
+				public static string getWildernessGoal()
 				{
-					string dg = lowerFirstLetter(getDungeonGoal());
+					int num = roll(1, wilderness_goals.MaxRoll);
 
-					return "Locate a dungeon or other site of interest to " + dg;
-				}
-
-				if (num == 20)
-				{
-					num = roll(1, wilderness_goals.MaxRoll - 1);
-
-					string[] strs = { "", "" };
-
-					while (strs[0] == strs[1])
+					if (num == 1)
 					{
-						for (int i = 0; i < 2; i++)
-						{
-							num = roll(1, wilderness_goals.MaxRoll - 1);
+						string dg = lowerFirstLetter(getDungeonGoal());
 
-							if (num == 1)
+						return "Locate a dungeon or other site of interest to " + dg;
+					}
+
+					if (num == 20)
+					{
+						num = roll(1, wilderness_goals.MaxRoll - 1);
+
+						string[] strs = { "", "" };
+
+						while (strs[0] == strs[1])
+						{
+							for (int i = 0; i < 2; i++)
 							{
-								strs[i] = lowerFirstLetter(getDungeonGoal());
-								strs[i] = "Locate a dungeon or other site of interest to " + strs[i];
-							}
-							else
-							{
-								strs[i] = wilderness_goals[num];
+								num = roll(1, wilderness_goals.MaxRoll - 1);
+
+								if (num == 1)
+								{
+									strs[i] = lowerFirstLetter(getDungeonGoal());
+									strs[i] = "Locate a dungeon or other site of interest to " + strs[i];
+								}
+								else
+								{
+									strs[i] = wilderness_goals[num];
+								}
 							}
 						}
+
+						return strs[0].Substring(0, strs[0].Length - 1) + ", and " + lowerFirstLetter(strs[1]);
 					}
 
-					return strs[0].Substring(0, strs[0].Length - 1) + ", and " + lowerFirstLetter(strs[1]);
+					return wilderness_goals[num];
 				}
 
-				return wilderness_goals[num];
-			}
-
-			public static string getEventBasedGoals()
-			{
-				int num = roll(1, dungeon_goals.MaxRoll);
-
-				if (num == 20)
+				public static string getEventBasedGoals()
 				{
-					num = roll(1, dungeon_goals.MaxRoll - 1);
-					int num2 = roll(1, dungeon_goals.MaxRoll - 1);
+					int num = roll(1, dungeon_goals.MaxRoll);
 
-					while (num2 == num)
+					if (num == 20)
 					{
-						num2 = roll(1, dungeon_goals.MaxRoll - 1);
+						num = roll(1, dungeon_goals.MaxRoll - 1);
+						int num2 = roll(1, dungeon_goals.MaxRoll - 1);
+
+						while (num2 == num)
+						{
+							num2 = roll(1, dungeon_goals.MaxRoll - 1);
+						}
+
+						string fp = event_based_goals[num];
+
+						return fp.Substring(0, fp.Length - 1) + " and " + lowerFirstLetter(event_based_goals[num2]);
 					}
 
-					string fp = event_based_goals[num];
-
-					return fp.Substring(0, fp.Length - 1) + " and " + lowerFirstLetter(event_based_goals[num2]);
+					return event_based_goals[num];
 				}
 
-				return event_based_goals[num];
-			}
-
-			public static string getFramingEvents()
-			{
-				int num = roll(1, framing_events.MaxRoll);
-
-				// if num == 99 or 100
-				if (num > framing_events.MaxRoll - 2)
+				public static string getFramingEvents()
 				{
-					num = roll(1, framing_events.MaxRoll - 2);
+					int num = roll(1, framing_events.MaxRoll);
 
-					int num2 = roll(1, framing_events.MaxRoll - 2);
-
-					while (num2 == num)
+					// if num == 99 or 100
+					if (num > framing_events.MaxRoll - 2)
 					{
-						num2 = roll(1, framing_events.MaxRoll - 2);
+						num = roll(1, framing_events.MaxRoll - 2);
+
+						int num2 = roll(1, framing_events.MaxRoll - 2);
+
+						while (num2 == num)
+						{
+							num2 = roll(1, framing_events.MaxRoll - 2);
+						}
+
+						string fp = framing_events[num];
+
+						return fp.Substring(0, fp.Length - 1) + ", and " + lowerFirstLetter(framing_events[num2]);
 					}
 
-					string fp = framing_events[num];
-
-					return fp.Substring(0, fp.Length - 1) + ", and " + lowerFirstLetter(framing_events[num2]);
+					return framing_events[num];
 				}
-
-				return framing_events[num];
 			}
-		}
 
-		// Chapter 4
-		public static class NPC
-		{
-			public static readonly Table npc_appearance = new Table("NPC Appearance", "Feature", Data.Rolls_String.d20, "", Data.Titles.DMG, 89, new TableRow[]{
+			// Chapter 4
+			public static class NPC
+			{
+				public static readonly Table npc_appearance = new Table("NPC Appearance", "Feature", Data.Rolls_String.d20, "", Data.Titles.DMG, 89, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Distinctive jewelry: earrings, necklace, circlet, bracelets"),
 				new TableRow(2, TableRow.NOVALUE, "Piercings"),
 				new TableRow(3, TableRow.NOVALUE, "Flamboyant or outlandish clothes"),
@@ -730,7 +730,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Exceptionally ugly"),
 			});
 
-			public static readonly Table npc_high_abilities = new Table("NPC High Abilities", "High Ability", Data.Rolls_String.d6, "", Data.Titles.DMG, 89, new TableRow[]{
+				public static readonly Table npc_high_abilities = new Table("NPC High Abilities", "High Ability", Data.Rolls_String.d6, "", Data.Titles.DMG, 89, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Strength - powerful, brawny, strong as an ox"),
 				new TableRow(2, TableRow.NOVALUE, "Dexterity - lithe, agile, graceful"),
 				new TableRow(3, TableRow.NOVALUE, "Constitution - hardy, hale, healthy"),
@@ -739,7 +739,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Charisma - persuasive, forceful, born leader"),
 			});
 
-			public static readonly Table npc_low_abilities = new Table("NPC Low Abilities", "Low Ability", Data.Rolls_String.d6, "", Data.Titles.DMG, 89, new TableRow[]{
+				public static readonly Table npc_low_abilities = new Table("NPC Low Abilities", "Low Ability", Data.Rolls_String.d6, "", Data.Titles.DMG, 89, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Strength - feeble, scrawny"),
 				new TableRow(2, TableRow.NOVALUE, "Dexterity - clumsy, fumbling"),
 				new TableRow(3, TableRow.NOVALUE, "Constitution - sickly, pale"),
@@ -748,7 +748,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Charisma - dull, boring"),
 			});
 
-			public static readonly Table npc_talents = new Table("NPC Talents", "Talent", Data.Rolls_String.d20, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_talents = new Table("NPC Talents", "Talent", Data.Rolls_String.d20, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Plays a musical instrument"),
 				new TableRow(2, TableRow.NOVALUE, "Speaks several languages fluently"),
 				new TableRow(3, TableRow.NOVALUE, "Unbelievably lucky"),
@@ -766,12 +766,12 @@ namespace DungeonMasterHelper
 				new TableRow(15, TableRow.NOVALUE, "Expert cook"),
 				new TableRow(16, TableRow.NOVALUE, "Expert dart thrower and rock skipper"),
 				new TableRow(17, TableRow.NOVALUE, "Expert juggler"),
-				new TableRow(18, TableRow.NOVALUE, "Skilled acto and master of disguise"),
+				new TableRow(18, TableRow.NOVALUE, "Skilled actor and master of disguise"),
 				new TableRow(19, TableRow.NOVALUE, "Skilled dancer"),
 				new TableRow(20, TableRow.NOVALUE, "Knows thieves' cant"),
 			});
 
-			public static readonly Table npc_mannerisms = new Table("NPC Mannerisms", "Mannerism", Data.Rolls_String.d20, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_mannerisms = new Table("NPC Mannerisms", "Mannerism", Data.Rolls_String.d20, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Prone to singing, whistling, or humming quietly"),
 				new TableRow(2, TableRow.NOVALUE, "Speaks in rhyme or some other peculiar way"),
 				new TableRow(3, TableRow.NOVALUE, "Particularly low or high voice"),
@@ -794,7 +794,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Twirls hair or tugs beard"),
 			});
 
-			public static readonly Table npc_interaction_traits = new Table("NPC Interactions Traits", "Trait", Data.Rolls_String.d12, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_interaction_traits = new Table("NPC Interactions Traits", "Trait", Data.Rolls_String.d12, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Argumentative"),
 				new TableRow(2, TableRow.NOVALUE, "Arrogant"),
 				new TableRow(3, TableRow.NOVALUE, "Blustering"),
@@ -809,7 +809,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Suspicious"),
 			});
 
-			public static readonly Table npc_ideals_good = new Table("NPC Ideals Good", "Good Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_ideals_good = new Table("NPC Ideals Good", "Good Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Beauty"),
 				new TableRow(2, TableRow.NOVALUE, "Charity"),
 				new TableRow(3, TableRow.NOVALUE, "Greater good"),
@@ -818,7 +818,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Self-sacrifice"),
 			});
 
-			public static readonly Table npc_ideals_evil = new Table("NPC Ideals Evil", "Evil Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_ideals_evil = new Table("NPC Ideals Evil", "Evil Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Domination"),
 				new TableRow(2, TableRow.NOVALUE, "Greed"),
 				new TableRow(3, TableRow.NOVALUE, "Might"),
@@ -827,7 +827,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Slaughter"),
 			});
 
-			public static readonly Table npc_ideals_lawful = new Table("NPC Ideals Lawful", "Lawful Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_ideals_lawful = new Table("NPC Ideals Lawful", "Lawful Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Community"),
 				new TableRow(2, TableRow.NOVALUE, "Fairness"),
 				new TableRow(3, TableRow.NOVALUE, "Honor"),
@@ -836,7 +836,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Tradition"),
 			});
 
-			public static readonly Table npc_ideals_chaotic = new Table("NPC Ideals Chaotic", "Chaotic Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_ideals_chaotic = new Table("NPC Ideals Chaotic", "Chaotic Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Change"),
 				new TableRow(2, TableRow.NOVALUE, "Creativity"),
 				new TableRow(3, TableRow.NOVALUE, "Freedom"),
@@ -845,7 +845,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Whimsy"),
 			});
 
-			public static readonly Table npc_ideals_neutral = new Table("NPC Ideals Neutral", "Neutral Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_ideals_neutral = new Table("NPC Ideals Neutral", "Neutral Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Balance"),
 				new TableRow(2, TableRow.NOVALUE, "Knowledge"),
 				new TableRow(3, TableRow.NOVALUE, "Live and let live"),
@@ -854,7 +854,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "People"),
 			});
 
-			public static readonly Table npc_ideals_other = new Table("NPC Ideals Other", "Other Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
+				public static readonly Table npc_ideals_other = new Table("NPC Ideals Other", "Other Ideal", Data.Rolls_String.d6, "", Data.Titles.DMG, 90, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Aspiration"),
 				new TableRow(2, TableRow.NOVALUE, "Discovery"),
 				new TableRow(3, TableRow.NOVALUE, "Glory"),
@@ -863,7 +863,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Self-knowledge"),
 			});
 
-			public static readonly Table npc_bonds = new Table("NPC Bonds", "Bond", Data.Rolls_String.d10, "", Data.Titles.DMG, 91, new TableRow[]{
+				public static readonly Table npc_bonds = new Table("NPC Bonds", "Bond", Data.Rolls_String.d10, "", Data.Titles.DMG, 91, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Dedicated to fulfilling a personal life goal"),
 				new TableRow(2, TableRow.NOVALUE, "Protective of close family members"),
 				new TableRow(3, TableRow.NOVALUE, "Protective of colleagues or compatriots"),
@@ -875,7 +875,7 @@ namespace DungeonMasterHelper
 				new TableRow(9, TableRow.NOVALUE, "Out for revenge"),
 			});
 
-			public static readonly Table npc_flaws_and_secrets = new Table("NPC Flaws and Secrets", "Flaw or Secret", Data.Rolls_String.d12, "", Data.Titles.DMG, 91, new TableRow[]{
+				public static readonly Table npc_flaws_and_secrets = new Table("NPC Flaws and Secrets", "Flaw or Secret", Data.Rolls_String.d12, "", Data.Titles.DMG, 91, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Forbidden love or susceptibility to romance"),
 				new TableRow(2, TableRow.NOVALUE, "Enjoys decadent pleasures"),
 				new TableRow(3, TableRow.NOVALUE, "Arrogance"),
@@ -890,7 +890,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Foolhardy bravery"),
 			});
 
-			public static readonly Table villains_scheme_objective = new Table("Villains Scheme", "Objective and Scheme", Data.Rolls_String.d8, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_objective = new Table("Villains Scheme", "Objective and Scheme", Data.Rolls_String.d8, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Immortality"),
 				new TableRow(2, TableRow.NOVALUE, "Influence"),
 				new TableRow(3, TableRow.NOVALUE, "Magic"),
@@ -901,21 +901,21 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Wealth"),
 			});
 
-			public static readonly Table villains_scheme_immortality = new Table("Villains Scheme - Immortality", "Immortality", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_immortality = new Table("Villains Scheme - Immortality", "Immortality", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Acquire a legendary item to prolog life"),
 				new TableRow(2, TableRow.NOVALUE, "Ascend to godhood"),
 				new TableRow(3, TableRow.NOVALUE, "Become undead or obtain a younger body"),
 				new TableRow(4, TableRow.NOVALUE, "Steal a planar creature's essence"),
 			});
 
-			public static readonly Table villains_scheme_influence = new Table("Villains Scheme - Influence", "Influence", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_influence = new Table("Villains Scheme - Influence", "Influence", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Seize a position of power or title"),
 				new TableRow(2, TableRow.NOVALUE, "Win a contest or tournament"),
 				new TableRow(3, TableRow.NOVALUE, "Win favor with a powerful individual"),
 				new TableRow(4, TableRow.NOVALUE, "Place a pawn in a position of power"),
 			});
 
-			public static readonly Table villains_scheme_magic = new Table("Villains Scheme - Magic", "Magic", Data.Rolls_String.d6, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_magic = new Table("Villains Scheme - Magic", "Magic", Data.Rolls_String.d6, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Obtain an ancient artifact"),
 				new TableRow(2, TableRow.NOVALUE, "Build a construct or magical device"),
 				new TableRow(3, TableRow.NOVALUE, "Carry out a deity's wishes"),
@@ -924,7 +924,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Open a gate to another world"),
 			});
 
-			public static readonly Table villains_scheme_mayhem = new Table("Villains Scheme - Mayhem", "Mayhem", Data.Rolls_String.d8, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_mayhem = new Table("Villains Scheme - Mayhem", "Mayhem", Data.Rolls_String.d8, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Fulfill an apocalyptic prophecy"),
 				new TableRow(2, TableRow.NOVALUE, "Enact the vengeful will of a god or patron"),
 				new TableRow(3, TableRow.NOVALUE, "Spread a vile contagion"),
@@ -933,35 +933,35 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Utterly destroy a bloodline or clan"),
 			});
 
-			public static readonly Table villains_scheme_passion = new Table("Villains Scheme - Passion", "Passion", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_passion = new Table("Villains Scheme - Passion", "Passion", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Prolong the life of a loved one"),
 				new TableRow(2, TableRow.NOVALUE, "Prove worthy of another person's love"),
 				new TableRow(3, TableRow.NOVALUE, "Raise or restore a dead loved one"),
 				new TableRow(4, TableRow.NOVALUE, "Destroy rivals for another person's affection"),
 			});
 
-			public static readonly Table villains_scheme_power = new Table("Villains Scheme - Power", "Power", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_power = new Table("Villains Scheme - Power", "Power", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Conquer a region or incite a rebellion"),
 				new TableRow(2, TableRow.NOVALUE, "Seize control of an army"),
 				new TableRow(3, TableRow.NOVALUE, "Become the power behind the throne"),
 				new TableRow(4, TableRow.NOVALUE, "Gain the favor of a ruler"),
 			});
 
-			public static readonly Table villains_scheme_revenge = new Table("Villains Scheme - Revenge", "Revenge", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_revenge = new Table("Villains Scheme - Revenge", "Revenge", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Avenge a past humiliation or insult"),
 				new TableRow(2, TableRow.NOVALUE, "Avenge a past imprisonment or injury"),
 				new TableRow(3, TableRow.NOVALUE, "Avenge the death of a loved one"),
 				new TableRow(4, TableRow.NOVALUE, "Retrieve stolen property and punish the thief"),
 			});
 
-			public static readonly Table villains_scheme_wealth = new Table("Villains Scheme - Wealth", "Wealth", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
+				public static readonly Table villains_scheme_wealth = new Table("Villains Scheme - Wealth", "Wealth", Data.Rolls_String.d4, "", Data.Titles.DMG, 94, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Control natural resources or trade"),
 				new TableRow(2, TableRow.NOVALUE, "Marry into wealth"),
 				new TableRow(3, TableRow.NOVALUE, "Plunder ancient ruins"),
 				new TableRow(4, TableRow.NOVALUE, "Steal land, goods, or money"),
 			});
 
-			public static readonly Table villains_methods = new Table("Villains Methods", "Methods", Data.Rolls_String.d20, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods = new Table("Villains Methods", "Methods", Data.Rolls_String.d20, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Agricultural devastation"),
 				new TableRow(2, TableRow.NOVALUE, "Assault or beatings"),
 				new TableRow(3, TableRow.NOVALUE, "Bounty hunting or assassination"),
@@ -984,22 +984,22 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Warfare"),
 			});
 
-			public static readonly Table villains_methods_agricultural_devastation = new Table("Villains Methods - Agricultural Devastation", "Agricultural Devastation", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_agricultural_devastation = new Table("Villains Methods - Agricultural Devastation", "Agricultural Devastation", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Blight"),
 				new TableRow(2, TableRow.NOVALUE, "Crop failure"),
 				new TableRow(3, TableRow.NOVALUE, "Drought"),
 				new TableRow(4, TableRow.NOVALUE, "Famine"),
 			});
 
-			public static readonly Table villains_methods_assault_or_beatings = new Table("Villains Methods - Assault or Beatings", "Assault or Beatings", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_assault_or_beatings = new Table("Villains Methods - Assault or Beatings", "Assault or Beatings", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Assault or beatings"),
 			});
 
-			public static readonly Table villains_methods_bounty_hunting_or_assassination = new Table("Villains Methods - Bounty Hunting or Assassination", "Bounty Hunting or Assassination", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_bounty_hunting_or_assassination = new Table("Villains Methods - Bounty Hunting or Assassination", "Bounty Hunting or Assassination", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Bounty hunting or assassination"),
 			});
 
-			public static readonly Table villains_methods_captivity_or_coercion = new Table("Villains Methods - Captivity or Coercion", "Captivity or Coercion", Data.Rolls_String.d10, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_captivity_or_coercion = new Table("Villains Methods - Captivity or Coercion", "Captivity or Coercion", Data.Rolls_String.d10, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Bribery"),
 				new TableRow(2, TableRow.NOVALUE, "Enticement"),
 				new TableRow(3, TableRow.NOVALUE, "Eviction"),
@@ -1012,7 +1012,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Threats or harassment"),
 			});
 
-			public static readonly Table villains_methods_confidence_scams = new Table("Villains Methods - Confidence Scams", "Confidence Scams", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_confidence_scams = new Table("Villains Methods - Confidence Scams", "Confidence Scams", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Breach of contract"),
 				new TableRow(2, TableRow.NOVALUE, "Cheating"),
 				new TableRow(3, TableRow.NOVALUE, "Fast talking"),
@@ -1021,18 +1021,18 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Quackery or tricks"),
 			});
 
-			public static readonly Table villains_methods_defamation = new Table("Villains Methods - Defamation", "Defamation", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_defamation = new Table("Villains Methods - Defamation", "Defamation", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Framing"),
 				new TableRow(2, TableRow.NOVALUE, "Gossipping or slander"),
 				new TableRow(3, TableRow.NOVALUE, "Humiliation"),
 				new TableRow(4, TableRow.NOVALUE, "Libel or insults"),
 			});
 
-			public static readonly Table villains_methods_dueling = new Table("Villains Methods - Dueling", "Dueling", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_dueling = new Table("Villains Methods - Dueling", "Dueling", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Dueling"),
 			});
 
-			public static readonly Table villains_methods_execution = new Table("Villains Methods - Execution", "Execution", Data.Rolls_String.d8, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_execution = new Table("Villains Methods - Execution", "Execution", Data.Rolls_String.d8, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Beheading"),
 				new TableRow(2, TableRow.NOVALUE, "Burning at the stake"),
 				new TableRow(3, TableRow.NOVALUE, "Burying alive"),
@@ -1043,15 +1043,15 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Sacrifice (living)"),
 			});
 
-			public static readonly Table villains_methods_impersonation_or_disguise = new Table("Villains Methods - Impersonation or Disguise", "Impersonation or Disguise", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_impersonation_or_disguise = new Table("Villains Methods - Impersonation or Disguise", "Impersonation or Disguise", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Impersonation or disguise"),
 			});
 
-			public static readonly Table villains_methods_lying_or_perjury = new Table("Villains Methods - Lying or Perjury", "Lying or Perjury", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_lying_or_perjury = new Table("Villains Methods - Lying or Perjury", "Lying or Perjury", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Lying or perjury"),
 			});
 
-			public static readonly Table villains_methods_magical_mayhem = new Table("Villains Methods - Magical Mayhem", "Magical Mayhem", Data.Rolls_String.d8, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_magical_mayhem = new Table("Villains Methods - Magical Mayhem", "Magical Mayhem", Data.Rolls_String.d8, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Hauntings"),
 				new TableRow(2, TableRow.NOVALUE, "Illusions"),
 				new TableRow(3, TableRow.NOVALUE, "Infernal bargains"),
@@ -1062,7 +1062,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Weather control"),
 			});
 
-			public static readonly Table villains_methods_murder = new Table("Villains Methods - Murder", "Murder", Data.Rolls_String.d10, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_murder = new Table("Villains Methods - Murder", "Murder", Data.Rolls_String.d10, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Assassination"),
 				new TableRow(2, TableRow.NOVALUE, "Cannibalism"),
 				new TableRow(3, TableRow.NOVALUE, "Dismemberment"),
@@ -1075,11 +1075,11 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Strangulation or suffocation"),
 			});
 
-			public static readonly Table villains_methods_neglect = new Table("Villains Methods - Neglect", "Neglet", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_neglect = new Table("Villains Methods - Neglect", "Neglet", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Neglect"),
 			});
 
-			public static readonly Table villains_methods_politics = new Table("Villains Methods - Politics", "Politics", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_politics = new Table("Villains Methods - Politics", "Politics", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Betrayal or treason"),
 				new TableRow(2, TableRow.NOVALUE, "Conspiracy"),
 				new TableRow(3, TableRow.NOVALUE, "Espionage or spying"),
@@ -1088,18 +1088,18 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Raising taxes"),
 			});
 
-			public static readonly Table villains_methods_religion = new Table("Villains Methods - Religion", "Religion", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_religion = new Table("Villains Methods - Religion", "Religion", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Curses"),
 				new TableRow(2, TableRow.NOVALUE, "Desecration"),
 				new TableRow(3, TableRow.NOVALUE, "False gods"),
 				new TableRow(4, TableRow.NOVALUE, "Heresy or cults"),
 			});
 
-			public static readonly Table villains_methods_stalking = new Table("Villains Methods - Stalking", "Stalking", "-", "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_stalking = new Table("Villains Methods - Stalking", "Stalking", "-", "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Stalking"),
 			});
 
-			public static readonly Table villains_methods_theft_or_property_crime = new Table("Villains Methods - Theft or Property Crime", "Theft or Property Crime", Data.Rolls_String.d10, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_theft_or_property_crime = new Table("Villains Methods - Theft or Property Crime", "Theft or Property Crime", Data.Rolls_String.d10, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Arson"),
 				new TableRow(2, TableRow.NOVALUE, "Blackmail or extortion"),
 				new TableRow(3, TableRow.NOVALUE, "Burglary"),
@@ -1112,7 +1112,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Smuggling"),
 			});
 
-			public static readonly Table villains_methods_torture = new Table("Villains Methods - Torture", "Torture", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_torture = new Table("Villains Methods - Torture", "Torture", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Acid"),
 				new TableRow(2, TableRow.NOVALUE, "Blinding"),
 				new TableRow(3, TableRow.NOVALUE, "Branding"),
@@ -1121,14 +1121,14 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Whipping"),
 			});
 
-			public static readonly Table villains_methods_vice = new Table("Villains Methods - Vice", "Vice", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_vice = new Table("Villains Methods - Vice", "Vice", Data.Rolls_String.d4, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Adultery"),
 				new TableRow(2, TableRow.NOVALUE, "Drugs or alcohol"),
 				new TableRow(3, TableRow.NOVALUE, "Gambling"),
 				new TableRow(4, TableRow.NOVALUE, "Seduction"),
 			});
 
-			public static readonly Table villains_methods_warfare = new Table("Villains Methods - Warfare", "Warfare", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
+				public static readonly Table villains_methods_warfare = new Table("Villains Methods - Warfare", "Warfare", Data.Rolls_String.d6, "", Data.Titles.DMG, 95, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Ambush"),
 				new TableRow(2, TableRow.NOVALUE, "Invasion"),
 				new TableRow(3, TableRow.NOVALUE, "Massacre"),
@@ -1137,7 +1137,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Terrorism"),
 			});
 
-			public static readonly Table villains_weakness = new Table("Villain's Weakness", "Weakness", Data.Rolls_String.d8, "", Data.Titles.DMG, 96, new TableRow[]{
+				public static readonly Table villains_weakness = new Table("Villain's Weakness", "Weakness", Data.Rolls_String.d8, "", Data.Titles.DMG, 96, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "A hidden object holds the villain's soul"),
 				new TableRow(2, TableRow.NOVALUE, "The villain's power is broken if the death of its true love is avenged"),
 				new TableRow(3, TableRow.NOVALUE, "The villain is weakened in the presence of a particular artifact"),
@@ -1148,10 +1148,10 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "The villain loses its power if a mystic bargain it struck long ago is completed"),
 			});
 
-			public static string getNPCIdeals(int ideal = -1)
-			{
-				Table[] ideals =
+				public static string getNPCIdeals(int ideal = -1)
 				{
+					Table[] ideals =
+					{
 					npc_ideals_good,
 					npc_ideals_evil,
 					npc_ideals_lawful,
@@ -1160,31 +1160,31 @@ namespace DungeonMasterHelper
 					npc_ideals_other
 				};
 
-				if (ideal == -1)
-				{
-					return ideals[roll(1, 6) - 1].rollOnTable();
+					if (ideal == -1)
+					{
+						return ideals[roll(1, 6) - 1].rollOnTable();
+					}
+
+					return ideals[ideal].rollOnTable();
 				}
 
-				return ideals[ideal].rollOnTable();
-			}
-
-			public static string getNPCAbilities(bool getDifferentAbilities = true)
-			{
-				int num1 = roll(1, 6);
-				int num2 = 0;
-
-				do
+				public static string getNPCAbilities(bool getDifferentAbilities = true)
 				{
-					num2 = roll(1, 6);
-				} while (num2 == num1 && getDifferentAbilities == true);
+					int num1 = roll(1, 6);
+					int num2 = 0;
 
-				return npc_high_abilities[num1 - 1] + ", " + npc_low_abilities[num2 - 1];
-			}
+					do
+					{
+						num2 = roll(1, 6);
+					} while (num2 == num1 && getDifferentAbilities == true);
 
-			public static string getVillainsScheme()
-			{
-				Table[] schemes =
+					return npc_high_abilities[num1 - 1] + ", " + npc_low_abilities[num2 - 1];
+				}
+
+				public static string getVillainsScheme()
 				{
+					Table[] schemes =
+					{
 					villains_scheme_immortality,
 					villains_scheme_influence,
 					villains_scheme_magic,
@@ -1195,15 +1195,15 @@ namespace DungeonMasterHelper
 					villains_scheme_wealth
 				};
 
-				int index = roll(1, 8) - 1;
+					int index = roll(1, 8) - 1;
 
-				return schemes[index].Name + " - " + schemes[index].rollOnTable();
-			}
+					return schemes[index].Name + " - " + schemes[index].rollOnTable();
+				}
 
-			public static string getVillainsMethods()
-			{
-				Table[] methods =
+				public static string getVillainsMethods()
 				{
+					Table[] methods =
+					{
 					villains_methods_agricultural_devastation,
 					villains_methods_assault_or_beatings,
 					villains_methods_bounty_hunting_or_assassination,
@@ -1226,16 +1226,16 @@ namespace DungeonMasterHelper
 					villains_methods_warfare
 				};
 
-				int index = roll(1, 20) - 1;
+					int index = roll(1, 20) - 1;
 
-				return methods[index].Name + " - " + methods[index].rollOnTable();
+					return methods[index].Name + " - " + methods[index].rollOnTable();
+				}
 			}
-		}
 
-		// Chapter 5
-		public static class AdventureEnvironments
-		{
-			public static readonly Table dungeon_location = new Table("Dungeon Location", "Location", Data.Rolls_String.d100, "", Data.Titles.DMG, 99, new TableRow[]{
+			// Chapter 5
+			public static class AdventureEnvironments
+			{
+				public static readonly Table dungeon_location = new Table("Dungeon Location", "Location", Data.Rolls_String.d100, "", Data.Titles.DMG, 99, new TableRow[]{
 				new TableRow(1, 4, "A building in a city"),
 				new TableRow(5, 8, "Catacombs or sewers beneath a city"),
 				new TableRow(9, 12, "Beneath a farmhouse"),
@@ -1262,7 +1262,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "Roll on the Exotic Location table"),
 			});
 
-			public static readonly Table dungeon_exotic_location = new Table("Dungeon Exotic Location", "Location", Data.Rolls_String.d100, "", Data.Titles.DMG, 99, new TableRow[]{
+				public static readonly Table dungeon_exotic_location = new Table("Dungeon Exotic Location", "Location", Data.Rolls_String.d100, "", Data.Titles.DMG, 99, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Among the branches of a tree"),
 				new TableRow(2, TableRow.NOVALUE, "Around a geyser"),
 				new TableRow(3, TableRow.NOVALUE, "Behind a waterfall"),
@@ -1285,7 +1285,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Inside a Mordenkainen's magnificent mansion"),
 			});
 
-			public static readonly Table dungeon_creator = new Table("Dungeon Creator", "Creator", Data.Rolls_String.d20, "", Data.Titles.DMG, 100, new TableRow[]{
+				public static readonly Table dungeon_creator = new Table("Dungeon Creator", "Creator", Data.Rolls_String.d20, "", Data.Titles.DMG, 100, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Beholder"),
 				new TableRow(2, 4, "Cult or religious group"),
 				new TableRow(5, 8, "Dwarves"),
@@ -1300,7 +1300,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "No creator (natural caverns"),
 			});
 
-			public static readonly Table cults_and_religious_groups = new Table("Cults and Religious Groups", "Cult or Religious Group", Data.Rolls_String.d20, "", Data.Titles.DMG, 100, new TableRow[]{
+				public static readonly Table cults_and_religious_groups = new Table("Cults and Religious Groups", "Cult or Religious Group", Data.Rolls_String.d20, "", Data.Titles.DMG, 100, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Demon-worshiping cult"),
 				new TableRow(2, TableRow.NOVALUE, "Devil-worshiping cult"),
 				new TableRow(3, 4, "Elemental Air cult"),
@@ -1312,7 +1312,7 @@ namespace DungeonMasterHelper
 				new TableRow(18, 20, "Worshipers of a neutral deity"),
 			});
 
-			public static readonly Table npc_alignment = new Table("NPC Alignment", "Alignment", Data.Rolls_String.d20, "", Data.Titles.DMG, 100, new TableRow[]{
+				public static readonly Table npc_alignment = new Table("NPC Alignment", "Alignment", Data.Rolls_String.d20, "", Data.Titles.DMG, 100, new TableRow[]{
 				new TableRow(1, 2, "Lawful good"),
 				new TableRow(3, 4, "Neutral good"),
 				new TableRow(5, 6, "Chaotic good"),
@@ -1324,7 +1324,7 @@ namespace DungeonMasterHelper
 				new TableRow(16, 17, "Chaotic evil"),
 			});
 
-			public static readonly Table npc_class = new Table("NPC Class", "Class", Data.Rolls_String.d20, "", Data.Titles.DMG, 101, new TableRow[]{
+				public static readonly Table npc_class = new Table("NPC Class", "Class", Data.Rolls_String.d20, "", Data.Titles.DMG, 101, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Barbarian"),
 				new TableRow(2, TableRow.NOVALUE, "Bard"),
 				new TableRow(3, 4, "Cleric"),
@@ -1339,7 +1339,7 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Wizard"),
 			});
 
-			public static readonly Table dungeon_purpose = new Table("Dungeon Purpose", "Purpose", Data.Rolls_String.d20, "", Data.Titles.DMG, 101, new TableRow[]{
+				public static readonly Table dungeon_purpose = new Table("Dungeon Purpose", "Purpose", Data.Rolls_String.d20, "", Data.Titles.DMG, 101, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Death trap"),
 				new TableRow(2, 5, "Lair"),
 				new TableRow(6, TableRow.NOVALUE, "Maze"),
@@ -1351,7 +1351,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Treasure vault"),
 			});
 
-			public static readonly Table dungeon_history = new Table("Dungeon History", "Key Event", Data.Rolls_String.d20, "", Data.Titles.DMG, 101, new TableRow[]{
+				public static readonly Table dungeon_history = new Table("Dungeon History", "Key Event", Data.Rolls_String.d20, "", Data.Titles.DMG, 101, new TableRow[]{
 				new TableRow(1, 3, "Abandoned by creators"),
 				new TableRow(4, TableRow.NOVALUE, "Abandoned due to plague"),
 				new TableRow(5, 8, "Conquered by invaders"),
@@ -1366,7 +1366,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Site of a great miracle"),
 			});
 
-			public static readonly Table monuments = new Table("Monuments", "Monument", Data.Rolls_String.d20, "", Data.Titles.DMG, 108, new TableRow[]{
+				public static readonly Table monuments = new Table("Monuments", "Monument", Data.Rolls_String.d20, "", Data.Titles.DMG, 108, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Sealed burial mound or pyramid"),
 				new TableRow(2, TableRow.NOVALUE, "Plundered burial mound or pyramid"),
 				new TableRow(3, TableRow.NOVALUE, "Faces carved into a mountainside or cliff"),
@@ -1384,7 +1384,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Totem pole"),
 			});
 
-			public static readonly Table weird_locales = new Table("Weird Locales", "Locale", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
+				public static readonly Table weird_locales = new Table("Weird Locales", "Locale", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
 				new TableRow(1, 2, "Dead magic zone (similar to an antimagic field)"),
 				new TableRow(3, TableRow.NOVALUE, "Wild magic zone (roll on the Wild Magic Surge table in the Player's Handbook whenever a spell is cast within the zone)"),
 				new TableRow(4, TableRow.NOVALUE, "Boulder carved with talking faces"),
@@ -1403,25 +1403,25 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Floating earth mote with a tower on it"),
 			});
 
-			public static readonly Table weather_temperature = new Table("Weather Temperature", "Temperature", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
+				public static readonly Table weather_temperature = new Table("Weather Temperature", "Temperature", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
 				new TableRow(1, 14, "Normal for the season"),
 				new TableRow(15, 17, "1d4 x 10 degrees Fahrenheit colder than normal"),
 				new TableRow(18, 20, "1d4 x 10 degrees Fahrenheit hotter than normal"),
 			});
 
-			public static readonly Table weather_wind = new Table("Weather - Wind", "Wind", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
+				public static readonly Table weather_wind = new Table("Weather - Wind", "Wind", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
 				new TableRow(1, 12, "None"),
 				new TableRow(13, 17, "Light"),
 				new TableRow(18, 20, "Strong"),
 			});
 
-			public static readonly Table weather_precipitation = new Table("Weather - Precipitation", "Precipitation", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
+				public static readonly Table weather_precipitation = new Table("Weather - Precipitation", "Precipitation", Data.Rolls_String.d20, "", Data.Titles.DMG, 109, new TableRow[]{
 				new TableRow(1, 12, "None"),
 				new TableRow(13, 17, "Light rain or light snowfall"),
 				new TableRow(18, 20, "Heavy rain or heavy snowfall"),
 			});
 
-			public static readonly Table race_relations = new Table("Race Relations", "Result", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
+				public static readonly Table race_relations = new Table("Race Relations", "Result", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
 				new TableRow(1, 10, "Harmony"),
 				new TableRow(11, 14, "Tension or rivalry"),
 				new TableRow(15, 16, "Racial majority are conquerers"),
@@ -1431,7 +1431,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Racial minority oppresses majority"),
 			});
 
-			public static readonly Table rulers_status = new Table("Ruler's Status", "Ruler", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
+				public static readonly Table rulers_status = new Table("Ruler's Status", "Ruler", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
 				new TableRow(1, 5, "Respected, fair, and just"),
 				new TableRow(6, 8, "Feared tyrant"),
 				new TableRow(9, TableRow.NOVALUE, "Weakling manipulated by others"),
@@ -1446,7 +1446,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Religious leader"),
 			});
 
-			public static readonly Table notable_traits = new Table("Notable Traits", "Trait", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
+				public static readonly Table notable_traits = new Table("Notable Traits", "Trait", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Canals in place of streets"),
 				new TableRow(2, TableRow.NOVALUE, "Massive statue or monument"),
 				new TableRow(3, TableRow.NOVALUE, "Grand temple"),
@@ -1469,7 +1469,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Built atop ancient ruins"),
 			});
 
-			public static readonly Table known_for_its = new Table("Known for its", "Feature", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
+				public static readonly Table known_for_its = new Table("Known for its", "Feature", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Delicious cuisine"),
 				new TableRow(2, TableRow.NOVALUE, "Rude people"),
 				new TableRow(3, TableRow.NOVALUE, "Greedy merchants"),
@@ -1492,7 +1492,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Patriotism"),
 			});
 
-			public static readonly Table current_calamity = new Table("Current Calamity", "Calamity", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
+				public static readonly Table current_calamity = new Table("Current Calamity", "Calamity", Data.Rolls_String.d20, "", Data.Titles.DMG, 112, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Suspected vampire infestation"),
 				new TableRow(2, TableRow.NOVALUE, "New cult seeks converts"),
 				new TableRow(3, TableRow.NOVALUE, "Important figure died (murder suspected)"),
@@ -1513,7 +1513,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Religious sects struggle for power"),
 			});
 
-			public static readonly Table building_type = new Table("Building Type", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table building_type = new Table("Building Type", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, 10, "Residence (roll once on the Residence table)"),
 				new TableRow(11, 12, "Religious (roll once on the Religious table)"),
 				new TableRow(13, 15, "Tavern (roll once on the Tavern table and twice on the Tavern Name Generator table"),
@@ -1521,7 +1521,7 @@ namespace DungeonMasterHelper
 				new TableRow(18, 20, "Shop (roll once on the Shop table)"),
 				});
 
-			public static readonly Table residence = new Table("Residence", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table residence = new Table("Residence", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, 2, "Abandoned squat"),
 				new TableRow(3, 8, "Middle-class home"),
 				new TableRow(9, 10, "Upper-class home"),
@@ -1532,7 +1532,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Lavish, guarded mansion"),
 			});
 
-			public static readonly Table religious_building = new Table("Religious Building", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table religious_building = new Table("Religious Building", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, 10, "Temple to a good or neutral deity"),
 				new TableRow(11, 12, "Temple to a false deity (run by charlatan priests)"),
 				new TableRow(13, TableRow.NOVALUE, "Home of ascetics"),
@@ -1541,7 +1541,7 @@ namespace DungeonMasterHelper
 				new TableRow(18, 19, "Hidden shrine to a fiend or an evil deity"),
 			});
 
-			public static readonly Table tavern = new Table("Tavern", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table tavern = new Table("Tavern", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, 5, "Quiet, low-key bar"),
 				new TableRow(6, 9, "Raucous dive"),
 				new TableRow(10, TableRow.NOVALUE, "Thieves' guild hangout"),
@@ -1553,7 +1553,7 @@ namespace DungeonMasterHelper
 				new TableRow(19, 20, "Brothel"),
 			});
 
-			public static readonly Table tavern_name_first_part = new Table("Tavern Name - First Part", "First Part", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table tavern_name_first_part = new Table("Tavern Name - First Part", "First Part", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "The Silver"),
 				new TableRow(2, TableRow.NOVALUE, "The Golden"),
 				new TableRow(3, TableRow.NOVALUE, "The Staggering"),
@@ -1576,7 +1576,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "The Gleaming"),
 			});
 
-			public static readonly Table tavern_name_second_part = new Table("Tavern Name - Second Part", "Second Part", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table tavern_name_second_part = new Table("Tavern Name - Second Part", "Second Part", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Eel"),
 				new TableRow(2, TableRow.NOVALUE, "Dolphin"),
 				new TableRow(3, TableRow.NOVALUE, "Dwarf"),
@@ -1599,7 +1599,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Star"),
 			});
 
-			public static readonly Table warehouse = new Table("Warehouse", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table warehouse = new Table("Warehouse", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, 4, "Empty or abandoned"),
 				new TableRow(5, 6, "Heavily guarded, expensive goods"),
 				new TableRow(7, 10, "Cheap goods"),
@@ -1610,7 +1610,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Secret smuggler's den"),
 			});
 
-			public static readonly Table shop = new Table("Shop", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 114, new TableRow[]{
+				public static readonly Table shop = new Table("Shop", "Type", Data.Rolls_String.d20, "", Data.Titles.DMG, 114, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Pawnshop"),
 				new TableRow(2, TableRow.NOVALUE, "Herbs/incense"),
 				new TableRow(3, TableRow.NOVALUE, "Fruits/vegetables"),
@@ -1633,7 +1633,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Scribe"),
 			});
 
-			public static readonly Table random_urban_encounters = new Table("Random Urban Encounters", "Encounter", Data.Rolls_String.d12_plus_d8, "", Data.Titles.DMG, 113, new TableRow[]{
+				public static readonly Table random_urban_encounters = new Table("Random Urban Encounters", "Encounter", Data.Rolls_String.d12_plus_d8, "", Data.Titles.DMG, 113, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Animals on the loose"),
 				new TableRow(2, TableRow.NOVALUE, "Announcement"),
 				new TableRow(3, TableRow.NOVALUE, "Brawl"),
@@ -1654,12 +1654,12 @@ namespace DungeonMasterHelper
 				new TableRow(18, TableRow.NOVALUE, "Spectacle"),
 				new TableRow(19, TableRow.NOVALUE, "Urchin"),
 			});
-		}
+			}
 
-		// Chapter 6
-		public static class BetweenAdventures
-		{
-			public static readonly Table carousing = new Table("Carousing", "Result", Data.Rolls_String.d100, "level", Data.Titles.DMG, 128, new TableRow[]{
+			// Chapter 6
+			public static class BetweenAdventures
+			{
+				public static readonly Table carousing = new Table("Carousing", "Result", Data.Rolls_String.d100, "level", Data.Titles.DMG, 128, new TableRow[]{
 				new TableRow(1, 10, "You are jailed for 1d4 days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."),
 				new TableRow(1, 10, "You are jailed for 1d4 days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."),
 				new TableRow(11, 20, "You regain consciousness in a strange place with no memory of how you got there, and you have been robbed of 3d6x5 gp."),
@@ -1670,7 +1670,7 @@ namespace DungeonMasterHelper
 				new TableRow(90, 100, "You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain 4d6x10 gp."),
 			});
 
-			public static readonly Table running_a_business = new Table("Running a Business", "Result", Data.Rolls_String.d100, "Days", Data.Titles.DMG, 129, new TableRow[]{
+				public static readonly Table running_a_business = new Table("Running a Business", "Result", Data.Rolls_String.d100, "Days", Data.Titles.DMG, 129, new TableRow[]{
 				new TableRow(1, 20, "You ust pay one and a half times the business's maintenance cost for each of the days."),
 				new TableRow(21, 30, "You must pay the business's full maintenance cost for each of the days."),
 				new TableRow(31, 40, "You must pay half the business's maintenance cost for each of the days. Profits cover the other half."),
@@ -1680,7 +1680,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "The business covers its own maintenance cost for each of the days. It earns a profit of 3d10x5 gp."),
 			});
 
-			public static readonly Table selling_a_magic_item = new Table("Selling a Magic Item", "You Find...", Data.Rolls_String.d100, "Mod", Data.Titles.DMG, 130, new TableRow[]{
+				public static readonly Table selling_a_magic_item = new Table("Selling a Magic Item", "You Find...", Data.Rolls_String.d100, "Mod", Data.Titles.DMG, 130, new TableRow[]{
 				new TableRow(1, 20, "A buyer offering a tenth of the base price"),
 				new TableRow(21, 40, "A buyer offering a quarter of the base price, and a shady buyer offering half the base price"),
 				new TableRow(41, 80, "A buyer offering half the base price, and a shady buyer offering the full base price"),
@@ -1688,16 +1688,16 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "A shady buyer offering one and a half times the base price, no questions asked"),
 			});
 
-			public static string getCarousing(int playerLevel = 0)
-			{
-				return carousing.rollOnTable(playerLevel);
+				public static string getCarousing(int playerLevel = 0)
+				{
+					return carousing.rollOnTable(playerLevel);
+				}
 			}
-		}
 
-		// Chapter 7
-		public static class Treasure
-		{
-			public static readonly Table gemstones10gp = new Table("10 GP Gemstones", "Stone Description", Data.Rolls_String.d12, "", Data.Titles.DMG, 134, new TableRow[]{
+			// Chapter 7
+			public static class Treasure
+			{
+				public static readonly Table gemstones10gp = new Table("10 GP Gemstones", "Stone Description", Data.Rolls_String.d12, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Azurite (opaque mottled deep blue)"),
 				new TableRow(2, TableRow.NOVALUE, "Banded agate (translucent striped brown, blue, white, or red)"),
 				new TableRow(3, TableRow.NOVALUE, "Blue quartz (transparent pale blue)"),
@@ -1712,7 +1712,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Turquoise (opaque light blue-green)"),
 			});
 
-			public static readonly Table gemstones50gp = new Table("50 GP Gemstones", "Stone Description", Data.Rolls_String.d12, "", Data.Titles.DMG, 134, new TableRow[]{
+				public static readonly Table gemstones50gp = new Table("50 GP Gemstones", "Stone Description", Data.Rolls_String.d12, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Bloodstone (opaque dark gray with red flecks)"),
 				new TableRow(2, TableRow.NOVALUE, "Carnelian (opaque orange to red-brown)"),
 				new TableRow(3, TableRow.NOVALUE, "Chalcedony (opaque white)"),
@@ -1727,7 +1727,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Zircon (transparent pale blue-green"),
 			});
 
-			public static readonly Table gemstones100gp = new Table("100 GP Gemstones", "Stone Description", Data.Rolls_String.d10, "", Data.Titles.DMG, 134, new TableRow[]{
+				public static readonly Table gemstones100gp = new Table("100 GP Gemstones", "Stone Description", Data.Rolls_String.d10, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Amber (transparent watery gold to rich gold)"),
 				new TableRow(2, TableRow.NOVALUE, "Amethyst (transparent deep purple)"),
 				new TableRow(3, TableRow.NOVALUE, "Chrysoberyl (transparent yellow-green to pale green)"),
@@ -1740,7 +1740,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Tourmaline (trasnparent pale green, blue, brown, or red)"),
 			});
 
-			public static readonly Table gemstones500gp = new Table("500 GP Gemstones", "Stone Description", Data.Rolls_String.d6, "", Data.Titles.DMG, 134, new TableRow[]{
+				public static readonly Table gemstones500gp = new Table("500 GP Gemstones", "Stone Description", Data.Rolls_String.d6, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Alexandrite (transparent dark green)"),
 				new TableRow(2, TableRow.NOVALUE, "Aquamarine (transparent pale blue-green)"),
 				new TableRow(3, TableRow.NOVALUE, "Black pearl (opaque pure black)"),
@@ -1749,7 +1749,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "Topaz (transparent golden yellow)"),
 			});
 
-			public static readonly Table gemstones1000gp = new Table("1,000 GP Gemstones", "Stone Description", Data.Rolls_String.d8, "", Data.Titles.DMG, 134, new TableRow[]{
+				public static readonly Table gemstones1000gp = new Table("1,000 GP Gemstones", "Stone Description", Data.Rolls_String.d8, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Black opal (translucent dark green with black mottling and golden flecks)"),
 				new TableRow(2, TableRow.NOVALUE, "Blue sapphire (transparent blue-white to medium blue)"),
 				new TableRow(3, TableRow.NOVALUE, "Emerald (transparent deep bright green)"),
@@ -1760,14 +1760,14 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Yellow sapphire (transparent fiery yellow or yellow-green)"),
 			});
 
-			public static readonly Table gemstones5000gp = new Table("5,000 GP Gemstones", "Stone Description", Data.Rolls_String.d4, "", Data.Titles.DMG, 134, new TableRow[]{
+				public static readonly Table gemstones5000gp = new Table("5,000 GP Gemstones", "Stone Description", Data.Rolls_String.d4, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Black sapphire (translucent lustrous black with glowing highlights)"),
 				new TableRow(2, TableRow.NOVALUE, "Diamond (transparent blue-white canary, pink, brown, or blue)"),
 				new TableRow(3, TableRow.NOVALUE, "Jacinth (transparent fiery orange)"),
 				new TableRow(4, TableRow.NOVALUE, "Ruby (transparent clear red to deep crimson)"),
 			});
 
-			public static readonly Table art_objects25gp = new Table("25 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 134, new TableRow[]{
+				public static readonly Table art_objects25gp = new Table("25 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 134, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Silver ewer"),
 				new TableRow(2, TableRow.NOVALUE, "Carved bone statuette"),
 				new TableRow(3, TableRow.NOVALUE, "Small gold bracelet"),
@@ -1780,7 +1780,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Gold locket with a apainted portrait inside"),
 			});
 
-			public static readonly Table art_objects250gp = new Table("250 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 135, new TableRow[]{
+				public static readonly Table art_objects250gp = new Table("250 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 135, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Gold ring set with bloodstones"),
 				new TableRow(2, TableRow.NOVALUE, "Carved ivory statuette"),
 				new TableRow(3, TableRow.NOVALUE, "Large gold bracelet"),
@@ -1793,7 +1793,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Gold bird cage with electrum filigree"),
 			});
 
-			public static readonly Table art_objects750gp = new Table("750 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 135, new TableRow[]{
+				public static readonly Table art_objects750gp = new Table("750 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 135, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Silver chalice set with moonstones"),
 				new TableRow(2, TableRow.NOVALUE, "Silver-plated steel longsword with jet set in hilt"),
 				new TableRow(3, TableRow.NOVALUE, "Carved harp of exotic wood with ivory inlay and zircon gems"),
@@ -1806,7 +1806,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Painted gold war mask"),
 			});
 
-			public static readonly Table art_objects2500gp = new Table("2,500 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 135, new TableRow[]{
+				public static readonly Table art_objects2500gp = new Table("2,500 GP Art Objects", "Object", Data.Rolls_String.d10, "", Data.Titles.DMG, 135, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Fine gold chain set with a fire opal"),
 				new TableRow(2, TableRow.NOVALUE, "Old masterpiece painting"),
 				new TableRow(3, TableRow.NOVALUE, "Embroidered silk and velvet mantle set with numerous moonstones"),
@@ -1819,7 +1819,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "A necklace string of small pink pearls"),
 			});
 
-			public static readonly Table art_objects7500gp = new Table("7,500 GP Art Objects", "Object", Data.Rolls_String.d8, "", Data.Titles.DMG, 135, new TableRow[]{
+				public static readonly Table art_objects7500gp = new Table("7,500 GP Art Objects", "Object", Data.Rolls_String.d8, "", Data.Titles.DMG, 135, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Jeweled gold crown"),
 				new TableRow(2, TableRow.NOVALUE, "Jeweled platinum ring"),
 				new TableRow(3, TableRow.NOVALUE, "Small gold statuette set with rubies"),
@@ -1830,7 +1830,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Bejeweled ivory drinking horn with gold filigree"),
 			});
 
-			public static readonly Table individual_treasure_challenge0_4 = new Table("Individual Treasure: Challenge 0-4", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
+				public static readonly Table individual_treasure_challenge0_4 = new Table("Individual Treasure: Challenge 0-4", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
 				new TableRow(1, 30, "5d6 (17) cp"),
 				new TableRow(31, 60, "4d6 (14) sp"),
 				new TableRow(61, 70, "3d6 (10) ep"),
@@ -1838,7 +1838,7 @@ namespace DungeonMasterHelper
 				new TableRow(86, 90, "1d6 (3) pp"),
 			});
 
-			public static readonly Table individual_treasure_challenge5_10 = new Table("Individual Treasure: Challenge 5-10", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
+				public static readonly Table individual_treasure_challenge5_10 = new Table("Individual Treasure: Challenge 5-10", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
 				new TableRow(1, 30, "4d6 x 100 (1,400) cp, 1d6 x 10 (35) ep"),
 				new TableRow(31, 60, "6d6 x 10 (210) sp, 2d6 x 10 (70) gp"),
 				new TableRow(61, 70, "3d6 x 10 (105) ep, 2d6 x 10 (70) gp"),
@@ -1846,20 +1846,20 @@ namespace DungeonMasterHelper
 				new TableRow(86, 90, "2d6 x 10 (70) gp, 3d6 (10) pp"),
 			});
 
-			public static readonly Table individual_treasure_challenge11_16 = new Table("Individual Treasure: Challenge 11-16", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
+				public static readonly Table individual_treasure_challenge11_16 = new Table("Individual Treasure: Challenge 11-16", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
 				new TableRow(1, 20, "4d6 x 100 (1,400) sp, 1d6 x 100 (350) gp"),
 				new TableRow(21, 35, "1d6 x 100 (350) ep, 1d6 x 100 (350) gp"),
 				new TableRow(36, 75, "2d6 x 100 (700) gp, 1d6 x 10 (35) pp"),
 				new TableRow(76, 100, "2d6 x 100 (700) gp, 2d6 x 10 (70) pp"),
 			});
 
-			public static readonly Table individual_treasure_challenge17_plus = new Table("Individual Treasure: Challenge 17+", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
+				public static readonly Table individual_treasure_challenge17_plus = new Table("Individual Treasure: Challenge 17+", "Coins", Data.Rolls_String.d100, "", Data.Titles.DMG, 136, new TableRow[]{
 				new TableRow(1, 15, "2d6 x 1,000 (7,000) ep, 8d6 x 100 (2,800) gp"),
 				new TableRow(16, 55, "1d6 x 1,000 (3,500) gp, 1d6 x 100 (350) pp"),
 				new TableRow(56, 100, "1d6 x 1,000 (3,500) gp, 2d6 x 100 (700) pp"),
 			});
 
-			public static readonly Table treasure_hoard_challenge0_4 = new Table("Treasure Hoard: Challenge 0-4", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 137, new TableRow[]{
+				public static readonly Table treasure_hoard_challenge0_4 = new Table("Treasure Hoard: Challenge 0-4", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 137, new TableRow[]{
 				new TableRow(1, 6, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp"),
 				new TableRow(7, 16, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, 2d6 (7) 10 gp gems"),
 				new TableRow(17, 26, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, 2d4 (5) 25 gp art objects"),
@@ -1880,7 +1880,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "6d6 x 100 (2,100) cp, 3d6 x 100 (1,050) sp, 2d6 x 10 (70) gp, 2d6 (7) 50 gp gems, Roll once on Magic Item Table G"),
 			});
 
-			public static readonly Table treasure_hoard_challenge5_10 = new Table("Treasure Hoard: Challenge 5-10", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 137, new TableRow[]{
+				public static readonly Table treasure_hoard_challenge5_10 = new Table("Treasure Hoard: Challenge 5-10", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 137, new TableRow[]{
 				new TableRow(1, 4, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp"),
 				new TableRow(5, 10, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, 2d4 (5) 25 gp art objects"),
 				new TableRow(11, 16, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, 3d6 (10) 50 gp gems"),
@@ -1912,7 +1912,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "2d6 x 100 (700) cp, 2d6 x 1,000 (7,000) sp, 6d6 x 100 (2,100) gp, 3d6 x 10 (105) pp, 2d4 (5) 250 gp art objects, Roll 1d4 times on Magic Item Table H"),
 			});
 
-			public static readonly Table treasure_hoard_challenge11_16 = new Table("Treasure Hoard: Challenge 11-16", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 138, new TableRow[]{
+				public static readonly Table treasure_hoard_challenge11_16 = new Table("Treasure Hoard: Challenge 11-16", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 138, new TableRow[]{
 				new TableRow(1, 3, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp"),
 				new TableRow(4, 6, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp2d4 (5) 250 gp art objects"),
 				new TableRow(7, 9, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp2d4 (5) 750 gp art objects"),
@@ -1948,7 +1948,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, 101, "4d6 x 1,000 (14,000) gp, 5d6 x 100 (1,750) pp, 3d6 (10) 1,000 gp gems, Roll once on Magic Item Table I"),
 			});
 
-			public static readonly Table treasure_hoard_challenge17_plus = new Table("Treasure Hoard: Challenge 17+", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 139, new TableRow[]{
+				public static readonly Table treasure_hoard_challenge17_plus = new Table("Treasure Hoard: Challenge 17+", "Coins, Gems or Art Objects, Magic Items", Data.Rolls_String.d100, "", Data.Titles.DMG, 139, new TableRow[]{
 				new TableRow(1, 2, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp"),
 				new TableRow(3, 5, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp, 3d6 (10) 1,000 gp gems, Roll 1d8 times on Magic Item Table C"),
 				new TableRow(6, 8, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp, 1d10 (5) 2,500 gp art objects, Roll 1d8 times on Magic Item Table C"),
@@ -1976,7 +1976,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "12d6 x 1,000 (42,000) gp, 8d6 x 1,000 (28,000) pp, 1d8 (4) 5,000 gp gems, Roll 1d4 times on Magic Item Table I"),
 			});
 
-			public static readonly Table potion_miscibility = new Table("Potion Miscibility", "Result", Data.Rolls_String.d100, "", Data.Titles.DMG, 140, new TableRow[]{
+				public static readonly Table potion_miscibility = new Table("Potion Miscibility", "Result", Data.Rolls_String.d100, "", Data.Titles.DMG, 140, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "The mixture creates a magical explosion, dealing 6d10 force damage to the mixer and 1d10 force damage to each creature within 5 feet of the mixer."),
 				new TableRow(2, 8, "The mixture becomes an ingested poison of the DM's choice."),
 				new TableRow(9, 15, "Both potions lose their effects."),
@@ -1987,7 +1987,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Only one potion works, but its effect is permanent. Choose the simplest effect to make permanent, or the one that seems the most fun. For example, a potion of healing might increase the drinker's hit point maximum by 4, or oil of etherealness migth permanently trap the user in the Ethereal Plane. At your discretion, an appropriate spell, such as dispel magic or remove curse, might end this lasting effect."),
 			});
 
-			public static readonly Table scroll_mishap = new Table("Scroll Mishap", "Result", Data.Rolls_String.d100, "", Data.Titles.DMG, 140, new TableRow[]{
+				public static readonly Table scroll_mishap = new Table("Scroll Mishap", "Result", Data.Rolls_String.d100, "", Data.Titles.DMG, 140, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "A surge of magical energy deals the caster 1d6 force damage per level of the spell"),
 				new TableRow(2, TableRow.NOVALUE, "The spell affects the caster or an ally (determined randomly) instead of the intended target, or it affects a random target nearby if the caster was the intended target."),
 				new TableRow(3, TableRow.NOVALUE, "The spell affects a random location within the spell's range."),
@@ -1996,7 +1996,7 @@ namespace DungeonMasterHelper
 				new TableRow(6, TableRow.NOVALUE, "The spell activates after 1d12 hours. If the caster was the intended target, the spell takes effect normally. If the caster was not the intended target, the spell goes off in the general direction of the intended target, up to the spell's maximum range, if the target has moved away."),
 			});
 
-			public static readonly Table who_created_it_or_who_was_intended_to_use_it = new Table("Who Created It or Who Was Intended to Use It?", "Creator or Intended User", Data.Rolls_String.d100, "", Data.Titles.DMG, 142, new TableRow[]{
+				public static readonly Table who_created_it_or_who_was_intended_to_use_it = new Table("Who Created It or Who Was Intended to Use It?", "Creator or Intended User", Data.Rolls_String.d100, "", Data.Titles.DMG, 142, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Aberration. The item was created by aberrations in ancient times, possibly for the use of favored humanoid thralls. When seen from the corner of the eye, the item seems to be moving."),
 				new TableRow(2, 4, "Human. The item was created during the heyday of a fallen human kingdom, or it is tied to a human legend. It might hold writing in a forgotten tongue or symbols whose significance is lost to the ages."),
 				new TableRow(5, TableRow.NOVALUE, "Celestial. The weapon is half the normal weight and inscribed with feathered wings, suns, and other symbols of good. Fiends find the item's presence repulsive."),
@@ -2015,7 +2015,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Undead. The item incorporates imagery of death, such as bones and skulls, and it might be crafted from parts of corpses. It feels cold to the touch."),
 			});
 
-			public static readonly Table what_is_a_detail_from_its_history = new Table("What Is a Detail from Its History?", "History", Data.Rolls_String.d100, "", Data.Titles.DMG, 142, new TableRow[]{
+				public static readonly Table what_is_a_detail_from_its_history = new Table("What Is a Detail from Its History?", "History", Data.Rolls_String.d100, "", Data.Titles.DMG, 142, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Arcane. This item was created for an ancient order of spellcasters and bears the order's symbol."),
 				new TableRow(2, TableRow.NOVALUE, "Bane. This item was created by the foes of a particular culture of kind of creature. If the culture or creatures are still around, they might recognize the item and single out the bearer as an enemy."),
 				new TableRow(3, TableRow.NOVALUE, "Heroic. A great hero once wielded this item. Anyone who's familiar with the item's history expects great deeds from the new owner."),
@@ -2026,7 +2026,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Symbol of Power. This item was once used as part of royal regalia or as a badge of high office. Its former owner or that person's descendants might desire it, or someone might mistakenly assume its new owner is the item's legitimate inheritor."),
 			});
 
-			public static readonly Table what_minor_property_does_it_have = new Table("What Minor Property does It Have?", "Minor Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 143, new TableRow[]{
+				public static readonly Table what_minor_property_does_it_have = new Table("What Minor Property does It Have?", "Minor Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 143, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Beacon. The bearer can use a bonus action to cause the item to shed bright light in a 10-foot radius and dim light for an additional 10 feet, or to extinguish the light."),
 				new TableRow(2, TableRow.NOVALUE, "Compass. The wielder can use an action to learn which way is north."),
 				new TableRow(3, TableRow.NOVALUE, "Conscientious. When the bearer of this item contemplates or undertakes a malevolent act, the item enhances pangs of conscience."),
@@ -2049,7 +2049,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Roll twice, rerolling any additional 20s."),
 			});
 
-			public static readonly Table what_quirk_does_it_have = new Table("What Quirk does It Have?", "Quirk", Data.Rolls_String.d100, "", Data.Titles.DMG, 143, new TableRow[]{
+				public static readonly Table what_quirk_does_it_have = new Table("What Quirk does It Have?", "Quirk", Data.Rolls_String.d100, "", Data.Titles.DMG, 143, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Blissful. While in possession of the item, the bearer feels fortunate and optimistic about what the future holds. Butterflies and other harmless creatures might frolic in the item's presence."),
 				new TableRow(2, TableRow.NOVALUE, "Confident. The item helps its bearer feel self-assured."),
 				new TableRow(3, TableRow.NOVALUE, "Covetous. The item's bearer becomes obsessed with material wealth."),
@@ -2064,7 +2064,7 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Slothful. The bearer of this item feels slothful and lethargic. While attuned to the item, the bearer requires 10 hours to finish a long rest."),
 			});
 
-			public static readonly Table magic_item_table_a = new Table("Magic Item Table A", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 144, new TableRow[]{
+				public static readonly Table magic_item_table_a = new Table("Magic Item Table A", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 144, new TableRow[]{
 				new TableRow(1, 50, "Potion of healing"),
 				new TableRow(51, 60, "Spell scroll (cantrip)"),
 				new TableRow(61, 70, "Potion of climbing"),
@@ -2075,7 +2075,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Driftglobe"),
 			});
 
-			public static readonly Table magic_item_table_b = new Table("Magic Item Table B", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 144, new TableRow[]{
+				public static readonly Table magic_item_table_b = new Table("Magic Item Table B", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 144, new TableRow[]{
 				new TableRow(1, 15, "Potion of greater healing"),
 				new TableRow(16, 22, "Potion of fire breath"),
 				new TableRow(23, 29, "Potion of resistance"),
@@ -2113,7 +2113,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Wand of secrets"),
 			});
 
-			public static readonly Table magic_item_table_c = new Table("Magic Item Table C", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 145, new TableRow[]{
+				public static readonly Table magic_item_table_c = new Table("Magic Item Table C", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 145, new TableRow[]{
 				new TableRow(1, 15, "Potion of superior healing"),
 				new TableRow(16, 22, "Spell scroll (4th level)"),
 				new TableRow(23, 27, "Ammunition, +2"),
@@ -2144,7 +2144,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Sending stones"),
 			});
 
-			public static readonly Table magic_item_table_d = new Table("Magic Item Table D", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 145, new TableRow[]{
+				public static readonly Table magic_item_table_d = new Table("Magic Item Table D", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 145, new TableRow[]{
 				new TableRow(1, 20, "Potion of supreme healing"),
 				new TableRow(21, 30, "Potion of invisibility"),
 				new TableRow(31, 40, "Potion of speed"),
@@ -2163,7 +2163,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Portable hole"),
 			});
 
-			public static readonly Table magic_item_table_e = new Table("Magic Item Table E", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 145, new TableRow[]{
+				public static readonly Table magic_item_table_e = new Table("Magic Item Table E", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 145, new TableRow[]{
 				new TableRow(1, 30, "Spell scroll (8th level)"),
 				new TableRow(31, 55, "Potion of storm giant strength"),
 				new TableRow(56, 70, "Potion of supreme healing"),
@@ -2173,7 +2173,7 @@ namespace DungeonMasterHelper
 				new TableRow(99, 100, "Sovereign glue"),
 			});
 
-			public static readonly Table magic_item_table_f = new Table("Magic Item Table F", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 146, new TableRow[]{
+				public static readonly Table magic_item_table_f = new Table("Magic Item Table F", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 146, new TableRow[]{
 				new TableRow(1, 15, "Weapon, +1"),
 				new TableRow(16, 18, "Shield, +1"),
 				new TableRow(19, 21, "Sentinel shield"),
@@ -2236,7 +2236,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Winged boots"),
 			});
 
-			public static readonly Table magic_item_table_g = new Table("Magic Item Table G", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 147, new TableRow[]{
+				public static readonly Table magic_item_table_g = new Table("Magic Item Table G", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 147, new TableRow[]{
 				new TableRow(1, 11, "Weapon, +2"),
 				new TableRow(12, 13, "Figurine of wondrous power (roll d8), 1 - Bronze griffon, 2 - Ebony fly, 3 - Golden lions, 4 - Ivory goats, 5 - Marble elephant, 6-7 - Onyx dog, 8 - Serpentine owl"),
 				new TableRow(14, TableRow.NOVALUE, "Adamantine armor (breastplate)"),
@@ -2327,7 +2327,7 @@ namespace DungeonMasterHelper
 				new TableRow(99, TableRow.NOVALUE, "Wings of flying"),
 			});
 
-			public static readonly Table magic_item_table_h = new Table("Magic Item Table H", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 148, new TableRow[]{
+				public static readonly Table magic_item_table_h = new Table("Magic Item Table H", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 148, new TableRow[]{
 				new TableRow(1, 10, "Weapon, +3"),
 				new TableRow(11, 12, "Amulet of the planes"),
 				new TableRow(13, 15, "Carpet of flying"),
@@ -2399,7 +2399,7 @@ namespace DungeonMasterHelper
 				new TableRow(101, TableRow.NOVALUE, "Tome of understanding"),
 			});
 
-			public static readonly Table magic_item_table_i = new Table("Magic Item Table I", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 149, new TableRow[]{
+				public static readonly Table magic_item_table_i = new Table("Magic Item Table I", "Magic Item", Data.Rolls_String.d100, "", Data.Titles.DMG, 149, new TableRow[]{
 				new TableRow(1, 5, "Defender"),
 				new TableRow(6, 10, "Hammer of thunderbolts"),
 				new TableRow(11, 15, "Luck blade"),
@@ -2455,7 +2455,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Tome of the stilled tongue"),
 			});
 
-			public static readonly Table armor_of_resistance_damage_type = new Table("Armor of Resistance", "Damage Type", Data.Rolls_String.d10, "", Data.Titles.DMG, 152, new TableRow[]{
+				public static readonly Table armor_of_resistance_damage_type = new Table("Armor of Resistance", "Damage Type", Data.Rolls_String.d10, "", Data.Titles.DMG, 152, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Acid"),
 				new TableRow(2, TableRow.NOVALUE, "Cold"),
 				new TableRow(3, TableRow.NOVALUE, "Fire"),
@@ -2468,7 +2468,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Thunder"),
 			});
 
-			public static readonly Table bag_of_beans_effect = new Table("Bag of Beans Effect", "Effect", Data.Rolls_String.d100, "", Data.Titles.DMG, 153, new TableRow[]{
+				public static readonly Table bag_of_beans_effect = new Table("Bag of Beans Effect", "Effect", Data.Rolls_String.d100, "", Data.Titles.DMG, 153, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "5d4 toadstools sprout. If a creature eats a toadstool, roll any die. On an odd roll, the eater must succeed on a DC 15 Constitution saving throw or take 5d6 poison damage and become poisoned for 1 hour. On an even roll, the eater gains 5d6 temporary hit points for 1 hour."),
 				new TableRow(2, 10, "A geyser erupts and sprouts water, beer, berry juice, tea, vinegar, wine, or oil (DM's choice) 30 feet into the air for 1d12 rounds."),
 				new TableRow(11, 20, "A treant sprouts (see the Monster Manual for statistics). There's a 50 percent chance that the treant is chaotic evil and attacks"),
@@ -2483,7 +2483,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "A giant beanstalk sprouts, growing to a height of the DM's choice. The top leads where the DM chooses, such as to a great view, a cloud giant's castle, or a different plane of existence."),
 			});
 
-			public static readonly Table gray_bag_of_tricks = new Table("Gray Bag of Tricks", "Creature", Data.Rolls_String.d8, "", Data.Titles.DMG, 154, new TableRow[]{
+				public static readonly Table gray_bag_of_tricks = new Table("Gray Bag of Tricks", "Creature", Data.Rolls_String.d8, "", Data.Titles.DMG, 154, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Weasel"),
 				new TableRow(2, TableRow.NOVALUE, "Giant rat"),
 				new TableRow(3, TableRow.NOVALUE, "Badger"),
@@ -2494,7 +2494,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Giant elk"),
 			});
 
-			public static readonly Table rust_bag_of_tricks = new Table("Rust Bag of Tricks", "Creature", Data.Rolls_String.d8, "", Data.Titles.DMG, 154, new TableRow[]{
+				public static readonly Table rust_bag_of_tricks = new Table("Rust Bag of Tricks", "Creature", Data.Rolls_String.d8, "", Data.Titles.DMG, 154, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Rat"),
 				new TableRow(2, TableRow.NOVALUE, "Owl"),
 				new TableRow(3, TableRow.NOVALUE, "Mastiff"),
@@ -2505,7 +2505,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Brown bear"),
 			});
 
-			public static readonly Table tan_bag_of_tricks = new Table("Tan Bag of Tricks", "Creature", Data.Rolls_String.d8, "", Data.Titles.DMG, 154, new TableRow[]{
+				public static readonly Table tan_bag_of_tricks = new Table("Tan Bag of Tricks", "Creature", Data.Rolls_String.d8, "", Data.Titles.DMG, 154, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Jackal"),
 				new TableRow(2, TableRow.NOVALUE, "Ape"),
 				new TableRow(3, TableRow.NOVALUE, "Baboon"),
@@ -2516,7 +2516,7 @@ namespace DungeonMasterHelper
 				new TableRow(8, TableRow.NOVALUE, "Tiger"),
 			});
 
-			public static readonly Table candle_of_invocation_alignment = new Table("Candle of Invocation", "Alignment", Data.Rolls_String.d20, "", Data.Titles.DMG, 157, new TableRow[]{
+				public static readonly Table candle_of_invocation_alignment = new Table("Candle of Invocation", "Alignment", Data.Rolls_String.d20, "", Data.Titles.DMG, 157, new TableRow[]{
 				new TableRow(1, 2, "Chaotic evil"),
 				new TableRow(3, 4, "Chaotic neutral"),
 				new TableRow(5, 7, "Chaotic good"),
@@ -2528,27 +2528,27 @@ namespace DungeonMasterHelper
 				new TableRow(18, 20, "Lawful good"),
 			});
 
-			public static readonly Table carpet_of_flying = new Table("Carpet of Flying", "Size, Capacity, Flying Speed", Data.Rolls_String.d100, "", Data.Titles.DMG, 157, new TableRow[]{
+				public static readonly Table carpet_of_flying = new Table("Carpet of Flying", "Size, Capacity, Flying Speed", Data.Rolls_String.d100, "", Data.Titles.DMG, 157, new TableRow[]{
 				new TableRow(1, 20, "3 ft. x 5 ft., 200 lb., 80 feet"),
 				new TableRow(21, 55, "4 ft. x 6 ft., 400 lb., 60 feet"),
 				new TableRow(56, 80, "5 ft. x 7 ft., 600 lb., 40 feet"),
 				new TableRow(81, 100, "6 ft. x 9 ft., 800 lb., 30 feet"),
 			});
 
-			public static readonly Table efreeti_bottle_effect = new Table("Efreeti Bottle Effect", "Effect", Data.Rolls_String.d100, "", Data.Titles.DMG, 167, new TableRow[]{
+				public static readonly Table efreeti_bottle_effect = new Table("Efreeti Bottle Effect", "Effect", Data.Rolls_String.d100, "", Data.Titles.DMG, 167, new TableRow[]{
 				new TableRow(1, 10, "The efreeti attacks you. After fighting for 5 rounds, the efreeti disappears, and the bottle loses its magic."),
 				new TableRow(11, 90, "The efreeti serves you for 1 hour, doing as you command. Then the efreeti returns to the bottle, and a new stopper contains it. The stopper can't be removed for 24 hours. The next two times the bottle is opened, the same effect occurs. If the bottle is opened a fourth time, the efreeti excapes and disappears, and the bottle loses its magic."),
 				new TableRow(91, 100, "The efreeti can cast the wish spell three times for you. It disappears when it grans the final wish or after 1 hour, and the bottle loses its magic."),
 			});
 
-			public static readonly Table horn_of_valhalla = new Table("Horn of Valhalla", "Horn Type, Berserkers Summoned, Requirement", Data.Rolls_String.d100, "", Data.Titles.DMG, 175, new TableRow[]{
+				public static readonly Table horn_of_valhalla = new Table("Horn of Valhalla", "Horn Type, Berserkers Summoned, Requirement", Data.Rolls_String.d100, "", Data.Titles.DMG, 175, new TableRow[]{
 				new TableRow(1, 40, "Silver, 2d4 + 2, None"),
 				new TableRow(41, 75, "Brass, 3d4 + 3, Proficiency with all simple weapons"),
 				new TableRow(76, 90, "Bronze, 4d4 + 4, Proficiency with all medium armor"),
 				new TableRow(91, 100, "Iron, 5d4 + 5, Proficiency with all martial weapons"),
 			});
 
-			public static readonly Table iron_flask_contents = new Table("Iron Flask Contents", "Contents", Data.Rolls_String.d100, "", Data.Titles.DMG, 178, new TableRow[]{
+				public static readonly Table iron_flask_contents = new Table("Iron Flask Contents", "Contents", Data.Rolls_String.d100, "", Data.Titles.DMG, 178, new TableRow[]{
 				new TableRow(1, 50, "Empty"),
 				new TableRow(51, TableRow.NOVALUE, "Arcanaloth"),
 				new TableRow(52, TableRow.NOVALUE, "Cambion"),
@@ -2581,14 +2581,14 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "Xorn"),
 			});
 
-			public static readonly Table manual_of_golems = new Table("Manual of Golems", "Golem, Time, Cost", Data.Rolls_String.d20, "", Data.Titles.DMG, 180, new TableRow[]{
+				public static readonly Table manual_of_golems = new Table("Manual of Golems", "Golem, Time, Cost", Data.Rolls_String.d20, "", Data.Titles.DMG, 180, new TableRow[]{
 				new TableRow(1, 5, "Clay, 30 days, 65,000 gp"),
 				new TableRow(6, 17, "Flesh, 60 days, 50,000 gp"),
 				new TableRow(18, TableRow.NOVALUE, "Iron, 120 days, 100,000 gp"),
 				new TableRow(19, 20, "Stone, 90 days, 80,000 gp"),
 			});
 
-			public static readonly Table necklace_of_prayer_beads = new Table("Necklace of Prayer Beads", "Bead of..., Spell", Data.Rolls_String.d20, "", Data.Titles.DMG, 182, new TableRow[]{
+				public static readonly Table necklace_of_prayer_beads = new Table("Necklace of Prayer Beads", "Bead of..., Spell", Data.Rolls_String.d20, "", Data.Titles.DMG, 182, new TableRow[]{
 				new TableRow(1, 6, "Blessing, Bless"),
 				new TableRow(7, 12, "Curing, Curing"),
 				new TableRow(13, 16, "Favor, Greater restoration"),
@@ -2597,7 +2597,7 @@ namespace DungeonMasterHelper
 				new TableRow(20, TableRow.NOVALUE, "Wind walking, Wind walk"),
 			});
 
-			public static readonly Table potion_of_resistance_damage_type = new Table("Potion of Resistance", "Damage Type", Data.Rolls_String.d10, "", Data.Titles.DMG, 188, new TableRow[]{
+				public static readonly Table potion_of_resistance_damage_type = new Table("Potion of Resistance", "Damage Type", Data.Rolls_String.d10, "", Data.Titles.DMG, 188, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Acid"),
 				new TableRow(2, TableRow.NOVALUE, "Cold"),
 				new TableRow(3, TableRow.NOVALUE, "Fire"),
@@ -2610,7 +2610,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Thunder"),
 			});
 
-			public static readonly Table quaals_feather_token = new Table("Quaals Feather Token", "Feather Token", Data.Rolls_String.d100, "", Data.Titles.DMG, 188, new TableRow[]{
+				public static readonly Table quaals_feather_token = new Table("Quaals Feather Token", "Feather Token", Data.Rolls_String.d100, "", Data.Titles.DMG, 188, new TableRow[]{
 				new TableRow(1, 20, "Anchor"),
 				new TableRow(21, 35, "Bird"),
 				new TableRow(36, 50, "Fan"),
@@ -2619,7 +2619,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "Whip"),
 			});
 
-			public static readonly Table ring_of_resistance = new Table("Ring of Resistance", "Damage Type", Data.Rolls_String.d10, "", Data.Titles.DMG, 192, new TableRow[]{
+				public static readonly Table ring_of_resistance = new Table("Ring of Resistance", "Damage Type", Data.Rolls_String.d10, "", Data.Titles.DMG, 192, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Acid - Pearl"),
 				new TableRow(2, TableRow.NOVALUE, "Cold - Tourmaline"),
 				new TableRow(3, TableRow.NOVALUE, "Fire - Garnet"),
@@ -2632,7 +2632,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Thunder - Spinel"),
 			});
 
-			public static readonly Table robe_of_useful_items = new Table("Robe of Useful Items", "Patch", Data.Rolls_String.d100, "", Data.Titles.DMG, 195, new TableRow[]{
+				public static readonly Table robe_of_useful_items = new Table("Robe of Useful Items", "Patch", Data.Rolls_String.d100, "", Data.Titles.DMG, 195, new TableRow[]{
 				new TableRow(1, 8, "Bag of 100 gp"),
 				new TableRow(9, 15, "Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp"),
 				new TableRow(16, 22, "Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself"),
@@ -2648,7 +2648,7 @@ namespace DungeonMasterHelper
 				new TableRow(97, 100, "Portable ram"),
 			});
 
-			public static readonly Table scroll_of_protection_creature_type = new Table("Scroll of Protection", "Creature Type", Data.Rolls_String.d100, "", Data.Titles.DMG, 199, new TableRow[]{
+				public static readonly Table scroll_of_protection_creature_type = new Table("Scroll of Protection", "Creature Type", Data.Rolls_String.d100, "", Data.Titles.DMG, 199, new TableRow[]{
 				new TableRow(1, 10, "Aberrations"),
 				new TableRow(11, 20, "Beasts"),
 				new TableRow(21, 30, "Celestials"),
@@ -2659,13 +2659,13 @@ namespace DungeonMasterHelper
 				new TableRow(81, 100, "Undead"),
 			});
 
-			public static readonly Table sphere_of_annihilation_planar_portal_contact_result = new Table("Sphere of Annihilation Planar Portal Contact", "Result", Data.Rolls_String.d100, "", Data.Titles.DMG, 201, new TableRow[]{
+				public static readonly Table sphere_of_annihilation_planar_portal_contact_result = new Table("Sphere of Annihilation Planar Portal Contact", "Result", Data.Rolls_String.d100, "", Data.Titles.DMG, 201, new TableRow[]{
 				new TableRow(1, 50, "The sphere is destoyed."),
 				new TableRow(51, 85, "The sphere moves through the portal or into the extradimensional space."),
 				new TableRow(86, 100, "A spatial rift sends each creature and object within 180 feet of the sphere, including the sphere, to a random plane of existence."),
 			});
 
-			public static readonly Table wand_of_wonder_effect = new Table("Wand of Wonder", "Effect", Data.Rolls_String.d100, "", Data.Titles.DMG, 212, new TableRow[]{
+				public static readonly Table wand_of_wonder_effect = new Table("Wand of Wonder", "Effect", Data.Rolls_String.d100, "", Data.Titles.DMG, 212, new TableRow[]{
 				new TableRow(1, 5, "You cast slow."),
 				new TableRow(6, 10, "You cast faerie fire."),
 				new TableRow(11, 15, "You are stunned until the start of your next turn, believing something awesome just happened."),
@@ -2690,20 +2690,20 @@ namespace DungeonMasterHelper
 				new TableRow(98, 100, "If you targeted a creature, it must make a DC 15 Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the target is freed by the greater restoration spell or similar magic."),
 			});
 
-			public static readonly Table creating_sentient_magic_items_communication = new Table("Creating Sentient Magic Items - Communication", "Communication", Data.Rolls_String.d100, "", Data.Titles.DMG, 214, new TableRow[]{
+				public static readonly Table creating_sentient_magic_items_communication = new Table("Creating Sentient Magic Items - Communication", "Communication", Data.Rolls_String.d100, "", Data.Titles.DMG, 214, new TableRow[]{
 				new TableRow(1, 6, "The item communicates by transmitting emotion to the creature carrying or wielding it"),
 				new TableRow(7, 9, "The item can speak, read, and understand one or more languages"),
 				new TableRow(10, TableRow.NOVALUE, "The item can speak, read, and understand one or more languages. In addition, the item can communicate telepathically with any character that carries or wields it"),
 			});
 
-			public static readonly Table creating_sentient_magic_items_senses = new Table("Creating Sentient Magic Items - Senses", "Senses", Data.Rolls_String.d4, "", Data.Titles.DMG, 214, new TableRow[]{
+				public static readonly Table creating_sentient_magic_items_senses = new Table("Creating Sentient Magic Items - Senses", "Senses", Data.Rolls_String.d4, "", Data.Titles.DMG, 214, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Hearing and normal vision out to 30 feet"),
 				new TableRow(2, TableRow.NOVALUE, "Hearing and normal vision out to 60 feet"),
 				new TableRow(3, TableRow.NOVALUE, "Hearing and normal vision out to 120 feet"),
 				new TableRow(4, TableRow.NOVALUE, "Hearing and darkvision out to 120 feet"),
 			});
 
-			public static readonly Table creating_sentient_magic_items_alignment = new Table("Creating Sentient Magic Items - Alignment", "Alignment", Data.Rolls_String.d100, "", Data.Titles.DMG, 216, new TableRow[]{
+				public static readonly Table creating_sentient_magic_items_alignment = new Table("Creating Sentient Magic Items - Alignment", "Alignment", Data.Rolls_String.d100, "", Data.Titles.DMG, 216, new TableRow[]{
 				new TableRow(1, 15, "Lawful good"),
 				new TableRow(16, 35, "Neutral good"),
 				new TableRow(36, 50, "Chaotic good"),
@@ -2715,7 +2715,7 @@ namespace DungeonMasterHelper
 				new TableRow(97, 100, "Chaotic evil"),
 			});
 
-			public static readonly Table creating_sentient_magic_items_special_purpose = new Table("Creating Sentient Magic Items - Special Purpose", "Purpose", Data.Rolls_String.d10, "", Data.Titles.DMG, 216, new TableRow[]{
+				public static readonly Table creating_sentient_magic_items_special_purpose = new Table("Creating Sentient Magic Items - Special Purpose", "Purpose", Data.Rolls_String.d10, "", Data.Titles.DMG, 216, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Aligned: The item seeks to defeat or destroy those of a diametrically opposed alignment. (Such an item is never neutral.)"),
 				new TableRow(2, TableRow.NOVALUE, "Bane: The item seeks to defeat or destroy creatures of a particular kind, such as fiends, shapechangers, trolls, or wizards"),
 				new TableRow(3, TableRow.NOVALUE, "Protector: The item seeks to defend a particular race or kind of creature, such as elves or druids"),
@@ -2728,7 +2728,7 @@ namespace DungeonMasterHelper
 				new TableRow(10, TableRow.NOVALUE, "Creator Seeker: The item seeks its creator and wants to understand why it was created"),
 			});
 
-			public static readonly Table moonblade_properties = new Table("Moonblade Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 217, new TableRow[]{
+				public static readonly Table moonblade_properties = new Table("Moonblade Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 217, new TableRow[]{
 				new TableRow(1, 40, "Increase the bonus to attack and damage rolls by 1, to a maximum of +3. Reroll if the moonblade already has a +3 bonus"),
 				new TableRow(41, 80, "The moonblade gains a randomly determined minor property (see \"Special Features\" earlier in this chapter)"),
 				new TableRow(81, 82, "The moonblade gains the finesse property"),
@@ -2743,7 +2743,7 @@ namespace DungeonMasterHelper
 				new TableRow(100, TableRow.NOVALUE, "The moonblade functions as a vorpal sword"),
 			});
 
-			public static readonly Table minor_beneficial_properties = new Table("Minor Beneficial Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 219, new TableRow[]{
+				public static readonly Table minor_beneficial_properties = new Table("Minor Beneficial Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 219, new TableRow[]{
 				new TableRow(1, 20, "While attuned to the artifact, you gain proficiency in one skill of the DM's choice"),
 				new TableRow(21, 30, "While attuned to the artifact, you are immune to disease"),
 				new TableRow(31, 40, "While attuned to the artifact, you can't be charmed or frightened"),
@@ -2755,7 +2755,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "While attuned to the artifact, you gain a +1 bonus to Armor Class"),
 			});
 
-			public static readonly Table major_beneficial_properties = new Table("Major Beneficial Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 219, new TableRow[]{
+				public static readonly Table major_beneficial_properties = new Table("Major Beneficial Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 219, new TableRow[]{
 				new TableRow(1, 20, "While attuned to the artifact, one of your ability scores (DM's choice) increases by 2, to a maximum of 24"),
 				new TableRow(21, 30, "While attuned to the artifact, you regain 1d6 hit points at the start of your turn if you have at least 1 hit point"),
 				new TableRow(31, 40, "When you hit with a weapon attack while attuned to the artifact, the target takes an extra 1d6 damage of the weapon's type"),
@@ -2767,7 +2767,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "While attuned to the artifact, you can't be blinded, deafened, petrified, or stunned"),
 			});
 
-			public static readonly Table minor_detrimental_properties = new Table("Minor Detrimental Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 220, new TableRow[]{
+				public static readonly Table minor_detrimental_properties = new Table("Minor Detrimental Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 220, new TableRow[]{
 				new TableRow(1, 5, "While attuned to the artifact, you have disadvantage on saving throws against spells"),
 				new TableRow(6, 10, "The first time you touch a gem or piece of jewelry while attuned to this artifact, the value of the gem or jewelry is reduced by half"),
 				new TableRow(11, 15, "While attuned to the artifact, you are blinded when you are more than 10 feet away from it"),
@@ -2788,7 +2788,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "While attuned to the artifact, your flaw is amplified in a way determined by the DM"),
 			});
 
-			public static readonly Table major_detrimental_properties = new Table("Major Detrimental Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 220, new TableRow[]{
+				public static readonly Table major_detrimental_properties = new Table("Major Detrimental Properties", "Property", Data.Rolls_String.d100, "", Data.Titles.DMG, 220, new TableRow[]{
 				new TableRow(1, 5, "While you are attuned to the artifact, your body rots over the course of four days, after which the rotting stops. You lose your hair by the end of day 1, finger tips and toe tips by the end of day 2, lips and nose by the end of day 3, and ears by the end of day 4. A regenerate spell restores lost body parts"),
 				new TableRow(6, 10, "While you are attuned to the artifact, you determine your alignment daily at dawn by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil"),
 				new TableRow(11, 15, "When you first attune to the artifact, it gives you a quest determined by the DM. You must complete this quest as if affected by the geas spell. Once you complete the quest, you are no longer affected by this property"),
@@ -2809,12 +2809,12 @@ namespace DungeonMasterHelper
 				new TableRow(91, 95, "While attuned to the artifact, you have vulnerability to all damage"),
 				new TableRow(96, 100, "When you become attuned to the artifact, there is a 10 percent chance that you attract the attention of a god that sends an avatar to wrest the artifact from you. The avatar has the same alignment as its creator and the statistics of an empyrean (see the Monster Manual). Once it obtains the artifact, the avatar vanishes"),
 			});
-		}
+			}
 
-		// Chapter 8
-		public static class RunningTheGame
-		{
-			public static readonly Table urban_chase_complications = new Table("Urban Chase Complications", "Complication", Data.Rolls_String.d20, "", Data.Titles.DMG, 254, new TableRow[]{
+			// Chapter 8
+			public static class RunningTheGame
+			{
+				public static readonly Table urban_chase_complications = new Table("Urban Chase Complications", "Complication", Data.Rolls_String.d20, "", Data.Titles.DMG, 254, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "A large obstacle such as a horse or car blocks your way. Make a DC 15 Dexterity (Acorbatics) check to get past the obstacle. On a failed check, the obstacle counts as 10 fet of difficult terrain."),
 				new TableRow(2, TableRow.NOVALUE, "A crowd blocks yoru way. Make a DC 10 Strength (Athletics) or Dexterity (Acrobatics) check (your choice) to make your way through the crowd unimpeded. On a failed check, the crowd counts as 10 feet of difficult terrain."),
 				new TableRow(3, TableRow.NOVALUE, "A larget stained-glass window or similar barrier blocks your path. Make a DC 10 Strength saving throw to smash through the barrier and keep going. On a failed save, you bounce off the barrier and fall prone."),
@@ -2828,7 +2828,7 @@ namespace DungeonMasterHelper
 				new TableRow(11, 20, "No complication."),
 			});
 
-			public static readonly Table wilderness_chase_complications = new Table("Wilderness Chase Complications", "Complication", Data.Rolls_String.d100, "", Data.Titles.DMG, 254, new TableRow[]{
+				public static readonly Table wilderness_chase_complications = new Table("Wilderness Chase Complications", "Complication", Data.Rolls_String.d100, "", Data.Titles.DMG, 254, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Your path takes you through a rough patch of brush. Make a DC 10 Strength (Athletics) or Dexterity (Acrobatics) check (your choice) to get past the brush. On a failed check, the brush counts as 5 feet of difficult terrain."),
 				new TableRow(2, TableRow.NOVALUE, "Uneven ground threatens to slow your progress. Make a DC 10 Dexterity (Acrobatics) check to navigate the area. On a failed check, the ground coutns as 10 feet of difficult terrain."),
 				new TableRow(3, TableRow.NOVALUE, "You run through a swarm of insects (see the Monster Manual for game statistics, with the DM choosing whiever kind of insects makes the most sens). The swarm makes an opportunity attack against you (+3 to hit; 4d4 piercing damage on a hit)."),
@@ -2842,7 +2842,7 @@ namespace DungeonMasterHelper
 				new TableRow(11, 20, "No complication."),
 			});
 
-			public static readonly Table poisons = new Table("Poisons", "Item, Type, Price per Dose", Data.Rolls_String.d100, "", Data.Titles.DMG, 257, new TableRow[]{
+				public static readonly Table poisons = new Table("Poisons", "Item, Type, Price per Dose", Data.Rolls_String.d100, "", Data.Titles.DMG, 257, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Assassin's blood, Ingested, 150 gp"),
 				new TableRow(2, TableRow.NOVALUE, "Burnt othur fumes, Inhaled, 500 gp"),
 				new TableRow(3, TableRow.NOVALUE, "Carrion crawler mucus, Contact, 200 gp"),
@@ -2859,8 +2859,8 @@ namespace DungeonMasterHelper
 				new TableRow(14, TableRow.NOVALUE, "Wyvern poison, Injury, 1,200 gp"),
 			});
 
-			public static readonly Table poisons_descriptions = new Table("Poison Descriptions", "", Data.Rolls_String.d100, "", Data.Titles.DMG, 257, new TableRow[]
-			{
+				public static readonly Table poisons_descriptions = new Table("Poison Descriptions", "", Data.Rolls_String.d100, "", Data.Titles.DMG, 257, new TableRow[]
+				{
 				new TableRow(1, TableRow.NOVALUE, "Assassin's Blood (Ingested). A creature subjected to this poison must make a DC 10 Constitution saving throw. On a failed save, it takes 6 (1d12) poison damage and is poisoned for 24 hours. On a successful save, the creature takes half damage and isn't poisoned."),
 				new TableRow(2, TableRow.NOVALUE, "Burnt Othur Fumes (Inhaled). A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or take 10 (3d6) poison damage, and must repeat the saving throw at the start of each of its turns. On each successive failed save, the character takes 3 (1d6) poison damage. After three successful saves, the poison ends."),
 				new TableRow(3, TableRow.NOVALUE, "Carrion Crawler Mucus (Contact). This poison must be harvested from a dead or incapacitated carrion crawler. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be poisoned for 1 minute. The poisoned creature is paralyzed. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."),
@@ -2875,9 +2875,9 @@ namespace DungeonMasterHelper
 				new TableRow(12, TableRow.NOVALUE, "Torpor (Ingested). A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become poisoned for 4d6 hours. The poisoned creature is incapacitated."),
 				new TableRow(13, TableRow.NOVALUE, "Truth Serum (Ingested). A creature subjected to this poison must succeed on a DC 11 Constitution saving throw or become poisoned for 1 hour. The poisoned creature can't knowingly speak a lie, as if under the effect of a zone of truth spell."),
 				new TableRow(14, TableRow.NOVALUE, "Wyvern Poison (Injury). This poison must be harvested form a dead or incapacitated wyvern. A creature subjected to this poison must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."),
-			});
+				});
 
-			public static readonly Table short_term_madness = new Table("Short-Term Madness", "Effect (lasts 1d10 mnutes)", Data.Rolls_String.d100, "", Data.Titles.DMG, 259, new TableRow[]{
+				public static readonly Table short_term_madness = new Table("Short-Term Madness", "Effect (lasts 1d10 mnutes)", Data.Rolls_String.d100, "", Data.Titles.DMG, 259, new TableRow[]{
 				new TableRow(1, 20, "The character retreats into his or her mind and becomes paralyzed. The effect ends if the character takes any damage."),
 				new TableRow(21, 30, "The character becomes incapacitated and spends the duration screaming, laughing or weeping."),
 				new TableRow(31, 40, "The character becomes frightened and must use his or her action and movement each round to flee from the source of hte fear."),
@@ -2890,7 +2890,7 @@ namespace DungeonMasterHelper
 				new TableRow(91, 100, "The character falls unconscious."),
 			});
 
-			public static readonly Table long_term_madness = new Table("Long-Term Madness", "Effect (lasts 1d10 x 10 hours)", Data.Rolls_String.d100, "", Data.Titles.DMG, 260, new TableRow[]{
+				public static readonly Table long_term_madness = new Table("Long-Term Madness", "Effect (lasts 1d10 x 10 hours)", Data.Rolls_String.d100, "", Data.Titles.DMG, 260, new TableRow[]{
 				new TableRow(1, 10, "The character feels compelled to repeat a specific activity over and over, such as washing hands, touching things, praying, or counting coins."),
 				new TableRow(11, 20, "The character experiences vivid hallucinations and has disadvantage on ability checks."),
 				new TableRow(21, 30, "The character suffers extreme paranoia. The character has disadvantage on Wisdom and Charisma checks."),
@@ -2905,7 +2905,7 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "The character falls unconscious. No amount of jostling or damage can wake the character."),
 			});
 
-			public static readonly Table indefinite_madness = new Table("Indefinite Madness", "Flaw (lasts until cured)", Data.Rolls_String.d100, "", Data.Titles.DMG, 260, new TableRow[]{
+				public static readonly Table indefinite_madness = new Table("Indefinite Madness", "Flaw (lasts until cured)", Data.Rolls_String.d100, "", Data.Titles.DMG, 260, new TableRow[]{
 				new TableRow(1, 15, "Beng drunk keeps me sane."),
 				new TableRow(16, 25, "I keep whatever I find."),
 				new TableRow(26, 30, "I try to become more like someone else I know -- adopting his or her style of dress, mannerisms, and name."),
@@ -2920,22 +2920,22 @@ namespace DungeonMasterHelper
 				new TableRow(96, 100, "I've discovered that I really like killing people."),
 			});
 
-			public static string getShortTermMadnessDuration()
-			{
-				return roll(1, 10).ToString() + " minutes";
+				public static string getShortTermMadnessDuration()
+				{
+					return roll(1, 10).ToString() + " minutes";
+				}
+
+				public static string getLongTermMadnessDuration()
+				{
+					return (roll(1, 10) * 10).ToString() + " hours";
+				}
+
 			}
 
-			public static string getLongTermMadnessDuration()
+			// Chapter 9
+			public static class DungeonMastersWorkshop
 			{
-				return (roll(1, 10) * 10).ToString() + " hours";
-			}
-
-		}
-
-		// Chapter 9
-		public static class DungeonMastersWorkshop
-		{
-			public static readonly Table lingering_injuries = new Table("Lingering Injuries", "Injury", Data.Rolls_String.d20, "", Data.Titles.DMG, 272, new TableRow[]{
+				public static readonly Table lingering_injuries = new Table("Lingering Injuries", "Injury", Data.Rolls_String.d20, "", Data.Titles.DMG, 272, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "Lose an Eye. You have disadvantage on Wisdom (Perception) checks that rely on sight and on ranged attack rolls. Magic such as the regenerate spell can restore the lost eye. If you have no eyes left after sustaining this injury, you're blinded."),
 				new TableRow(2, TableRow.NOVALUE, "Lose an Arm or a Hand. You can no longer hold anything with two hands, and you can hold only a single object at a time. Magic such as the regenerate spell can restore the lost appendage."),
 				new TableRow(3, TableRow.NOVALUE, "Lose a Foot or Leg. Your speed on foot is halved, and you must use a cane or crutch to move unless you have a peg leg or other prosthesis. You fall prone after using the Dash action. You have disadvantage on Dexterity checks made to balance. Magic such as the regenerate spell can restore the lost appendage."),
@@ -2947,15 +2947,14 @@ namespace DungeonMasterHelper
 				new TableRow(17, 20, "Minor Scar. The scar doesn't have any adverse effect. Magical healing of 6th level or higher, such as heal and regenerate, removes the scar."),
 			});
 
-			public static readonly Table system_shock = new Table("System Shock", "Effect", Data.Rolls_String.d10, "", Data.Titles.DMG, 272, new TableRow[]{
+				public static readonly Table system_shock = new Table("System Shock", "Effect", Data.Rolls_String.d10, "", Data.Titles.DMG, 272, new TableRow[]{
 				new TableRow(1, TableRow.NOVALUE, "The creature drops to 0 hit points."),
 				new TableRow(2, 3, "The creature drops to 0 hit points but is stable."),
 				new TableRow(4, 5, "The creature is stunned until the end of its next turn."),
 				new TableRow(6, 7, "The creature can't take reactions and has disadvantage on attack rolls and ability checks until the end of its next turn."),
 				new TableRow(8, 10, "The creature can't take reactions until the end of its next turn."),
 			});
+			}
 		}
-
-		#endregion DMG
 	}
 }

@@ -17,6 +17,9 @@ namespace DungeonMasterHelper
 
 	public static partial class Data
 	{
-		
+		public static class PHB
+		{
+
+		}
 	}
 }

@@ -8,7 +8,6 @@ namespace DungeonMasterHelper
 {
 	public class TableRow
 	{
-		public static readonly int EMPTY = -1;
 		public static readonly int NOVALUE = -1;
 		private readonly int minRoll, maxRoll;
 		private readonly string entry;
@@ -62,7 +61,7 @@ namespace DungeonMasterHelper
 
 			res += minRoll.ToString();
 
-			if (maxRoll != EMPTY)
+			if (maxRoll != NOVALUE)
 			{
 				res += "-";
 				if (maxRoll < 10)

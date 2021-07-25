@@ -20,11 +20,11 @@ namespace DungeonMasterHelper
 
             // TODO: make name table, make race table, make race age range generator
 
-            appearanceRTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_appearance);
-            mannerismTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_mannerisms);
-            interactionsTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_interaction_traits);
-            abilitiesHighTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_high_abilities);
-            abilitiesLowTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_low_abilities);
+            appearanceRTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_appearance);
+            mannerismTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_mannerisms);
+            interactionsTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_interaction_traits);
+            abilitiesHighTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_high_abilities);
+            abilitiesLowTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_low_abilities);
 
 			// save the name of the high and low abilities, and make sure we don't have 
 			// duplicates
@@ -33,16 +33,16 @@ namespace DungeonMasterHelper
 
 			while(hstr == lstr)
 			{
-				abilitiesLowTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_low_abilities);
+				abilitiesLowTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_low_abilities);
 
 				lstr = abilitiesLowTB.Text.Substring(0, abilitiesLowTB.Text.IndexOf('-'));
 			}
 
-            talentTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_talents);
-			idealTB.Text = Data.NPC.getNPCIdeals();
+            talentTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_talents);
+			idealTB.Text = Data.DMG.NPC.getNPCIdeals();
 
-			bondTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_bonds);
-            flawSecretRTB.Text = Data.getSingleRandomFrom(Data.NPC.npc_flaws_and_secrets);
+			bondTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_bonds);
+            flawSecretRTB.Text = Data.getSingleRandomFrom(Data.DMG.NPC.npc_flaws_and_secrets);
 
 			raceTB.Text = Data.getRaceVanillaOnly();
         }

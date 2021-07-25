@@ -144,7 +144,7 @@ namespace DungeonMasterHelper
 
 				if (start >= i)
 				{
-					list.Add(new TableRow(start, TableRow.EMPTY, entry));
+					list.Add(new TableRow(start, TableRow.NOVALUE, entry));
 				}
 				else
 				{
@@ -190,7 +190,7 @@ namespace DungeonMasterHelper
 
 				if (start >= i)
 				{
-					list.Add(new TableRow(start, TableRow.EMPTY, entry + otherEntries));
+					list.Add(new TableRow(start, TableRow.NOVALUE, entry + otherEntries));
 				}
 				else
 				{

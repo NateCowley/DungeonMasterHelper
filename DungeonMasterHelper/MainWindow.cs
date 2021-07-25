@@ -26,7 +26,7 @@ namespace DungeonMasterHelper
 		{
 			//Data.showTable(Data.World.cataclysmic_distasters);
 			//MessageBox.Show(Data.getMultipleRandomFrom(4, Data.Treasure.magic_item_table_a));
-			Data.Treasure.magic_item_table_d.ShowTable();
+			Data.DMG.Treasure.magic_item_table_d.ShowTable();
 		}
 
 		private void button3_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace DungeonMasterHelper
 		private void button4_Click(object sender, EventArgs e)
 		{
 
-			MessageBox.Show(Data.Multiverse.getEtherCyclone());
+			MessageBox.Show(Data.DMG.Multiverse.getEtherCyclone());
 			/*
 			string[] valuesOfTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\tables.txt");
 			string[] valuesOfDoubleTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\doubletables.txt");
@@ -114,12 +114,12 @@ namespace DungeonMasterHelper
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			Data.Treasure.magic_item_table_b.ShowTable();
+			Data.DMG.Treasure.magic_item_table_b.ShowTable();
 		}
 
 		private void button6_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(Data.Treasure.magic_item_table_b.rollOnTable());
+			MessageBox.Show(Data.DMG.Treasure.magic_item_table_b.rollOnTable());
 		}
 	}
 }
