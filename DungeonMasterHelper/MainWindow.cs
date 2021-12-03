@@ -57,7 +57,7 @@ namespace DungeonMasterHelper
 		private void button4_Click(object sender, EventArgs e)
 		{
 
-			MessageBox.Show(Data.DMG.Multiverse.getEtherCyclone());
+			MessageBox.Show(RandomGenerators.craftStore());
 			/*
 			string[] valuesOfTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\tables.txt");
 			string[] valuesOfDoubleTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\doubletables.txt");

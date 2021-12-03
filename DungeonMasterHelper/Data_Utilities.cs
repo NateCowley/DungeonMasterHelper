@@ -23,9 +23,14 @@ namespace DungeonMasterHelper
 
 		public static readonly bool INDEVELOPMENT = true;
 
-		private static string lowerFirstLetter(string str)
+		public static string lowerFirstLetter(string str)
 		{
 			return str.Substring(0, 1).ToLower() + str.Substring(1);
+		}
+
+		public static string upperFirstLetter(string str)
+		{
+			return str.Substring(0, 1).ToUpper() + str.Substring(1);
 		}
 
 		/// <summary>
