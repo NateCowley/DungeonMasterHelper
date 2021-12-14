@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "dda92654-12dc-4c13-af1d-131c7d06a6a2": {
+      "ProjectGuid": "dda92654-12dc-4c13-af1d-131c7d06a6a2",
+      "DisplayName": "DungeonMasterHelper",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

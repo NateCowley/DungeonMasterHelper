@@ -545,13 +545,267 @@ namespace DungeonMasterHelper
 			return name + " " + name2 + " " + name3 + " " + name4;
 		}
 
-		public static string craftStore()
-		{
-			string[] nm1 = { "A Change of Art", "A Cool Thread", "A Flair Deal", "A Stitch in Time", "A Wood Deal", "Air of Flair", "All's Flair", "And Sew Forth", "And Sew On", "Any Stitch Way", "Apothecrafty", "Art Beats", "Art Cookie", "Art From Scratch", "Art Tea", "Art Ways", "Art a la Carte", "Art and Parcel", "Art of Gold", "Art of the Furniture", "Artsy Fartsy", "Be Sew Bold", "Bear With Flair", "Beautique", "Beauty Embroidified", "By Design", "Care With Flair", "Care to Flair", "Celecreation", "Couture Gifts", "Craft Crazy", "Craft Fever", "Craft Machine", "Craftastical", "Crafter Hours", "Crafter-Noon Delights", "Crafterina", "Crafterpeneur", "Crafting Creativity", "Craftopia", "Crafts Foundry", "Craftworks", "Crafty Pleasures", "Create Mate", "Create Parade", "Created Comforts", "Creative Beat", "Creative Crafts", "Creative Creature", "Creative Motions", "Creative Scene", "Creative Splash", "Critter Crafts", "Critter Knitter", "Curio Crafts", "Cute as a Button", "Daily Thread", "Dangly Knits", "Definitely Knot", "Destined to Design", "Doodlecrafts", "Draft to Craft", "Dreamcrafts", "Etched On My Art", "Every Knit As Good", "Fab Fabrics", "Fabric Antics", "Fabric Magic", "First Create", "Flair Play", "Flair is Fair", "Flair to Share", "Flair to Spare", "Flights of Fancy", "Flying Art", "For Art's Sake", "For Keep's Sake", "For the Most Art", "From the Art", "Full Seam Ahead", "Giftsakes", "Go With the Sew", "Handy Craft", "Handy Handmades", "Handy Hands", "Happily Ever Crafter", "Happy Designs", "Heart in Art", "Heart to Home", "Heavenly Handmade", "Hot Threads", "I Got Crafts", "I Sew It", "In Good Hands", "In Stitches", "In These Arts", "In a Stitch", "Itching for Stitching", "Knit Fit", "Knit Knot", "Knit Picks", "Knit Wit", "Knit by Knit", "Knit for the Gods", "Knitter Critter", "Knot Always", "Knot Done", "Knot Impossible", "Knot Lost", "Knot a Bit", "Knotty Knitters", "Make, Believe", "Many Hands", "My Flair Lady", "Near to My Art", "Needle in a Haystack", "Nightcrafts", "No Haste, No Waste", "Of the Arts", "One Little Knit", "Out of the Box", "Piece of My Art", "Pieces of Art", "Pocket Crafts", "Pulse Art", "Right From the Art", "Robin Wood", "Seam Come True", "Seam On", "Seam With Pride", "Seam World", "Seam's Right", "Sew Crafty", "Sew Flow", "Sew It Goes", "Sew It Happens", "Sew Loveley", "Sew Pretty", "Sew Sinful", "Sew Solutions", "Sew and Saw", "Sew and Sell", "Sew and Sew", "Sew of Hands", "Sew the Story Goes", "Sewley", "Sinful Soaps", "Smart Art", "Snip Snap", "So Far, Sew Good", "Spun Fun", "State of Create", "Stensability", "Stitch Away", "Stitch Itch", "Stitch-Perfect", "Sum of my Arts", "Sweet Craftations", "Sweet Scents", "Sweet Seams", "Textile Aisle", "Textile Smile", "Textile Style", "Textilophile", "That's Sew Creative", "The Art Bard", "The Art Box", "The Art Cart", "The Big Ball of Yarn", "The Craft Circus", "The Craft Crustacean", "The Craft Draft", "The Craft Room", "The Craft Zone", "The Flair Bear", "The Flair Lair", "The Flairy", "The More You Bow", "The Needle 'n Thread", "The Seam Dream", "The Seam Theme", "The Sew Show", "The Sewing Room", "The Stitch Kettle", "The Stitch Witch", "The Thread 'n Needle", "The Unique Boutique", "Thread and Buttons", "Thread of Roses", "Threaded Needle", "Tins and Needles", "To Be Flair", "True Knit", "Whimsical Woods", "Whole Knit and Caboodle", "Wildest Seams", "Wood That I Could", "Would Craft", "You Craft What You Sew", "You Imbued" };
+		public static string creatureDescription()
+        {
+			string[] names0 = { " and rare", " and incredibily rare", " and nearly extinct", ", but common", ", but very common", " and uncommon", " and seldom seen", ", but extremely common", ", but fairly common", ", but often seen" };
+			string[] names1 = { "adorable", "amazing", "amusing", "astonishing", "beautiful", "bizarre", "captivating", "charming", "clever", "curious", "delightful", "fierce", "funny", "incredible", "lovely", "odd", "special", "strange", "unusual", "weird" };
+			string[] names2 = { "mammal", "aquatic mammal", "amphibian", "reptile", "fish", "invertebrate", "bird" };
+			string[] names3 = { " bear", " cat", " cow", " deer", " dog", "n elephant", " fox", " goat", " hippo", " horse", " human", " leopard", " lion", " mouse", " pig", " rabbit", " rat", " rhino", " tiger", " wolf" };
+			string[] names4a = { "two legs and two arms", "two legs and four arms", "four legs", "six legs", "two legs and two arms", "four legs", "six legs", "four legs and two arms", "four legs and two arms" };
+			string[] names4b = { "" };
+			string[] names4c = { ", but they have no tail", ", but they have no tail", ", but they have no tail", ", but they have no tail", ", but they have no tail", ", but they have no tail", " and a long, curling tail", " and a long, fluffy tail", " and a long, muscular tail", " and a long, ribbon-like tail", " and a long, strong and agile tail", " and a long, strong tail", " and a long, thick tail", " and a long, thin tail", " and a long, weak tail", " and a short, curly tail", " and a short, fluffy tail", " and a short, muscular tail", " and a short, strong tail", " and a short, stubby tail", " and a short, thick tail", " and a short, thin tail", " and a short, weak tail", " and a thick, flat tail", " and remnants of what was once a tail" };
+			string[] names5 = { "soft, but strong skin", "thick, strong skin", "soft, delicate skin", "thick, rough skin", "thin, rough skin", "thin, delicate skin", "thick, smooth skin", "soft, smooth skin", "thin, but strong skin", "thick, but delicate skin" };
+			string[] names6 = { "covered in thick, soft fur", "covered in thick, coarse fur", "covered in thin, soft fur", "covered in thin, coarse fur", "covered in thick, fluffy fur", "covered in thin, fluffy fur", "covered in short, soft fur", "covered in long, soft fur", "covered in long, fluffy fur", "covered in short, fluffy fur", "covered in short, coarse hairs", "covered in short, soft hairs", "covered in long, coarse hairs", "covered in long, soft hairs", "covered in thick, soft hairs", "covered in thick, coarse hairs", "covered in thin, soft hairs", "covered in thin, coarse hairs" };
+			string[] names7a = { "black", "blue", "bronze", "brown", "gold", "grey", "orange", "pink", "purple", "red", "silver", "white", "yellow", "dark blue", "dark bronze", "dark brown", "dark gold", "dark grey", "dark orange", "dark pink", "dark purple", "dark red", "dark silver", "dark yellow", "light blue", "light bronze", "light brown", "light gold", "light grey", "light orange", "light pink", "light purple", "light red", "light silver", "light yellow" };
+			string[] names7b = { ", black", ", blue", ", bronze", ", brown", ", gold", ", grey", ", orange", ", pink", ", purple", ", red", ", silver", ", white", ", yellow", ", dark blue", ", dark bronze", ", dark brown", ", dark gold", ", dark grey", ", dark orange", ", dark pink", ", dark purple", ", dark red", ", dark silver", ", dark yellow", ", light blue", ", light bronze", ", light brown", ", light gold", ", light grey", ", light orange", ", light pink", ", light purple", ", light red", ", light silver", ", light yellow", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+			string[] names7c = { ", black", ", blue", ", bronze", ", brown", ", gold", ", grey", ", orange", ", pink", ", purple", ", red", ", silver", ", white", ", yellow", ", dark blue", ", dark bronze", ", dark brown", ", dark gold", ", dark grey", ", dark orange", ", dark pink", ", dark purple", ", dark red", ", dark silver", ", dark yellow", ", light blue", ", light bronze", ", light brown", ", light gold", ", light grey", ", light orange", ", light pink", ", light purple", ", light red", ", light silver", ", light yellow", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+			string[] names7d = { " or black", " or blue", " or bronze", " or brown", " or gold", " or grey", " or orange", " or pink", " or purple", " or red", " or silver", " or white", " or yellow", " or dark blue", " or dark bronze", " or dark brown", " or dark gold", " or dark grey", " or dark orange", " or dark pink", " or dark purple", " or dark red", " or dark silver", " or dark yellow", " or light blue", " or light bronze", " or light brown", " or light gold", " or light grey", " or light orange", " or light pink", " or light purple", " or light red", " or light silver", " or light yellow" };
+			string[] names8 = { "barren areas", "cold areas", "darker areas", "forested areas", "frozen areas", "high areas", "hot areas", "humid areas", "low areas", "marshy areas", "moist areas", "mountainous areas", "open areas", "quiet areas", "rainy areas", "snowy areas", "temperate areas", "warm areas", "wet areas", "wintry areas" };
+			string[] names9 = { "common", "extremely common", "extremely rare", "fairly common", "fairly rare", "quite common", "quite rare", "rare", "relatively common", "relatively rare" };
+			string[] names10 = { "herbivores", "carnivores", "omnivores" };
+			string[] names11 = { "relatively small", "relatively large", "fairly small", "fairly large", "small, long", "large, long", "small, thin", "large, wide", "small, narrow", "long, narrow" };
+			string names11a = "mouths, their teeth";
+			string[] names12 = { "long", "short", "wide", "narrow", "rough" };
+			string[] names13 = { "grasses", "berries", "fruits", "nuts", "flowers", "plants", "leaves", "insects", "fish", "smaller creatures", "larger creatures", "mushrooms", "creatures" };
+			string[] names14 = { "nocturnal", "diurnal", "crepuscular" };
+			string[] names15 = { "sight", "sense of smell", "hearing", "taste buds", "extra sense" };
+			string[] names16 = { "large, round eyes", "thin, narrow eyes", "small, slanted eyes", "small, round eyes", "small, beady eyes", "small, elliptic eyes", "large, elliptic eyes", "large, slanted eyes", "odd, but interesting eyes", "gorgeous eyes" };
+			string[] names17 = { "not that great", "not very reliable", "not impressive", "a bit poor", "not too great", "lacking", "underdeveloped", "relatively poor" };
+			string[] names18 = { "huge noses", "small noses", "wide noses", "long noses", "enormous noses", "thin noses", "an almost hidden nose", "a lack of a visible nose", "tiny noses", "narrow noses" };
+			string[] names19 = { "enormous ears", "huge, flappy ears", "huge, hanging ears", "large, bended ears", "large, hanging ears", "large, round ears", "large, standing ears", "long, pointy ears", "short, flappy ears", "short, pointy ears", "small, bended ears", "small, hanging ears", "small, round ears", "small, standing ears", "tiny, almost hidden ears" };
+			string[] names20 = { "relatively small", "relatively large", "fairly small", "fairly large", "small and long", "large and long", "small and thin", "large and wide", "small and narrow", "long and narrow" };
+			string[] names21 = { "extremely high pitched", "very high pitched", "high pitched", "fairly high pitched", "relatively high pitched", "relatively low pitched", "fairly low pitched", "low pitched", "very low pitched", "extremely low pitched" };
+			string[] names22 = { "extremely large", "extremely limited", "fairly limited", "fairly small", "fairly wide", "huge", "large", "limited", "small", "very limited", "very small", "wide" };
+			string[] names23 = { "aggressive", "bold", "fairly violent", "invasive", "quite forceful", "quite frenzied", "quite intrusive", "quite nervous", "very aggressive", "very violent", "very peaceful", "calm", "fairly calm", "very calm", "very gentle", "very timid", "quite timid", "timid", "mild mannered", "gentle" };
+			string names23b = ", but ";
+			string[] names24 = { "they're very territorial.", "they get very territorial.", "they heavily defend their personal space.", "they'll fiercely defend their territory.", "they're quite territorial.", "they'll defend their territory strongly.", "their territory is well defended.", "they can get quite territorial.", "they're territorial in terms of personal space.", "their personal space is fiercely defended.", "they're not very territorial.", "they're not territorial at all.", "they won't defend their territory much.", "they tend to let their territory be taken be stronger creatures.", "they're not one to defend their territory.", "they're not keen on defending their personal space.", "they minimize conflict and thus aren't very territorial.", "they have no real territory and wish to avoid conflicts.", "they travel a lot and thus have no real territory nor urges to defend it.", "their nomadic lifestyle has made them placid in terms of defending territory." };
+			string[] names25 = { "once a year", "twice a year", "once every two years", "once every 18 months", "once every three years", "twice to three times a year", "once or twice a year", "once every nine to ten months", "once every five years", "once every four years" };
+			string[] names26 = { "mate and bond with a single partner for life", "mate with just 1 partner for life", "mate and bond with a select few partners for life", "mate and bond with one or two partners throughout life", "mate with multiple partners throughout life", "mate with one or two partners throughout life", "mate with a select few partners throughout life", "mate with a specificly selected partner for life", "mate with a select group of partners for life", "mate with a select few partners for life" };
+			string[] names27 = { "long lifepans", "incredibily long lifespans", "very long lifespans", "fairly long lifespans", "short lifespans", "fairly short lifespans", "very short lifespans", "unfortunately short lifespans" };
+			string[] names28 = { "is to be expected.", "isn't too surprising.", "is only normal.", "isn't out of the ordinary.", "isn't extraordinary.", "is quite common among other species as well." };
+
 			Random r = new Random();
 
-			return nm1[r.Next(nm1.Length)];
+			int random0 = r.Next() % names0.Length;
+			int random1 = r.Next() % names1.Length;
+			int random2 = r.Next() % names2.Length;
+
+			if (random2 == 1)
+			{
+				names3 = new string[] { " seal", " dolphin", "n orca", " minke whale", " blue whale", " fin whale", " humpback whale", " great white shark", " narwhal", " reef shark", " manta ray", " tuna", " squid", " salmon", " carp", " trout", " piranha", " goldfish", " bass", "n eel", " catfish", " pike", " small shark", " parrotfish", " young tuna" };
+				names4a = new string[] { "two large flippers", "two small flippers", "two large flippers", "two small flippers", "four large flippers", "four small flippers", "two strong side fins", "four strong side fins", "two side fins", "four side fins", "two large side fins", "four large side fins", "two powerful side fins", "four powerful side fins", "two huge side fins", "four huge side fins" };
+				names4b = new string[] { ", a huge dorsal fin", ", a small dorsal fin", ", a thick, long dorsal fin", ", a thin, long dorsal fin", ", a wide, sail-like dorsal fin", ", a ribbon-like dorsal fin", ", a long, ribbon-like dorsal fin", ", a short, ribbon-like dorsal fin", ", a huge, sail-like dorsal fin", ", a short, strong dorsal fin", ", a long, strong dorsal fin", ", a short, pointy dorsal fin", ", a long, pointy dorsal fin", ", a long, streamlined dorsal fin", ", a short, streamlined dorsal fin" };
+				names4c = new string[] { " and a huge, powerful tail", " and a huge, muscular tail", " and a large, muscular tail", " and a large, powerful tail", " and a short, muscular tail", " and a long, powerful tail", " and a short, powerful tail", " and a long, muscular tail", " and a huge, powerful tail", " and a huge, muscular tail", " and a large, muscular tail", " and a large, powerful tail", " and a short, muscular tail", " and a long, powerful tail", " and a short, powerful tail", " and a long, muscular tail" };
+				names6 = new string[] { "" };
+				names8 = new string[] { "deep waters", "relatively shallow waters", "coastal areas", "the depths of the ocean", "the depths of the seas", "large lakes", "rivers", "large rivers", "lakes", "the entire ocean as they migrate" };
+				names19 = new string[] { "virtually no visible ears", "no visible ears", "pretty much no visible ears", "short, flappy ears", "short, pointy ears", "small, bended ears", "small, hanging ears", "small, round ears", "small, standing ears", "tiny, almost hidden ears" };
+			}
+			else if (random2 == 2)
+			{
+				names3 = new string[] { " toad", " tree frog", " salamander", "n anaconda", "n earthworm", " gecko", " chameleon", " newt", " frog", " cobra", " komodo dragon", " viper", " coral snake", " python", " Chinese giant salamander" };
+				names4a = new string[] { "four legs", "four legs and two arms", "no legs or arms, like a snake", "six legs", "two legs and two arms" };
+				names4c = new string[] { ", but they have no tail", " and a huge, powerful tail", " and a long, muscular tail", " and a long, powerful tail", " and a long, strong and agile tail", " and a long, strong tail", " and a long, thick tail", " and a long, thin tail", " and a long, useless tail", " and a long, weak tail", " and a short, muscular tail", " and a short, powerful tail", " and a short, strong tail", " and a short, stubby tail", " and a short, thick tail", " and a short, thin tail", " and a short, useless tail", " and a short, weak tail", " and a thick, powerful tail", " and remnants of what was once a tail" };
+				names6 = new string[] { " covered in a thin layer of mucous,", " covered in a thick layer of mucous,", " covered in a very thin layer of mucous,", " covered in a very thick layer of mucous,", " covered lightly in mucous,", " covered in nothing but small scales,", " covered in nothing but large scales,", ", ", ", ", ", " };
+				names19 = new string[] { "virtually no visible ears", "no visible ears", "pretty much no visible ears", "short, pointy ears", "small, bended ears", "small, hanging ears", "small, round ears", "small, standing ears", "tiny, almost hidden ears" };
+				names25 = new string[] { "once a year", "twice a year", "once every two years", "once every 18 months", "once every three years", "twice to three times a year", "once or twice a year", "once every three to four months", "four times a year", "three times a year" };
+			}
+			else if (random2 == 3)
+			{
+				names3 = new string[] { " boa", " chameleon", " cobra", " crocodile", " diplodocus", " frog", " gecko", " komodo dragon", " newt", " python", " salamander", " sea turtle", " stegosaurus", " t-rex", " tortoise", " triceratops", " velociraptor", " viper", "n alligator", "n anaconda" };
+				names4a = new string[] { "four legs", "four legs and two arms", "no legs or arms, like a snake", "six legs", "two legs and two arms" };
+				names4c = new string[] { ", but they have no tail", " and a huge, powerful tail", " and a long, muscular tail", " and a long, powerful tail", " and a long, strong and agile tail", " and a long, strong tail", " and a long, thick tail", " and a long, thin tail", " and a long, useless tail", " and a long, weak tail", " and a short, muscular tail", " and a short, powerful tail", " and a short, strong tail", " and a short, stubby tail", " and a short, thick tail", " and a short, thin tail", " and a short, useless tail", " and a short, weak tail", " and a thick, powerful tail", " and remnants of what was once a tail" };
+				names6 = new string[] { " covered in thin, coarse scales,", " covered in large, coarse scales,", " covered in large, smooth scales,", " covered in large, strong scales,", " covered in small, coarse scales,", " covered in small, smooth scales,", " covered in small, strong scales,", " covered in strong, hard scales,", " covered in thick, coarse scales,", " covered in thick, strong scales," };
+				names8 = new string[] { "barren areas", "darker areas", "forested areas", "high areas", "hot areas", "humid areas", "low areas", "marshy areas", "moist areas", "mountainous areas", "open areas", "quiet areas", "rainy areas", "temperate areas", "warm areas", "wet areas" };
+				names18 = new string[] { "small noses", "wide noses", "long noses", "thin noses", "almost hidden noses", "lack of a visible nose", "tiny noses", "narrow noses" };
+				names19 = new string[] { "virtually no visible ears", "no visible ears", "pretty much no visible ears", "short, pointy ears", "small, bended ears", "small, hanging ears", "small, round ears", "small, standing ears", "tiny, almost hidden ears" };
+				names25 = new string[] { "once a year", "twice a year", "once every two years", "once every 18 months", "once every three years", "twice to three times a year", "once or twice a year", "once every three to four months", "four times a year", "three times a year" };
+			}
+			else if (random2 == 4)
+			{
+				names3 = new string[] { " seal", " dolphin", "n orca", " minke whale", " blue whale", " fin whale", " humpback whale", " great white shark", " narwhal", " reef shark", " manta ray", " tuna", " squid", " salmon", " carp", " trout", " piranha", " goldfish", " bass", "n eel", " catfish", " pike", " small shark", " parrotfish", " young tuna", " pufferfish", " clownfish", " triggerfish", " guppy", " discus fish", " lionfish" };
+				names4a = new string[] { "two strong side fins", "four strong side fins", "two side fins", "four side fins", "two large side fins", "four large side fins", "two powerful side fins", "four powerful side fins", "two huge side fins", "four huge side fins" };
+				names4b = new string[] { ", a huge dorsal fin", ", a small dorsal fin", ", a thick, long dorsal fin", ", a thin, long dorsal fin", ", a wide, sail-like dorsal fin", ", a ribbon-like dorsal fin", ", a long, ribbon-like dorsal fin", ", a short, ribbon-like dorsal fin", ", a huge, sail-like dorsal fin", ", a short, strong dorsal fin", ", a long, strong dorsal fin", ", a short, pointy dorsal fin", ", a long, pointy dorsal fin", ", a long, streamlined dorsal fin", ", a short, streamlined dorsal fin" };
+				names4c = new string[] { " and a huge, powerful tail and small anal fin", " and a huge, muscular tail and small anal fin", " and a large, muscular tail and small anal fin", " and a large, powerful tail and small anal fin", " and a short, muscular tail and small anal fin", " and a long, powerful tail and small anal fin", " and a short, powerful tail and small anal fin", " and a long, muscular tail and small anal fin", " and a huge, powerful tail and small anal fin", " and a huge, muscular tail and long anal fin", " and a large, muscular tail and long anal fin", " and a large, powerful tail and long anal fin", " and a short, muscular tail and long anal fin", " and a long, powerful tail and long anal fin", " and a short, powerful tail and long anal fin", " and a long, muscular tail and long anal fin" };
+				names6 = new string[] { " covered in thin, coarse scales,", " covered in large, coarse scales,", " covered in large, smooth scales,", " covered in large, strong scales,", " covered in small, coarse scales,", " covered in small, smooth scales,", " covered in small, strong scales,", " covered in strong, hard scales,", " covered in thick, coarse scales,", " covered in thick, strong scales," };
+				names8 = new string[] { "deep waters", "relatively shallow waters", "coastal areas", "the depths of the ocean", "the depths of the seas", "large lakes", "rivers", "large rivers", "lakes", "the entire ocean as they migrate" };
+				names11a = "mouths";
+				names18 = new string[] { "small noses", "wide noses", "long noses", "thin noses", "almost hidden noses", "lack of a visible nose", "tiny noses", "narrow noses" };
+				names19 = new string[] { "virtually no visible ears", "no visible ears", "pretty much no visible ears", "tiny, almost hidden ears" };
+				names25 = new string[] { "once a year", "twice a year", "once every two years", "once every 18 months", "once every three years", "twice to three times a year", "once or twice a year", "once every three to four months", "four times a year", "three times a year" };
+			}
+			else if (random2 == 5)
+			{
+				names3 = new string[] { " lobster", " hermite crab", " king crab", " squid", " mosquito", " fly", " fruitfly", "n octopus", " bee", " wasp", " shrimp", " crayfish", " flea", " prawn", " giant squid" };
+				names4a = new string[] { "eight legs", "eight tentacles", "four clawed arms, four legs", "four legs", "four tentacles, four legs", "four tentacles, six legs", "four tentacles, two clawed arms", "four tentacles, two legs", "four winged arms, four legs", "four winged arms, six legs", "four winged arms, two legs", "four wings, four legs", "four wings, six legs", "four wings, two legs", "six legs", "six tentacles", "two clawed arms, four legs", "two clawed arms, six legs", "two clawed arms, two legs", "two legs, two arms", "two tentacles, four legs", "two tentacles, six legs", "two tentacles, two clawed arms", "two tentacles, two legs", "two winged arms, four legs", "two winged arms, six legs", "two winged arms, two legs", "two wings, four legs", "two wings, six legs", "two wings, two legs" };
+				names4c = new string[] { ", but they have no tail", " and a huge, powerful tail", " and a long, muscular tail", " and a long, powerful tail", " and a long, strong and agile tail", " and a long, strong tail", " and a long, thick tail", " and a long, thin tail", " and a long, useless tail", " and a long, weak tail", " and a short, muscular tail", " and a short, powerful tail", " and a short, strong tail", " and a short, stubby tail", " and a short, thick tail", " and a short, thin tail", " and a short, useless tail", " and a short, weak tail", " and a thick, powerful tail", " and remnants of what was once a tail" };
+				names5 = new string[] { "soft, but strong skin", "thick, strong skin", "soft, delicate skin", "thick, rough skin", "thin, rough skin", "thin, delicate skin", "thick, smooth skin", "soft, smooth skin", "thin, but strong skin", "thick, but delicate skin", "stong, armored skin", "thick, armored skin", "soft, armored skin", "thinly armored skin", "hard, armored skin" };
+				names6 = new string[] { "" };
+				names11a = "mouths";
+				names25 = new string[] { "once a year", "twice a year", "once every two years", "once every 18 months", "once every three years", "twice to three times a year", "once or twice a year", "once every three to four months", "four times a year", "three times a year" };
+			}
+			else if (random2 == 6)
+			{
+				names3 = new string[] { "n albatross", " chicken", " cockatoo", " condor", " crane", " crow", " dove", " duck", "n eagle", " falcon", " flamingo", " kiwi", "n owl", " macaw", "n ostrich", " peacock", " pelican", " penguin", " pigeon", " raven", " robin", " sparrow", " swan", " swift", " vulture" };
+				names4a = new string[] { "two huge wings", "four huge wings", "two huge, powerful wings", "four huge, powerful wings", "two huge and two smaller wings", "two enormous wings", "four enormous wings", "two large and four smaller wings", "four smaller wings", "two smaller wings" };
+				names4b = new string[] { ", two strong, clawed legs", ", two small, clawed legs", ", four strong, clawed legs", ", four small, clawed legs", ", two strong legs", ", four strong legs", ", two small legs", ", four small legs", ", two thin, long legs", ", two long, strong legs, " };
+				names4c = new string[] { " and a huge tail", " and a huge, wide tail", " and a huge, powerful tail", " and a long, powerful tail", " and a long, elegant tail", " and a short, elegant tail", " and a short, powerful tail", " and a wide, powerful tail", " and a wide, elegant tail", " and a short tail" };
+				names6 = new string[] { " covered in large feathers,", " covered in short feathers,", " covered in thick feathers,", " covered in thin feathers,", " covered in small, narrow feathers,", " covered in large, narrow feathers,", " covered in large, thin feathers,", " covered in large, wide feathers,", " covered in long, thin feathers,", " covered in long, wide feathers,", " covered in short, thin feathers,", " covered in short, wide feathers,", " covered in small feathers,", " covered in small, thin feathers,", " covered in small, wide feathers," };
+				names11 = new string[] { "" };
+				names11a = "beaks";
+				names18 = new string[] { "long beaks", "sharp beaks", "thin beaks", "short beaks", "huge beaks", "enormous beaks", "wide beaks", "thin, sharp beaks", "long, sharp beaks", "long, pointy beaks", "short, pointy beaks", "huge, pointy beaks", "huge, sharp beaks", "short, sharp beaks", "thin, pointy beaks" };
+				names19 = new string[] { "virtually no visible ears", "no visible ears", "pretty much no visible ears", "tiny, almost hidden ears" };
+			}
+
+			int random3 = r.Next() % names3.Length;
+			int random4a = r.Next() % names4a.Length;
+			int random4b = r.Next() % names4b.Length;
+			int random4c = r.Next() % names4c.Length;
+			int random5 = r.Next() % names5.Length;
+			int random6 = r.Next() % names6.Length;
+			int random7a = r.Next() % names7a.Length;
+			int random7b = r.Next() % names7b.Length;
+
+			while (random7b == random7a)
+			{
+				random7b = r.Next() % names7b.Length;
+			}
+
+			int random7c = r.Next() % names7c.Length;
+
+			while (random7c == random7a || random7c == random7b)
+			{
+				random7c = r.Next() % names7c.Length;
+			}
+
+			int random7d = r.Next() % names7c.Length;
+
+			while (random7d == random7a || random7d == random7b || random7d == random7c)
+			{
+				random7d = r.Next() % names7c.Length;
+			}
+
+			int random7e = r.Next() % names7d.Length;
+
+			while (random7e == random7a || random7e == random7b || random7e == random7c || random7e == random7d)
+			{
+				random7e = r.Next() % names7d.Length;
+			}
+
+			int random8 = r.Next() % names8.Length;
+			int random9 = r.Next() % names9.Length;
+			int random10 = r.Next() % names10.Length;
+
+			if (random10 == 0)
+			{
+				if (random2 == 1 || random2 == 4)
+				{
+					names13 = new string[] { "plants", "soft corals", "hard corals" };
+				}
+				else
+				{
+					names13 = new string[] { "grasses", "berries", "fruits", "nuts", "flowers", "plants", "leaves", "mushrooms" };
+				}
+			}
+			else if (random10 == 1)
+			{
+				if (random2 == 1 || random2 == 4)
+				{
+					names13 = new string[] { "fish", "smaller creatures", "larger creatures", "creatures", "crustaceans" };
+				}
+				else
+				{
+					names13 = new string[] { "insects", "fish", "smaller creatures", "larger creatures", "creatures" };
+				}
+			}
+			else if (random10 == 2)
+			{
+				if (random2 == 1 || random2 == 4)
+				{
+					names13 = new string[] { "fish", "smaller creatures", "larger creatures", "creatures", "crustaceans", "plants", "soft corals", "hard corals" };
+				}
+			}
+
+			int random11 = r.Next() % names11.Length;
+			int random12 = r.Next() % names12.Length;
+			int random13 = r.Next() % names13.Length;
+			int random14 = r.Next() % names14.Length;
+			int random15a = r.Next() % names15.Length;
+			int random15b = r.Next() % names15.Length;
+
+			while (random15b == random15a)
+			{
+				random15b = r.Next() % names15.Length;
+			}
+
+			int random16 = r.Next() % names16.Length;
+			int random17 = r.Next() % names17.Length;
+			int random18 = r.Next() % names18.Length;
+			int random19 = r.Next() % names19.Length;
+			int random20 = r.Next() % names20.Length;
+			string name4 = "";
+			string name5 = "";
+
+			if (random15a != 0 && random15b != 0)
+			{
+				name4 = "They're " + names14[random14] + " and rely on their " + names15[random15a] + " and " + names15[random15b] + " to get around. They do have " + names16[random16] + ", but their sight is " + names17[random17] + ".";
+				name5 = "They have " + names18[random18] + " and " + names19[random19] + ". Their heads are " + names20[random20] + " in comparison to their bodies.";
+			}
+			else if (random15a != 1 && random15b != 1)
+			{
+				name4 = "They're " + names14[random14] + " and rely on their " + names15[random15a] + " and " + names15[random15b] + " to get around. They do have " + names18[random18] + ", but their sense of smell is " + names17[random17] + ".";
+				name5 = "They have " + names16[random16] + " and " + names19[random19] + ". Their heads are " + names20[random20] + " in comparison to their bodies.";
+			}
+			else if (random15a != 2 && random15b != 2)
+			{
+				name4 = "They're " + names14[random14] + " and rely on their " + names15[random15a] + " and " + names15[random15b] + " to get around. They do have " + names19[random19] + ", but their hearing is " + names17[random17] + ".";
+				name5 = "They have " + names18[random18] + " and " + names16[random16] + ". Their heads are " + names20[random20] + " in comparison to their bodies.";
+			}
+			else if (random15a != 3 && random15b != 3)
+			{
+				name4 = "They're " + names14[random14] + " and rely on their " + names15[random15a] + " and " + names15[random15b] + " to get around. However, their taste buds are " + names17[random17] + ".";
+				name5 = "They have " + names16[random16] + ", " + names18[random18] + " and " + names19[random19] + ". Their heads are " + names20[random20] + " in comparison to their bodies.";
+			}
+			else if (random15a != 4 && random15b != 4)
+			{
+				name4 = "They're " + names14[random14] + " and rely on their " + names15[random15a] + " and " + names15[random15b] + " to get around. However, their other senses are " + names17[random17] + ".";
+				name5 = "They have " + names16[random16] + ", " + names18[random18] + " and " + names19[random19] + ". Their heads are " + names20[random20] + " in comparison to their bodies.";
+			}
+
+			int random21a = r.Next() % names21.Length;
+			int random21b = r.Next() % names21.Length;
+
+			while (random21b == random21a)
+			{
+				random21b = r.Next() % names21.Length;
+			}
+
+			int random22 = r.Next() % names22.Length;
+			int random23 = r.Next() % names23.Length;
+			int random24 = r.Next() % names24.Length;
+
+			if (random23 < 10 && random24 < 10 || random23 > 9 && random24 > 9)
+			{
+				names23b = " and ";
+			}
+			int random25 = r.Next() % names25.Length;
+			int random26 = r.Next() % names26.Length;
+			int random27 = r.Next() % names27.Length;
+			if (random27 < 4 && names26.Length < 4)
+			{
+				names28 = new string[]{ "is quite surprising.", "is just amazing.", "is beautiful in its own right.", "is something special indeed.", "is astonishing."};
+			}
+
+			int random28 = r.Next() % names28.Length;
+			string name = "This " + names1[random1] + names0[random0] + " creature is a type of " + names2[random2] + ". It's about the size of a" + names3[random3] + ", has " + names4a[random4a] + names4b[random4b] + names4c[random4c] + ".";
+			string name2 = "They have a " + names5[random5] + " " + names6[random6] + " which is usually either " + names7a[random7a] + names7b[random7b] + names7c[random7c] + names7c[random7d] + names7d[random7e] + " or a combination of these colors.";
+			string name3 = "They live in " + names8[random8] + " and are " + names9[random9] + ". They're " + names10[random10] + " and their " + names11[random11] + " " + names11a + " and " + names12[random12] + " tongue are ideal for eating " + names13[random13] + ".";
+			string name6 = "They make sounds ranging from " + names21[random21a] + " to " + names21[random21b] + " and have a " + names22[random22] + " range of sounds they make to indicate discoveries, dangers and otherwise communicate with each other.";
+			string name7 = "These creatures are " + names23[random23] + names23b + names24[random24] + " They mate " + names25[random25] + " and they " + names26[random26] + ". Which, with their " + names27[random27] + ", " + names28[random28];
+
+			return name + "\n" + name2 + "\n" + name3 + "\n" + name6 + "\n" + name7;
 		}
+
+
 
 		public static class Names
 		{
@@ -1055,6 +1309,29 @@ namespace DungeonMasterHelper
 						return nm3[rnd] + nm4[rnd3] + " " + nm2[rnd2];
 					}
 				}
+			}
+
+			public static string craftStore()
+			{
+				string[] nm1 = { "A Change of Art", "A Cool Thread", "A Flair Deal", "A Stitch in Time", "A Wood Deal", "Air of Flair", "All's Flair", "And Sew Forth", "And Sew On", "Any Stitch Way", "Apothecrafty", "Art Beats", "Art Cookie", "Art From Scratch", "Art Tea", "Art Ways", "Art a la Carte", "Art and Parcel", "Art of Gold", "Art of the Furniture", "Artsy Fartsy", "Be Sew Bold", "Bear With Flair", "Beautique", "Beauty Embroidified", "By Design", "Care With Flair", "Care to Flair", "Celecreation", "Couture Gifts", "Craft Crazy", "Craft Fever", "Craft Machine", "Craftastical", "Crafter Hours", "Crafter-Noon Delights", "Crafterina", "Crafterpeneur", "Crafting Creativity", "Craftopia", "Crafts Foundry", "Craftworks", "Crafty Pleasures", "Create Mate", "Create Parade", "Created Comforts", "Creative Beat", "Creative Crafts", "Creative Creature", "Creative Motions", "Creative Scene", "Creative Splash", "Critter Crafts", "Critter Knitter", "Curio Crafts", "Cute as a Button", "Daily Thread", "Dangly Knits", "Definitely Knot", "Destined to Design", "Doodlecrafts", "Draft to Craft", "Dreamcrafts", "Etched On My Art", "Every Knit As Good", "Fab Fabrics", "Fabric Antics", "Fabric Magic", "First Create", "Flair Play", "Flair is Fair", "Flair to Share", "Flair to Spare", "Flights of Fancy", "Flying Art", "For Art's Sake", "For Keep's Sake", "For the Most Art", "From the Art", "Full Seam Ahead", "Giftsakes", "Go With the Sew", "Handy Craft", "Handy Handmades", "Handy Hands", "Happily Ever Crafter", "Happy Designs", "Heart in Art", "Heart to Home", "Heavenly Handmade", "Hot Threads", "I Got Crafts", "I Sew It", "In Good Hands", "In Stitches", "In These Arts", "In a Stitch", "Itching for Stitching", "Knit Fit", "Knit Knot", "Knit Picks", "Knit Wit", "Knit by Knit", "Knit for the Gods", "Knitter Critter", "Knot Always", "Knot Done", "Knot Impossible", "Knot Lost", "Knot a Bit", "Knotty Knitters", "Make, Believe", "Many Hands", "My Flair Lady", "Near to My Art", "Needle in a Haystack", "Nightcrafts", "No Haste, No Waste", "Of the Arts", "One Little Knit", "Out of the Box", "Piece of My Art", "Pieces of Art", "Pocket Crafts", "Pulse Art", "Right From the Art", "Robin Wood", "Seam Come True", "Seam On", "Seam With Pride", "Seam World", "Seam's Right", "Sew Crafty", "Sew Flow", "Sew It Goes", "Sew It Happens", "Sew Loveley", "Sew Pretty", "Sew Sinful", "Sew Solutions", "Sew and Saw", "Sew and Sell", "Sew and Sew", "Sew of Hands", "Sew the Story Goes", "Sewley", "Sinful Soaps", "Smart Art", "Snip Snap", "So Far, Sew Good", "Spun Fun", "State of Create", "Stensability", "Stitch Away", "Stitch Itch", "Stitch-Perfect", "Sum of my Arts", "Sweet Craftations", "Sweet Scents", "Sweet Seams", "Textile Aisle", "Textile Smile", "Textile Style", "Textilophile", "That's Sew Creative", "The Art Bard", "The Art Box", "The Art Cart", "The Big Ball of Yarn", "The Craft Circus", "The Craft Crustacean", "The Craft Draft", "The Craft Room", "The Craft Zone", "The Flair Bear", "The Flair Lair", "The Flairy", "The More You Bow", "The Needle 'n Thread", "The Seam Dream", "The Seam Theme", "The Sew Show", "The Sewing Room", "The Stitch Kettle", "The Stitch Witch", "The Thread 'n Needle", "The Unique Boutique", "Thread and Buttons", "Thread of Roses", "Threaded Needle", "Tins and Needles", "To Be Flair", "True Knit", "Whimsical Woods", "Whole Knit and Caboodle", "Wildest Seams", "Wood That I Could", "Would Craft", "You Craft What You Sew", "You Imbued" };
+				Random r = new Random();
+
+				return nm1[r.Next(nm1.Length)];
+			}
+
+			public static string creature()
+            {
+				string[] nm1 = { "Aldabra", "Almond", "Alpine", "Amazon", "Amber", "Ambush", "Amphibian", "Ancient", "Aqua", "Arctic", "Armored", "Ash", "Ashen", "Assassin", "Autumn", "Awoken", "Azure", "Banded", "Bearded", "Black", "Blazing", "Blind", "Blonde", "Copper", "Blood", "Blue", "Bleeding", "Blushing", "Bog", "Brass", "Bright", "Brilliant", "Bronze", "Brown", "Bull", "Burrowing", "Camouflaged", "Cavalier", "Cave", "Cavern", "Chaos", "Chaotic", "Cloaked", "Clockwork", "Clouded", "Coastal", "Coiled", "Collared", "Common", "Covert", "Creeping", "Crested", "Crimson", "Crossed", "Crowned", "Dark", "Dawn", "Deaf", "Deathlord", "Den", "Desert", "Diamond", "Dire", "Dread", "Dreaming", "Dusk", "Dwarf", "Eastern", "Ebony", "Eerie", "Elder", "Electric", "Elegant", "Emerald", "Emperor", "Enraged", "Eternal", "Exalted", "Fake", "Feathered", "Fiery", "Fire", "Flame", "Flaming", "Fluorescent", "Flying", "Forest", "Forsaken", "Burnt", "Frigid", "Frilled", "Frost", "Furry", "Fury", "Furious", "Fuzzy", "Ghost", "Giant", "Gilded", "Glacial", "Glass", "Glorious", "Glow", "Glowing", "Gold", "Golden", "Graceful", "Gracious", "Grand", "Granite", "Gray", "Great", "Greater", "Green", "Grey", "Grizzly", "Groaning", "Grotto", "Growling", "Hairless", "Hairy", "Hallowed", "Harlequin", "Haunted", "Haunting", "Hell", "Hermit", "Hidden", "Highland", "Hollow", "Horn", "Horned", "Howler", "Hunting", "Ice", "Icy", "Skeletal", "Immortal", "Imperial", "Inferior", "Insane", "Invincible", "Invisible", "Iron", "Isolated", "Ivory", "Jade", "Jasmine", "Jasper", "Jester", "Jumbo", "Jungle", "Killer", "Labyrinth", "Lake", "Land", "Laughing", "Lava", "Leopard", "Legendary", "Liberty", "Light", "Lion", "Little", "Livid", "Lonely", "Lurking", "Lusting", "Majestic", "Malachite", "Mammoth", "Marine", "Maroon", "Marsh", "Masked", "Matriarch", "Mellow", "Midget", "Mimic", "Mini", "Mire", "Mirror", "Mithril", "Moaning", "Mocking", "Moon", "Moss", "Mountain", "Mud", "Night", "Noble", "Mysterious", "Mystery", "Nomadic", "Northern", "Nordic", "Occult", "Ocean", "Onyx", "Overlord", "Painted", "Pale", "Paradise", "Passive", "Patriarch", "Pink", "Pixy", "Platinum", "Polar", "Preying", "Proud", "Purple", "Pygmy", "Quiet", "Rainbow", "Red", "Redwood", "Regal", "Restless", "Revived", "Rigid", "River", "Roaming", "Roaring", "Rock", "Rosewood", "Royal", "Ruby", "Rust", "Sabre-Toothed", "Saint", "Sand", "Sapphire", "Scaled", "Scarlet", "Scorpion", "Sea", "Serpent", "Shadow", "Shocking", "Shore", "Silent", "Silver", "Single-Horned", "Slayer", "Slaying", "Slender", "Slow", "Snow", "Solitary", "Southern", "Spring", "Stalking", "Star", "Steel", "Storm", "Striped", "Stunning", "Summer", "Sun", "Sunglow", "Sunray", "Sunset", "Superior", "Supple", "Supreme", "Swamp", "Tailed", "Terra Cotta", "Terror", "Thicket", "Thistle", "Thorny", "Tiger", "Timber", "Timberwolf", "Timeless", "Titan", "Tracker", "Tracking", "Tree", "Tundra", "Two-Headed", "Two-Tailed", "Undead", "Underground", "Unseen", "Venomous", "Violet", "Wandering", "Water", "Weeping", "Western", "Wetland", "Whimpering", "Whiskered", "Whistling", "White", "Wight", "Wild", "Winter", "Wolf", "Wood", "Woodlands", "Yellow" };
+				string[] nm2 = { "Oxbeast", "Ancients", "Angels", "Aliens", "Anomalies", "Anubis", "Atranochs", "Banshees", "Basilisks", "Beastmen", "Beasts", "Behemoths", "Berserkers", "Bigfoots", "Biters", "Bogeymen", "Bunyips", "Catfolk", "Centaurs", "Cerberuses", "Changelings", "Chimeras", "Chupacabra", "Cockatrice", "Corruptions", "Crawlers", "Cupids", "Cyborgs", "Cyclopes", "Daemons", "Daywalkers", "Demons", "Devils", "Doppelgangers", "Dragonborn", "Dragons", "Drakes", "Draugr", "Dryads", "Dwarves", "Elementals", "Elves", "Ents", "Ethereals", "Fairies", "Fauns", "Fiends", "Gargoyles", "Genies", "Ghosts", "Ghouls", "Giants", "Gnolls", "Gnomes", "Goblins", "Golems", "Goliaths", "Gorgons", "Gremlins", "Grendels", "Griffins", "Hags", "Hagravens", "Halflings", "Harpies", "Hellhounds", "Hippocampi", "Hippogriffs", "Hobgoblins", "Howlers", "Humans", "Hydras", "Imps", "Incubi", "Infernals", "Inugami", "Jackalopes", "Kobolds", "Kraken", "Leapers", "Leprechauns", "Leviathans", "Liches", "Lynxes", "Medusas", "Melusines", "Mermaids", "Minotaurs", "Mongrels", "Monsters", "Mummies", "Myrmidons", "Menace", "Walkers", "Night Stalkers", "Nightmares", "Nightwalkers", "Nymphs", "Newts", "Ogres", "Orcs", "Pegasi", "Phantoms", "Phoenix", "Pisces", "Pixies", "Reapers", "Reptilians", "Rocs", "Sandmen", "Satyrs", "Scourge", "Shades", "Shadows", "Shapeshifters", "Shifters", "Sirens", "Skeletons", "Slimes", "Souleaters", "Souls", "Spectres", "Sphinxes", "Spirits", "Spriggans", "Sprites", "Succubi", "Taurens", "Terrors", "Titans", "Troglodytes", "Trolls", "Undeads", "Unicorns", "Valkyries", "Vampires", "Walkers", "Wendigos", "Werecats", "Werewolves", "Wispmother", "Wisps", "Wolpertingers", "Wraiths", "Wyrms", "Wyverns", "Yetis", "Zombies" };
+
+				string br = "";
+				Random r = new Random();
+
+				int rnd = r.Next(nm1.Length);
+				int rnd2 = r.Next(nm2.Length);
+				string names = nm1[rnd] + " " + nm2[rnd2];
+
+				return names;
 			}
 
 

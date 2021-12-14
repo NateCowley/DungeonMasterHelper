@@ -57,7 +57,7 @@ namespace DungeonMasterHelper
 		private void button4_Click(object sender, EventArgs e)
 		{
 
-			MessageBox.Show(RandomGenerators.craftStore());
+			MessageBox.Show(RandomGenerators.creatureDescription());
 			/*
 			string[] valuesOfTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\tables.txt");
 			string[] valuesOfDoubleTables = System.IO.File.ReadAllLines(@"C:\Users\lupus\Downloads\doubletables.txt");
@@ -114,7 +114,7 @@ namespace DungeonMasterHelper
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			Data.DMG.Treasure.magic_item_table_b.ShowTable();
+			RandomGenerators.creatureDescription();
 		}
 
 		private void button6_Click(object sender, EventArgs e)

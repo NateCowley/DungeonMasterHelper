@@ -249,22 +249,22 @@ namespace DungeonMasterHelper
 
 				public static readonly Table military_force_contact = new Table("Commanding Officer", "Officer", Data.Rolls_String.d6, "", Data.Titles.TCE, 97, new TableRow[]
 				{
-					new TableRow(1,     TableRow.NOVALUE,       ""),
-					new TableRow(2,     TableRow.NOVALUE,       ""),
-					new TableRow(3,     TableRow.NOVALUE,       ""),
-					new TableRow(4,     TableRow.NOVALUE,       ""),
-					new TableRow(5,     TableRow.NOVALUE,       ""),
-					new TableRow(6,     TableRow.NOVALUE,       ""),
+					new TableRow(1,     TableRow.NOVALUE,       "Tested Veteran. Your commander is a battle-scarred officer who experienced horrors in combat. They rely on something to dull the pain of their memories or wounds, from a favorite writer's prose to a distracting vice."),
+					new TableRow(2,     TableRow.NOVALUE,       "Taskmaster. This a ngry officer yells every order, reprimands you for the smallest mistake, and fully expects you to fail at every mission you undertake. This might be tough love or simple brutishness."),
+					new TableRow(3,     TableRow.NOVALUE,       "Protective Officer. A kindly officer is hesitant to send you into danger and constantly reminds you to be careful."),
+					new TableRow(4,     TableRow.NOVALUE,       "Bitter Soldier. Your commander carries deep grudges against your force's enemies. They leap at any chance to do those foes harm, even if it puts your group in terrible risk."),
+					new TableRow(5,     TableRow.NOVALUE,       "Hopeful Commander. This optimistic officer knows that a new era of peace is just over the horizon. You just need to complete these last few missions, then it should all finally be over."),
+					new TableRow(6,     TableRow.NOVALUE,       "Devout Leader. Your commander is a person of deep faith. They believe that your success or failure lies entirely in divine hands and you are the instruments of that will."),
 				});
 
 				public static readonly Table military_quests = new Table("Military Quests", "Quest", Data.Rolls_String.d6, "", Data.Titles.TCE, 98, new TableRow[]
 				{
-					new TableRow(1,     TableRow.NOVALUE,       ""),
-					new TableRow(2,     TableRow.NOVALUE,       ""),
-					new TableRow(3,     TableRow.NOVALUE,       ""),
-					new TableRow(4,     TableRow.NOVALUE,       ""),
-					new TableRow(5,     TableRow.NOVALUE,       ""),
-					new TableRow(6,     TableRow.NOVALUE,       ""),
+					new TableRow(1,     TableRow.NOVALUE,       "Strike Force. You undertake a quick, strategic, and devastating attack against an enemy force."),
+					new TableRow(2,     TableRow.NOVALUE,       "Defensive Operations. You must preserve the safety of an important location such as a civilian population center, a supply depot, or strategically critical bridge or seaport."),
+					new TableRow(3,     TableRow.NOVALUE,       "Special Forces. You are assigned to a covert operation behind enemy lines. This is similar to the work of a spy or an assassin but with a broader scope. You engage in equipment sabotage or execute targeted strikes against high-value targets."),
+					new TableRow(4,     TableRow.NOVALUE,       "Reconnaissance. You gather information on enemy troop numbers, placements, movement, or supply caches and routes."),
+					new TableRow(5,     TableRow.NOVALUE,       "Seek and Destroy. You are res ponsible for hunting down specific high-value and dangerous targets, which include deserters, suspected enemy special forces, or magical war machines run amok."),
+					new TableRow(6,     TableRow.NOVALUE,       "Siege. You are assigned to initiate a siege on an enemy stronghold or help break a siege in progress on an allied fortress."),
 				});
 
 				public static readonly Table religious_order_types = new Table("Religious Order Types", "Religious Order", Data.Rolls_String.d6, "", Data.Titles.TCE, 98, new TableRow[]
